@@ -28,6 +28,9 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 //Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
+//sadasdsadsad
+//asdas
+
 Route::get('/articles','ArticlesController@index');
 Route::get('/articles/{id}','ArticlesController@detail');
 
