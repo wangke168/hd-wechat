@@ -25,11 +25,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // 注册路由...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-//Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-
-//sadasdsadsad
-//asdas
 
 Route::get('/articles','ArticlesController@index');
 Route::get('/articles/{id}','ArticlesController@detail');
