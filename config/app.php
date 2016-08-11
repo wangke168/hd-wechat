@@ -158,6 +158,7 @@ return [
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
+        Overtrue\LaravelWechat\ServiceProvider::class,
 
     ],
 
@@ -205,6 +206,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Wechat' => Overtrue\LaravelWechat\Facade::class,
     ],
 
 ];

@@ -18,16 +18,10 @@ Route::get('about',function(){
     return 'Hello World';
 });
 
-// 认证路由...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// 注册路由...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
 Route::get('/articles','ArticlesController@index');
 Route::get('/articles/{id}','ArticlesController@detail');
 
+/*Laravel-Wechat*/
+Route::any('/wechat', 'WechatController@serve');
