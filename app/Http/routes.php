@@ -22,6 +22,6 @@ Route::get('about',function(){
 
 Route::get('/articles','ArticlesController@index');
 Route::get('/articles/{id}','ArticlesController@detail');
-
+//test
 /*Laravel-Wechat*/
 Route::any('/wechat', 'WechatController@serve');
