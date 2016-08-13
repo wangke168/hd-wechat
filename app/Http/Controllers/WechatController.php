@@ -21,7 +21,7 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
-                    return 'hello'.$userApi->get($message->FromUserName)->FromUserName;
+                    return 'hello'.$userApi->get($message->FromUserName);
                     break;
                 case 'image':
                     # 图片消息...
