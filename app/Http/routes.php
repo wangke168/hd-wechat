@@ -14,16 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('about',function(){
+Route::get('about', function () {
     return 'Hello World';
 });
 
 
-
-Route::get('/articles','ArticlesController@index');
-Route::get('/articles/{id}','ArticlesController@detail');
+Route::get('/articles', 'ArticlesController@index');
+Route::get('/articles/{id}', 'ArticlesController@detail');
 
 //asdaaa
 
 /*Laravel-Wechat*/
+
+
+Route::group(['middleware' => ['web']], function () {
+
+});
+
 Route::any('/wechat', 'WechatController@serve');
