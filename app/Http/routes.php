@@ -26,9 +26,9 @@ Route::get('/articles/{id}', 'ArticlesController@detail');
 
 /*Laravel-Wechat*/
 
-
+/*
 Route::group(['middleware' => ['web']], function () {
 
-});
+});*/
 
 Route::any('/wechat', 'WechatController@serve');
