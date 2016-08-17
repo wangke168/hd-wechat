@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use EasyWeChat\Message\Text;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,7 +21,9 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
-                    return 'hello'.$userApi->get($message->FromUserName)->openid;
+//                    return 'hello'.$userApi->get($message->FromUserName)->openid;
+                    $text = new Text();
+                    $text->content = '您好！overtrue。';
                     break;
                 case 'image':
                     # 图片消息...

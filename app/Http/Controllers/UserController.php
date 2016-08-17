@@ -11,6 +11,9 @@ class UserController extends Controller
 {
     public $wechat;
 
+    /**
+     * @param Application $wechat
+     */
     public function __construct(Application $wechat)
     {
         $this->wechat=$wechat;
