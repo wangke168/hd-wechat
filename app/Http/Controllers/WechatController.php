@@ -24,6 +24,7 @@ class WechatController extends Controller
 //                    return 'hello'.$userApi->get($message->FromUserName)->openid;
                     $text = new Text();
                     $text->content = '您好！overtrue。';
+                    return $text;
                     break;
                 case 'image':
                     # 图片消息...
