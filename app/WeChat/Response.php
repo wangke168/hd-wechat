@@ -35,6 +35,7 @@ class Response{
 
         $text=new Text();
         $text->content='asdas';
+        return $text;
 //        $server=$app->server;
 
 /*        $app = app('wechat');
