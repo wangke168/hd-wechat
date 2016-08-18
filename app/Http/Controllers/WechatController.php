@@ -29,7 +29,8 @@ class WechatController extends Controller
                     $text->content = '您好！overtrue。';
                     return $text;*/
                     $response=new Response();
-                    $response->news();
+                    $news=$response->news();
+                    return [$news];
                     break;
                 case 'image':
                     # 图片消息...
