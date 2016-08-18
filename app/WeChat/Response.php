@@ -25,11 +25,11 @@ class Response{
 
 
 
-       $news1=new News();
+/*       $news1=new News();
         $news1->title="laravel-wechat";
         $news1->description ="测试";
         $news1->url="http://www.baidu.com";
-        $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+        $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";*/
 
         $news2=new News();
         $news2->title="laravel-wechat";
@@ -40,12 +40,14 @@ class Response{
         $server=$this->app->server;
 
         $server->setMessageHandler(function ($message) {
-            // $message->FromUserName // 用户的 openid
-            // $message->MsgType // 消息类型：event, text....
-            return "您好！欢迎关注我!";
+            $news1=new News();
+            $news1->title="laravel-wechat";
+            $news1->description ="测试";
+            $news1->url="http://www.baidu.com";
+            $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+            return [$news1];
         });
-        $response = $server->serve();
-        return $response;
+
 
     }
 }
