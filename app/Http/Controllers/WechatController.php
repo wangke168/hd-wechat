@@ -30,7 +30,7 @@ class WechatController extends Controller
                     return $text;*/
 
                     $response=new Response();
-                    return [$response->news()];
+                    $response->news();
 //                    return $news->title;
 //                    return [$news];
                     break;

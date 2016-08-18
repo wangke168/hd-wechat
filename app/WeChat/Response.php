@@ -15,6 +15,7 @@ use App\Http\Requests;
 class Response{
 
     public function news(){
+
         $news1=new News();
         $news1->title="laravel-wechat";
         $news1->description ="测试";
@@ -26,7 +27,12 @@ class Response{
         $news2->description ="测试";
         $news2->url="http://www.baidu.com";
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-        return $news1;
+
+        $wechat = app('wechat');
+        $wechat->server->setMessageHandler(function ($message){
+            return [$news1];
+        });
+
 
     }
 }
