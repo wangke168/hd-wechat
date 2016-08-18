@@ -32,15 +32,16 @@ class Response{
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
 //        return [$news1];
 
+        return 'asdas';
 //        $server=$app->server;
 
-        $app = app('wechat');
+/*        $app = app('wechat');
 
         $app->server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
             return 'sad';
-        });
+        });*/
 /*        $response = $server->serve();
         return $response;*/
 
