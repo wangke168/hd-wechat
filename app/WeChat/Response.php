@@ -46,7 +46,7 @@ class Response{
 
         $app = app('wechat');
 
-        $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+        $app->staff->message("sdsads")->to("opUv9v977Njll_YHpZYMymxI_aPE")->send();
 /*        $app->server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
