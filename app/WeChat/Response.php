@@ -15,10 +15,10 @@ use App\Http\Requests;
 
 class Response{
 
-    public $wechat;
-    public function __construct(Application $wechat)
+    public $app;
+    public function __construct(Application $app)
     {
-        $this->wechat=$wechat;
+        $this->app=$app;
     }
 
     public function news(){
@@ -37,22 +37,15 @@ class Response{
         $news2->url="http://www.baidu.com";
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
 //        return [$news1];
-        $this->wechat->server->setMessageHandler(function ($message) {
-            // $message->FromUserName // 用户的 openid
-            // $message->MsgType // 消息类型：event, text....
-            return "您好！欢迎关注我!";
-        });
-/*        $app=app('wechat');
-//        $app = new Application($options);
-// 从项目实例中得到服务端应用实例。
-        $server = $app->server;
+        $server=$this->app->server;
+
         $server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
             return "您好！欢迎关注我!";
         });
         $response = $server->serve();
-        return $response;*/
+        return $response;
 
     }
 }
