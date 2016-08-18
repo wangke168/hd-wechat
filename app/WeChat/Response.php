@@ -31,11 +31,11 @@ class Response{
         $news2->description ="测试";
         $news2->url="http://www.baidu.com";
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-//        return [$news1];
+        return $news1;
 
-        $text=new Text();
+/*        $text=new Text();
         $text->content='asdas';
-        return $text;
+        return $text;*/
 //        $server=$app->server;
 
 /*        $app = app('wechat');
