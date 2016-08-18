@@ -37,16 +37,16 @@ class Response{
         $news2->description ="测试";
         $news2->url="http://www.baidu.com";
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-        return $text;
+//        return $text;
 //return $text;
 /*        $text=new Text();
         $text->content='asdas';
         return $text;*/
 //        $server=$app->server;
 
-/*        $app = app('wechat');
+        $app = app('wechat');
 
-        $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();*/
+        $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
 /*        $app->server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
