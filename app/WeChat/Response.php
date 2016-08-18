@@ -9,6 +9,7 @@ namespace App\WeChat;
 use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
+use EasyWeChat\Message\Text;
 use App\Models\WechatArticle;
 use App\Http\Requests;
 
@@ -32,7 +33,8 @@ class Response{
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
 //        return [$news1];
 
-        return 'asdas';
+        $text=new Text();
+        $text->content='asdas';
 //        $server=$app->server;
 
 /*        $app = app('wechat');
