@@ -35,6 +35,7 @@ class Response{
 //        $server=$app->server;
 
         $app = app('wechat');
+
         $app->server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....

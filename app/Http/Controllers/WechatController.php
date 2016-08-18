@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\WeChat\Response;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
@@ -18,7 +17,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $userApi = $wechat->user;
-        $wechat->server->setMessageHandler(function ($message) use ($userApi) {
+        $wechat->server->setMessageHandler(function ($message) use ($userApi){
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
@@ -26,14 +25,18 @@ class WechatController extends Controller
                 case 'text':
 //                    return 'hello'.$userApi->get($message->FromUserName)->openid;
 
-                    /*         $text = new Text();
-                             $text->content = '您好！overtrue。';
-                             return $text;*/
-                    return 'aaa';
-               /*     $response = new Response();
+           /*         $text = new Text();
+                    $text->content = '您好！overtrue。';
+                    return $text;*/
+
+              /*      $response=new Response();
                     $response->news();*/
-//                    return $news->title;
-//                    return [$news];
+                    $news2=new News();
+                    $news2->title="laravel-wechat";
+                    $news2->description ="测试";
+                    $news2->url="http://m.hengdianworld.com";
+                    $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+                    return [$news2];
                     break;
                 case 'image':
                     # 图片消息...
