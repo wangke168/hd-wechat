@@ -32,7 +32,7 @@ class WechatController extends Controller
                     $response=new Response();
                     $news=$response->news();
 //                    return $news->title;
-                    return [$news];
+//                    return [$news];
                     break;
                 case 'image':
                     # 图片消息...
