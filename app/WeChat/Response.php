@@ -10,6 +10,8 @@ namespace App\WeChat;
 use DB;
 use EasyWeChat\Message\News;
 use App\Models\WechatArticle;
+use App\Http\Requests;
+
 class Response{
 
     public function news(){
