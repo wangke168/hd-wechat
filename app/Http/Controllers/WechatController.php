@@ -28,18 +28,8 @@ class WechatController extends Controller
            /*         $text = new Text();
                     $text->content = '您好！overtrue。';
                     return $text;*/
-                    $news1=new News();
-                    $news1->title="laravel-wechat";
-                    $news1->description ="测试";
-                    $news1->url="http://www.baidu.com";
-                    $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-
-                    $news2=new News();
-                    $news2->title="laravel-wechat";
-                    $news2->description ="测试";
-                    $news2->url="http://www.baidu.com";
-                    $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                    return [$news1,$news2];
+                    $response=new Response();
+                    $response->news();
                     break;
                 case 'image':
                     # 图片消息...

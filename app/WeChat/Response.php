@@ -13,20 +13,18 @@ use App\Models\WechatArticle;
 class Response{
 
     public function news(){
-        $articles=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(1)->get();
+        $news1=new News();
+        $news1->title="laravel-wechat";
+        $news1->description ="测试";
+        $news1->url="http://www.baidu.com";
+        $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
 
-        foreach ($articles as $article)
-        {
-            $news = new News([
-                'title'       => $article->title,
-                'description' => '...',
-                'url'         => $article->url,
-                'image'       => $article->picurl,
-                // ...
-            ]);
-        }
-
-        return [$news];
+        $news2=new News();
+        $news2->title="laravel-wechat";
+        $news2->description ="测试";
+        $news2->url="http://www.baidu.com";
+        $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+        return [$news1,$news2];
 
     }
 }
