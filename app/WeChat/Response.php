@@ -21,15 +21,17 @@ class Response{
     public function __construct(Application $wechat){
         $this->wechat=$wechat;
     }*/
-    public function news($type){
+    public function news($message,$type){
         $app = app('wechat');
+        $userService = $app->user;
+        $fromUsername=$userService->get($message->FromUserName)->openid;
         switch($type)
         {
             case "a":
                 $text = new Text();
                 $text->content = '您好！overtrue。';
 //                return $app->server->serve();
-                $app->staff->message($text)->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+                $app->staff->message($text)->to($fromUsername)->send();
                 break;
             case 's':
                 $news1=new News();
