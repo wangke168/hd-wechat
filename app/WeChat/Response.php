@@ -49,7 +49,7 @@ class Response
                 break;
             default:
 
-                $row=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(1)->get();
+//                $row=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(1)->get();
 
 //                foreach ($row as $result) {
                     $news1 = new News();
