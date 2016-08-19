@@ -69,7 +69,7 @@ class Response
 
                     $i = $i + 1;
                 }
-                return [$news];
+                return [$news[1],$news[2]];
                 break;
         }
     }
