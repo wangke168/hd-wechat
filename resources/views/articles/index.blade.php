@@ -6,9 +6,7 @@
     @foreach($articles as $article)
         <h2>{{$article->title}}</h2>
         <article>
-        <div class="body">
-        {{$article->content}}
-        </div>
+
         </article>
     @endforeach
 @stop

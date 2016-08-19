@@ -53,13 +53,13 @@ class Response
                 $i = 1;
                 $news=array();
                 foreach ($row as $result) {
-                    $news[$i] = new News();
-                    $news[$i]->title = $result->title;
-                    $news[$i]->description = $result->description;
-                    $news[$i]->url = $result->url;
-                    $news[$i]->image = $result->picurl;
+                    $new = new News();
+                    $new->title = $result->title;
+                    $new->description = $result->description;
+                    $new->url = $result->url;
+                    $new->image = $result->picurl;
 
-                    $news[]=$news[$i];
+                    $news[]=$new;
 
 
                     $i = $i + 1;

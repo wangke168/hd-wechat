@@ -13,9 +13,9 @@ class ArticlesController extends Controller
     public function index()
     {
 //        $articles = Article::all();
-        $articles=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(5)->get();
-        return $articles;
-//        return view('articles.index', compact('articles'));
+        $articles=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(2)->get();
+//        return $articles;
+        return view('articles.index', compact('articles'));
     }
 
     public function  show($id)
