@@ -53,7 +53,7 @@ class Response
 
                 foreach ($row as $result) {
                     $news1 = new News();
-                    $news1->title = $result->title;
+                    $news1->title = "laravel-wechat";
                     $news1->description = "测试";
                     $news1->url = "http://www.baidu.com";
                     $news1->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
