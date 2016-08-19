@@ -36,7 +36,7 @@ class WechatController extends Controller
                             $response->news($message,"a");
                             break;
                         case 's':
-                            $response->news("s");
+                            $response->news($message,"s");
                             break;
                         default:
                             break;

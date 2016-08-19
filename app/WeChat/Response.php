@@ -39,7 +39,7 @@ class Response{
                 $news1->description ="测试";
                 $news1->url="http://www.baidu.com";
                 $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+                $app->staff->message([$news1])->to($fromUsername)->send();
                 break;
         }
 
