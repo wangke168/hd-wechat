@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\WeChat\Response;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
@@ -17,7 +18,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $userApi = $wechat->user;
-        $wechat->server->setMessageHandler(function ($message) use ($userApi){
+        $wechat->server->setMessageHandler(function ($message) use ($userApi) {
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
@@ -25,12 +26,22 @@ class WechatController extends Controller
                 case 'text':
 //                    return 'hello'.$userApi->get($message->FromUserName)->openid;
 
-           /*         $text = new Text();
-                    $text->content = '您好！overtrue。';
-                    return $text;*/
+                    /*         $text = new Text();
+                             $text->content = '您好！overtrue。';
+                             return $text;*/
 
-                    $response=new Response();
-                    $response->news();
+                    switch ($message->Content) {
+                        case 'a':
+                            $response = new Response();
+                            $response->news();
+                            break;
+                        case 's':
+                            return 'hello world';
+                            break;
+                        default:
+                            break;
+                    }
+
 
 //                    return $news->title;
 //                    return [$news];

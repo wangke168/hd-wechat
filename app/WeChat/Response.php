@@ -44,7 +44,20 @@ class Response{
         return $text;*/
 //        $server=$app->server;
 
-        $app = app('wechat');
+
+
+      $app = app('wechat');
+
+      /*    $server=$app->server;
+
+        $server->setMessageHandler(function ($message) {
+            $news1=new News();
+            $news1->title="laravel-wechat";
+            $news1->description ="测试";
+            $news1->url="http://www.baidu.com";
+            $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+            return $news1;
+        });*/
 
         $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
 /*        $app->server->setMessageHandler(function ($message) {
