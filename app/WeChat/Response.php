@@ -21,22 +21,35 @@ class Response{
     public function __construct(Application $wechat){
         $this->wechat=$wechat;
     }*/
-    public function news(){
+    public function news($type){
+        $app = app('wechat');
+        switch($type)
+        {
+            case "a":
+                $text = new Text();
+                $text->content = '您好！overtrue。';
+                return $text;
+                break;
+            case 's':
+                $news1=new News();
+                $news1->title="laravel-wechat";
+                $news1->description ="测试";
+                $news1->url="http://www.baidu.com";
+                $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+                $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+                break;
+        }
 
-        $text = new Text();
-        $text->content = '您好！overtrue。';
 
-       $news1=new News();
-        $news1->title="laravel-wechat";
-        $news1->description ="测试";
-        $news1->url="http://www.baidu.com";
-        $news1->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
 
+/*
         $news2=new News();
         $news2->title="laravel-wechat";
         $news2->description ="测试";
         $news2->url="http://www.baidu.com";
         $news2->image="http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+        */
+
 //        return $text;
 //return $text;
 /*        $text=new Text();
@@ -46,7 +59,7 @@ class Response{
 
 
 
-      $app = app('wechat');
+
 
       /*    $server=$app->server;
 
@@ -59,7 +72,7 @@ class Response{
             return $news1;
         });*/
 
-        $app->staff->message([$news1])->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+
 /*        $app->server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....

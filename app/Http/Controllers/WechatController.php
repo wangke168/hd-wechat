@@ -29,14 +29,14 @@ class WechatController extends Controller
                     /*         $text = new Text();
                              $text->content = '您好！overtrue。';
                              return $text;*/
-
+                    $response = new Response();
                     switch ($message->Content) {
                         case 'a':
-                            $response = new Response();
-                            $response->news();
+
+                            $response->news("a");
                             break;
                         case 's':
-                            return 'hello world';
+                            $response->news("s");
                             break;
                         default:
                             break;
@@ -47,6 +47,7 @@ class WechatController extends Controller
 //                    return [$news];
                     break;
                 case 'image':
+
                     # 图片消息...
                     break;
                 case 'voice':
