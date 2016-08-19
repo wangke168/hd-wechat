@@ -58,10 +58,7 @@ class Response
                     $new->description = $result->description;
                     $new->url = $result->url;
                     $new->image = $result->picurl;
-
                     $news[]=$new;
-
-
                     $i = $i + 1;
                 }
                 return $news;
