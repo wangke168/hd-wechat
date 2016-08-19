@@ -58,8 +58,9 @@ class Response
                     $news[$i]->url = $result->url;
                     $news[$i]->image = $result->picurl;
                     $i=$i+1;
+                    $new[]=$news[$i];
                 }
-                return [$news[1],$news[2]];
+                return [$new];
                 break;
         }
     }
