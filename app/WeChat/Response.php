@@ -49,7 +49,7 @@ class Response
                 break;
             default:
 
-                $row=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(1)->get();
+                $row=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(2)->get();
                 $i=1;
                 foreach ($row as $result) {
                     $news[$i] = new News();
@@ -58,7 +58,7 @@ class Response
                     $news[$i]->url = $result->url;
                     $news[$i]->image = $result->picurl;
                 }
-                return [$news[$i]];
+                return [$news[1],$news[2]];
                 break;
         }
     }
