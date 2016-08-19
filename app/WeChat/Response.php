@@ -23,12 +23,12 @@ class Response
         public function __construct(Application $wechat){
             $this->wechat=$wechat;
         }*/
-    public function news($message, $type)
+    public function news($message, $keyword)
     {
         $app = app('wechat');
         $userService = $app->user;
         $fromUsername = $userService->get($message->FromUserName)->openid;
-        switch ($type) {
+        switch ($keyword) {
             case "a":
                 $text = new Text();
                 $text->content = '您好！overtrue。';
@@ -47,6 +47,14 @@ class Response
                 $text = new Text();
                 $text->content = 'Hello World。';
                 return $text;
+                break;
+            default:
+                $news1 = new News();
+                $news1->title = "laravel-wechat";
+                $news1->description = "测试";
+                $news1->url = "http://www.baidu.com";
+                $news1->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+                return [$news1];
                 break;
         }
 

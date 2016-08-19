@@ -45,6 +45,7 @@ class WechatController extends Controller
                             return $userService->get($message->FromUserName)->openid;
                             break;
                         default:
+                            return ($response->news($message,$message->Content));
                             break;
                     }
 
