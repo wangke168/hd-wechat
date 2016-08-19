@@ -28,7 +28,8 @@ class Response{
             case "a":
                 $text = new Text();
                 $text->content = '您好！overtrue。';
-                return $text;
+//                return $app->server->serve();
+                $app->staff->message($text)->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
                 break;
             case 's':
                 $news1=new News();
