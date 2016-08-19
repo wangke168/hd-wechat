@@ -37,6 +37,9 @@ class WechatController extends Controller
                         case 's':
                             $response->news($message,"s");
                             break;
+                        case 'd':
+                            return $response->news($message,"d");
+                            break;
                         case 'wxh':
                             return $userService->get($message->FromUserName)->openid;
                             break;

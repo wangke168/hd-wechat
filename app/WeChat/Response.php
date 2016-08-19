@@ -46,7 +46,7 @@ class Response
             case 'd':
                 $text = new Text();
                 $text->content = 'Hello World。';
-
+                return $text;
                 break;
         }
 
