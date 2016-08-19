@@ -52,11 +52,11 @@ class Response
                 $row=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(1)->get();
                 $i=1;
                 foreach ($row as $result) {
-                    $news1 = new News();
-                    $news1->title = $result->title;
-                    $news1->description = $result->description;
-                    $news1->url = $result->url;
-                    $news1->image = $result->picurl;
+                    $news.$i = new News();
+                    $news.$i->title = $result->title;
+                    $news.$i->description = $result->description;
+                    $news.$i->url = $result->url;
+                    $news.$i->image = $result->picurl;
                 }
                 return [$news1];
                 break;
