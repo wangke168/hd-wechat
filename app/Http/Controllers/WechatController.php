@@ -24,11 +24,6 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
-//                    return 'hello'.$userApi->get($message->FromUserName)->openid;
-
-                    /*         $text = new Text();
-                             $text->content = '您好！overtrue。';
-                             return $text;*/
                     $response = new Response();
                     switch ($message->Content) {
                         case 'a':
@@ -39,7 +34,6 @@ class WechatController extends Controller
                             break;
                         case 'd':
                             return ($response->news($message,"d"));
-//                            return $content;
                             break;
                         case 'wxh':
                             return $userService->get($message->FromUserName)->openid;
@@ -48,10 +42,6 @@ class WechatController extends Controller
                             return ($response->news($message,$message->Content));
                             break;
                     }
-
-
-//                    return $news->title;
-//                    return [$news];
                     break;
                 case 'image':
 
