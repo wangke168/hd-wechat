@@ -17,8 +17,8 @@ class WechatController extends Controller
 //        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
 
         $wechat = app('wechat');
-        $userApi = $wechat->user;
-        $wechat->server->setMessageHandler(function ($message) use ($userApi) {
+        $userService = $wechat->user;
+        $wechat->server->setMessageHandler(function ($message) use ($userService) {
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
@@ -32,11 +32,13 @@ class WechatController extends Controller
                     $response = new Response();
                     switch ($message->Content) {
                         case 'a':
-
                             $response->news($message,"a");
                             break;
                         case 's':
                             $response->news($message,"s");
+                            break;
+                        case 'wxh':
+                            return $userService->get($message->FromUserName)->openid;
                             break;
                         default:
                             break;
