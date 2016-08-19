@@ -51,17 +51,16 @@ class Response
 
                 $row = DB::table('wx_article')->where('title', 'like', '门票%')->orderBy('id', 'desc')->skip(0)->take(2)->get();
                 $i = 1;
-                $news="";
+                $news=array();
                 foreach ($row as $result) {
                     $news[$i] = new News();
                     $news[$i]->title = $result->title;
                     $news[$i]->description = $result->description;
                     $news[$i]->url = $result->url;
                     $news[$i]->image = $result->picurl;
-                    if ($i==1)
-                    {
-                        $news=$news[$i];
-                    }
+
+                        $news[]=$news[$i];
+
 
                     $i = $i + 1;
                 }
