@@ -50,13 +50,13 @@ class Response
             default:
 
                 $row=DB::table('wx_article')->where('title','like','门票%')->orderBy('id','desc')->skip(0)->take(1)->get();
-
+                $i=1;
                 foreach ($row as $result) {
                     $news1 = new News();
                     $news1->title = $result->title;
-                    $news1->description = "测试";
-                    $news1->url = "http://www.baidu.com";
-                    $news1->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+                    $news1->description = $result->description;
+                    $news1->url = $result->url;
+                    $news1->image = $result->picurl;
                 }
                 return [$news1];
                 break;
