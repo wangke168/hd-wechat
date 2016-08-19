@@ -62,7 +62,10 @@ class Response
                     {
                         $news=$news[$i];
                     }
-
+                    else
+                    {
+                        $news=$news.",".$news[$i];
+                    }
 
                     $i = $i + 1;
                 }
