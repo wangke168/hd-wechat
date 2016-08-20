@@ -26,19 +26,17 @@ class WechatController extends Controller
                 case 'text':
                     $response = new Response();
                     switch ($message->Content) {
-
-
                         case 's':
                             $response->news($message,"s");
                             break;
-
                         case 'wxh':
-                            return $userService->get($message->FromUserName)->openid;
+                            $content= $userService->get($message->FromUserName)->openid;
                             break;
                         default:
-                            return ($response->news($message,$message->Content));
+                            $content= ($response->news($message,$message->Content));
                             break;
                     }
+                    return $content;
                     break;
                 case 'image':
 
@@ -61,6 +59,7 @@ class WechatController extends Controller
                     # code...
                     break;
             }
+
         });
 
 //        Log::info('return response.');
