@@ -32,7 +32,8 @@ class Response
             case "a":
                 $text = new Text();
                 $text->content = '您好！overtrue。';
-                $app->staff->message($text)->to($fromUsername)->send();
+                return $text;
+//                $app->staff->message($text)->to($fromUsername)->send();
                 break;
             case 's':
                 $news1 = new News();
@@ -40,7 +41,7 @@ class Response
                 $news1->description = "测试";
                 $news1->url = "http://www.baidu.com";
                 $news1->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $app->staff->message([$news1])->to($fromUsername)->send();
+//                $app->staff->message([$news1])->to($fromUsername)->send();
                 break;
             case 'd':
                 $text = new Text();
