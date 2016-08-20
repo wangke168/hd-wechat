@@ -47,6 +47,11 @@ class Response
                 $text->content = 'Hello World。';
                 return $text;
                 break;
+            case '天气':
+                $text=new Text();
+                $text->content=$this->get_weather_info();
+                return $text;
+                break;
             default:
 
                 $row = DB::table('wx_article')->where('title', 'like', '门票%')->orderBy('id', 'desc')->skip(0)->take(2)->get();
@@ -65,4 +70,22 @@ class Response
                 break;
         }
     }
+
+    private function get_weather_info()
+    {
+        $json = file_get_contents("http://api.map.baidu.com/telematics/v3/weather?location=%E4%B8%9C%E9%98%B3&output=json&ak=2c87d6d0443ab161753291258ac8ab7a");
+        $data = json_decode($json, true);
+        $contentStr = "【横店天气预报】：\n\n";
+        $contentStr = $contentStr . $data['results'][0]['weather_data'][0]['date'] . "\n";
+        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][0]['weather'] . "\n";
+        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][0]['temperature'] . "\n\n";
+        $contentStr = $contentStr . "明天：" . $data['results'][0]['weather_data'][1]['date'] . "\n";
+        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][1]['weather'] . "\n";
+        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][1]['temperature'] . "\n\n";
+        $contentStr = $contentStr . "后天：" . $data['results'][0]['weather_data'][2]['date'] . "\n";
+        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][2]['weather'] . "\n";
+        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][2]['temperature'] . "\n";
+        return $contentStr;
+    }
+
 }

@@ -26,6 +26,9 @@ class WechatController extends Controller
                 case 'text':
                     $response = new Response();
                     switch ($message->Content) {
+                        case '天气':
+                            $response->news($message,"天气");
+                            break;
                         case 'a':
                             $response->news($message,"a");
                             break;
