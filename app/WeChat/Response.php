@@ -18,22 +18,21 @@ use App\Http\Requests;
 class Response
 {
 
-    /*    public $wechat;
+        public $wechat;
 
         public function __construct(Application $wechat){
             $this->wechat=$wechat;
-        }*/
+        }
     public function news($message, $keyword)
     {
+
         $app = app('wechat');
         $userService = $app->user;
         $fromUsername = $userService->get($message->FromUserName)->openid;
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $content->content = 'Hello World。';
-//                return $content;
-//                $app->staff->message($text)->to($fromUsername)->send();
+                $content->content = $this->wechat->user->getAccessToken();;
                 break;
             case 's':
                 $content = new News();
@@ -42,11 +41,11 @@ class Response
                 $content->url = "http://www.baidu.com";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
                 $app->staff->message([$content])->to($fromUsername)->send();
+
                 break;
             case '天气':
                 $content=new Text();
                 $content->content=$this->get_weather_info();
-//                return $content;
                 break;
             default:
                 $row = DB::table('wx_article')->where('keyword', 'like', '%'.$keyword.'%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
@@ -67,7 +66,6 @@ class Response
                     $content->content="嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
 
                 }
-//                return $content;
                 break;
         }
         return $content;
