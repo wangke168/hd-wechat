@@ -41,7 +41,6 @@ class Response
                 $content->url = "http://www.baidu.com";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
                 $app->staff->message([$content])->to($fromUsername)->send();
-
                 break;
             case '天气':
                 $content=new Text();
@@ -64,7 +63,6 @@ class Response
                 {
                     $content=new Text();
                     $content->content="嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
-
                 }
                 break;
         }

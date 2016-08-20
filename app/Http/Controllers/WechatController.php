@@ -27,7 +27,7 @@ class WechatController extends Controller
                     $response = new Response();
                     switch ($message->Content) {
                         case 's':
-                            $response->news($message,"s");
+                            $content= $response->news($message,"s");
                             break;
                         case 'wxh':
                             $content= $userService->get($message->FromUserName)->openid;
