@@ -43,20 +43,13 @@ class Response
                 $news1->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
 //                $app->staff->message([$news1])->to($fromUsername)->send();
                 break;
-            case 'd':
-                $text = new Text();
-                $text->content = 'Hello World。';
-                return $text;
-                break;
             case '天气':
                 $text=new Text();
                 $text->content=$this->get_weather_info();
                 return $text;
                 break;
             default:
-
-                $row = DB::table('wx_article')->where('title', 'like', '门票%')->orderBy('id', 'desc')->skip(0)->take(2)->get();
-                $i = 1;
+                $row = DB::table('wx_article')->where('title', 'like', '%{$keyword}%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
                 $news=array();
                 foreach ($row as $result) {
                     $new = new News();
@@ -65,7 +58,6 @@ class Response
                     $new->url = $result->url;
                     $new->image = $result->picurl;
                     $news[]=$new;
-                    $i = $i + 1;
                 }
                 return $news;
                 break;
