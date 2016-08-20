@@ -26,14 +26,14 @@ class WechatController extends Controller
                     switch ($message->Event) {
                         case 'CLICK':
                             switch ($message->EventKey) {
-                                case "2":
-                                    $content = $response->click_request("2");
-                                    return $content;
-                                    break;
                                 case "13":
                                     $content = new Text();
                                     $content->content = "横店影视城官方客服电话" . "\n" . "400-9999141";
                                     return $content;
+                                default:
+                                    $content = $response->click_request("2");
+                                    return $content;
+                                    break;
                             }
                             break;
                         case 'subscribe':
