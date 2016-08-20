@@ -18,11 +18,11 @@ use App\Http\Requests;
 class Response
 {
 
-        public $wechat;
+/*        public $wechat;
 
         public function __construct(Application $wechat){
             $this->wechat=$wechat;
-        }
+        }*/
     public function news($message, $keyword)
     {
 
@@ -32,7 +32,7 @@ class Response
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $content->content = $this->wechat->user->getAccessToken();;
+                $content->content = $app->user->getAccessToken();;
                 break;
             case 's':
                 $content = new News();
