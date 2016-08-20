@@ -24,14 +24,30 @@ class WechatController extends Controller
                 case 'event':
                     # 事件消息...
                     switch ($message->Event) {
-                        case "2":
-                            $content=$response->click_request("2");
-                            return $content;
+                        case 'click':
+                            switch ($message->Eventkey) {
+                                case "2":
+                                    $content = $response->click_request("2");
+                                    return $content;
+                                    break;
+                                case "13":
+                                    $content = new Text();
+                                    $content->content = "横店影视城官方客服电话" . "\n" . "400-9999141";
+                                    return $content;
+                            }
                             break;
-                        case "13":
-                            $content=new Text();
-                            $content->content="横店影视城官方客服电话" . "\n" . "400-9999141";
-                            return $content;
+                        case 'subscribe':
+                            #关注事件
+                            break;
+                        case 'SCAN':
+                            #重复关注事件
+                            break;
+                        case 'unsubscribe':
+                            #取消关注事件
+                            break;
+                        case 'WifiConnected':
+                            #wifi连接事件
+                            break;
                     }
                     break;
                 case 'text':
