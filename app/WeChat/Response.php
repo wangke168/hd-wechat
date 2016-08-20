@@ -30,38 +30,47 @@ class Response
         $fromUsername = $userService->get($message->FromUserName)->openid;
         switch ($keyword) {
             case "a":
-                $text = new Text();
-                $text->content = '您好！overtrue。';
-                return $text;
+                $content = new Text();
+                $content->content = 'Hello World。';
+//                return $content;
 //                $app->staff->message($text)->to($fromUsername)->send();
                 break;
             case 's':
-                $news1 = new News();
-                $news1->title = "laravel-wechat";
-                $news1->description = "测试";
-                $news1->url = "http://www.baidu.com";
-                $news1->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-//                $app->staff->message([$news1])->to($fromUsername)->send();
+                $content = new News();
+                $content->title = "laravel-wechat";
+                $content->description = "测试";
+                $content->url = "http://www.baidu.com";
+                $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
+                $app->staff->message([$content])->to($fromUsername)->send();
                 break;
             case '天气':
-                $text=new Text();
-                $text->content=$this->get_weather_info();
-                return $text;
+                $content=new Text();
+                $content->content=$this->get_weather_info();
+//                return $content;
                 break;
             default:
                 $row = DB::table('wx_article')->where('title', 'like', '{$keyword}%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
-                $news=array();
-                foreach ($row as $result) {
-                    $new = new News();
-                    $new->title = $result->title;
-                    $new->description = $result->description;
-                    $new->url = $result->url;
-                    $new->image = $result->picurl;
-                    $news[]=$new;
+                if($row) {
+                    $content = array();
+                    foreach ($row as $result) {
+                        $new = new News();
+                        $new->title = $result->title;
+                        $new->description = $result->description;
+                        $new->url = $result->url;
+                        $new->image = $result->picurl;
+                        $content[] = $new;
+                    }
                 }
-                return $news;
+                else
+                {
+                    $content=new Text();
+                    $content->content="嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
+
+                }
+//                return $content;
                 break;
         }
+        return $content;
     }
 
     private function get_weather_info()
