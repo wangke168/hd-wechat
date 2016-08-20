@@ -28,6 +28,10 @@ class WechatController extends Controller
                             $content=$response->click_request("2");
                             return $content;
                             break;
+                        case "13":
+                            $content=new Text();
+                            $content->content="横店影视城官方客服电话" . "\n" . "400-9999141";
+                            return $content;
                     }
                     break;
                 case 'text':

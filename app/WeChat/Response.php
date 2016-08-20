@@ -74,7 +74,7 @@ class Response
         /*        $row = $db->query("SELECT * from wx_article where msgtype=:msgtype and classid = :classid and audit=:audit and del=:del  and online=:online and  (eventkey=:allkey or eventkey=:eventkey)  and startdate<=:startdate and enddate>=:enddate  order by eventkey asc, priority asc,id desc  LIMIT 0,8",
                     array("msgtype" => "news", "classid" => "$menu", "audit" => "1", "del" => "0", "online" => "1", "allkey" => "all", "eventkey" => "$eventkey", "startdate" => date('Y-m-d'), "enddate" => date('Y-m-d')));*/
 
-   /*     $row = DB::table('wx_article')
+        $row = DB::table('wx_article')
             ->where('msgtype', 'news')
             ->where('classid', $menuID)
             ->where('audit', '1')
@@ -98,22 +98,6 @@ class Response
         }
         else
         {
-            $content = new Text();
-            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
-        }
-       */
-        $row = DB::table('wx_article')->where('keyword', 'like', '%门票%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
-        if ($row) {
-            $content = array();
-            foreach ($row as $result) {
-                $new = new News();
-                $new->title = $result->title;
-                $new->description = $result->description;
-                $new->url = $result->url;
-                $new->image = $result->picurl;
-                $content[] = $new;
-            }
-        } else {
             $content = new Text();
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
         }
