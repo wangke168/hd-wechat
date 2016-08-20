@@ -81,8 +81,8 @@ class Response
             ->where('del', '0')
             ->where('online', '0')
             ->where('eventkey', 'all')
-            ->where('startdate', '>=', date('Y-m-d'))
-            ->where('enddate', '<=', date('Y-m-d'))
+            ->where('startdate', '<=', date('Y-m-d'))
+            ->where('enddate', '>=', date('Y-m-d'))
             ->orderBy('id', 'desc')
             ->skip(0)->take(8)->get();
         if ($row) {
