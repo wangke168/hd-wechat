@@ -32,7 +32,7 @@ class Response
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $content->content = $app->access_token;
+                $content->content = $app->access_token->getToken();
                 break;
             case 's':
                 $content = new News();
