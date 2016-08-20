@@ -24,7 +24,7 @@ class WechatController extends Controller
                 case 'event':
                     # 事件消息...
                     switch ($message->Event) {
-                        case 'click':
+                        case 'CLICK':
                             switch ($message->EventKey) {
                                 case "2":
                                     $content = $response->click_request("2");
