@@ -19,26 +19,32 @@ class WechatController extends Controller
         $wechat = app('wechat');
         $userService = $wechat->user;
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
+            $response = new Response();
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
-                    break;
-                case 'text':
-                    $response = new Response();
-                    switch ($message->Content) {
-                        case 's':
-                            $response->news($message,"s");
-                            break;
-                        case 'wxh':
-                            $content= $userService->get($message->FromUserName)->openid;
-                            return $content;
-                            break;
-                        default:
-                            $content= ($response->news($message,$message->Content));
+                    switch ($message->Event) {
+                        case "2":
+                            $content=$response->click_request("2");
                             return $content;
                             break;
                     }
+                    break;
+                case 'text':
 
+                    switch ($message->Content) {
+                        case 's':
+                            $response->news($message, "s");
+                            break;
+                        case 'wxh':
+                            $content = $userService->get($message->FromUserName)->openid;
+                            return $content;
+                            break;
+                        default:
+                            $content = ($response->news($message, $message->Content));
+                            return $content;
+                            break;
+                    }
                     break;
                 case 'image':
 
