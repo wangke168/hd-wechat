@@ -40,12 +40,11 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7644172" vertical-offset="2065" max-vertical-offset="4160">
-              <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.28864735" vertical-offset="2321" max-vertical-offset="3936">
+              <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#110#148#0#PHP" expanded="true" />
-                <marker date="1471674404320" expanded="true" signature="2385:2656" placeholder="SELECT * fro..wx_article..." />
               </folding>
             </state>
           </provider>
@@ -981,12 +980,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7644172" vertical-offset="2065" max-vertical-offset="4160">
-          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.28864735" vertical-offset="2321" max-vertical-offset="3936">
+          <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#110#148#0#PHP" expanded="true" />
-            <marker date="1471674404320" expanded="true" signature="2385:2656" placeholder="SELECT * fro..wx_article..." />
           </folding>
         </state>
       </provider>
