@@ -79,7 +79,7 @@ class Response
             ->where('classid', $menuID)
             ->where('audit', '1')
             ->where('del', '0')
-            ->where('online', '0')
+            ->where('online', '1')
             ->where('eventkey', 'all')
             ->where('startdate', '<=', date('Y-m-d'))
             ->where('enddate', '>=', date('Y-m-d'))
