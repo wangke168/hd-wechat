@@ -49,7 +49,7 @@ class Response
 //                return $content;
                 break;
             default:
-                $row = DB::table('wx_article')->where('keyword', 'like', '%拍戏%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
+                $row = DB::table('wx_article')->where('keyword', 'like', '%'.$keyword.'%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
                 if($row) {
                     $content = array();
                     foreach ($row as $result) {
