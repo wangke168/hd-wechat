@@ -51,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5954488" vertical-offset="617" max-vertical-offset="3072">
-              <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+              <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#110#148#0#PHP" expanded="true" />
@@ -991,7 +991,7 @@
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5954488" vertical-offset="617" max-vertical-offset="3072">
-          <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#110#148#0#PHP" expanded="true" />
