@@ -49,7 +49,7 @@ class Response
                 return $text;
                 break;
             default:
-                $row = DB::table('wx_article')->where('title', 'like', '门票%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
+                $row = DB::table('wx_article')->where('title', 'like', '{$keyword}%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
                 $news=array();
                 foreach ($row as $result) {
                     $new = new News();
