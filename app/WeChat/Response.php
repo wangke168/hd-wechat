@@ -9,6 +9,7 @@ namespace App\WeChat;
 
 use EasyWeChat\Foundation\Application;
 use DB;
+use App\WeChat\usage;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
 use App\Models\WechatArticle;
@@ -42,12 +43,25 @@ class Response
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
                 $app->staff->message([$content])->to($fromUsername)->send();
                 break;
+            case 'd':
+                $content=new Text();
+                $usage=new usage();
+                $info=$usage->get_openid_info($fromUsername);
+                $content->content=$info['city'];
+                break;
             case '天气':
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $row = DB::table('wx_article')->where('keyword', 'like', '%' . $keyword . '%')->orderBy('id', 'desc')->skip(0)->take(8)->get();
+                $row = DB::table('wx_article')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where('audit', '1')
+                    ->where('del', '0')
+                    ->where('online', '1')
+                    ->orderBy('priority','asc')
+                    ->orderBy('id', 'desc')
+                    ->skip(0)->take(8)->get();
                 if ($row) {
                     $content = array();
                     foreach ($row as $result) {
@@ -55,7 +69,7 @@ class Response
                         $new->title = $result->title;
                         $new->description = $result->description;
                         $new->url = $result->url;
-                        $new->image = $result->picurl;
+                        $new->image = "http://weix2.hengdianworld.com/".$result->picurl;
                         $content[] = $new;
                     }
                 } else {
@@ -75,10 +89,10 @@ class Response
             ->where('audit', '1')
             ->where('del', '0')
             ->where('online', '1')
-            ->where('eventkey', 'all')
             ->where('startdate', '<=', date('Y-m-d'))
             ->where('enddate', '>=', date('Y-m-d'))
             ->orderBy('eventkey', 'asc')
+            ->orderBy('priority','asc')
             ->orderBy('id', 'desc')
             ->skip(0)->take(8)->get();
         if ($row) {
