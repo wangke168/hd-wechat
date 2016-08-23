@@ -88,7 +88,7 @@ class Response
                 $new->title = $result->title;
                 $new->description = $result->description;
                 $new->url = $result->url;
-                $new->image = $result->picurl;
+                $new->image = "http://weix2.hengdianworld.com/".$result->picurl;
                 $content[] = $new;
             }
         } else {
