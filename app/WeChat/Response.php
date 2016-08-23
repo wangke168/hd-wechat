@@ -45,8 +45,9 @@ class Response
                 break;
             case 'd':
                 $content=new Text();
-                $usage=new usage();
-                $info=$usage->get_openid_info($fromUsername);
+            /*    $usage=new usage();
+                $info=$usage->get_openid_info($fromUsername);*/
+                $info=$this->get_openid_info($fromUsername);
                 $content->content=$info['city'];
                 break;
             case '天气':
@@ -129,4 +130,12 @@ class Response
         return $contentStr;
     }
 
+    private  function get_openid_info($openid)
+    {
+        $row=DB::table('wx_user_info')
+            ->where('wx_openid',$openid)
+            ->orderBy('id','desc')
+            ->skip(0)->take(1)->get();
+        return $row;
+    }
 }
