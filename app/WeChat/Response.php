@@ -48,7 +48,7 @@ class Response
             /*    $usage=new usage();
                 $info=$usage->get_openid_info($fromUsername);*/
                 $info=$this->get_openid_info($fromUsername);
-                $content->content=$info->city;
+                $content->content=$info[0]['city'];
                 break;
             case '天气':
                 $content = new Text();
