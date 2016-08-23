@@ -21,8 +21,7 @@ class usage
     {
         $row=DB::table('wx_user_info')
             ->where('wx_openid',$openid)
-            ->orderBy('id','desc')
-            ->skip(0)->take(1)->get();
+            ->first();
         return $row;
     }
 }
