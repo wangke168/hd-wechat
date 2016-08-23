@@ -9,7 +9,7 @@ namespace App\WeChat;
 
 use EasyWeChat\Foundation\Application;
 use DB;
-//use App\WeChat\usage;
+
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
 use App\Models\WechatArticle;
@@ -44,11 +44,11 @@ class Response
                 $app->staff->message([$content])->to($fromUsername)->send();
                 break;
             case 'd':
-                $content=new Text();
-                $usage=new usage();
-                $info=$usage->get_openid_info($fromUsername);
+                $content = new Text();
+                $usage = new usage();
+                $info = $usage->get_openid_info($fromUsername);
 //                $info=$this->get_openid_info($fromUsername);
-                $content->content=$info->ID;
+                $content->content = $info->ID;
                 break;
             case '天气':
                 $content = new Text();
@@ -60,7 +60,7 @@ class Response
                     ->where('audit', '1')
                     ->where('del', '0')
                     ->where('online', '1')
-                    ->orderBy('priority','asc')
+                    ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
                     ->skip(0)->take(8)->get();
                 if ($row) {
@@ -70,7 +70,7 @@ class Response
                         $new->title = $result->title;
                         $new->description = $result->description;
                         $new->url = $result->url;
-                        $new->image = "http://weix2.hengdianworld.com/".$result->picurl;
+                        $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
                         $content[] = $new;
                     }
                 } else {
@@ -93,7 +93,7 @@ class Response
             ->where('startdate', '<=', date('Y-m-d'))
             ->where('enddate', '>=', date('Y-m-d'))
             ->orderBy('eventkey', 'asc')
-            ->orderBy('priority','asc')
+            ->orderBy('priority', 'asc')
             ->orderBy('id', 'desc')
             ->skip(0)->take(8)->get();
         if ($row) {
@@ -103,7 +103,7 @@ class Response
                 $new->title = $result->title;
                 $new->description = $result->description;
                 $new->url = $result->url;
-                $new->image = "http://weix2.hengdianworld.com/".$result->picurl;
+                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
                 $content[] = $new;
             }
         } else {
@@ -130,10 +130,10 @@ class Response
         return $contentStr;
     }
 
-    private  function get_openid_info($openid)
+    private function get_openid_info($openid)
     {
-        $row=DB::table('wx_user_info')
-            ->where('wx_openid',$openid)
+        $row = DB::table('wx_user_info')
+            ->where('wx_openid', $openid)
             ->first();
         return $row;
     }
