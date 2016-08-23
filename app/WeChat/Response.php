@@ -24,6 +24,11 @@ class Response
             public function __construct(Application $wechat){
                 $this->wechat=$wechat;
             }*/
+    protected $usage;
+    public function __construct(usage $usage)
+    {
+        $this->usage=$usage;
+    }
     public function news($message, $keyword)
     {
 
@@ -44,9 +49,10 @@ class Response
                 $app->staff->message([$content])->to($fromUsername)->send();
                 break;
             case 'd':
+
                 $content = new Text();
-                $usage = new usage();
-                $info = $usage->get_openid_info($fromUsername);
+//                $usage = new usage();
+                $info = $this->$usage->get_openid_info($fromUsername);
 //                $info=$this->get_openid_info($fromUsername);
                 $content->content = $info->ID;
                 break;
