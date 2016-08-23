@@ -48,7 +48,7 @@ class Response
             /*    $usage=new usage();
                 $info=$usage->get_openid_info($fromUsername);*/
                 $info=$this->get_openid_info($fromUsername);
-                $content->content=$info['city'];
+                $content->content=$info->ID;
                 break;
             case '天气':
                 $content = new Text();
@@ -134,7 +134,6 @@ class Response
     {
         $row=DB::table('wx_user_info')
             ->where('wx_openid',$openid)
-            ->orderBy('id','desc')
             ->first();
         return $row;
     }

@@ -35,8 +35,7 @@ class ArticlesController extends Controller
     public function info(){
         $row=DB::table('wx_user_info')
             ->where('wx_openid','o2e-YuBgnbLLgJGMQykhSg_V3VRI')
-            ->orderBy('id','desc')
             ->first();
-        return $row;
+        return $row->ID;
     }
 }

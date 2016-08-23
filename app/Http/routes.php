@@ -21,7 +21,7 @@ Route::get('about', function () {
 
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/{id}', 'ArticlesController@detail');
-
+Route::get('/info', 'ArticlesController@info');
 //asdaaa
 
 /*Laravel-Wechat*/
