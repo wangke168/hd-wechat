@@ -24,11 +24,11 @@ class Response
             public function __construct(Application $wechat){
                 $this->wechat=$wechat;
             }*/
-    protected $usage;
+/*    protected $usage;
     public function __construct(usage $usage)
     {
         $this->usage=$usage;
-    }
+    }*/
     public function news($message, $keyword)
     {
 
