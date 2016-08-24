@@ -54,6 +54,9 @@ class Response
                 $content->content = $info->eventkey;
                 break;
             case 'hx':
+                $content=new Text();
+                $tour=new tour();
+                $content->content=$tour->verification_subscribe($fromUsername,'1');
                 break;
             case '天气':
                 $content = new Text();
