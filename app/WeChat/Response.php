@@ -7,7 +7,7 @@
  */
 namespace App\WeChat;
 
-use App\WeChat\usage;
+//use App\WeChat\usage;
 use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
@@ -53,10 +53,10 @@ class Response
                 $content = new Text();
                 $usage = new usage();
 
-//                $info = $usage->get_openid_info($fromUsername);
-//                $info=$this->get_openid_info($fromUsername);
-                $content->content=$usage->v();
-//                $content->content = $info->ID;
+                $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+//                $info=$this->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+//                $content->content=$usage->v();
+                $content->content = $info->ID;
                 break;
             case '天气':
                 $content = new Text();
