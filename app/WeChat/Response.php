@@ -7,7 +7,6 @@
  */
 namespace App\WeChat;
 
-//use App\WeChat\usage;
 use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
@@ -56,7 +55,7 @@ class Response
                 $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
 //                $info=$this->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
 //                $content->content=$usage->v();
-                $content->content = $info->ID;
+                $content->content = $info->eventkey;
                 break;
             case '天气':
                 $content = new Text();
@@ -138,11 +137,4 @@ class Response
         return $contentStr;
     }
 
-    private function get_openid_info($openid)
-    {
-        $row = DB::table('wx_user_info')
-            ->where('wx_openid', $openid)
-            ->first();
-        return $row;
-    }
 }
