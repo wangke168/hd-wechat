@@ -21,10 +21,12 @@ Route::get('about', function () {
 
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/{id}', 'ArticlesController@detail');
-Route::get('/info', 'ArticlesController@info');
-//asdaaa
 
-/*Laravel-Wechat*/
+//预约系统
+Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
+
+Route::get('/info', 'ArticlesController@info');
+
 Route::get('/users','UserController@users');
 Route::get('/user/{openId}','UserController@user');
 
