@@ -24,6 +24,7 @@ Route::get('/articles/{id}', 'ArticlesController@detail');
 
 //预约系统
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
+Route::get('/zone/subscribe/ldjl/get_subscribe/{openid}','ZoneController@subscribe');
 
 Route::get('/info', 'ArticlesController@info');
 

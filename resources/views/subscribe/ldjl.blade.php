@@ -145,7 +145,7 @@ $project_id="1";
 </html>
 <script language="JavaScript" >
     function get_wait() {
-        $.get("test.php?p_id=<?php echo $project_id?>&fn=<?php echo $fn?>", function (data) {
+        $.get("/zone/subscribe/ldjl/get_subscribe/<?php echo $fn?>", function (data) {
         });
     }
 </script>
