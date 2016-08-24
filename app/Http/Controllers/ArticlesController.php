@@ -42,6 +42,6 @@ class ArticlesController extends Controller
         return $row->ID;*/
         $usage=new usage();
 //        return $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->city;
-        return $usage->v();
+        return $usage->v('aaa','1');
     }
 }

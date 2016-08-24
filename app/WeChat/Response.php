@@ -48,14 +48,12 @@ class Response
                 $app->staff->message([$content])->to($fromUsername)->send();
                 break;
             case 'd':
-
                 $content = new Text();
                 $usage = new usage();
-
                 $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
-//                $info=$this->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
-//                $content->content=$usage->v();
                 $content->content = $info->eventkey;
+                break;
+            case 'hx':
                 break;
             case '天气':
                 $content = new Text();
