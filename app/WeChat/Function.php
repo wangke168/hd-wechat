@@ -24,4 +24,9 @@ class usage
             ->first();
         return $row;
     }
+
+    public function v()
+    {
+        return "aaa";
+    }
 }
