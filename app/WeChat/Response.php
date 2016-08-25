@@ -130,7 +130,7 @@ class Response
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
             $content_news = $this->request_news($openid, 'all', '1', '', '');
-            $app->staff->message([$content_news])->to($openid)->send();
+            $app->staff->message($content_news)->to($openid)->send();
         }
 //        return $content;
     }
