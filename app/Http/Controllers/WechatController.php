@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WeChat\Response;
+use App\WeChat\usage;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
 use Illuminate\Http\Request;
@@ -32,7 +33,10 @@ class WechatController extends Controller
                                     $content->content = "横店影视城官方客服电话" . "\n" . "400-9999141";
                                     return $content;
                                 default:
-                                    $content = $response->click_request($openid,$message->EventKey);
+//                                    $content = $response->click_request($openid,$message->EventKey);
+                                    $usage=new usage();
+                                    $eventkey=$usage->get_openid_info($openid)->eventkey;
+                                    $content=$response->request_news($openid, $eventkey, '2', '', $message->EventKey);
                                     return $content;
                                     break;
                             }
