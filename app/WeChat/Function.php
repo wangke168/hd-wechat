@@ -38,7 +38,7 @@ class usage
     public function get_eventkey_info($eventkey)
     {
         $row=DB::table('wx_qrscene_info')
-            ->where('qrscene',$eventkey)
+            ->where('qrscene_id',$eventkey)
             ->first();
         return $row;
     }
