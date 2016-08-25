@@ -122,31 +122,18 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-            $this->responseV_Voice($openid, $eventkey, "1", "");
+            $content = $this->responseV_Voice($openid, $eventkey, "1", "");
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
-            $this->request_focus_txt($openid, $eventkey);
+            $content = $this->request_focus_txt($openid, $eventkey);
         }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
-            $content = request_news($openid, '', '1', '', '');
+            $content = request_news($openid, 'all', '1', '', '');
         }
         return $content;
-
-        /*        //黄金周专属
-                if (($eventkey == "87") || ($eventkey == "88") || ($eventkey == "90") || ($eventkey == "91")) {
-                    $row = $db->query("SELECT * from wx_article where id='170'");
-                } else {
-                    if ($this->Query_Market_Article($eventkey, 1)) {
-                        $row = $db->query("SELECT * from wx_article where msgtype=:msgtype and focus =:focus  and audit=:audit and online=:online and eventkey=:eventkey  and startdate<=:startdate and enddate>=:enddate  order by priority asc,id desc  LIMIT 0,10", array("msgtype" => "news", "focus" => "1", "audit" => "1", "online" => "1", "eventkey" => $eventkey, "startdate" => date('Y-m-d'), "enddate" => date('Y-m-d')));
-                    } else {
-                        $row = $db->query("SELECT * from wx_article where msgtype=:msgtype and focus =:focus  and audit=:audit and online=:online and eventkey=:eventkey  and startdate<=:startdate and enddate>=:enddate  order by priority asc,id desc  LIMIT 0,10", array("msgtype" => "news", "focus" => "1", "audit" => "1", "online" => "1", "eventkey" => "all", "startdate" => date('Y-m-d'), "enddate" => date('Y-m-d')));
-                    }
-                }*/
-
-
     }
 
     /**
