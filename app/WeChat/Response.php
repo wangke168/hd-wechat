@@ -116,7 +116,7 @@ class Response
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
             $content_news = $this->request_news($openid, $eventkey, '1', '', '');
-            $app->staff->message($content_news)->to($openid)->send();
+            $app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
@@ -296,8 +296,6 @@ class Response
     private function request_txt($openid,$eventkey)
     {
         $app=app('wechat');
- /*       $row = $db->query("select * from wx_txt_request WHERE eventkey=:eventkey AND focus=:focus AND online=:online ORDER BY id DESC",
-            array("eventkey" => $eventkey, "online" => "1", "focus" => "1"));*/
         $row=DB::table('wx_txt_request')
             ->where('eventkey',$eventkey)
             ->where('focus','1')
@@ -307,9 +305,8 @@ class Response
 
         foreach ($row as $result) {
             $content=new Text();
-//            $this->responseV_Text($openid, $result["content"]);
             $content->content = $result->content;
-            $app->staff->message($content)->to($openid)->send();
+            $app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
 //        return $content;
     }
