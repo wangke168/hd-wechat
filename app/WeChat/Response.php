@@ -7,6 +7,7 @@
  */
 namespace App\WeChat;
 
+use EasyWeChat\Message\Voice;
 use Illuminate\Database\Eloquent\Model;
 use EasyWeChat\Foundation\Application;
 use DB;
@@ -81,7 +82,7 @@ class Response
         $usage=new usage();
         $eventkey=$usage->get_openid_info($openid)->eventkey;
         $content=$this->request_news($openid, $eventkey, '2', '',$menuid);
-//        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
     }
 
@@ -120,11 +121,11 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-            $content = $this->responseV_Voice($openid, $eventkey, "1", "");
+            $content = $this->request_voice($openid, $eventkey, "1", "");
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
-            $this->request_txt($openid, $eventkey);             //直接在查询文本回复时使用客服接口
+            $this->request_txt($openid,'1',$eventkey,'');             //直接在查询文本回复时使用客服接口
         }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
@@ -292,23 +293,81 @@ class Response
         return $content;
     }
 
+    /**
+     * @param $openid
+     * @param $type         1:关注    2：关键字
+     * @param $eventkey
+     * @param $keyword
+     */
 
-    private function request_txt($openid,$eventkey)
+    private function request_txt($openid,$type,$eventkey,$keyword)
     {
         $app=app('wechat');
-        $row=DB::table('wx_txt_request')
-            ->where('eventkey',$eventkey)
-            ->where('focus','1')
-            ->where('online','1')
-            ->orderBy('id','desc')
-            ->get();
-
+        switch($type)
+        {
+            case 1:
+                $row=DB::table('wx_txt_request')
+                    ->where('eventkey',$eventkey)
+                    ->where('focus','1')
+                    ->where('online','1')
+                    ->orderBy('id','desc')
+                    ->get();
+                break;
+            case 2:
+                $row=DB::table('wx_txt_request')
+                    ->where('keyword','like','%'.$keyword.'%')
+                    ->where('online','1')
+                    ->orderBy('id','desc')
+                    ->get();
+                break;
+        }
         foreach ($row as $result) {
             $content=new Text();
             $content->content = $result->content;
             $app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
-//        return $content;
+    }
+
+    /*
+    * 回复Voice
+    *$focus:1（关注）；2（关键字）
+    */
+    public function responseV_Voice($openId, $type, $eventkey, $keyword)
+    {
+/*        $access_token = get_access_token();
+        $post_url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" . $access_token;
+        $db = new DB();
+        if ($focus == "1") {
+            $row = $db->query("select * from wx_voice_request where eventkey=:eventkey and online=:online and focus=:focus ORDER BY id DESC",
+                array("eventkey" => $eventkey, "online" => "1", "focus" => $focus));
+        } else {
+            $row = $db->query("select * from wx_voice_request where eventkey=:eventkey and online=:online and keyword=:keyword ORDER BY id DESC",
+                array("eventkey" => $eventkey, "online" => "1", "keyword" => $keyword));
+        }*/
+        $app=app('wechat');
+        switch ($type)
+        {
+            case '1':
+                $row=DB::table(wx_voice_request)
+                    ->where('eventkey',$eventkey)
+                    ->where('online','1')
+                    ->where('focus','1')
+                    ->orderBy('id','desc')
+                    ->get();
+                break;
+            case "2":
+                $row=DB::table(wx_voice_request)
+                    ->where('keyword','like','%'.$keyword.'%')
+                    ->where('online','1')
+                    ->orderBy('id','desc')
+                    ->get();
+                break;
+        }
+        foreach ($row as $result) {
+            $voice=new Voice();
+            $voice->media_id=$result->media_id;
+            $app->staff->message($voice)->by('1001@u_hengdian')->to($openId)->send();
+        }
     }
 
 
