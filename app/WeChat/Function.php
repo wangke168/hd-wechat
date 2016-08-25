@@ -37,7 +37,7 @@ class usage
      */
     public function get_eventkey_info($eventkey)
     {
-        $row=DB::table('wx_qrscene')
+        $row=DB::table('wx_qrscene_info')
             ->where('qrscene',$eventkey)
             ->first();
         return $row;
