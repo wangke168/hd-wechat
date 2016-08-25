@@ -63,7 +63,7 @@ class Response
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($fromUsername,$keyword);
+                $content = $this->request_keyword($fromUsername, $keyword);
                 break;
         }
         return $content;
@@ -75,11 +75,12 @@ class Response
      * @param $menuID
      * @return array|Text
      */
-    public function click_request($openid,$menuID)
+    public function click_request($openid, $menuID)
     {
-        $wxnumber=Crypt::encrypt($openid);
-        $usage=new usage();
-        $uid=$usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
+        $wxnumber = Crypt::encrypt($openid);
+        $usage = new usage();
+//        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
+        $uid=$usage->get_uid($openid);
         $row = DB::table('wx_article')
             ->where('msgtype', 'news')
             ->where('classid', $menuID)
@@ -122,7 +123,7 @@ class Response
             $content = new Text();
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
         }
-        $this->add_menu_click_hit($openid,$menuID); //增加点击数统计
+        $this->add_menu_click_hit($openid, $menuID); //增加点击数统计
         return $content;
     }
 
@@ -132,11 +133,11 @@ class Response
      * @param $keyword
      * @return array|Text
      */
-    private function request_keyword($openid,$keyword)
+    private function request_keyword($openid, $keyword)
     {
-        $wxnumber=Crypt::encrypt($openid);
-        $usage=new usage();
-        $uid=$usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
+        $wxnumber = Crypt::encrypt($openid);
+        $usage = new usage();
+        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
         $row = DB::table('wx_article')
             ->where('keyword', 'like', '%' . $keyword . '%')
             ->where('audit', '1')
@@ -178,6 +179,61 @@ class Response
 
         return $content;
     }
+
+    /**
+     * 关注回复
+     * @param $fromUsername
+     * @param $eventkey
+     */
+    public function request_focus($openid, $eventkey)
+    {
+//        $wxnumber = authcode($fromUsername, 'ENCODE', 0);               //wxnumber加密
+        $usage=new usage();
+        if (!$eventkey or $eventkey == "") {
+            $eventkey = "all";
+        }
+        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
+
+        $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
+        //检查关注回复中是否有图文消息
+        if ($this->check_event_message($openid, "news", "1")) {
+            $flag = true;
+            $this->request_news($openid, $eventkey, $uid);
+        }
+        if ($this->check_event_message($eventkey, "voice", "1")) {
+            $flag = true;
+            $this->responseV_Voice($openid, $eventkey, "1", "");
+        }
+        if ($this->check_event_message($eventkey, "txt", "1")) {
+            $flag = true;
+            $this->request_focus_txt($openid, $eventkey);
+        }
+
+        if (!$flag)     //如果该二维码没有对应的关注推送信息
+        {
+            $this->request_news($openid, "all", $uid);
+        }
+
+        if ($eventkey <> "all") {
+            if (get_openid_info($openid)["city"] == "金华") {
+                $this->responseV_News($openid, "统计", "2");
+            }
+        }
+
+        /*        //黄金周专属
+                if (($eventkey == "87") || ($eventkey == "88") || ($eventkey == "90") || ($eventkey == "91")) {
+                    $row = $db->query("SELECT * from wx_article where id='170'");
+                } else {
+                    if ($this->Query_Market_Article($eventkey, 1)) {
+                        $row = $db->query("SELECT * from wx_article where msgtype=:msgtype and focus =:focus  and audit=:audit and online=:online and eventkey=:eventkey  and startdate<=:startdate and enddate>=:enddate  order by priority asc,id desc  LIMIT 0,10", array("msgtype" => "news", "focus" => "1", "audit" => "1", "online" => "1", "eventkey" => $eventkey, "startdate" => date('Y-m-d'), "enddate" => date('Y-m-d')));
+                    } else {
+                        $row = $db->query("SELECT * from wx_article where msgtype=:msgtype and focus =:focus  and audit=:audit and online=:online and eventkey=:eventkey  and startdate<=:startdate and enddate>=:enddate  order by priority asc,id desc  LIMIT 0,10", array("msgtype" => "news", "focus" => "1", "audit" => "1", "online" => "1", "eventkey" => "all", "startdate" => date('Y-m-d'), "enddate" => date('Y-m-d')));
+                    }
+                }*/
+
+
+    }
+
 
     /**
      * 增加菜单点击数
