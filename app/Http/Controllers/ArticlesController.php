@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
 use Illuminate\Http\Request;
-
+use Crypt;
 use App\WeChat\usage;
 use App\WeChat\tour;
 use App\Http\Requests;
@@ -46,16 +46,17 @@ class ArticlesController extends Controller
 //        return $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->city;
 //        return $usage->v('aaa','1');
 
-     /*   $tour = new tour();
-        return $tour->check_amount('1', '2');*/
-        $row=DB::table('tour_zone_class')
-            ->whereRaw('id=(select zone_classid from tour_project_class where id=1)')
-            ->first();
-        if ($row) {
-            return $row->zone_name;
-        } else {
-            return "该景区不存在";
-        }
+        /*   $tour = new tour();
+           return $tour->check_amount('1', '2');*/
+        $aaa="12123";
+        $bbb=Crypt::encrypt($aaa);
+        $ccc=Crypt::decrypt($bbb);
+//        return $bbb;
+//        return "<br>";
+
+        return $ccc;
+
+
     }
 
 }

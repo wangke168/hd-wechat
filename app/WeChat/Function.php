@@ -17,6 +17,11 @@ use App\Http\Requests;
 
 class usage
 {
+    /**
+     * 从wx_user_info获取用户资料
+     * @param $openid
+     * @return mixed|static
+     */
     public function get_openid_info($openid)
     {
         $row=DB::table('wx_user_info')
@@ -24,6 +29,20 @@ class usage
             ->first();
         return $row;
     }
+
+    /**
+     * 获取eventkey相关信息
+     * @param $eventkey
+     * @return mixed|static
+     */
+    public function get_eventkey_info($eventkey)
+    {
+        $row=DB::table('wx_qrscene')
+            ->where('qrscene',$eventkey)
+            ->first();
+        return $row;
+    }
+
 
     public function v($openid,$project_id)
     {

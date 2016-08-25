@@ -13,7 +13,7 @@ use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
 use App\Models\WechatArticle;
 use App\Http\Requests;
-
+use Crypt;
 
 class Response
 {
@@ -23,11 +23,11 @@ class Response
             public function __construct(Application $wechat){
                 $this->wechat=$wechat;
             }*/
-/*    protected $usage;
-    public function __construct(usage $usage)
-    {
-        $this->usage=$usage;
-    }*/
+    /*    protected $usage;
+        public function __construct(usage $usage)
+        {
+            $this->usage=$usage;
+        }*/
     public function news($message, $keyword)
     {
 
@@ -54,16 +54,16 @@ class Response
                 $content->content = $info->eventkey;
                 break;
             case 'hx':
-                $content=new Text();
-                $tour=new tour();
-                $content->content=$tour->verification_subscribe($fromUsername,'1');
+                $content = new Text();
+                $tour = new tour();
+                $content->content = $tour->verification_subscribe($fromUsername, '1');
                 break;
             case '天气':
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content=$this->request_keyword($keyword);
+                $content = $this->request_keyword($fromUsername,$keyword);
                 break;
         }
         return $content;
@@ -117,8 +117,11 @@ class Response
         return $contentStr;
     }
 
-    private function request_keyword($keyword)
+    private function request_keyword($openid,$keyword)
     {
+        $wxnumber=Crypt::encrypt($openid);
+        $usage=new usage();
+        $uid=$usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
         $row = DB::table('wx_article')
             ->where('keyword', 'like', '%' . $keyword . '%')
             ->where('audit', '1')
@@ -130,10 +133,26 @@ class Response
         if ($row) {
             $content = array();
             foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
+                /*如果只直接跳转链接页面时，判断是否已经带参数*/
+                if ($url != '') {
+                    /*链接跳转的数据统计*/
+                    $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
+                    if (strstr($url, '?') != '') {
+                        $url = $url . "&wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
+                    } else {
+                        $url = $url . "?wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
+                    }
+                    $url = $linkjump . "&link=" . $url;
+                } else {
+                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                }
+
                 $new = new News();
                 $new->title = $result->title;
                 $new->description = $result->description;
-                $new->url = $result->url;
+                $new->url = $url;
                 $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
                 $content[] = $new;
             }
