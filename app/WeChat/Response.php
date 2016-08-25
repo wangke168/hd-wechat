@@ -116,7 +116,7 @@ class Response
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
             $content_news = $this->request_news($openid, $eventkey, '1', '', '');
-            $app->staff->message([$content_news])->to($openid)->send();
+            $app->staff->message($content_news)->to($openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
