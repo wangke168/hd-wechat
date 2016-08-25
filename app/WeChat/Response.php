@@ -121,7 +121,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-//            $this->request_voice($openid, '1', $eventkey, '');
+            $this->request_voice($openid, '1', $eventkey, '');
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
@@ -348,7 +348,7 @@ class Response
         switch ($type)
         {
             case '1':
-                $row=DB::table(wx_voice_request)
+                $row=DB::table('wx_voice_request')
                     ->where('eventkey',$eventkey)
                     ->where('online','1')
                     ->where('focus','1')
@@ -356,7 +356,7 @@ class Response
                     ->get();
                 break;
             case "2":
-                $row=DB::table(wx_voice_request)
+                $row=DB::table('wx_voice_request')
                     ->where('keyword','like','%'.$keyword.'%')
                     ->where('online','1')
                     ->orderBy('id','desc')
