@@ -121,7 +121,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-            $this->request_voice($openid, '1', $eventkey, '');
+//            $this->request_voice($openid, '1', $eventkey, '');
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
