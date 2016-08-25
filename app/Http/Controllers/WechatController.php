@@ -19,6 +19,7 @@ class WechatController extends Controller
         $wechat = app('wechat');
         $userService = $wechat->user;
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
+            $openid = $userService->get($message->FromUserName)->openid;
             $response = new Response();
             switch ($message->MsgType) {
                 case 'event':
@@ -31,7 +32,7 @@ class WechatController extends Controller
                                     $content->content = "横店影视城官方客服电话" . "\n" . "400-9999141";
                                     return $content;
                                 default:
-                                    $content = $response->click_request($message->EventKey);
+                                    $content = $response->click_request($openid,$message->EventKey);
                                     return $content;
                                     break;
                             }

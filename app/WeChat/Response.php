@@ -69,8 +69,11 @@ class Response
         return $content;
     }
 
-    public function click_request($menuID)
+    public function click_request($openid,$menuID)
     {
+        $wxnumber=Crypt::encrypt($openid);
+        $usage=new usage();
+        $uid=$usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
         $row = DB::table('wx_article')
             ->where('msgtype', 'news')
             ->where('classid', $menuID)
@@ -86,10 +89,26 @@ class Response
         if ($row) {
             $content = array();
             foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
+                /*如果只直接跳转链接页面时，判断是否已经带参数*/
+                if ($url != '') {
+                    /*链接跳转的数据统计*/
+                    $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
+                    if (strstr($url, '?') != '') {
+                        $url = $url . "&wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
+                    } else {
+                        $url = $url . "?wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
+                    }
+                    $url = $linkjump . "&link=" . $url;
+                } else {
+                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                }
+
                 $new = new News();
                 $new->title = $result->title;
                 $new->description = $result->description;
-                $new->url = $result->url;
+                $new->url = $url;
                 $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
                 $content[] = $new;
             }
