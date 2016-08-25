@@ -43,7 +43,7 @@ class Response
                 $content = new News();
                 $content->title = "laravel-wechat";
                 $content->description = "测试";
-                $content->url = "http://www.baidu.com";
+                $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
                 $app->staff->message([$content])->to($fromUsername)->send();
                 break;
