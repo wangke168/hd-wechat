@@ -75,55 +75,12 @@ class Response
      * @param $menuID
      * @return array|Text
      */
-    public function click_request($openid, $menuID)
+    public function click_request($openid, $menuid)
     {
-        $wxnumber = Crypt::encrypt($openid);
-        $usage = new usage();
-//        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
-        $uid = $usage->get_uid($openid);
-        $row = DB::table('wx_article')
-            ->where('msgtype', 'news')
-            ->where('classid', $menuID)
-            ->where('audit', '1')
-            ->where('del', '0')
-            ->where('online', '1')
-            ->where('startdate', '<=', date('Y-m-d'))
-            ->where('enddate', '>=', date('Y-m-d'))
-            ->orderBy('eventkey', 'asc')
-            ->orderBy('priority', 'asc')
-            ->orderBy('id', 'desc')
-            ->skip(0)->take(8)->get();
-        if ($row) {
-            $content = array();
-            foreach ($row as $result) {
-                $url = $result->url;
-                $id = $result->id;
-                /*如果只直接跳转链接页面时，判断是否已经带参数*/
-                if ($url != '') {
-                    /*链接跳转的数据统计*/
-                    $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
-                    if (strstr($url, '?') != '') {
-                        $url = $url . "&wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
-                    } else {
-                        $url = $url . "?wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
-                    }
-                    $url = $linkjump . "&link=" . $url;
-                } else {
-                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                }
-
-                $new = new News();
-                $new->title = $result->title;
-                $new->description = $result->description;
-                $new->url = $url;
-                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
-                $content[] = $new;
-            }
-        } else {
-            $content = new Text();
-            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
-        }
-        $this->add_menu_click_hit($openid, $menuID); //增加点击数统计
+        $usage=new usage();
+        $eventkey=$usage->get_openid_info($openid)->eventeky;
+        $content=$this->request_news($openid, $eventkey, '2', '',$menuid);
+        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
     }
 
@@ -242,9 +199,6 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                /*         $row_news = $db->query("SELECT id from wx_article where msgtype=:msgtype and focus = :focus  and audit=:audit and del=:del  and online=:online and  eventkey=:eventkey  and startdate<=:startdate and enddate>=:enddate  order by id desc  LIMIT 0,1",
-                             array("msgtype" => "news", "focus" => $focus, "audit" => "1", "del" => "0", "online" => "1", "eventkey" => $eventkey, "startdate" => date('Y-m-d'), "enddate" => date('Y-m-d')));
-                         */
                 $row_news = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('focus', $focus)
@@ -331,16 +285,11 @@ class Response
                 $row = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('classid', $menuid)
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('startdate', '<=', date('Y-m-d'))
-                    ->where('enddate', '>=', date('Y-m-d'))
+                    ->published()
                     ->orderBy('eventkey', 'asc')
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
                     ->skip(0)->take(8)->get();
-                $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
                 break;
         }
         if ($row) {
@@ -407,6 +356,15 @@ class Response
         $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][2]['weather'] . "\n";
         $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][2]['temperature'] . "\n";
         return $contentStr;
+    }
+
+    public function scopePublished($query)
+    {
+        $query->where('audit', '1')
+            ->where('del', '0')
+            ->where('online', '1')
+            ->where('startdate', '<=', date('Y-m-d'))
+            ->where('enddate', '>=', date('Y-m-d'));
     }
 
 }
