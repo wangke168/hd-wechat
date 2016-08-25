@@ -285,9 +285,9 @@ class Response
                     /*链接跳转的数据统计*/
                     $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
                     if (strstr($url, '?') != '') {
-                        $url = $url . "&wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
+                        $url = $url . "&comefrom=1&wxnumber{$wxnumber}&uid={$uid}&wpay=1";
                     } else {
-                        $url = $url . "?wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
+                        $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     }
                     $url = $linkjump . "&link=" . $url;
                 } else {
