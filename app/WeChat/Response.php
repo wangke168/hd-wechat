@@ -124,7 +124,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
-            $content = $this->request_focus_txt($openid, $eventkey);
+            $this->request_txt($openid, $eventkey);             //直接在查询文本回复时使用客服接口
         }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
@@ -290,6 +290,28 @@ class Response
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
         }
         return $content;
+    }
+
+
+    private function request_txt($openid,$eventkey)
+    {
+        $app=app('wechat');
+ /*       $row = $db->query("select * from wx_txt_request WHERE eventkey=:eventkey AND focus=:focus AND online=:online ORDER BY id DESC",
+            array("eventkey" => $eventkey, "online" => "1", "focus" => "1"));*/
+        $row=DB::table('wx_txt_request')
+            ->where('eventkey',$eventkey)
+            ->where('focus','1')
+            ->where('online','1')
+            ->orderBy('id','desc')
+            ->get();
+
+        foreach ($row as $result) {
+            $content=new Text();
+//            $this->responseV_Text($openid, $result["content"]);
+            $content->content = $result->content;
+            $app->staff->message($content)->to($openid)->send();
+        }
+//        return $content;
     }
 
 
