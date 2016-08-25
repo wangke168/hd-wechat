@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\WeChat\Response;
 use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
@@ -48,10 +49,8 @@ class ArticlesController extends Controller
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
-        $usage = new usage();
-//        $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
-        $uid=$usage->get_eventkey_info($usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->eventkey)->uid;
-        return $uid;
+        $response=new Response();
+        return $response->click_request('o2e-YuBgnbLLgJGMQykhSg_V3VRI','2');
     }
 
 }

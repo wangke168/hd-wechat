@@ -78,9 +78,9 @@ class Response
     public function click_request($openid, $menuid)
     {
         $usage=new usage();
-        $eventkey=$usage->get_openid_info($openid)->eventeky;
-        $content=request_news($openid, $eventkey, '2', '',$menuid);
-        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+        $eventkey=$usage->get_openid_info($openid)->eventkey;
+        $content=$this->request_news($openid, $eventkey, '2', '',$menuid);
+//        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
     }
 
@@ -285,11 +285,7 @@ class Response
                 $row = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('classid', $menuid)
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('startdate', '<=', date('Y-m-d'))
-                    ->where('enddate', '>=', date('Y-m-d'))
+                    ->published()
                     ->orderBy('eventkey', 'asc')
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
