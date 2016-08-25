@@ -42,6 +42,10 @@ class WechatController extends Controller
                             break;
                         case 'SCAN':
                             #重复关注事件
+                            $content=new Text();
+                            $content->content=$message->EventKey;
+                            return $content;
+
                             break;
                         case 'unsubscribe':
                             #取消关注事件
