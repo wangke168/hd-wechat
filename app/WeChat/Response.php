@@ -7,6 +7,7 @@
  */
 namespace App\WeChat;
 
+use Illuminate\Database\Eloquent\Model;
 use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
