@@ -43,7 +43,7 @@ class WechatController extends Controller
                         case 'SCAN':
                             #重复关注事件
 //                            $content=new Text();
-                            $content=$response->request_focus($openid, $message->EventKey);
+                            $content=$response->request_focus($openid, '111');
                             return $content;
 
                             break;

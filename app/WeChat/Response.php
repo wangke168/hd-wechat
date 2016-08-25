@@ -107,12 +107,12 @@ class Response
      */
     public function request_focus($openid, $eventkey)
     {
-        $wxnumber = Crypt::encrypt($openid);               //wxnumber加密
-        $usage = new usage();
+//        $wxnumber = Crypt::encrypt($openid);               //wxnumber加密
+//        $usage = new usage();
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
         }
-        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
+//        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
 
         $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
