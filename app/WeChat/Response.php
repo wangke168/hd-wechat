@@ -63,28 +63,7 @@ class Response
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $row = DB::table('wx_article')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->orderBy('priority', 'asc')
-                    ->orderBy('id', 'desc')
-                    ->skip(0)->take(8)->get();
-                if ($row) {
-                    $content = array();
-                    foreach ($row as $result) {
-                        $new = new News();
-                        $new->title = $result->title;
-                        $new->description = $result->description;
-                        $new->url = $result->url;
-                        $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
-                        $content[] = $new;
-                    }
-                } else {
-                    $content = new Text();
-                    $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
-                }
+                $content=$this->request_keyword($keyword);
                 break;
         }
         return $content;
@@ -138,4 +117,30 @@ class Response
         return $contentStr;
     }
 
+    private function request_keyword($keyword)
+    {
+        $row = DB::table('wx_article')
+            ->where('keyword', 'like', '%' . $keyword . '%')
+            ->where('audit', '1')
+            ->where('del', '0')
+            ->where('online', '1')
+            ->orderBy('priority', 'asc')
+            ->orderBy('id', 'desc')
+            ->skip(0)->take(8)->get();
+        if ($row) {
+            $content = array();
+            foreach ($row as $result) {
+                $new = new News();
+                $new->title = $result->title;
+                $new->description = $result->description;
+                $new->url = $result->url;
+                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                $content[] = $new;
+            }
+        } else {
+            $content = new Text();
+            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
+        }
+        return $content;
+    }
 }
