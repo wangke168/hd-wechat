@@ -79,7 +79,7 @@ class Response
     {
         $usage=new usage();
         $eventkey=$usage->get_openid_info($openid)->eventeky;
-        $content=$this->request_news($openid, $eventkey, '2', '',$menuid);
+        $content=request_news($openid, $eventkey, '2', '',$menuid);
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
     }
