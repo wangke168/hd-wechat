@@ -93,47 +93,9 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $wxnumber = Crypt::encrypt($openid);
-        $usage = new usage();
-        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
-        $row = DB::table('wx_article')
-            ->where('keyword', 'like', '%' . $keyword . '%')
-            ->where('audit', '1')
-            ->where('del', '0')
-            ->where('online', '1')
-            ->orderBy('priority', 'asc')
-            ->orderBy('id', 'desc')
-            ->skip(0)->take(8)->get();
-        if ($row) {
-            $content = array();
-            foreach ($row as $result) {
-                $url = $result->url;
-                $id = $result->id;
-                /*如果只直接跳转链接页面时，判断是否已经带参数*/
-                if ($url != '') {
-                    /*链接跳转的数据统计*/
-                    $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
-                    if (strstr($url, '?') != '') {
-                        $url = $url . "&wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
-                    } else {
-                        $url = $url . "?wxnumber=" . $wxnumber . "&uid=" . $uid . "&wpay=1";
-                    }
-                    $url = $linkjump . "&link=" . $url;
-                } else {
-                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                }
-
-                $new = new News();
-                $new->title = $result->title;
-                $new->description = $result->description;
-                $new->url = $url;
-                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
-                $content[] = $new;
-            }
-        } else {
-            $content = new Text();
-            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
-        }
+        $usage=new usage();
+        $eventkey=$usage->get_openid_info($openid)->eventkey;
+        $content=$this->request_news($openid, $eventkey, '3', $keyword,'');
 
         return $content;
     }
@@ -292,6 +254,20 @@ class Response
                     ->where('startdate', '<=', date('Y-m-d'))
                     ->where('enddate', '>=', date('Y-m-d'))
                     ->orderBy('eventkey', 'asc')
+                    ->orderBy('priority', 'asc')
+                    ->orderBy('id', 'desc')
+                    ->skip(0)->take(8)->get();
+                break;
+            case 3:
+                $row = DB::table('wx_article')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where('eventkey',$eventkey)
+                    ->orWhere('eventkey','all')
+                    ->where('audit', '1')
+                    ->where('del', '0')
+                    ->where('online', '1')
+                    ->where('startdate', '<=', date('Y-m-d'))
+                    ->where('enddate', '>=', date('Y-m-d'))
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
                     ->skip(0)->take(8)->get();
