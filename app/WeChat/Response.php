@@ -107,18 +107,16 @@ class Response
      */
     public function request_focus($openid, $eventkey)
     {
-//        $wxnumber = Crypt::encrypt($openid);               //wxnumber加密
-//        $usage = new usage();
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
         }
-//        $uid = $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
-
+        $app = app('wechat');
         $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
-            $content = $this->request_news($openid, $eventkey, '1', '', '');
+            $content_news = $this->request_news($openid, $eventkey, '1', '', '');
+            $app->staff->message([$content_news])->to($openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
@@ -131,9 +129,10 @@ class Response
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
-            $content = $this->request_news($openid, 'all', '1', '', '');
+            $content_news = $this->request_news($openid, 'all', '1', '', '');
+            $app->staff->message([$content_news])->to($openid)->send();
         }
-        return $content;
+//        return $content;
     }
 
     /**
