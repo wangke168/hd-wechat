@@ -50,7 +50,11 @@ class ArticlesController extends Controller
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
 
-        $eventkey='111';
+
+        $response=new Response();
+        $content=$response->request_focus('o2e-YuBgnbLLgJGMQykhSg_V3VRI', '111');
+        return $content;
+/*        $eventkey='111';
         $row = DB::table('wx_article')
             ->where('keyword', 'like', '%门票%')
             ->where(function ($query) use($eventkey){
@@ -66,7 +70,7 @@ class ArticlesController extends Controller
             ->orderBy('priority', 'asc')
             ->orderBy('id', 'desc')
             ->skip(0)->take(8)->lists('id');
-        return $row;
+        return $row;*/
     }
 
 }

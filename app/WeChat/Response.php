@@ -118,7 +118,7 @@ class Response
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
-            $content = request_news($openid, $eventkey, '1', '', '');
+            $content = $this->request_news($openid, $eventkey, '1', '', '');
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
