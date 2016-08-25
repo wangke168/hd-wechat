@@ -224,7 +224,7 @@ class Response
     {
         $wxnumber = Crypt::encrypt($openid);
         $usage = new usage();
-        $uid = $usage->get_eventkey_info($eventkey)->uid;
+        $uid = $usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -244,7 +244,6 @@ class Response
                     ->skip(0)->take(8)->get();
                 break;
             case 2:
-                $uid = $usage->get_uid($openid);
                 $row = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('classid', $menuid)
