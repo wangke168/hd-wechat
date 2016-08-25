@@ -42,21 +42,15 @@ class ArticlesController extends Controller
                     ->where('wx_openid','o2e-YuBgnbLLgJGMQykhSg_V3VRI')
                     ->first();
                 return $row->ID;*/
-//        $usage=new usage();
-//        return $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->city;
+        $usage=new usage();
+        return $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->city;
 //        return $usage->v('aaa','1');
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
-        $aaa="12123";
-        $bbb=Crypt::encrypt($aaa);
-        $ccc=Crypt::decrypt($bbb);
-//        return $bbb;
-//        return "<br>";
-
-        return $ccc;
-
-
+/*        $usage = new usage();
+        $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+        return $info->eventkey;*/
     }
 
 }
