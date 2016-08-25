@@ -179,18 +179,16 @@ class Response
         return $content;
     }
 
-    /*
-     *
-     * 统计菜单点击数
-     *
+    /**
+     * 增加菜单点击数
+     * @param $openid
+     * @param $menuID
      */
 
     private function add_menu_click_hit($openid, $menuID)
     {
-        $usage=new usage();
-        $eventkey=$usage->get_openid_info($openid)->eventkey;
         DB::table('wx_click_hits')
-            ->insert(['wx_openid' => $openid, 'click' => $menuID,'eventkey'=>$eventkey]);
+            ->insert(['wx_openid' => $openid, 'click' => $menuID]);
     }
 
     /**
