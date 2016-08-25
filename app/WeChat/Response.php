@@ -121,7 +121,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-            $content = $this->request_voice($openid, $eventkey, "1", "");
+            $this->request_voice($openid, '1', $eventkey, '');
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
@@ -332,7 +332,7 @@ class Response
     * 回复Voice
     *$focus:1（关注）；2（关键字）
     */
-    public function responseV_Voice($openId, $type, $eventkey, $keyword)
+    public function request_voice($openid, $type, $eventkey, $keyword)
     {
 /*        $access_token = get_access_token();
         $post_url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" . $access_token;
@@ -366,7 +366,7 @@ class Response
         foreach ($row as $result) {
             $voice=new Voice();
             $voice->media_id=$result->media_id;
-            $app->staff->message($voice)->by('1001@u_hengdian')->to($openId)->send();
+            $app->staff->message($voice)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
 
