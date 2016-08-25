@@ -334,16 +334,6 @@ class Response
     */
     public function request_voice($openid, $type, $eventkey, $keyword)
     {
-/*        $access_token = get_access_token();
-        $post_url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" . $access_token;
-        $db = new DB();
-        if ($focus == "1") {
-            $row = $db->query("select * from wx_voice_request where eventkey=:eventkey and online=:online and focus=:focus ORDER BY id DESC",
-                array("eventkey" => $eventkey, "online" => "1", "focus" => $focus));
-        } else {
-            $row = $db->query("select * from wx_voice_request where eventkey=:eventkey and online=:online and keyword=:keyword ORDER BY id DESC",
-                array("eventkey" => $eventkey, "online" => "1", "keyword" => $keyword));
-        }*/
         $app=app('wechat');
         switch ($type)
         {

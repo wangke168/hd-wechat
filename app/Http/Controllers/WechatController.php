@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\WeChat\Response;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
+use EasyWeChat\Message\Voice;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -42,9 +43,15 @@ class WechatController extends Controller
                             break;
                         case 'SCAN':
                             #重复关注事件
-//                            $content=new Text();
-                            $content = $response->request_focus($openid, $message->EventKey);
-                            return $content;
+
+
+            /*                $content = $response->request_focus($openid, $message->EventKey);
+                            return $content;*/
+
+
+                            $content = new Voice();
+                            $content->media_id = 'GKb6KCrHNvsfv5XYKrlMAvnk9r03e6clZkeSkLu9e9Q';
+
 
                             break;
                         case 'unsubscribe':
