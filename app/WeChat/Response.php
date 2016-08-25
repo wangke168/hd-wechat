@@ -69,6 +69,12 @@ class Response
         return $content;
     }
 
+    /**
+     * 菜单回复
+     * @param $openid
+     * @param $menuID
+     * @return array|Text
+     */
     public function click_request($openid,$menuID)
     {
         $wxnumber=Crypt::encrypt($openid);
@@ -116,26 +122,16 @@ class Response
             $content = new Text();
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
         }
+        $this->add_menu_click_hit($openid,$menuID); //增加点击数统计
         return $content;
     }
 
-    private function get_weather_info()
-    {
-        $json = file_get_contents("http://api.map.baidu.com/telematics/v3/weather?location=%E4%B8%9C%E9%98%B3&output=json&ak=2c87d6d0443ab161753291258ac8ab7a");
-        $data = json_decode($json, true);
-        $contentStr = "【横店天气预报】：\n\n";
-        $contentStr = $contentStr . $data['results'][0]['weather_data'][0]['date'] . "\n";
-        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][0]['weather'] . "\n";
-        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][0]['temperature'] . "\n\n";
-        $contentStr = $contentStr . "明天：" . $data['results'][0]['weather_data'][1]['date'] . "\n";
-        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][1]['weather'] . "\n";
-        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][1]['temperature'] . "\n\n";
-        $contentStr = $contentStr . "后天：" . $data['results'][0]['weather_data'][2]['date'] . "\n";
-        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][2]['weather'] . "\n";
-        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][2]['temperature'] . "\n";
-        return $contentStr;
-    }
-
+    /**
+     * 关键字回复
+     * @param $openid
+     * @param $keyword
+     * @return array|Text
+     */
     private function request_keyword($openid,$keyword)
     {
         $wxnumber=Crypt::encrypt($openid);
@@ -179,6 +175,43 @@ class Response
             $content = new Text();
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
         }
+
         return $content;
     }
+
+    /*
+     *
+     * 统计菜单点击数
+     *
+     */
+
+    private function add_menu_click_hit($openid, $menuID)
+    {
+        $usage=new usage();
+        $eventkey=$usage->get_openid_info($openid)->eventkey;
+        DB::table('wx_click_hits')
+            ->insert(['wx_openid' => $openid, 'click' => $menuID,'eventkey'=>$eventkey]);
+    }
+
+    /**
+     * 获取天气资讯
+     * @return string
+     */
+    private function get_weather_info()
+    {
+        $json = file_get_contents("http://api.map.baidu.com/telematics/v3/weather?location=%E4%B8%9C%E9%98%B3&output=json&ak=2c87d6d0443ab161753291258ac8ab7a");
+        $data = json_decode($json, true);
+        $contentStr = "【横店天气预报】：\n\n";
+        $contentStr = $contentStr . $data['results'][0]['weather_data'][0]['date'] . "\n";
+        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][0]['weather'] . "\n";
+        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][0]['temperature'] . "\n\n";
+        $contentStr = $contentStr . "明天：" . $data['results'][0]['weather_data'][1]['date'] . "\n";
+        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][1]['weather'] . "\n";
+        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][1]['temperature'] . "\n\n";
+        $contentStr = $contentStr . "后天：" . $data['results'][0]['weather_data'][2]['date'] . "\n";
+        $contentStr = $contentStr . "天气情况：" . $data['results'][0]['weather_data'][2]['weather'] . "\n";
+        $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][2]['temperature'] . "\n";
+        return $contentStr;
+    }
+
 }
