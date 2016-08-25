@@ -260,9 +260,11 @@ class Response
                 break;
             case 3:
                 $row = DB::table('wx_article')
-                    ->where('keyword', 'like', '门票%')
-                    ->where('eventkey',$eventkey)
-                    ->orWhere('eventkey','all')
+                    ->where('keyword', 'like', '%'.$keyword.'%')
+                    ->where(function ($query) use($eventkey){
+                        $query->where('eventkey',$eventkey)
+                            ->orWhere('eventkey','all');
+                    })
                     ->where('audit', '1')
                     ->where('del', '0')
                     ->where('online', '1')

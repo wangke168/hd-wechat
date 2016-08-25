@@ -49,8 +49,24 @@ class ArticlesController extends Controller
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
-        $response=new Response();
-        return $response->click_request('o2e-YuBgnbLLgJGMQykhSg_V3VRI','2');
+
+        $eventkey='111';
+        $row = DB::table('wx_article')
+            ->where('keyword', 'like', '%门票%')
+            ->where(function ($query) use($eventkey){
+                $query->where('eventkey',$eventkey)
+                    ->orWhere('eventkey','all');
+            })
+//            ->orWhere('eventkey','all')
+            ->where('audit', '1')
+            ->where('del', '0')
+            ->where('online', '1')
+            ->where('startdate', '<=', date('Y-m-d'))
+            ->where('enddate', '>=', date('Y-m-d'))
+            ->orderBy('priority', 'asc')
+            ->orderBy('id', 'desc')
+            ->skip(0)->take(8)->lists('id');
+        return $row;
     }
 
 }
