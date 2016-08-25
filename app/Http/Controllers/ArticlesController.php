@@ -50,7 +50,7 @@ class ArticlesController extends Controller
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
         $response=new Response();
-        return $response->click_request('o2e-YuBgnbLLgJGMQykhSg_V3VRI','2');
+        return $response->published();
     }
 
 }
