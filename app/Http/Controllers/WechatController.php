@@ -58,7 +58,11 @@ class WechatController extends Controller
                             $content = $response->request_focus($openid, $message->EventKey);*/
 
                             $content=new Text();
-                            $content->content=$message->EventKey;
+                            $eventkey=$message->EventKey;
+                            if (!$eventkey or $eventkey == "") {
+                                $eventkey = "all";
+                            }
+                            $content->content=$eventkey;
                             return $content;
                             break;
                         case 'unsubscribe':
