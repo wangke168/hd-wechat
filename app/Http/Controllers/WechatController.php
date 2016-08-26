@@ -40,29 +40,20 @@ class WechatController extends Controller
                             break;
                         case 'subscribe':
                             #关注事件
-
                             $eventkey = $message->EventKey;
                             if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
                                 $eventkey = "";
                             }
-
                             $response->insert_subscribe($openid, $eventkey, 'subscribe');
                             $content = $response->request_focus($openid, $eventkey);
                             return $content;
                             break;
                         case 'SCAN':
                             #重复关注事件
-                 /*           $response->insert_subscribe($openid, $message->EventKey, 'scan');
-                            $content = $response->request_focus($openid, $message->EventKey);*/
-
-                            $content=new Text();
-                            $eventkey = $message->EventKey;
-                            if (!$eventkey or $eventkey == "") {
-                                $eventkey = "all";
-                            }
-                            $content->content=$eventkey;
+                            $response->insert_subscribe($openid, $message->EventKey, 'scan');
+                            $content = $response->request_focus($openid, $message->EventKey);
                             return $content;
                             break;
                         case 'unsubscribe':
