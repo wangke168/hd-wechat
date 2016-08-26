@@ -58,7 +58,7 @@ class ArticlesController extends Controller
         var_dump($userTags);
         if ($userTags) {
             foreach ($userTags as $userTag) {
-                var_dump ($userTag);
+                echo ($userTag[0]);
 //                $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
             }
         }
