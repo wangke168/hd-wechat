@@ -56,7 +56,7 @@ class ArticlesController extends Controller
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
         var_dump($userTags);
-        if ($userTags) {
+        if (count($userTags)<>0) {
             foreach ($userTags as $userTag) {
 //                echo ($userTag[0]);
                 $tag->batchUntagUsers([$openid], $userTag[0]);                      //删除原有标签
