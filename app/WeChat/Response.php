@@ -7,6 +7,7 @@
  */
 namespace App\WeChat;
 
+use Carbon\Carbon;
 use EasyWeChat\Message\Voice;
 use Illuminate\Database\Eloquent\Model;
 use EasyWeChat\Foundation\Application;
@@ -79,9 +80,9 @@ class Response
      */
     public function click_request($openid, $menuid)
     {
-        $usage=new usage();
-        $eventkey=$usage->get_openid_info($openid)->eventkey;
-        $content=$this->request_news($openid, $eventkey, '2', '',$menuid);
+        $usage = new usage();
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
+        $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
     }
@@ -94,9 +95,9 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $usage=new usage();
-        $eventkey=$usage->get_openid_info($openid)->eventkey;
-        $content=$this->request_news($openid, $eventkey, '3', $keyword,'');
+        $usage = new usage();
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
+        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
 
         return $content;
     }
@@ -125,7 +126,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
-            $this->request_txt($openid,'1',$eventkey,'');             //直接在查询文本回复时使用客服接口
+            $this->request_txt($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
         }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
@@ -246,10 +247,10 @@ class Response
                 break;
             case 3:
                 $row = DB::table('wx_article')
-                    ->where('keyword', 'like', '%'.$keyword.'%')
-                    ->where(function ($query) use($eventkey){
-                        $query->where('eventkey',$eventkey)
-                            ->orWhere('eventkey','all');
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
                     })
                     ->where('audit', '1')
                     ->where('del', '0')
@@ -295,34 +296,33 @@ class Response
 
     /**
      * @param $openid
-     * @param $type         1:关注    2：关键字
+     * @param $type 1:关注    2：关键字
      * @param $eventkey
      * @param $keyword
      */
 
-    private function request_txt($openid,$type,$eventkey,$keyword)
+    private function request_txt($openid, $type, $eventkey, $keyword)
     {
-        $app=app('wechat');
-        switch($type)
-        {
+        $app = app('wechat');
+        switch ($type) {
             case 1:
-                $row=DB::table('wx_txt_request')
-                    ->where('eventkey',$eventkey)
-                    ->where('focus','1')
-                    ->where('online','1')
-                    ->orderBy('id','desc')
+                $row = DB::table('wx_txt_request')
+                    ->where('eventkey', $eventkey)
+                    ->where('focus', '1')
+                    ->where('online', '1')
+                    ->orderBy('id', 'desc')
                     ->get();
                 break;
             case 2:
-                $row=DB::table('wx_txt_request')
-                    ->where('keyword','like','%'.$keyword.'%')
-                    ->where('online','1')
-                    ->orderBy('id','desc')
+                $row = DB::table('wx_txt_request')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where('online', '1')
+                    ->orderBy('id', 'desc')
                     ->get();
                 break;
         }
         foreach ($row as $result) {
-            $content=new Text();
+            $content = new Text();
             $content->content = $result->content;
             $app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
@@ -334,28 +334,27 @@ class Response
     */
     public function request_voice($openid, $type, $eventkey, $keyword)
     {
-        $app=app('wechat');
-        switch ($type)
-        {
+        $app = app('wechat');
+        switch ($type) {
             case '1':
-                $row=DB::table('wx_voice_request')
-                    ->where('eventkey',$eventkey)
-                    ->where('online','1')
-                    ->where('focus','1')
-                    ->orderBy('id','desc')
+                $row = DB::table('wx_voice_request')
+                    ->where('eventkey', $eventkey)
+                    ->where('online', '1')
+                    ->where('focus', '1')
+                    ->orderBy('id', 'desc')
                     ->get();
                 break;
             case "2":
-                $row=DB::table('wx_voice_request')
-                    ->where('keyword','like','%'.$keyword.'%')
-                    ->where('online','1')
-                    ->orderBy('id','desc')
+                $row = DB::table('wx_voice_request')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where('online', '1')
+                    ->orderBy('id', 'desc')
                     ->get();
                 break;
         }
         foreach ($row as $result) {
-            $voice=new Voice();
-            $voice->media_id=$result->media_id;
+            $voice = new Voice();
+            $voice->media_id = $result->media_id;
             $app->staff->message($voice)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
@@ -401,6 +400,34 @@ class Response
             ->where('online', '1')
             ->where('startdate', '<=', date('Y-m-d'))
             ->where('enddate', '>=', date('Y-m-d'));
+    }
+
+
+    /**
+     * 客人取消关注时，删除user_info中的信息，在user_esc中增加
+     * @param $fromUsername
+     */
+    public function insert_unsubscribe_info($openid)
+    {
+
+//        $db = new DB();
+        //获取该微信号的关注时间
+
+//        $row = $db->query("select * from wx_user_info where WX_OpenID=:WX_OpenID order by id desc  LIMIT 0,1", array("WX_OpenID" => $fromUsername));
+
+/*        $Adddate = $row[0]['AddDate'];
+
+        @$Eventkey = $row[0]['eventkey'];
+        */
+//        DB::table(wx_user_info)
+
+//        $db->query("delete from wx_user_info where wx_openid=:wx_openid", array("wx_openid" => $fromUsername));
+
+        DB::table('wx_user_info')->where('wx_openid',$openid)->update(['esc'=>'1','esctime'=>Carbon::now()]);   //设置取消关键字为1，以及取消时间
+
+        DB::table('wx_user_esc')->insert(['wx_openid'=>$openid]);
+
+//        $db->query("INSERT INTO WX_User_Esc (wx_openid,EventKey,AddDate) VALUES(:wx_openid,:EventKey,:AddDate)", array("wx_openid" => $fromUsername, "EventKey" => $Eventkey, "AddDate" => $Adddate));
     }
 
 }

@@ -48,6 +48,8 @@ class WechatController extends Controller
                             break;
                         case 'unsubscribe':
                             #取消关注事件
+                            $response->insert_unsubscribe_info($openid);
+
                             break;
                         case 'WifiConnected':
                             #wifi连接事件
