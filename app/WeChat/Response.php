@@ -470,11 +470,11 @@ class Response
 
         $app = app('wechat');
         $tag = $app->user_tag;
-        $userTags = $tag->userTags($openid);
+/*        $userTags = $tag->userTags($openid);
         foreach ($userTags as $userTag)
         {
             $tag->batchUntagUsers($openid, $userTag);                      //删除原有标签
-        }
+        }*/
 
 
         $usage = new usage();
