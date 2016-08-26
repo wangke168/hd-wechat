@@ -418,7 +418,7 @@ class Response
         } else {
             DB::table('wx_user_info')
                 ->where('wx_openid', $openid)
-                ->update(['eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => 1, 'esc' => '0',  'scandate' => Carbon::now(),'endtime' => Carbon::now()]);
+                ->update(['eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
         }
 
         if ($type == "subscribe")//新关注
@@ -438,7 +438,7 @@ class Response
      */
     public function insert_unsubscribe($openid)
     {
-        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1','subscribe'=>'0', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
+        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1', 'subscribe' => '0', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
         DB::table('wx_user_esc')->insert(['wx_openid' => $openid]);                           //增加到wx_user_esc表中
     }
 
@@ -462,6 +462,31 @@ class Response
             DB::table(wx_user_unionid)
                 ->insert(['wx_openid' => $openid, "wx_unionid" => $unionid]);
         }
+    }
+
+    public function make_user_tag($openid, $eventkey)
+    {
+        /*先删除原有tag*/
+
+        $app = app('wechat');
+        $tag = $app->user_tag;
+        $userTags = $tag->userTags($openid);
+        foreach ($userTags as $userTag)
+        {
+            $tag->batchUntagUsers($openid, $userTag);                      //删除原有标签
+        }
+
+
+        $usage = new usage();
+
+        if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
+//            $openIds = [$openId1, $openId2, ...];
+//            $tag->batchUntagUsers($openid, $usage->query_tag_id($eventkey));
+            $tag->batchTagUsers($openid, $usage->query_tag_id($eventkey));          //增加标签
+
+//            $this->make_openid_tag($fromUsername, $this->query_tag_id($eventkey));
+        }
+
     }
 
 }

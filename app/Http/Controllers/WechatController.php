@@ -47,14 +47,17 @@ class WechatController extends Controller
                                 $eventkey = "";
                             }
                             $response->insert_subscribe($openid, $eventkey, 'subscribe');
-                            $content = $response->request_focus($openid, $eventkey);
-                            return $content;
+                            $response->request_focus($openid, $eventkey);
+//                            return $content;
+                            $response->make_user_tag($openid,$eventkey);
                             break;
                         case 'SCAN':
                             #重复关注事件
-                            $response->insert_subscribe($openid, $message->EventKey, 'scan');
-                            $content = $response->request_focus($openid, $message->EventKey);
-                            return $content;
+                            $eventkey=$message->EventKey;
+                            $response->insert_subscribe($openid, $eventkey, 'scan');
+                            $response->request_focus($openid, $eventkey);
+                            $response->make_user_tag($openid,$eventkey);
+//                            return $content;
                             break;
                         case 'unsubscribe':
                             #取消关注事件

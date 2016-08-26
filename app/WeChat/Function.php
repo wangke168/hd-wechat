@@ -80,6 +80,9 @@ class usage
     }
 
 
+
+
+
     public function v($openid, $project_id)
     {
         $row = DB::table('tour_project_wait_detail')
