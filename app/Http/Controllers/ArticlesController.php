@@ -55,17 +55,19 @@ class ArticlesController extends Controller
         $app = app('wechat');
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
+
         foreach ($userTags as $userTag)
         {
-            $tag->batchUntagUsers([$openid], $userTag->tagid_list);                      //删除原有标签
-//            echo $userTag;
+//            $tag->batchUntagUsers([$openid], $userTag->tagid_list);                      //删除原有标签
+            
+           echo $userTag->tagid_list;
         }
 
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
 //        $userTags= $tag->batchTagUsers([$openid], '101');
 //        $userTags=$tag->usersOfTag('101');
-        var_dump($userTags);
+
     }
 
 }
