@@ -43,26 +43,25 @@ class ArticlesController extends Controller
                     ->where('wx_openid','o2e-YuBgnbLLgJGMQykhSg_V3VRI')
                     ->first();
                 return $row->ID;*/
-/*        $usage=new usage();
-        return $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->city;*/
+        /*        $usage=new usage();
+                return $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->city;*/
 //        return $usage->v('aaa','1');
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
 
-        $openid='opUv9v977Njll_YHpZYMymxI_aPE';
+        $openid = 'opUv9v977Njll_YHpZYMymxI_aPE';
 //        $openids[]=$openid;
         $app = app('wechat');
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
-
-        foreach ($userTags as $userTag)
-        {
-            $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
-
-//            var_dump ($userTag);
-        }
         var_dump($userTags);
+        if ($userTags) {
+            foreach ($userTags as $userTag) {
+                $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
+            }
+        }
+
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
 //        $userTags= $tag->batchTagUsers([$openid], '101');
