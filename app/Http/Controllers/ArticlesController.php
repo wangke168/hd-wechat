@@ -56,11 +56,11 @@ class ArticlesController extends Controller
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
         var_dump($userTags);
-        if ($userTags) {
+     /*   if ($userTags) {
             foreach ($userTags as $userTag) {
                 $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
             }
-        }
+        }*/
 
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
