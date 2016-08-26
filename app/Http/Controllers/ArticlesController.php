@@ -51,14 +51,15 @@ class ArticlesController extends Controller
            return $tour->check_amount('1', '2');*/
 
         $openid='opUv9v977Njll_YHpZYMymxI_aPE';
-        $openids[]=$openid;
+//        $openids[]=$openid;
         $app = app('wechat');
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
-   /*     foreach ($userTags as $userTag)
+        foreach ($userTags as $userTag)
         {
-            $tag->batchUntagUsers($openids, $userTag);                      //删除原有标签
-        }*/
+            $tag->batchUntagUsers([$openid], $userTag->tagid_list);                      //删除原有标签
+//            echo $userTag;
+        }
 
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
