@@ -40,15 +40,18 @@ class WechatController extends Controller
                             break;
                         case 'subscribe':
                             #关注事件
+                            $response->insert_subscribe($openid,$message->EventKey,'subscribe');
+                            $response->request_focus($openid, $message->EventKey);
                             break;
                         case 'SCAN':
                             #重复关注事件
+                            $response->insert_subscribe($openid,$message->EventKey,'scan');
                             $content = $response->request_focus($openid, $message->EventKey);
                             return $content;
                             break;
                         case 'unsubscribe':
                             #取消关注事件
-                            $response->insert_unsubscribe_info($openid);
+                            $response->insert_unsubscribe($openid);
 
                             break;
                         case 'WifiConnected':

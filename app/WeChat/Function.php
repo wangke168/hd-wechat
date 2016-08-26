@@ -63,6 +63,23 @@ class usage
     }
 
 
+    /**
+     * 查询eventkey对应的tag
+     * @param $eventkey
+     * @return null
+     */
+    public function query_tag_id($eventkey)
+    {
+        $row = DB::table('wx_user_tag')->where('eventkey', $eventkey)->first();
+
+        if ($row) {
+            return $row->tag_id;
+        } else {
+            return null;
+        }
+    }
+
+
     public function v($openid, $project_id)
     {
         $row = DB::table('tour_project_wait_detail')

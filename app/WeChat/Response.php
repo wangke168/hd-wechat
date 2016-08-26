@@ -403,31 +403,67 @@ class Response
     }
 
 
+    public function insert_subscribe($openid, $eventkey, $type)
+    {
+        $usage = new usage();
+
+        $tag_id = $usage->query_tag_id($eventkey);
+
+        $row = DB::table('wx_user_info')
+            ->where('wx_openid', $openid)
+            ->first();
+        if (!$row) {
+            DB::table('wx_user_info')
+                ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
+        } else {
+            DB::table('wx_user_info')
+                ->where('wx_openid', $openid)
+                ->update(['eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => 1, 'esc' => '0',  'scandate' => Carbon::now(),'endtime' => Carbon::now()]);
+        }
+
+        if ($type == "subscribe")//新关注
+        {
+            DB::table('wx_user_add')
+                ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey]);             //插入数据统计的表
+
+
+        }
+
+
+//            insert_user_unionid($fromUsername, $unionid);//先检查unionid表中是否存在，没有的话插入
+    }
+
+
     /**
      * 客人取消关注时，删除user_info中的信息，在user_esc中增加
      * @param $fromUsername
      */
-    public function insert_unsubscribe_info($openid)
+    public function insert_unsubscribe($openid)
     {
+        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
+        DB::table('wx_user_esc')->insert(['wx_openid' => $openid]);                           //增加到wx_user_esc表中
+    }
 
-//        $db = new DB();
-        //获取该微信号的关注时间
 
-//        $row = $db->query("select * from wx_user_info where WX_OpenID=:WX_OpenID order by id desc  LIMIT 0,1", array("WX_OpenID" => $fromUsername));
+    /**
+     * 查询该用户在unionid表中是否存在
+     * @param $fromUsername
+     * @return string | boolean
+     */
+    function check_unionid($openid)
+    {
+        $row = DB::table('wx_user_unionid')
+            ->where('wx_openid', $openid)->first();
+        $flag = ($row) ? true : false;
+        return $flag;
+    }
 
-/*        $Adddate = $row[0]['AddDate'];
-
-        @$Eventkey = $row[0]['eventkey'];
-        */
-//        DB::table(wx_user_info)
-
-//        $db->query("delete from wx_user_info where wx_openid=:wx_openid", array("wx_openid" => $fromUsername));
-
-        DB::table('wx_user_info')->where('wx_openid',$openid)->update(['esc'=>'1','esctime'=>Carbon::now()]);   //设置取消关键字为1，以及取消时间
-
-        DB::table('wx_user_esc')->insert(['wx_openid'=>$openid]);
-
-//        $db->query("INSERT INTO WX_User_Esc (wx_openid,EventKey,AddDate) VALUES(:wx_openid,:EventKey,:AddDate)", array("wx_openid" => $fromUsername, "EventKey" => $Eventkey, "AddDate" => $Adddate));
+    public function insert_user_unionid($openid, $unionid)
+    {
+        if (!check_unionid($openid)) {//检查union表中是否存在
+            DB::table(wx_user_unionid)
+                ->insert(['wx_openid' => $openid, "wx_unionid" => $unionid]);
+        }
     }
 
 }
