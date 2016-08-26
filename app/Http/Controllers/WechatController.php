@@ -46,22 +46,20 @@ class WechatController extends Controller
                             } else {
                                 $eventkey = "";
                             }
-                            $response->insert_subscribe($openid, $eventkey, 'subscribe');
-                            $response->request_focus($openid, $eventkey);
-//                            return $content;
-                            $response->make_user_tag($openid,$eventkey);
+                            $response->insert_subscribe($openid, $eventkey, 'subscribe');       //更新openid信息
+                            $response->request_focus($openid, $eventkey);                       //推送关注信息
+                            $response->make_user_tag($openid,$eventkey);                        //标签管理
                             break;
                         case 'SCAN':
                             #重复关注事件
                             $eventkey=$message->EventKey;
-                            $response->insert_subscribe($openid, $eventkey, 'scan');
-                            $response->request_focus($openid, $eventkey);
-                            $response->make_user_tag($openid,$eventkey);
-//                            return $content;
+                            $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
+                            $response->request_focus($openid, $eventkey);                       //推送关注信息
+                            $response->make_user_tag($openid,$eventkey);                        //标签管理
                             break;
                         case 'unsubscribe':
                             #取消关注事件
-                            $response->insert_unsubscribe($openid);
+                            $response->insert_unsubscribe($openid);                             //更新数据信息
 
                             break;
                         case 'WifiConnected':

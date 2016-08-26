@@ -210,8 +210,9 @@ class Response
      */
     public function request_news($openid, $eventkey, $type, $keyword, $menuid)
     {
-        $wxnumber = Crypt::encrypt($openid);
+//        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $usage = new usage();
+        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $uid = $usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
@@ -478,12 +479,11 @@ class Response
             }
         }
 
-
         $usage = new usage();
         if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
             $tag->batchTagUsers([$openid], $usage->query_tag_id($eventkey));          //增加标签
         }
-//        $tag->batchTagUsers([$openid], '101');
+
     }
 
 }
