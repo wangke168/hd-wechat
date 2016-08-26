@@ -60,7 +60,7 @@ class ArticlesController extends Controller
         {
 //            $tag->batchUntagUsers([$openid], $userTag->tagid_list);                      //删除原有标签
 
-            var_dump ($userTag->tagid_list);
+            var_dump ($userTag);
         }
 
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
