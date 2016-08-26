@@ -470,11 +470,11 @@ class Response
 
         $app = app('wechat');
         $tag = $app->user_tag;
-/*        $userTags = $tag->userTags($openid);
+        $userTags = $tag->userTags($openid);
         foreach ($userTags as $userTag)
         {
-            $tag->batchUntagUsers($openid, $userTag);                      //删除原有标签
-        }*/
+            $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
+        }
 
 
         $usage = new usage();
@@ -482,7 +482,7 @@ class Response
         if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
 //            $openIds = [$openId1, $openId2, ...];
 //            $tag->batchUntagUsers($openid, $usage->query_tag_id($eventkey));
-            $tag->batchTagUsers($openid, $usage->query_tag_id($eventkey));          //增加标签
+            $tag->batchTagUsers([$openid], $usage->query_tag_id($eventkey));          //增加标签
 
 //            $this->make_openid_tag($fromUsername, $this->query_tag_id($eventkey));
         }
