@@ -55,7 +55,8 @@ class ArticlesController extends Controller
         $tag = $app->user_tag;
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
-        $userTags= $tag->batchTagUsers([$openid], '101');
+//        $userTags= $tag->batchTagUsers([$openid], '101');
+        $userTags=$tag->usersOfTag('101');
         var_dump($userTags);
     }
 
