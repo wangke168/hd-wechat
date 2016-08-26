@@ -55,7 +55,7 @@ class ArticlesController extends Controller
         $app = app('wechat');
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
-        var_dump($userTags);
+        var_dump($userTags->tagid_list);
         foreach ($userTags as $userTag)
         {
 //            $tag->batchUntagUsers([$openid], $userTag->tagid_list);                      //删除原有标签
