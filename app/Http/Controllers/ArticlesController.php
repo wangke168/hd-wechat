@@ -53,7 +53,9 @@ class ArticlesController extends Controller
 
         $app=app('wechat');
         $tag = $app->user_tag;
-        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
+//        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
+        $userTags=$tag->lists();
+
         var_dump($userTags);
     }
 
