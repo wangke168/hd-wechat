@@ -51,8 +51,14 @@ class ArticlesController extends Controller
            return $tour->check_amount('1', '2');*/
 
         $openid='opUv9v977Njll_YHpZYMymxI_aPE';
-        $app=app('wechat');
+        $app = app('wechat');
         $tag = $app->user_tag;
+        $userTags = $tag->userTags($openid);
+        foreach ($userTags as $userTag)
+        {
+            $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
+        }
+
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
 //        $userTags= $tag->batchTagUsers([$openid], '101');
