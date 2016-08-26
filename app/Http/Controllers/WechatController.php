@@ -45,7 +45,7 @@ class WechatController extends Controller
                             break;
                         case 'SCAN':
                             #重复关注事件
-                            $response->insert_subscribe($openid,$message->EventKey,'scan');
+//                            $response->insert_subscribe($openid,$message->EventKey,'scan');
                             $content = $response->request_focus($openid, $message->EventKey);
                             return $content;
                             break;

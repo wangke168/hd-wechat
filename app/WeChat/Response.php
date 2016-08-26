@@ -425,8 +425,6 @@ class Response
         {
             DB::table('wx_user_add')
                 ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey]);             //插入数据统计的表
-
-
         }
 
 
@@ -440,7 +438,7 @@ class Response
      */
     public function insert_unsubscribe($openid)
     {
-        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
+        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1','subscribe'=>'0', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
         DB::table('wx_user_esc')->insert(['wx_openid' => $openid]);                           //增加到wx_user_esc表中
     }
 
