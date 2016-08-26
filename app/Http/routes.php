@@ -26,7 +26,12 @@ Route::get('/articles/{id}', 'ArticlesController@detail');
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{openid}','ZoneController@subscribe');
 
+//测试
 Route::get('/info', 'ArticlesController@info');
+
+//输出token
+Route::get('/hd-token','TokenController@token');
+
 
 Route::get('/users','UserController@users');
 Route::get('/user/{openId}','UserController@user');
