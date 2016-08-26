@@ -471,15 +471,18 @@ class Response
         $app = app('wechat');
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
-        foreach ($userTags as $userTag)
-        {
-            $tag->batchUntagUsers([$openid], $userTag);                      //删除原有标签
+
+        if ($userTags->tagid_list) {
+            foreach ($userTags as $userTag) {
+                $tag->batchUntagUsers([$openid], $userTag[0]);                      //删除原有标签
+            }
         }
 
-    /*    $usage = new usage();
+
+        $usage = new usage();
         if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
             $tag->batchTagUsers([$openid], $usage->query_tag_id($eventkey));          //增加标签
-        }*/
+        }
 //        $tag->batchTagUsers([$openid], '101');
     }
 

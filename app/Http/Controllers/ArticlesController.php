@@ -55,13 +55,18 @@ class ArticlesController extends Controller
         $app = app('wechat');
         $tag = $app->user_tag;
         $userTags = $tag->userTags($openid);
-        var_dump($userTags);
+//        var_dump($userTags);
 //        var_dump($userTags->tagid_list);
         if ($userTags->tagid_list) {
             foreach ($userTags as $userTag) {
-                echo ($userTag[0]);
-//                $tag->batchUntagUsers([$openid], $userTag[0]);                      //删除原有标签
+//                echo ($userTag[0]);
+                $tag->batchUntagUsers([$openid], $userTag[0]);                      //删除原有标签
             }
+        }
+
+        $usage =new usage();
+        if ($usage->query_tag_id('123')) {                          //获取eventkey对应的tag
+            $tag->batchTagUsers([$openid], $usage->query_tag_id('123'));          //增加标签
         }
 
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
