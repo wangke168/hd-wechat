@@ -58,7 +58,7 @@ class WechatController extends Controller
                             $content = $response->request_focus($openid, $message->EventKey);*/
 
                             $content=new Text();
-                            $eventkey=$message->EventKey;
+                            $eventkey = $message->EventKey;
                             if (!$eventkey or $eventkey == "") {
                                 $eventkey = "all";
                             }
