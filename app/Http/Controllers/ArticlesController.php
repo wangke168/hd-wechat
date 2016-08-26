@@ -62,7 +62,7 @@ class ArticlesController extends Controller
 
 //            var_dump ($userTag);
         }
-        var_dump($userTags->tagid_list);
+        var_dump($userTags);
 //        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
 //        $userTags=$tag->lists();
 //        $userTags= $tag->batchTagUsers([$openid], '101');
