@@ -32,6 +32,9 @@ Route::get('/info', 'ArticlesController@info');
 //输出token
 Route::get('/hd-token','TokenController@token');
 
+//素材管理
+Route::get('/audio','MaterialController@audio');
+
 
 Route::get('/users','UserController@users');
 Route::get('/user/{openId}','UserController@user');
