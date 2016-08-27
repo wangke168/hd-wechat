@@ -30,8 +30,8 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64363635" vertical-offset="14893" max-vertical-offset="15904">
-              <caret line="482" column="9" selection-start-line="482" selection-start-column="9" selection-end-line="482" selection-end-column="9" />
+            <state vertical-scroll-proportion="10.037576" vertical-offset="6439" max-vertical-offset="16256">
+              <caret line="460" column="21" selection-start-line="460" selection-start-column="21" selection-end-line="460" selection-end-column="21" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#110#128#0#PHP" expanded="true" />
@@ -757,8 +757,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64363635" vertical-offset="14893" max-vertical-offset="15904">
-          <caret line="482" column="9" selection-start-line="482" selection-start-column="9" selection-end-line="482" selection-end-column="9" />
+        <state vertical-scroll-proportion="10.037576" vertical-offset="6439" max-vertical-offset="16256">
+          <caret line="460" column="21" selection-start-line="460" selection-start-column="21" selection-end-line="460" selection-end-column="21" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#110#128#0#PHP" expanded="true" />

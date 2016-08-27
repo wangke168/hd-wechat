@@ -457,6 +457,11 @@ class Response
         return $flag;
     }
 
+    /**
+     * 表中加入客人的unionid
+     * @param $openid
+     * @param $unionid
+     */
     public function insert_user_unionid($openid, $unionid)
     {
         if (!check_unionid($openid)) {//检查union表中是否存在
@@ -465,6 +470,12 @@ class Response
         }
     }
 
+
+    /**
+     * 客人关注时打上tag
+     * @param $openid
+     * @param $eventkey
+     */
     public function make_user_tag($openid, $eventkey)
     {
         /*先删除原有tag*/
