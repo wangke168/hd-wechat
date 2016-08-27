@@ -19,7 +19,7 @@ class MaterialController extends Controller
     }
     public function audio()
     {
-        $result=$this->material->uploadVoice(public_path().'1.mp3');
+        $result=$this->material->uploadVoice(public_path().'/1.mp3');
         return $result;
     }
 }
