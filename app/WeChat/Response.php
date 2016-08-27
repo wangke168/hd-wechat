@@ -475,7 +475,10 @@ class Response
 
         if ($userTags->tagid_list) {
             foreach ($userTags as $userTag) {
-                $tag->batchUntagUsers([$openid], $userTag[0]);                      //删除原有标签
+                foreach($userTag as $value)
+                {
+                    $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
+                }
             }
         }
 
