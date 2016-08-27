@@ -61,7 +61,7 @@ class ArticlesController extends Controller
             foreach ($userTags as $userTag) {
                 foreach($userTag as $value)
                 {
-                    echo $value;
+                    $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
                 }
                 /*var_dump ($userTag);
                 echo    $userTag;*/
