@@ -36,7 +36,7 @@ class Response
 
         $app = app('wechat');
         $userService = $app->user;
-        $fromUsername = $userService->get($message->FromUserName)->openid;
+        $openid = $userService->get($message->FromUserName)->openid;
         switch ($keyword) {
             case "a":
                 $content = new Text();
@@ -48,7 +48,7 @@ class Response
                 $content->description = "测试";
                 $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $app->staff->message([$content])->to($fromUsername)->send();
+                $app->staff->message([$content])->to($openid)->send();
                 break;
             case 'd':
                 $content = new Text();
@@ -59,14 +59,14 @@ class Response
             case 'hx':
                 $content = new Text();
                 $tour = new tour();
-                $content->content = $tour->verification_subscribe($fromUsername, '1');
+                $content->content = $tour->verification_subscribe($openid, '1');
                 break;
             case '天气':
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($fromUsername, $keyword);
+                $content = $this->request_keyword($openid, $keyword);
                 break;
         }
         return $content;

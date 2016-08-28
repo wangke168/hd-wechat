@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WeChat\Response;
+use App\WeChat\tour;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Voice;
@@ -53,9 +54,17 @@ class WechatController extends Controller
                         case 'SCAN':
                             #重复关注事件
                             $eventkey=$message->EventKey;
-                            $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
-                            $response->request_focus($openid, $eventkey);                       //推送关注信息
-                            $response->make_user_tag($openid,$eventkey);                        //标签管理
+                            if ($eventkey == "1336") {
+                                $tour = new tour();
+                                $content =new Text();
+                                $content->content = $tour->verification_subscribe($openid, '1');
+                                return $content;
+                            }
+                            else {
+                                $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
+                                $response->request_focus($openid, $eventkey);                       //推送关注信息
+                                $response->make_user_tag($openid, $eventkey);                        //标签管理
+                            }
                             break;
                         case 'unsubscribe':
                             #取消关注事件
