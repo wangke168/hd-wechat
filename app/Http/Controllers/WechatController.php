@@ -78,7 +78,7 @@ class WechatController extends Controller
 //                            $ctime = date("Y-m-d H:i:s", "{$ConnectTime}");
 
                             $content=new Text();
-                            $content->content=$message->DeviceNo;
+                            $content->content='aaa';
 //                            $content->content=$ctime;
                             return $content;
                          /*   $responseMsg->responseV_Text($fromUsername, $ctime);
