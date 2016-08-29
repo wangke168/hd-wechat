@@ -21,6 +21,6 @@ class ShopController extends Controller
     public function index()
     {
         $poi = $this->app->poi;
-        return $poi->lists(0, 2);
+        return $poi->lists(0, 8);
     }
 }
