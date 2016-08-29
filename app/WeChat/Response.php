@@ -46,7 +46,15 @@ class Response
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $content->content = $this->usage->get_openid_info($this->openid)->eventkey;
+
+                if( $this->usage->get_openid_info($this->openid)->eventkey)
+                {
+                    $content->content = $this->usage->get_openid_info($this->openid)->eventkey;
+                }
+                else
+                {
+                    $content->content='无eventkey';
+                }
 //                $content->content = $app->access_token->getToken();
                 break;
             case 's':
