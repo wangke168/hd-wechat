@@ -247,6 +247,7 @@ class Response
                     ->skip(0)->take(8)->get();
                 break;
             case 3:
+                $keyword=$this->check_keywowrd($keyword);
                 $row = DB::table('wx_article')
                     ->where('keyword', 'like', '%' . $keyword . '%')
                     ->where(function ($query) use ($eventkey) {
@@ -499,5 +500,30 @@ class Response
         }
 
     }
+
+    /*
+ * 检查关键字中是否包含可回复字符
+ * @param    string       $text        客人输入关键字
+ * @return   string       $result      到数据库查（WX_Request_Keyword）询输出关键字
+*/
+    private function check_keywowrd($text)
+    {
+//        $db = new DB();
+        $flag = "不包含";
+//        $row = $db->query("select keyword from WX_Request_Keyword order by id asc", PDO::FETCH_NUM);
+
+        $row=DB::table('wx_request_keyword')
+            ->orderBy('id','asc')->get();
+
+        foreach ($row as $result) {
+            if (@strstr($text, $result['keyword']) != '') {
+                $flag = $result['keyword'];
+                //              $flag = "bbb";
+                break;
+            }
+        }
+        return $flag;
+    }
+
 
 }
