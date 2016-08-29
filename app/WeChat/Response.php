@@ -535,9 +535,10 @@ class Response
 
         $content=new Text();
 
+        $content->content=$postObj->DeviceNo;
 //        return $wifi_info;
 
-        $this->app->staff->message([$content])->to($openid)->send();
+        $this->app->staff->message([$content])->to($this->openid)->send();
 
 
 
