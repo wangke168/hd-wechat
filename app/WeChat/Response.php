@@ -516,8 +516,8 @@ class Response
             ->orderBy('id','asc')->get();
 
         foreach ($row as $result) {
-            if (@strstr($text, $result['keyword']) != '') {
-                $flag = $result['keyword'];
+            if (@strstr($text, $result->keyword) != '') {
+                $flag = $result->keyword;
                 //              $flag = "bbb";
                 break;
             }

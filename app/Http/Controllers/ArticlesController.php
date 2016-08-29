@@ -49,25 +49,21 @@ class ArticlesController extends Controller
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
+        $text='天气';
+        $flag = "不包含";
+//        $row = $db->query("select keyword from WX_Request_Keyword order by id asc", PDO::FETCH_NUM);
 
-        $openid = 'opUv9v977Njll_YHpZYMymxI_aPE';
-//        $openids[]=$openid;
-        $app = app('wechat');
-        $tag = $app->user_tag;
-        $userTags = $tag->userTags($openid);
-        var_dump($userTags);
-//        var_dump($userTags->tagid_list);
-        if ($userTags->tagid_list) {
-            foreach ($userTags as $userTag) {
-                foreach($userTag as $value)
-                {
-                    $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
-                }
-                /*var_dump ($userTag);
-                echo    $userTag;*/
-//                $tag->batchUntagUsers([$openid], $userTag[0]);                      //删除原有标签
+        $row=DB::table('wx_request_keyword')
+            ->orderBy('id','asc')->get();
+
+        foreach ($row as $result) {
+            if (@strstr($text, $result['keyword']) != '') {
+                $flag = $result['keyword'];
+                //              $flag = "bbb";
+                break;
             }
         }
+        return $flag;
 
 /*        $usage =new usage();
         if ($usage->query_tag_id('123')) {                          //获取eventkey对应的tag
