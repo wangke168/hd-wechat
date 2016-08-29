@@ -60,7 +60,7 @@ class WechatController extends Controller
                                 $content =new Text();
                                 $content->content = $tour->verification_subscribe($openid, '1');
                                 return $content;
-                                
+
                             }
                             else {
                                 $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
@@ -75,18 +75,7 @@ class WechatController extends Controller
                             break;
                         case 'WifiConnected':
                             #wifi连接事件
-//                            $ConnectTime = $response->return_WifiConnected($message)["ConnectTime"];
-
-//                            $ctime = date("Y-m-d H:i:s", "{$ConnectTime}");
                             $response->return_WifiConnected($message);
-                     /*       $content=new Text();
-                            $content->content=$message->DeviceNo;
-                            $wechat->staff->message([$content])->to($openid)->send();
-//                            $content->content=$ctime;
-                            return $content;*/
-                         /*   $responseMsg->responseV_Text($fromUsername, $ctime);
-                            $responseMsg->responseV_Text($fromUsername, $ConnectTime);
-                            $this->insert_WifiConnected($object);*/
 
                             break;
                     }

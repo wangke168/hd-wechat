@@ -35,6 +35,8 @@ Route::get('/hd-token','TokenController@token');
 //素材管理
 Route::get('/audio','MaterialController@audio');
 
+//获取门店信息
+Route::get('/shop_info','ShopController@index');
 
 Route::get('/users','UserController@users');
 Route::get('/user/{openId}','UserController@user');
