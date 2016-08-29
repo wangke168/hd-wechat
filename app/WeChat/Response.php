@@ -23,10 +23,13 @@ class Response
 
             public $app;
             public $usage;
+            public $openid;
 
-            public function __construct(){
+            public function __construct($message){
                 $this->app=app('wechat');
                 $this->usage = new usage();
+                $userService = $this->app->user;
+                $this->openid = $userService->get($message->FromUserName)->openid;
             }
     /*    protected $usage;
         public function __construct(usage $usage)
@@ -38,12 +41,12 @@ class Response
 
 //        $app = app('wechat');
 
-        $userService = $this->app->user;
-        $openid = $userService->get($message->FromUserName)->openid;
+   /*     $userService = $this->app->user;
+        $openid = $userService->get($message->FromUserName)->openid;*/
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $content->content = $this->usage->get_openid_info($openid)->eventkey;
+                $content->content = $this->usage->get_openid_info($this->openid)->eventkey;
 //                $content->content = $app->access_token->getToken();
                 break;
             case 's':
@@ -52,7 +55,7 @@ class Response
                 $content->description = "测试";
                 $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $this->app->staff->message([$content])->to($openid)->send();
+                $this->app->staff->message([$content])->to($this->openid)->send();
                 break;
             case 'd':
                 $content = new Text();
@@ -62,14 +65,14 @@ class Response
             case 'hx':
                 $content = new Text();
                 $tour = new tour();
-                $content->content = $tour->verification_subscribe($openid, '1');
+                $content->content = $tour->verification_subscribe($this->openid, '1');
                 break;
             case '天气':
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($openid, $keyword);
+                $content = $this->request_keyword($this->openid, $keyword);
                 break;
         }
         return $content;
@@ -83,9 +86,9 @@ class Response
      */
     public function click_request($openid, $menuid)
     {
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
-        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+        $eventkey = $this->usage->get_openid_info($this->openid)->eventkey;
+        $content = $this->request_news($this->openid, $eventkey, '2', '', $menuid);
+        $this->add_menu_click_hit($this->openid, $menuid); //增加点击数统计
         return $content;
     }
 
@@ -97,8 +100,8 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
+        $eventkey = $this->usage->get_openid_info($this->openid)->eventkey;
+        $content = $this->request_news($this->openid, $eventkey, '3', $keyword, '');
 
         return $content;
     }
@@ -166,9 +169,6 @@ class Response
                 }
                 break;
             case "txt":
-                /*            $row_txt = $db->query("select id from wx_txt_request where eventkey=:eventkey AND online=:online AND focus=:focus order BY id desc limit 0,1",
-                                array("eventkey" => $eventkey, "online" => "1", "focus" => $focus));*/
-
                 $row_txt = DB::table('wx_txt_request')
                     ->where('eventkey', $eventkey)
                     ->where('online', '1')
@@ -180,8 +180,6 @@ class Response
                 }
                 break;
             case "voice":
-                /*              $row_voice = $db->query("select id from wx_voice_request where eventkey=:eventkey AND online=:online AND focus=:focus order BY id desc limit 0,1",
-                                  array("eventkey" => $eventkey, "online" => "1", "focus" => $focus));*/
                 $row_voice = DB::table('wx_voice_request')
                     ->where('eventkey', $eventkey)
                     ->where('online', '1')
@@ -424,9 +422,6 @@ class Response
             DB::table('wx_user_add')
                 ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey]);             //插入数据统计的表
         }
-
-
-//            insert_user_unionid($fromUsername, $unionid);//先检查unionid表中是否存在，没有的话插入
     }
 
 
@@ -477,7 +472,6 @@ class Response
     {
         /*先删除原有tag*/
 
-//        $app = app('wechat');
         $tag = $this->app->user_tag;
         $userTags = $tag->userTags($openid);
 
@@ -502,17 +496,13 @@ class Response
 */
     private function check_keywowrd($text)
     {
-//        $db = new DB();
         $flag = "不包含";
-//        $row = $db->query("select keyword from WX_Request_Keyword order by id asc", PDO::FETCH_NUM);
-
         $row = DB::table('wx_request_keyword')
             ->orderBy('id', 'asc')->get();
 
         foreach ($row as $result) {
             if (@strstr($text, $result->keyword) != '') {
                 $flag = $result->keyword;
-                //              $flag = "bbb";
                 break;
             }
         }
@@ -542,7 +532,12 @@ class Response
         $wifi_info["DeviceNo"] = $postObj->DeviceNo;
         $wifi_info["fromUsername"] = $postObj->FromUserName;
         $wifi_info["ConnectTime"] = $postObj->ConnectTime;
-        return $wifi_info;
+
+        $content=new Text();
+
+//        return $wifi_info;
+
+        $this->app->staff->message([$content])->to($openid)->send();
 
 
 

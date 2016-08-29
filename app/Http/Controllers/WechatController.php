@@ -23,7 +23,7 @@ class WechatController extends Controller
 
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
             $openid = $userService->get($message->FromUserName)->openid;
-            $response = new Response();
+            $response = new Response($message);
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
