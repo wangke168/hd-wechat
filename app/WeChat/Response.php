@@ -557,7 +557,7 @@ class Response
 //        return $wifi_info;
 
 //        $this->app->staff->message($content)->to($this->openid)->send();
-        $this->app->staff->message($content)->to($this->openid)->send();
+//        $this->app->staff->message($content)->to($this->openid)->send();
 
 
     }
