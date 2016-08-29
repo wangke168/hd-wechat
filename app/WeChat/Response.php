@@ -22,10 +22,11 @@ class Response
 {
 
             public $app;
-
+            public $usage;
 
             public function __construct(){
                 $this->app=app('wechat');
+                $this->usage = new usage();
             }
     /*    protected $usage;
         public function __construct(usage $usage)
@@ -42,8 +43,7 @@ class Response
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $usage = new usage();
-                $content->content = $usage->get_openid_info($openid)->eventkey;
+                $content->content = $this->usage->get_openid_info($openid)->eventkey;
 //                $content->content = $app->access_token->getToken();
                 break;
             case 's':
@@ -56,8 +56,7 @@ class Response
                 break;
             case 'd':
                 $content = new Text();
-                $usage = new usage();
-                $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+                $info = $this->usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
                 $content->content = $info->eventkey;
                 break;
             case 'hx':
@@ -84,8 +83,7 @@ class Response
      */
     public function click_request($openid, $menuid)
     {
-        $usage = new usage();
-        $eventkey = $usage->get_openid_info($openid)->eventkey;
+        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
@@ -99,8 +97,7 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $usage = new usage();
-        $eventkey = $usage->get_openid_info($openid)->eventkey;
+        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
 
         return $content;
@@ -116,7 +113,6 @@ class Response
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
         }
-//        $app = app('wechat');
         $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
@@ -215,9 +211,8 @@ class Response
     public function request_news($openid, $eventkey, $type, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
-        $usage = new usage();
-        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
+        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
+        $uid = $this->usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -340,7 +335,6 @@ class Response
     */
     public function request_voice($openid, $type, $eventkey, $keyword)
     {
-//        $app = app('wechat');
         switch ($type) {
             case '1':
                 $row = DB::table('wx_voice_request')
@@ -411,9 +405,7 @@ class Response
 
     public function insert_subscribe($openid, $eventkey, $type)
     {
-        $usage = new usage();
-
-        $tag_id = $usage->query_tag_id($eventkey);
+        $tag_id = $this->usage->query_tag_id($eventkey);
 
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
@@ -497,9 +489,8 @@ class Response
             }
         }
 
-        $usage = new usage();
-        if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
-            $tag->batchTagUsers([$openid], $usage->query_tag_id($eventkey));          //增加标签
+        if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
+            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey));          //增加标签
         }
 
     }
