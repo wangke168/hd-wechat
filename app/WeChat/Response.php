@@ -21,11 +21,12 @@ use Crypt;
 class Response
 {
 
-    /*        public $wechat;
+            public $app;
 
-            public function __construct(Application $wechat){
-                $this->wechat=$wechat;
-            }*/
+
+            public function __construct(Application $app){
+                $this->app=$app;
+            }
     /*    protected $usage;
         public function __construct(usage $usage)
         {
@@ -34,8 +35,8 @@ class Response
     public function news($message, $keyword)
     {
 
-        $app = app('wechat');
-        $userService = $app->user;
+//        $app = app('wechat');
+        $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
         switch ($keyword) {
             case "a":
@@ -50,7 +51,7 @@ class Response
                 $content->description = "测试";
                 $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $app->staff->message([$content])->to($openid)->send();
+                $this->app->staff->message([$content])->to($openid)->send();
                 break;
             case 'd':
                 $content = new Text();
@@ -114,13 +115,13 @@ class Response
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
         }
-        $app = app('wechat');
+//        $app = app('wechat');
         $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
             $content_news = $this->request_news($openid, $eventkey, '1', '', '');
-            $app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
@@ -134,7 +135,7 @@ class Response
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
             $content_news = $this->request_news($openid, 'all', '1', '', '');
-            $app->staff->message($content_news)->to($openid)->send();
+            $this->app->staff->message($content_news)->to($openid)->send();
         }
 //        return $content;
     }
@@ -307,7 +308,7 @@ class Response
 
     private function request_txt($openid, $type, $eventkey, $keyword)
     {
-        $app = app('wechat');
+//        $app = app('wechat');
         switch ($type) {
             case 1:
                 $row = DB::table('wx_txt_request')
@@ -328,7 +329,7 @@ class Response
         foreach ($row as $result) {
             $content = new Text();
             $content->content = $result->content;
-            $app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
 
@@ -338,7 +339,7 @@ class Response
     */
     public function request_voice($openid, $type, $eventkey, $keyword)
     {
-        $app = app('wechat');
+//        $app = app('wechat');
         switch ($type) {
             case '1':
                 $row = DB::table('wx_voice_request')
@@ -359,7 +360,7 @@ class Response
         foreach ($row as $result) {
             $voice = new Voice();
             $voice->media_id = $result->media_id;
-            $app->staff->message($voice)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($voice)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
 
@@ -483,8 +484,8 @@ class Response
     {
         /*先删除原有tag*/
 
-        $app = app('wechat');
-        $tag = $app->user_tag;
+//        $app = app('wechat');
+        $tag = $this->app->user_tag;
         $userTags = $tag->userTags($openid);
 
         if ($userTags->tagid_list) {
@@ -550,6 +551,9 @@ class Response
         $wifi_info["fromUsername"] = $postObj->FromUserName;
         $wifi_info["ConnectTime"] = $postObj->ConnectTime;
         return $wifi_info;
+
+
+
     }
 
 }

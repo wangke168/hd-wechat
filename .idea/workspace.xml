@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Response.php" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -27,15 +28,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-50.92857" vertical-offset="16110" max-vertical-offset="17920">
-              <caret line="548" column="51" selection-start-line="548" selection-start-column="43" selection-end-line="548" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="15287" max-vertical-offset="18048">
+              <caret line="486" column="14" selection-start-line="486" selection-start-column="10" selection-end-line="486" selection-end-column="14" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#110#128#0#PHP" expanded="true" />
-                <marker date="1472449096799" expanded="true" signature="17793:17847" placeholder="select keywo..WX_Request_Keyword..." />
+                <marker date="1472451079676" expanded="true" signature="17830:17884" placeholder="select keywo..WX_Request_Keyword..." />
               </folding>
             </state>
           </provider>
@@ -51,12 +52,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WechatController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84109914" vertical-offset="1920" max-vertical-offset="4288">
-              <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
-              <folding />
+            <state vertical-scroll-proportion="-8.421053" vertical-offset="320" max-vertical-offset="4576">
+              <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+              <folding>
+                <element signature="e#40#64#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -450,14 +453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Foundation/Application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/cache.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1940298" vertical-offset="0" max-vertical-offset="0">
@@ -671,23 +666,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
+    <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Foundation/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-50.92857" vertical-offset="16110" max-vertical-offset="17920">
-          <caret line="548" column="51" selection-start-line="548" selection-start-column="43" selection-end-line="548" selection-end-column="51" />
-          <folding>
-            <element signature="e#6#86#0#PHP" expanded="true" />
-            <element signature="e#110#128#0#PHP" expanded="true" />
-            <marker date="1472449096799" expanded="true" signature="17793:17847" placeholder="select keywo..WX_Request_Keyword..." />
-          </folding>
+        <state vertical-scroll-proportion="127.14286" vertical-offset="5096" max-vertical-offset="7296">
+          <caret line="64" column="6" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84109914" vertical-offset="1920" max-vertical-offset="4288">
-          <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
-          <folding />
+        <state vertical-scroll-proportion="-8.421053" vertical-offset="320" max-vertical-offset="4576">
+          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding>
+            <element signature="e#40#64#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="15287" max-vertical-offset="18048">
+          <caret line="486" column="14" selection-start-line="486" selection-start-column="10" selection-end-line="486" selection-end-column="14" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+            <element signature="e#110#128#0#PHP" expanded="true" />
+            <marker date="1472451079676" expanded="true" signature="17830:17884" placeholder="select keywo..WX_Request_Keyword..." />
+          </folding>
         </state>
       </provider>
     </entry>

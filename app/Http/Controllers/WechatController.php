@@ -20,6 +20,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $userService = $wechat->user;
+
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
             $openid = $userService->get($message->FromUserName)->openid;
             $response = new Response();
@@ -76,11 +77,12 @@ class WechatController extends Controller
 //                            $ConnectTime = $response->return_WifiConnected($message)["ConnectTime"];
 
 //                            $ctime = date("Y-m-d H:i:s", "{$ConnectTime}");
-
-                            $content=new Text();
-                            $content->content='aaa';
+                            $response->return_WifiConnected($message);
+                     /*       $content=new Text();
+                            $content->content=$message->DeviceNo;
+                            $wechat->staff->message([$content])->to($openid)->send();
 //                            $content->content=$ctime;
-                            return $content;
+                            return $content;*/
                          /*   $responseMsg->responseV_Text($fromUsername, $ctime);
                             $responseMsg->responseV_Text($fromUsername, $ConnectTime);
                             $this->insert_WifiConnected($object);*/
