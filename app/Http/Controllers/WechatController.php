@@ -73,6 +73,18 @@ class WechatController extends Controller
                             break;
                         case 'WifiConnected':
                             #wifi连接事件
+//                            $ConnectTime = $response->return_WifiConnected($message)["ConnectTime"];
+
+//                            $ctime = date("Y-m-d H:i:s", "{$ConnectTime}");
+
+                            $content=new Text();
+                            $content->content=$message->DeviceNo;
+//                            $content->content=$ctime;
+                            return $content;
+                         /*   $responseMsg->responseV_Text($fromUsername, $ctime);
+                            $responseMsg->responseV_Text($fromUsername, $ConnectTime);
+                            $this->insert_WifiConnected($object);*/
+
                             break;
                     }
                     break;

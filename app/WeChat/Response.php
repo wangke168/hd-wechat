@@ -40,7 +40,9 @@ class Response
         switch ($keyword) {
             case "a":
                 $content = new Text();
-                $content->content = $app->access_token->getToken();
+                $usage = new usage();
+                $content->content = $usage->get_openid_info($openid)->eventkey;
+//                $content->content = $app->access_token->getToken();
                 break;
             case 's':
                 $content = new News();
@@ -247,7 +249,7 @@ class Response
                     ->skip(0)->take(8)->get();
                 break;
             case 3:
-                $keyword=$this->check_keywowrd($keyword);
+                $keyword = $this->check_keywowrd($keyword);
                 $row = DB::table('wx_article')
                     ->where('keyword', 'like', '%' . $keyword . '%')
                     ->where(function ($query) use ($eventkey) {
@@ -487,8 +489,7 @@ class Response
 
         if ($userTags->tagid_list) {
             foreach ($userTags as $userTag) {
-                foreach($userTag as $value)
-                {
+                foreach ($userTag as $value) {
                     $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
                 }
             }
@@ -512,8 +513,8 @@ class Response
         $flag = "不包含";
 //        $row = $db->query("select keyword from WX_Request_Keyword order by id asc", PDO::FETCH_NUM);
 
-        $row=DB::table('wx_request_keyword')
-            ->orderBy('id','asc')->get();
+        $row = DB::table('wx_request_keyword')
+            ->orderBy('id', 'asc')->get();
 
         foreach ($row as $result) {
             if (@strstr($text, $result->keyword) != '') {
@@ -525,5 +526,30 @@ class Response
         return $flag;
     }
 
+   /**
+   * 连接wifi 时获取资料
+   * ToUserName	开发者微信号
+     FromUserName	连网的用户帐号（一个OpenID）
+     CreateTime	消息创建时间 （整型）
+     MsgType	消息类型，event
+     Event	事件类型，WifiConnected (Wi-Fi连网成功)
+     ConnectTime	连网时间（整型）
+     ExpireTime	系统保留字段，固定值
+     VendorId	系统保留字段，固定值
+     ShopId	门店ID，即shop_id
+     DeviceNo	连网的设备无线mac地址，对应bssid
+   *
+   */
+
+    public function  return_WifiConnected($postObj)
+    {
+        $wifi_info = array();
+        $wifi_info["ConnectTime"] = $postObj->ConnectTime;
+        $wifi_info["ShopId"] = $postObj->ShopId;
+        $wifi_info["DeviceNo"] = $postObj->DeviceNo;
+        $wifi_info["fromUsername"] = $postObj->FromUserName;
+        $wifi_info["ConnectTime"] = $postObj->ConnectTime;
+        return $wifi_info;
+    }
 
 }
