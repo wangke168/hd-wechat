@@ -24,8 +24,8 @@ class Response
             public $app;
 
 
-            public function __construct(Application $app){
-                $this->app=$app;
+            public function __construct(){
+                $this->app=app('wechat');
             }
     /*    protected $usage;
         public function __construct(usage $usage)
@@ -36,6 +36,7 @@ class Response
     {
 
 //        $app = app('wechat');
+
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
         switch ($keyword) {
