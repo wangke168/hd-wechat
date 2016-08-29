@@ -60,6 +60,7 @@ class WechatController extends Controller
                                 $content =new Text();
                                 $content->content = $tour->verification_subscribe($openid, '1');
                                 return $content;
+                                
                             }
                             else {
                                 $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
