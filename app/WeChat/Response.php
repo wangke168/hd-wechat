@@ -535,11 +535,11 @@ class Response
 
         $content=new Text();
 
-        $content->content=$postObj->DeviceNo;
+        $content->content=$postObj->ShopId;
 //        return $wifi_info;
 
         $this->app->staff->message($content)->to($this->openid)->send();
-
+//        $this->app->staff->message($content)->to($this->openid)->send();
 
 
     }
