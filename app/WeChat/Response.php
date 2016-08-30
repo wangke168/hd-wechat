@@ -27,9 +27,9 @@ class Response
 
             public function __construct($message){
                 $this->app=app('wechat');
-//                $this->usage = new usage();
-//                $userService = $this->app->user;
-//                $this->openid = $userService->get($message->FromUserName)->openid;
+                $this->usage = new usage();
+                $userService = $this->app->user;
+                $this->openid = $userService->get($message->FromUserName)->openid;
             }
     /*    protected $usage;
         public function __construct(usage $usage)
@@ -40,16 +40,16 @@ class Response
     {
 
 //        $app = app('wechat');
-        $usage = new usage();
-        $userService = $this->app->user;
-        $openid = $userService->get($message->FromUserName)->openid;
+
+   /*     $userService = $this->app->user;
+        $openid = $userService->get($message->FromUserName)->openid;*/
         switch ($keyword) {
             case "a":
                 $content = new Text();
 
-                if( $usage->get_openid_info($openid)->eventkey)
+                if( $this->usage->get_openid_info($this->openid)->eventkey)
                 {
-                    $content->content = $usage->get_openid_info($openid)->eventkey;
+                    $content->content = $this->usage->get_openid_info($this->openid)->eventkey;
                 }
                 else
                 {
@@ -63,24 +63,24 @@ class Response
                 $content->description = "测试";
                 $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $this->app->staff->message([$content])->to($openid)->send();
+                $this->app->staff->message([$content])->to($this->openid)->send();
                 break;
             case 'd':
                 $content = new Text();
-                $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+                $info = $this->usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
                 $content->content = $info->eventkey;
                 break;
             case 'hx':
                 $content = new Text();
                 $tour = new tour();
-                $content->content = $tour->verification_subscribe($openid, '1');
+                $content->content = $tour->verification_subscribe($this->openid, '1');
                 break;
             case '天气':
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($openid, $keyword);
+                $content = $this->request_keyword($this->openid, $keyword);
                 break;
         }
         return $content;
@@ -94,10 +94,9 @@ class Response
      */
     public function click_request($openid, $menuid)
     {
-        $usage = new usage();
-        $eventkey = $usage->get_openid_info($openid)->eventkey;
-        $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
-        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+        $eventkey = $this->usage->get_openid_info($this->openid)->eventkey;
+        $content = $this->request_news($this->openid, $eventkey, '2', '', $menuid);
+        $this->add_menu_click_hit($this->openid, $menuid); //增加点击数统计
         return $content;
     }
 
@@ -109,9 +108,8 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $usage=new usage();
-        $eventkey = $usage->get_openid_info($openid)->eventkey;
-        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
+        $eventkey = $this->usage->get_openid_info($this->openid)->eventkey;
+        $content = $this->request_news($this->openid, $eventkey, '3', $keyword, '');
 
         return $content;
     }
@@ -130,22 +128,22 @@ class Response
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
-            $content_news = $this->request_news($openid, $eventkey, '1', '', '');
-            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
+            $content_news = $this->request_news($this->openid, $eventkey, '1', '', '');
+            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($this->openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-            $this->request_voice($openid, '1', $eventkey, '');
+            $this->request_voice($this->openid, '1', $eventkey, '');
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
-            $this->request_txt($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
+            $this->request_txt($this->openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
         }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
-            $content_news = $this->request_news($openid, 'all', '1', '', '');
-            $this->app->staff->message($content_news)->to($openid)->send();
+            $content_news = $this->request_news($this->openid, 'all', '1', '', '');
+            $this->app->staff->message($content_news)->to($this->openid)->send();
         }
 //        return $content;
     }
@@ -219,9 +217,8 @@ class Response
     public function request_news($openid, $eventkey, $type, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
-        $usage=new usage();
-        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
+        $wxnumber = $this->usage->authcode($this->openid, 'ENCODE', 0);
+        $uid = $this->usage->get_uid($this->openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -334,7 +331,7 @@ class Response
         foreach ($row as $result) {
             $content = new Text();
             $content->content = $result->content;
-            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($this->openid)->send();
         }
     }
 
@@ -364,7 +361,7 @@ class Response
         foreach ($row as $result) {
             $voice = new Voice();
             $voice->media_id = $result->media_id;
-            $this->app->staff->message($voice)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($voice)->by('1001@u_hengdian')->to($this->openid)->send();
         }
     }
 
@@ -378,7 +375,7 @@ class Response
     private function add_menu_click_hit($openid, $menuID)
     {
         DB::table('wx_click_hits')
-            ->insert(['wx_openid' => $openid, 'click' => $menuID]);
+            ->insert(['wx_openid' => $this->openid, 'click' => $menuID]);
     }
 
     /**
@@ -414,25 +411,24 @@ class Response
 
     public function insert_subscribe($openid, $eventkey, $type)
     {
-        $usage=new usage();
-        $tag_id = $usage->query_tag_id($eventkey);
+        $tag_id = $this->usage->query_tag_id($eventkey);
 
         $row = DB::table('wx_user_info')
-            ->where('wx_openid', $openid)
+            ->where('wx_openid', $this->openid)
             ->first();
         if (!$row) {
             DB::table('wx_user_info')
-                ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
+                ->insert(['wx_openid' => $this->openid, 'eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
         } else {
             DB::table('wx_user_info')
-                ->where('wx_openid', $openid)
+                ->where('wx_openid', $this->openid)
                 ->update(['eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
         }
 
         if ($type == "subscribe")//新关注
         {
             DB::table('wx_user_add')
-                ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey]);             //插入数据统计的表
+                ->insert(['wx_openid' => $this->openid, 'eventkey' => $eventkey]);             //插入数据统计的表
         }
     }
 
@@ -443,8 +439,8 @@ class Response
      */
     public function insert_unsubscribe($openid)
     {
-        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1', 'subscribe' => '0', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
-        DB::table('wx_user_esc')->insert(['wx_openid' => $openid]);                           //增加到wx_user_esc表中
+        DB::table('wx_user_info')->where('wx_openid', $this->openid)->update(['esc' => '1', 'subscribe' => '0', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
+        DB::table('wx_user_esc')->insert(['wx_openid' => $this->openid]);                           //增加到wx_user_esc表中
     }
 
 
@@ -456,7 +452,7 @@ class Response
     function check_unionid($openid)
     {
         $row = DB::table('wx_user_unionid')
-            ->where('wx_openid', $openid)->first();
+            ->where('wx_openid', $this->openid)->first();
         $flag = ($row) ? true : false;
         return $flag;
     }
@@ -468,9 +464,9 @@ class Response
      */
     public function insert_user_unionid($openid, $unionid)
     {
-        if (!check_unionid($openid)) {//检查union表中是否存在
+        if (!check_unionid($this->openid)) {//检查union表中是否存在
             DB::table(wx_user_unionid)
-                ->insert(['wx_openid' => $openid, "wx_unionid" => $unionid]);
+                ->insert(['wx_openid' => $this->openid, "wx_unionid" => $unionid]);
         }
     }
 
@@ -483,20 +479,20 @@ class Response
     public function make_user_tag($openid, $eventkey)
     {
         /*先删除原有tag*/
-        $usage=new usage();
+
         $tag = $this->app->user_tag;
-        $userTags = $tag->userTags($openid);
+        $userTags = $tag->userTags($this->openid);
 
         if ($userTags->tagid_list) {
             foreach ($userTags as $userTag) {
                 foreach ($userTag as $value) {
-                    $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
+                    $tag->batchUntagUsers([$this->openid], $value);                      //删除原有标签
                 }
             }
         }
 
-        if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
-            $tag->batchTagUsers([$openid], $usage->query_tag_id($eventkey));          //增加标签
+        if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
+            $tag->batchTagUsers([$this->openid], $this->usage->query_tag_id($eventkey));          //增加标签
         }
 
     }
