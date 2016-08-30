@@ -28,8 +28,8 @@ class Response
             public function __construct($message){
                 $this->app=app('wechat');
 //                $this->usage = new usage();
-                $userService = $this->app->user;
-                $this->openid = $userService->get($message->FromUserName)->openid;
+//                $userService = $this->app->user;
+//                $this->openid = $userService->get($message->FromUserName)->openid;
             }
     /*    protected $usage;
         public function __construct(usage $usage)
@@ -40,16 +40,16 @@ class Response
     {
 
 //        $app = app('wechat');
-
-   /*     $userService = $this->app->user;
-        $openid = $userService->get($message->FromUserName)->openid;*/
+        $usage = new usage();
+        $userService = $this->app->user;
+        $openid = $userService->get($message->FromUserName)->openid;
         switch ($keyword) {
             case "a":
                 $content = new Text();
 
-                if( $this->usage->get_openid_info($this->openid)->eventkey)
+                if( $usage->get_openid_info($openid)->eventkey)
                 {
-                    $content->content = $this->usage->get_openid_info($this->openid)->eventkey;
+                    $content->content = $usage->get_openid_info($openid)->eventkey;
                 }
                 else
                 {
@@ -63,24 +63,24 @@ class Response
                 $content->description = "测试";
                 $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $this->app->staff->message([$content])->to($this->openid)->send();
+                $this->app->staff->message([$content])->to($openid)->send();
                 break;
             case 'd':
                 $content = new Text();
-                $info = $this->usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+                $info = $usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
                 $content->content = $info->eventkey;
                 break;
             case 'hx':
                 $content = new Text();
                 $tour = new tour();
-                $content->content = $tour->verification_subscribe($this->openid, '1');
+                $content->content = $tour->verification_subscribe($openid, '1');
                 break;
             case '天气':
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($this->openid, $keyword);
+                $content = $this->request_keyword($openid, $keyword);
                 break;
         }
         return $content;
@@ -109,7 +109,8 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+        $usage=new usage();
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
         $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
 
         return $content;
@@ -218,8 +219,9 @@ class Response
     public function request_news($openid, $eventkey, $type, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
-        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
-        $uid = $this->usage->get_uid($openid);
+        $usage=new usage();
+        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
+        $uid = $usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -412,7 +414,8 @@ class Response
 
     public function insert_subscribe($openid, $eventkey, $type)
     {
-        $tag_id = $this->usage->query_tag_id($eventkey);
+        $usage=new usage();
+        $tag_id = $usage->query_tag_id($eventkey);
 
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
@@ -480,7 +483,7 @@ class Response
     public function make_user_tag($openid, $eventkey)
     {
         /*先删除原有tag*/
-
+        $usage=new usage();
         $tag = $this->app->user_tag;
         $userTags = $tag->userTags($openid);
 
@@ -492,8 +495,8 @@ class Response
             }
         }
 
-        if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
-            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey));          //增加标签
+        if ($usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
+            $tag->batchTagUsers([$openid], $usage->query_tag_id($eventkey));          //增加标签
         }
 
     }
