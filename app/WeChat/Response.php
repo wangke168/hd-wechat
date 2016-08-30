@@ -560,7 +560,7 @@ class Response
 
         DB::table('wx_user_info')
             ->where('wx_openid', $openid)
-            ->update(['eventkey' => $shop_id, 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
+            ->update(['eventkey' => $row->eventkey,'tag_id'=>'111', 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
 
 //        $this->insert_subscribe($openid, $shop_id, 'scan');            //更新openid信息
 //        $this->request_focus($openid, $eventkey);                       //推送关注信息

@@ -30,12 +30,12 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5477032" vertical-offset="17423" max-vertical-offset="19328">
-              <caret line="559" column="0" selection-start-line="559" selection-start-column="0" selection-end-line="559" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6607774" vertical-offset="17423" max-vertical-offset="19328">
+              <caret line="562" column="67" selection-start-line="562" selection-start-column="67" selection-end-line="562" selection-end-column="67" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#110#128#0#PHP" expanded="true" />
-                <marker date="1472524651871" expanded="true" signature="20154:20272" placeholder="insert into ..." />
+                <marker date="1472524867366" expanded="true" signature="20176:20294" placeholder="insert into ..." />
               </folding>
             </state>
           </provider>
@@ -663,12 +663,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5477032" vertical-offset="17423" max-vertical-offset="19328">
-          <caret line="559" column="0" selection-start-line="559" selection-start-column="0" selection-end-line="559" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6607774" vertical-offset="17423" max-vertical-offset="19328">
+          <caret line="562" column="67" selection-start-line="562" selection-start-column="67" selection-end-line="562" selection-end-column="67" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#110#128#0#PHP" expanded="true" />
-            <marker date="1472524651871" expanded="true" signature="20154:20272" placeholder="insert into ..." />
+            <marker date="1472524867366" expanded="true" signature="20176:20294" placeholder="insert into ..." />
           </folding>
         </state>
       </provider>
