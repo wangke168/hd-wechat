@@ -50,7 +50,7 @@ class WechatController extends Controller
                             }
                             if ($openid=='o2e-YuNJXi3oNOkH_dh23FZtGFnk')
                             {
-                                $eventkey='11111';
+                                $eventkey='101';
                             }
                             $response->insert_subscribe($openid, $eventkey, 'subscribe');       //更新openid信息
                             $response->request_focus($openid, $eventkey);                       //推送关注信息
