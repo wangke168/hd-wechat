@@ -537,19 +537,14 @@ class Response
 
     public function  return_WifiConnected($postObj)
     {
-        /*        $wifi_info = array();
-                $wifi_info["ConnectTime"] = $postObj->ConnectTime;
-                $wifi_info["ShopId"] = $postObj->ShopId;
-                $wifi_info["DeviceNo"] = $postObj->DeviceNo;
-                $wifi_info["fromUsername"] = $postObj->FromUserName;
-                $wifi_info["ConnectTime"] = $postObj->ConnectTime;*/
-
         $openid = $postObj->FromUserName;
         $shop_id = $postObj->ShopId;
         $bssid = $postObj->DeviceNo;
         $connecttime = $postObj->ConnectTime;
 
         $connecttime=date('Y-m-d H-i-s',$connecttime);
+
+        /*插入wifi信息*/
         DB::table('wx_wificonnect_info')
             ->insert(['wx_openid' => $openid, 'shop_id' => $shop_id, 'bssid' => $bssid, 'connecttime' => $connecttime]);
 
@@ -564,24 +559,22 @@ class Response
 
     }
 
+    /**
+     * 检查是不是3分钟之内扫二维码连的wifi，如果是，根据shop_id获取eventkey
+     * @param $openid
+     * @return string
+     */
     public function check_openid_wificonnected($openid)
     {
 
-
-        /*        $db->row("insert into wx_wificonnect_info (wx_openid,shop_id,bssid,connecttime) VALUES (:wx_openid,:shop_id,:bssid,:connecttime)",
-                    array("wx_openid" => $wifi_info["fromUsername"], "shop_id" => $wifi_info["ShopId"], "bssid" => $wifi_info["DeviceNo"], "connecttime" => $addtime));*/
-
         $row = DB::table('wx_wificonnect_info')
             ->where('wx_openid', $openid)
-            ->where('connecttime', '>', time() - 180)->first();
+            ->where('connecttime', '>', date('Y-m-d H-i-s',time() - 180))->first();
         if ($row) {
             $eventkey = $this->usage->get_shop_info($row->shop_id)->eventkey;
         } else {
             $eventkey = '';
         }
         return $eventkey;
-
     }
-
-
 }

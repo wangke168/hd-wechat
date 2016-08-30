@@ -49,13 +49,14 @@ class ArticlesController extends Controller
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
-
+echo    date('Y-m-d H-i-s',time() - 180);
         $usage=new usage();
         $row = DB::table('wx_wificonnect_info')
             ->where('wx_openid', 'o2e-YuNJXi3oNOkH_dh23FZtGFnk')
-            ->where('connecttime', '>', time() - 180)->first();
+            ->where('connecttime', '>', date('Y-m-d H-i-s',time() - 180))->first();
         if ($row) {
             $eventkey = $usage->get_shop_info($row->shop_id)->eventkey;
+//            $eventkey='asd';
         } else {
             $eventkey = '';
         }
