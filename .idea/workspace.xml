@@ -31,11 +31,11 @@
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6607774" vertical-offset="17423" max-vertical-offset="19328">
-              <caret line="562" column="67" selection-start-line="562" selection-start-column="67" selection-end-line="562" selection-end-column="67" />
+              <caret line="562" column="42" selection-start-line="562" selection-start-column="42" selection-end-line="562" selection-end-column="42" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
                 <element signature="e#110#128#0#PHP" expanded="true" />
-                <marker date="1472524867366" expanded="true" signature="20176:20294" placeholder="insert into ..." />
+                <marker date="1472525057131" expanded="true" signature="20168:20286" placeholder="insert into ..." />
               </folding>
             </state>
           </provider>
@@ -664,11 +664,11 @@
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6607774" vertical-offset="17423" max-vertical-offset="19328">
-          <caret line="562" column="67" selection-start-line="562" selection-start-column="67" selection-end-line="562" selection-end-column="67" />
+          <caret line="562" column="42" selection-start-line="562" selection-start-column="42" selection-end-line="562" selection-end-column="42" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
             <element signature="e#110#128#0#PHP" expanded="true" />
-            <marker date="1472524867366" expanded="true" signature="20176:20294" placeholder="insert into ..." />
+            <marker date="1472525057131" expanded="true" signature="20168:20286" placeholder="insert into ..." />
           </folding>
         </state>
       </provider>
