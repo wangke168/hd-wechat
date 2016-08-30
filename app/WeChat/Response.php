@@ -27,7 +27,7 @@ class Response
 
             public function __construct($message){
                 $this->app=app('wechat');
-                $this->usage = new usage();
+//                $this->usage = new usage();
                 $userService = $this->app->user;
                 $this->openid = $userService->get($message->FromUserName)->openid;
             }
@@ -94,7 +94,8 @@ class Response
      */
     public function click_request($openid, $menuid)
     {
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+        $usage = new usage();
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
         $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
