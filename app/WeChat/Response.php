@@ -94,9 +94,9 @@ class Response
      */
     public function click_request($openid, $menuid)
     {
-        $eventkey = $this->usage->get_openid_info($this->openid)->eventkey;
-        $content = $this->request_news($this->openid, $eventkey, '2', '', $menuid);
-        $this->add_menu_click_hit($this->openid, $menuid); //增加点击数统计
+        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+        $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
+        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
         return $content;
     }
 
@@ -108,8 +108,8 @@ class Response
      */
     private function request_keyword($openid, $keyword)
     {
-        $eventkey = $this->usage->get_openid_info($this->openid)->eventkey;
-        $content = $this->request_news($this->openid, $eventkey, '3', $keyword, '');
+        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
 
         return $content;
     }
@@ -552,7 +552,7 @@ class Response
 
 
         $content=new Text();
-        
+
         $content->content=$eventkey;
 //        return $wifi_info;
 
