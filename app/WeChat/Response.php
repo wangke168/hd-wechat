@@ -29,8 +29,8 @@ class Response
     {
         $this->app = app('wechat');
         $this->usage = new usage();
- /*       $userService = $this->app->user;
-        $this->openid = $userService->get($message->FromUserName)->openid;*/
+        /*       $userService = $this->app->user;
+               $this->openid = $userService->get($message->FromUserName)->openid;*/
     }
 
     /*    protected $usage;
@@ -545,12 +545,12 @@ class Response
                 $wifi_info["ConnectTime"] = $postObj->ConnectTime;*/
 
         $openid = $postObj->FromUserName;
-        $shop_id=$postObj->ShopId;
-        $bssid=$postObj->DeviceNo;
-        $connecttime=date("Y-m-d H:i:s", $postObj->ConnectTime);
+        $shop_id = $postObj->ShopId;
+        $bssid = $postObj->DeviceNo;
+        $connecttime = $postObj->ConnectTime;
 
         DB::table('wx_wificonnect_info')
-            ->insert(['wx_openid'=>$openid,'shop_id'=>$shop_id,'bssid'=>$bssid,'connecttime'=>$connecttime]);
+            ->insert(['wx_openid' => $openid, 'shop_id' => $shop_id, 'bssid' => $bssid, 'connecttime' => $connecttime]);
 
         $row = DB::table('wx_shop_info')
             ->where('shop_id', $postObj->ShopId)
@@ -560,7 +560,7 @@ class Response
 
         DB::table('wx_user_info')
             ->where('wx_openid', $openid)
-            ->update(['eventkey' => $bssid,'tag_id'=>'111', 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
+            ->update(['eventkey' => $bssid, 'tag_id' => '111', 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
 
 //        $this->insert_subscribe($openid, $shop_id, 'scan');            //更新openid信息
 //        $this->request_focus($openid, $eventkey);                       //推送关注信息
@@ -575,25 +575,26 @@ class Response
         $this->app->staff->message($content)->to($openid)->send();
 
 
-
     }
 
-    private function insert_WifiConnected($postObj)
+    public function check_openid_wificonnected($openid)
     {
-        $wifi_info = array();
-        $wifi_info["ConnectTime"] = $postObj->ConnectTime;
-        $wifi_info["ShopId"] = $postObj->ShopId;
-        $wifi_info["DeviceNo"] = $postObj->DeviceNo;
-        $wifi_info["fromUsername"] = $postObj->FromUserName;
-        $wifi_info["DeviceNo"] = $postObj->DeviceNo;
-        $wifi_info["ConnectTime"] = $postObj->ConnectTime;
-        $addtime = date("Y-m-d H:i:s", "{$wifi_info["ConnectTime"]}");
-        $db = new DB();
 
-        $db->row("insert into wx_wificonnect_info (wx_openid,shop_id,bssid,connecttime) VALUES (:wx_openid,:shop_id,:bssid,:connecttime)",
-            array("wx_openid" => $wifi_info["fromUsername"], "shop_id" => $wifi_info["ShopId"], "bssid" => $wifi_info["DeviceNo"], "connecttime" => $addtime));
+
+        /*        $db->row("insert into wx_wificonnect_info (wx_openid,shop_id,bssid,connecttime) VALUES (:wx_openid,:shop_id,:bssid,:connecttime)",
+                    array("wx_openid" => $wifi_info["fromUsername"], "shop_id" => $wifi_info["ShopId"], "bssid" => $wifi_info["DeviceNo"], "connecttime" => $addtime));*/
+
+        $row = DB::table('wx_wificonnect_info')
+            ->where('wx_openid', $openid)
+            ->where('connecttime', '>', time() - 180)->first();
+        if ($row) {
+            $eventkey = $this->usage->get_shop_info($row->shop_id)->eventkey;
+        } else {
+            $eventkey = '';
+        }
+        return $eventkey;
+
     }
-
 
 
 }

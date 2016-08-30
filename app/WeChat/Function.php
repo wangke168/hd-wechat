@@ -79,6 +79,26 @@ class usage
         }
     }
 
+    /**
+     * 查询门店对应信息
+     * @param $shop_id
+     * @return mixed|string|static
+     */
+    public function get_shop_info($shop_id)
+    {
+        $row = DB::table('wx_shop_info')
+            ->where('shop_id', $shop_id)
+            ->first();
+        if($row)
+        {
+            return $row;
+        }
+        else
+        {
+            return '';
+        }
+
+    }
 
     /*
      * 加密解密

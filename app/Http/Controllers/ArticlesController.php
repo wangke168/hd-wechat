@@ -49,21 +49,17 @@ class ArticlesController extends Controller
 
         /*   $tour = new tour();
            return $tour->check_amount('1', '2');*/
-        $text='天气';
-        $flag = "不包含";
-//        $row = $db->query("select keyword from WX_Request_Keyword order by id asc", PDO::FETCH_NUM);
 
-        $row=DB::table('wx_request_keyword')
-            ->orderBy('id','asc')->get();
-
-        foreach ($row as $result) {
-            if (@strstr($text, $result['keyword']) != '') {
-                $flag = $result['keyword'];
-                //              $flag = "bbb";
-                break;
-            }
+        $usage=new usage();
+        $row = DB::table('wx_wificonnect_info')
+            ->where('wx_openid', 'o2e-YuNJXi3oNOkH_dh23FZtGFnk')
+            ->where('connecttime', '>', time() - 180)->first();
+        if ($row) {
+            $eventkey = $usage->get_shop_info($row->shop_id)->eventkey;
+        } else {
+            $eventkey = '';
         }
-        return $flag;
+        return $eventkey;
 
 /*        $usage =new usage();
         if ($usage->query_tag_id('123')) {                          //获取eventkey对应的tag

@@ -46,27 +46,23 @@ class WechatController extends Controller
                             if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
-                                $eventkey = "";
-                            }
-                            if ($openid=='o2e-YuNJXi3oNOkH_dh23FZtGFnk')
-                            {
-                                $eventkey='101';
+//                                $eventkey = "";
+                                $eventkey = $response->check_openid_wificonnected($openid);
                             }
                             $response->insert_subscribe($openid, $eventkey, 'subscribe');       //更新openid信息
                             $response->request_focus($openid, $eventkey);                       //推送关注信息
-                            $response->make_user_tag($openid,$eventkey);                        //标签管理
+                            $response->make_user_tag($openid, $eventkey);                        //标签管理
                             break;
                         case 'SCAN':
                             #重复关注事件
-                            $eventkey=$message->EventKey;
+                            $eventkey = $message->EventKey;
                             if ($eventkey == "1336") {
                                 $tour = new tour();
-                                $content =new Text();
+                                $content = new Text();
                                 $content->content = $tour->verification_subscribe($openid, '1');
                                 return $content;
 
-                            }
-                            else {
+                            } else {
                                 $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
                                 $response->request_focus($openid, $eventkey);                       //推送关注信息
                                 $response->make_user_tag($openid, $eventkey);                        //标签管理
