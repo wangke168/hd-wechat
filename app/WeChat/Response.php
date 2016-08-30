@@ -241,6 +241,10 @@ class Response
                 $row = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('classid', $menuid)
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
                     ->where('audit', '1')
                     ->where('del', '0')
                     ->where('online', '1')
