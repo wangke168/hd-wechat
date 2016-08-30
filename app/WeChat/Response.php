@@ -546,9 +546,9 @@ class Response
             ->first();
 
         $eventkey=$row->eventkey;
-/*        $this->insert_subscribe($this->openid, $eventkey, 'scan');            //更新openid信息
+        $this->insert_subscribe($this->openid, $eventkey, 'scan');            //更新openid信息
         $this->request_focus($this->openid, $eventkey);                       //推送关注信息
-        $this->make_user_tag($this->openid, $eventkey);                        //标签管理*/
+        $this->make_user_tag($this->openid, $eventkey);                        //标签管理
 
 
         $content=new Text();
