@@ -557,7 +557,7 @@ class Response
             ->first();
 
         $eventkey = $row->eventkey;
-        $this->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
+        $this->insert_subscribe($openid, $shop_id, 'scan');            //更新openid信息
 //        $this->request_focus($openid, $eventkey);                       //推送关注信息
         $this->make_user_tag($openid, $eventkey);                        //标签管理
 
