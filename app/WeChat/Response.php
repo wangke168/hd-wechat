@@ -552,8 +552,7 @@ class Response
 
 
         $content=new Text();
-
-
+        
         $content->content=$eventkey;
 //        return $wifi_info;
 
