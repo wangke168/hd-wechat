@@ -557,9 +557,14 @@ class Response
             ->first();
 
         $eventkey = $row->eventkey;
-        $this->insert_subscribe($openid, $shop_id, 'scan');            //更新openid信息
+
+        DB::table('wx_user_info')
+            ->where('wx_openid', $openid)
+            ->update(['eventkey' => $eventkey, 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
+        
+//        $this->insert_subscribe($openid, $shop_id, 'scan');            //更新openid信息
 //        $this->request_focus($openid, $eventkey);                       //推送关注信息
-        $this->make_user_tag($openid, $eventkey);                        //标签管理
+//        $this->make_user_tag($openid, $eventkey);                        //标签管理
 
 
         $content = new Text();
