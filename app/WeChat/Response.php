@@ -549,6 +549,7 @@ class Response
         $bssid = $postObj->DeviceNo;
         $connecttime = $postObj->ConnectTime;
 
+        $connecttime=date('Y-m-d H-i-s',$connecttime);
         DB::table('wx_wificonnect_info')
             ->insert(['wx_openid' => $openid, 'shop_id' => $shop_id, 'bssid' => $bssid, 'connecttime' => $connecttime]);
 
@@ -557,22 +558,8 @@ class Response
             ->first();
 
         $eventkey = $row->eventkey;
-
-        DB::table('wx_user_info')
-            ->where('wx_openid', $openid)
-            ->update(['eventkey' => $bssid, 'tag_id' => '111', 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
-
-//        $this->insert_subscribe($openid, $shop_id, 'scan');            //更新openid信息
-//        $this->request_focus($openid, $eventkey);                       //推送关注信息
-//        $this->make_user_tag($openid, $eventkey);                        //标签管理
-
-
-        $content = new Text();
-
-        $content->content = $eventkey;
-
-
-        $this->app->staff->message($content)->to($openid)->send();
+        $this->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
+        $this->make_user_tag($openid, $eventkey);                        //标签管理
 
 
     }
