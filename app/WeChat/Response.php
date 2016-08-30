@@ -545,6 +545,13 @@ class Response
                 $wifi_info["ConnectTime"] = $postObj->ConnectTime;*/
 
         $openid = $postObj->FromUserName;
+        $shop_id=$postObj->ShopId;
+        $bssid=$postObj->DeviceNo;
+        $connecttime=date("Y-m-d H:i:s", $postObj->ConnectTime);
+
+        DB::table('wx_wificonnect_info')
+            ->insert(['wx_openid'=>$openid,'shop_id'=>$shop_id,'bssid'=>$bssid,'connecttime'=>$connecttime]);
+
         $row = DB::table('wx_shop_info')
             ->where('shop_id', $postObj->ShopId)
             ->first();
@@ -558,12 +565,30 @@ class Response
         $content = new Text();
 
         $content->content = $eventkey;
-//        return $wifi_info;
+
 
         $this->app->staff->message($content)->to($openid)->send();
-//        $this->app->staff->message($content)->to($openid)->send();
+
 
 
     }
+
+    private function insert_WifiConnected($postObj)
+    {
+        $wifi_info = array();
+        $wifi_info["ConnectTime"] = $postObj->ConnectTime;
+        $wifi_info["ShopId"] = $postObj->ShopId;
+        $wifi_info["DeviceNo"] = $postObj->DeviceNo;
+        $wifi_info["fromUsername"] = $postObj->FromUserName;
+        $wifi_info["DeviceNo"] = $postObj->DeviceNo;
+        $wifi_info["ConnectTime"] = $postObj->ConnectTime;
+        $addtime = date("Y-m-d H:i:s", "{$wifi_info["ConnectTime"]}");
+        $db = new DB();
+
+        $db->row("insert into wx_wificonnect_info (wx_openid,shop_id,bssid,connecttime) VALUES (:wx_openid,:shop_id,:bssid,:connecttime)",
+            array("wx_openid" => $wifi_info["fromUsername"], "shop_id" => $wifi_info["ShopId"], "bssid" => $wifi_info["DeviceNo"], "connecttime" => $addtime));
+    }
+
+
 
 }
