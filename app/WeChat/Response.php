@@ -600,14 +600,14 @@ class Response
             $content = "您好，您今天没有预约。";
         } else {
             foreach ($row as $result) {
-                $project_id = $result["project_id"];
+                $project_id = $result->project_id;
 
                 $project_name = $tour->get_project_name($project_id);
                 $zone_name = $tour->get_zone_name($project_id, "2");
                 $datetime = date($result->addtime);
                 $starttime = date("H:i", strtotime($result->addtime) + 3600);
 //                $endtime = date("H:i", strtotime($result->addtime) + 7200);
-                if ($result["used"] == 0) {
+                if ($result->used == 0) {
                     $used = "未使用";
                 } else {
                     $used = "已使用";
@@ -616,7 +616,6 @@ class Response
 //                $responseMsg->responseV_Text($fromUsername, $str);
                 $content = $str;
             }
-
         }
         return $content;
     }
