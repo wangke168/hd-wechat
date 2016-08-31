@@ -352,5 +352,5 @@ class tour
         return $str;
     }
 
-    
+
 }
