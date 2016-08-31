@@ -46,8 +46,8 @@ class Update_Openid_Info extends Command
 
         $app = app('wechat');
         $token= $app->access_token->getToken();
-        \Log::info($token);
- /*       $row = DB::table('wx_user_info')
+
+        $row = DB::table('wx_user_info')
             ->where('esc', '0')
             ->where('city','')
             ->where('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
@@ -72,7 +72,7 @@ class Update_Openid_Info extends Command
                 ->insert(['wx_openid' => $result->wx_openid, 'wx_unionid' => $unionid]);
             \Log::info($result->wx_openid);
 
-        }*/
+        }
     }
 
     //因为url是https 所有请求不能用file_get_contents,用curl请求json 数据
