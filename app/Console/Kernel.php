@@ -27,7 +27,8 @@ class Kernel extends ConsoleKernel
     {
 //        $schedule->command('inspire')
 //            ->hourly();
+        //更新wx_user_info里的信息
         $schedule->command('update_openid_info')
-            ->dailyAt('10:10');
+            ->dailyAt('2:00');
     }
 }

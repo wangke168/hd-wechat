@@ -48,13 +48,16 @@ class Response
         switch ($keyword) {
             case "a":
                 $content = new Text();
-
                 if ($this->usage->get_openid_info($openid)->eventkey) {
                     $content->content = $this->usage->get_openid_info($openid)->eventkey;
                 } else {
                     $content->content = '无eventkey';
                 }
 //                $content->content = $app->access_token->getToken();
+                break;
+            case "预约":
+                $content=new Text();
+                $content->content=$this->query_wite_info($openid);
                 break;
             case 's':
                 $content = new News();
@@ -542,7 +545,7 @@ class Response
         $bssid = $postObj->DeviceNo;
         $connecttime = $postObj->ConnectTime;
 
-        $connecttime=date('Y-m-d H-i-s',$connecttime);
+        $connecttime = date('Y-m-d H-i-s', $connecttime);
 
         /*插入wifi信息*/
         DB::table('wx_wificonnect_info')
@@ -569,12 +572,51 @@ class Response
 
         $row = DB::table('wx_wificonnect_info')
             ->where('wx_openid', $openid)
-            ->where('connecttime', '>', date('Y-m-d H-i-s',time() - 180))->first();
+            ->where('connecttime', '>', date('Y-m-d H-i-s', time() - 180))->first();
         if ($row) {
             $eventkey = $this->usage->get_shop_info($row->shop_id)->eventkey;
         } else {
             $eventkey = '';
         }
         return $eventkey;
+    }
+
+    /*
+   * 查询景区节目预约情况
+   *
+   *
+   */
+    public function query_wite_info($openid)
+    {
+        /*        $row = $db->query("select * from tour_project_wait_detail WHERE wx_openid=:wx_openid AND date(addtime)=:temptime",
+                    array("wx_openid" => $fromUsername, "temptime" => date("Y-m-d")));*/
+        $row = DB::table('tour_project_wait_detail')
+            ->where('wx_openid', $openid)
+            ->whereDate('addtime', '=', date('Y-m-d'))
+            ->first();
+        if (!$row) {
+//            $responseMsg->responseV_Text($fromUsername, "您好，您今天没有预约。");
+            $content = "您好，您今天没有预约。";
+        } else {
+            foreach ($row as $result) {
+                $project_id = $result["project_id"];
+                $tour = new tour();
+                $project_name = $tour->get_project_name($project_id);
+                $zone_name = $tour->get_zone_name($project_id, "2");
+                $datetime = date($result["addtime"]);
+                $starttime = date("H:i", strtotime($result["addtime"]) + 3600);
+                $endtime = date("H:i", strtotime($result["addtime"]) + 7200);
+                if ($result["used"] == 0) {
+                    $used = "未使用";
+                } else {
+                    $used = "已使用";
+                }
+                $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---" . $endtime . "\n状态：" . $used;
+//                $responseMsg->responseV_Text($fromUsername, $str);
+                $content = $str;
+            }
+
+        }
+        return $content;
     }
 }
