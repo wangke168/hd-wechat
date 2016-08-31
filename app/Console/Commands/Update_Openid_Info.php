@@ -40,11 +40,14 @@ class Update_Openid_Info extends Command
     public function handle()
     {
         //
-        $token = 'tQXqe_lzp9eWnh-t84clyIUxwCBxKlBS_D765fD5Fo17dZZa6LRR4I4Rv6rouSvRGUw8Rkx0ox_Nc1ZT0JWPSe7ZJ6hip1u5E2VblDooeWDSXUBeyYxj90aVZCq73rfOYOGbACAHXP';
+//        $token = 'tQXqe_lzp9eWnh-t84clyIUxwCBxKlBS_D765fD5Fo17dZZa6LRR4I4Rv6rouSvRGUw8Rkx0ox_Nc1ZT0JWPSe7ZJ6hip1u5E2VblDooeWDSXUBeyYxj90aVZCq73rfOYOGbACAHXP';
 
-/*        $app = app('wechat');
-        $token= $app->access_token->getToken();*/
-        $row = DB::table('wx_user_info')
+
+
+        $app = app('wechat');
+        $token= $app->access_token->getToken();
+        \Log::info($token);
+ /*       $row = DB::table('wx_user_info')
             ->where('esc', '0')
             ->where('city','')
             ->where('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
@@ -69,7 +72,7 @@ class Update_Openid_Info extends Command
                 ->insert(['wx_openid' => $result->wx_openid, 'wx_unionid' => $unionid]);
             \Log::info($result->wx_openid);
 
-        }
+        }*/
     }
 
     //因为url是https 所有请求不能用file_get_contents,用curl请求json 数据

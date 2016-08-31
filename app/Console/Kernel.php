@@ -28,6 +28,6 @@ class Kernel extends ConsoleKernel
 //        $schedule->command('inspire')
 //            ->hourly();
         $schedule->command('update_openid_info')
-            ->dailyAt('9:45');
+            ->everyMinute();
     }
 }

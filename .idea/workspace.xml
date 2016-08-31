@@ -91,8 +91,8 @@
       <file leaf-file-name="Update_Openid_Info.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Console/Commands/Update_Openid_Info.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.714286" vertical-offset="1248" max-vertical-offset="3008">
-              <caret line="44" column="2" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="49" />
+            <state vertical-scroll-proportion="-40.17857" vertical-offset="955" max-vertical-offset="3104">
+              <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
               <folding>
                 <element signature="e#40#71#0#PHP" expanded="true" />
               </folding>
@@ -724,8 +724,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/Update_Openid_Info.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.714286" vertical-offset="1248" max-vertical-offset="3008">
-          <caret line="44" column="2" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="49" />
+        <state vertical-scroll-proportion="-40.17857" vertical-offset="955" max-vertical-offset="3104">
+          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
           <folding>
             <element signature="e#40#71#0#PHP" expanded="true" />
           </folding>
