@@ -40,10 +40,10 @@ class Update_Openid_Info extends Command
     public function handle()
     {
         //
-//        $token = 'GQZzIW-eClKLfOvVTgJ02WOur0UlYsxrBs1ovv4glXsAIFjTP3qeLNeasXYGNJaI5etOLj_UEug7UOKs6qPpsquF3sZA6F2evfzU4gSU4Db8LF2KM4scDaLyk2oSnejnNGSfAHAVOA';
+        $token = 'tQXqe_lzp9eWnh-t84clyIUxwCBxKlBS_D765fD5Fo17dZZa6LRR4I4Rv6rouSvRGUw8Rkx0ox_Nc1ZT0JWPSe7ZJ6hip1u5E2VblDooeWDSXUBeyYxj90aVZCq73rfOYOGbACAHXP';
 
-        $app = app('wechat');
-        $token= $app->access_token->getToken();
+/*        $app = app('wechat');
+        $token= $app->access_token->getToken();*/
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
             ->where('city','')
