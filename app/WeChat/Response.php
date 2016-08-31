@@ -589,19 +589,14 @@ class Response
     public function query_wite_info($openid)
     {
         $tour=new tour();
-        /*        $row = $db->query("select * from tour_project_wait_detail WHERE wx_openid=:wx_openid AND date(addtime)=:temptime",
-                    array("wx_openid" => $fromUsername, "temptime" => date("Y-m-d")));*/
         $result = DB::table('tour_project_wait_detail')
-            ->where('wx_openid', 'opUv9v977Njll_YHpZYMymxI_aPE')
+            ->where('wx_openid', $openid)
             ->whereDate('addtime', '=', date('Y-m-d'))
             ->first();
         if (!$result) {
-//            $responseMsg->responseV_Text($fromUsername, "您好，您今天没有预约。");
             $content = "您好，您今天没有预约。";
         } else {
-//            foreach ($row as $result) {
             $project_id = $result->project_id;
-
             $project_name = $tour->get_project_name($project_id);
             $zone_name = $tour->get_zone_name($project_id, "2");
             $datetime = date($result->addtime);
@@ -612,11 +607,10 @@ class Response
             } else {
                 $used = "已使用";
             }
-            $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16：30.状态：" . $used;
-//                $responseMsg->responseV_Text($fromUsername, $str);
+            $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16：30。\n状态：" . $used;
+
             $content = $str;
         }
-//        }
         return $content;
     }
 }
