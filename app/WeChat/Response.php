@@ -599,7 +599,7 @@ class Response
             $project_id = $result->project_id;
             $project_name = $tour->get_project_name($project_id);
             $zone_name = $tour->get_zone_name($project_id, "2");
-            $datetime = date($result->addtime);
+            $datetime = date('Y-m-d',$result->addtime);
             $starttime = date("H:i", strtotime($result->addtime) + 3600);
 //                $endtime = date("H:i", strtotime($result->addtime) + 7200);
             if ($result->used == 0) {
