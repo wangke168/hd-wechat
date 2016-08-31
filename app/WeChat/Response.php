@@ -588,6 +588,7 @@ class Response
    */
     public function query_wite_info($openid)
     {
+        $tour=new tour();
         /*        $row = $db->query("select * from tour_project_wait_detail WHERE wx_openid=:wx_openid AND date(addtime)=:temptime",
                     array("wx_openid" => $fromUsername, "temptime" => date("Y-m-d")));*/
         $row = DB::table('tour_project_wait_detail')
@@ -600,18 +601,18 @@ class Response
         } else {
             foreach ($row as $result) {
                 $project_id = $result["project_id"];
-                $tour = new tour();
+
                 $project_name = $tour->get_project_name($project_id);
                 $zone_name = $tour->get_zone_name($project_id, "2");
-                $datetime = date($result["addtime"]);
-                $starttime = date("H:i", strtotime($result["addtime"]) + 3600);
-                $endtime = date("H:i", strtotime($result["addtime"]) + 7200);
+                $datetime = date($result->addtime);
+                $starttime = date("H:i", strtotime($result->addtime) + 3600);
+//                $endtime = date("H:i", strtotime($result->addtime) + 7200);
                 if ($result["used"] == 0) {
                     $used = "未使用";
                 } else {
                     $used = "已使用";
                 }
-                $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---" . $endtime . "\n状态：" . $used;
+                $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16：30.状态：" . $used;
 //                $responseMsg->responseV_Text($fromUsername, $str);
                 $content = $str;
             }
