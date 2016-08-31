@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Inspire::class,
+ //       Commands\Inspire::class,
         Commands\Update_Openid_Info::class,
     ];
 
@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-            ->hourly();
+//        $schedule->command('inspire')
+//            ->hourly();
         $schedule->command('update_openid_info')
             ->dailyAt('9:40');
     }
