@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -57,7 +56,7 @@
       <file leaf-file-name="routes.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="523" selection-end="523" vertical-scroll-proportion="0.5121212" vertical-offset="0" max-vertical-offset="1144">
+            <state line="19" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.3939394" vertical-offset="0" max-vertical-offset="1092">
               <folding />
             </state>
           </provider>
@@ -549,7 +548,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="523" selection-end="523" vertical-scroll-proportion="0.5121212" vertical-offset="0" max-vertical-offset="1144">
+        <state line="19" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.3939394" vertical-offset="0" max-vertical-offset="1092">
           <folding />
         </state>
       </provider>
