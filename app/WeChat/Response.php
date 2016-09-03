@@ -28,7 +28,8 @@ class Response
     public function __construct($message)
     {
         $this->app = app('wechat');
-        $this->usage = new usage();
+
+        $this->usage = new Usage();
         /*       $userService = $this->app->user;
                $this->openid = $userService->get($message->FromUserName)->openid;*/
     }
@@ -56,8 +57,8 @@ class Response
 //                $content->content = $app->access_token->getToken();
                 break;
             case "预约":
-                $content=new Text();
-                $content->content=$this->query_wite_info($openid);
+                $content = new Text();
+                $content->content = $this->query_wite_info($openid);
                 break;
             case 's':
                 $content = new News();
@@ -74,7 +75,7 @@ class Response
                 break;
             case 'hx':
                 $content = new Text();
-                $tour = new tour();
+                $tour = new Tour();
                 $content->content = $tour->verification_subscribe($openid, '1');
                 break;
             case '天气':
@@ -97,9 +98,9 @@ class Response
     public function click_request($openid, $menuid)
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $content = $this->request_news($openid, $eventkey, '2', '', $menuid);
+        $this->request_news($openid, $eventkey, '2', '', $menuid);
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
-        return $content;
+//        return $content;
     }
 
     /**
@@ -111,9 +112,36 @@ class Response
     private function request_keyword($openid, $keyword)
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
+        if (!$eventkey) {
+            $eventkey = 'all';
+        }
+//        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
 
-        return $content;
+        $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
+        //检查该关键字回复中是否有图文消息
+        if ($this->check_keyword_message($eventkey, "news", $keyword)) {
+            $flag = true;
+            $this->request_news($openid, $eventkey, '3', $keyword, '');
+//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
+        }
+        if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
+            $flag = true;
+            $this->request_voice($openid, '2', $eventkey, $keyword);
+        }
+        if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
+            $flag = true;
+            $this->request_txt($openid, '2', $eventkey, $keyword);             //直接在查询文本回复时使用客服接口
+        }
+
+        if (!$flag)     //如果该二维码没有对应的关注推送信息
+        {
+            $content = new Text();
+            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        }
+
+
+//        return $content;
     }
 
     /**
@@ -130,8 +158,8 @@ class Response
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
-            $content_news = $this->request_news($openid, $eventkey, '1', '', '');
-            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
+            $this->request_news($openid, $eventkey, '1', '', '');
+//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
@@ -144,8 +172,8 @@ class Response
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
-            $content_news = $this->request_news($openid, 'all', '1', '', '');
-            $this->app->staff->message($content_news)->to($openid)->send();
+            $this->request_news($openid, 'all', '1', '', '');
+//            $this->app->staff->message($content_news)->to($openid)->send();
         }
 //        return $content;
     }
@@ -157,7 +185,7 @@ class Response
      * @param $focus :   1:关注    0：不关注
      * @return boolkey
      */
-    private function  check_eventkey_message($eventkey, $type, $focus)
+    private function check_eventkey_message($eventkey, $type, $focus)
     {
 //        $db = new DB();
         $flag = false;
@@ -183,6 +211,8 @@ class Response
                     ->where('eventkey', $eventkey)
                     ->where('online', '1')
                     ->where('focus', $focus)
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->first();
 
                 if ($row_txt) {
@@ -194,9 +224,110 @@ class Response
                     ->where('eventkey', $eventkey)
                     ->where('online', '1')
                     ->where('focus', $focus)
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->first();
 
                 if ($row_voice) {
+                    $flag = true;
+                }
+                break;
+            case "images":
+                $row_images = DB::table('wx_images_request')
+                    ->where('eventkey', $eventkey)
+                    ->where('online', '1')
+                    ->where('focus', $focus)
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                    ->first();
+                if ($row_images) {
+                    $flag = true;
+                }
+                break;
+            default:
+                break;
+
+        }
+        return $flag;
+    }
+
+
+    /**
+     * 检查关键字是否有对应的消息回复（图文、语音、文字、图片）
+     * @param $eventkey
+     * @param $type ：   news:图文    txt:文字      voice:语音
+     * @param $focus :   1:关注    0：不关注
+     * @return boolkey
+     */
+    private function check_keyword_message($eventkey, $type, $keyword)
+    {
+//        $db = new DB();
+        $keyword = $this->check_keywowrd($keyword);
+        $flag = false;
+        switch ($type) {
+            case "news":
+                $row_news = DB::table('wx_article')
+                    ->where('msgtype', 'news')
+                    ->where('audit', '1')
+                    ->where('del', '0')
+                    ->where('online', '1')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
+                    ->whereDate('startdate', '<=', date('Y-m-d'))
+                    ->whereDate('enddate', '>=', date('Y-m-d'))
+                    ->first();
+
+                if ($row_news) {
+                    $flag = true;
+                }
+                break;
+            case "txt":
+                $row_txt = DB::table('wx_txt_request')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
+                    ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                    ->first();
+
+                if ($row_txt) {
+                    $flag = true;
+                }
+                break;
+            case "voice":
+                $row_voice = DB::table('wx_voice_request')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
+                    ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                    ->first();
+
+                if ($row_voice) {
+                    $flag = true;
+                }
+                break;
+            case "images":
+                $row_images = DB::table('wx_images_request')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
+                    ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                    ->first();
+                if ($row_images) {
                     $flag = true;
                 }
                 break;
@@ -300,11 +431,14 @@ class Response
                 $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
                 $content[] = $new;
             }
-        } else {
-            $content = new Text();
-            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
-        return $content;
+
+        /*        else {
+                    $content = new Text();
+                    $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
+                }*/
+
     }
 
     /**
@@ -323,13 +457,22 @@ class Response
                     ->where('eventkey', $eventkey)
                     ->where('focus', '1')
                     ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
             case 2:
+                $keyword = $this->check_keywowrd($keyword);
                 $row = DB::table('wx_txt_request')
                     ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
                     ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
@@ -353,13 +496,22 @@ class Response
                     ->where('eventkey', $eventkey)
                     ->where('online', '1')
                     ->where('focus', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
             case "2":
+                $keyword = $this->check_keywowrd($keyword);
                 $row = DB::table('wx_voice_request')
                     ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
                     ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
@@ -470,8 +622,8 @@ class Response
      */
     public function insert_user_unionid($openid, $unionid)
     {
-        if (!check_unionid($openid)) {//检查union表中是否存在
-            DB::table(wx_user_unionid)
+        if (!$this->check_unionid($openid)) {//检查union表中是否存在
+            DB::table('wx_user_unionid')
                 ->insert(['wx_openid' => $openid, "wx_unionid" => $unionid]);
         }
     }
@@ -538,7 +690,7 @@ class Response
      *
      */
 
-    public function  return_WifiConnected($postObj)
+    public function return_WifiConnected($postObj)
     {
         $openid = $postObj->FromUserName;
         $shop_id = $postObj->ShopId;
@@ -588,8 +740,7 @@ class Response
    */
     public function query_wite_info($openid)
     {
-        $tour=new tour();
-
+        $tour = new Tour();
         $result = DB::table('tour_project_wait_detail')
             ->where('wx_openid', $openid)
             ->whereDate('addtime', '=', date('Y-m-d'))

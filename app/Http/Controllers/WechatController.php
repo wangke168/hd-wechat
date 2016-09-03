@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WeChat\Response;
-use App\WeChat\tour;
+use App\WeChat\Tour;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Voice;
@@ -35,8 +35,8 @@ class WechatController extends Controller
                                     $content->content = "横店影视城官方客服电话" . "\n" . "400-9999141";
                                     return $content;
                                 default:
-                                    $content = $response->click_request($openid, $message->EventKey);
-                                    return $content;
+                                    $response->click_request($openid, $message->EventKey);
+//                                    return $content;
                                     break;
                             }
                             break;
@@ -57,7 +57,7 @@ class WechatController extends Controller
                             #重复关注事件
                             $eventkey = $message->EventKey;
                             if ($eventkey == "1336") {
-                                $tour = new tour();
+                                $tour = new Tour();
                                 $content = new Text();
                                 $content->content = $tour->verification_subscribe($openid, '1');
                                 return $content;

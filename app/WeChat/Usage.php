@@ -15,7 +15,7 @@ use App\Models\WechatArticle;
 use App\Http\Requests;
 
 
-class usage
+class Usage
 {
     /**
      * 从wx_user_info获取用户资料
