@@ -58,7 +58,7 @@ class ArticlesController extends Controller
 
         DB::table('tour_project_wait_detail')
             ->where('id', '17103')
-            ->update(['verification' => $startTime]);
+            ->update(['verification_time' => $startTime]);
 
 
 //        $z = array($x, $y);
