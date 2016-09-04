@@ -46,14 +46,15 @@ class ArticlesController extends Controller
 
 //        return $tempTime;
 
+//        Carbon::now('');
         $a=date('i');
         $b=$a%5;
         $d=$a-$b+5;
         $c=$a-$b;
-        $startTime=date('Y-m-d H-{$c}');
-        $endTime=date('Y-m-d H-{$d}');
-        $e=array($startTime,$endTime);
-        return $a;
+        $startTime=date('Y-m-d H-{{$c}}');
+        $endTime=date('Y-m-d H-{{$d}}');
+        $e=array($a,$startTime,$endTime);
+        return $e;
 
 
 
