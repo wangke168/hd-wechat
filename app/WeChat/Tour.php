@@ -120,7 +120,7 @@ class Tour
             ->where('addtime', '>=', $startTime)
             ->where('addtime', '<', $endTime)
             ->count();
-        if ($rowCount <= 5) {
+        if ($rowCount < 5) {
             $flag = true;
         } else {
             $flag = false;
