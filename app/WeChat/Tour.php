@@ -106,7 +106,7 @@ class Tour
     }
 
 
-    public function check_queue($project)
+    public function check_queue($project_id)
     {
         $nowMinute = date('i');
         $b = $nowMinute % 5;
@@ -116,7 +116,7 @@ class Tour
         $endTime = date('Y-m-d H-' . $d);
 
         $rowCount = DB::table('tour_project_wait_detail')
-            ->where('project', $project)
+            ->where('project_id', $project_id)
             ->where('addtime', '>=', $startTime)
             ->where('addtime', '<', $endTime)
             ->count();
