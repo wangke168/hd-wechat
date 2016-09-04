@@ -38,9 +38,10 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $n = 26;
-        $x = $n % 8;
-        $y = floor($n / 8);
+        $n = 8;
+        $y = $n % 8;
+        $x = floor($n / 8);
+
         $z = array($x, $y);
         return $z;
 //        return $flag;
