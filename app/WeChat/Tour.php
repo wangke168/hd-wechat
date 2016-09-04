@@ -237,16 +237,16 @@ class Tour
 
 //        $row = $db->query("select * from tour_project_wait_detail WHERE project_id=:project_id AND date(addtime)=:addtime ORDER BY id DESC  limit 0,1", array("project_id" => $project_id, "addtime" => date('Y-m-d')));
 
-        $row = DB::table('tour_project_wait_detail')
+        $row_day = DB::table('tour_project_wait_detail')
             ->where('project_id', $project_id)
             ->whereDate('addtime', '=', date('Y-m-d'))
             ->orderBy('id', 'desc')
             ->first();
 
-        if (!$row) {
+        if (!$row_day) {
             $user_id = "1";
         } else {
-            $user_id = ($row->user_id) + 1;
+            $user_id = ($row_day->user_id) + 1;
         }
 
         DB::table('tour_project_wait_detail')

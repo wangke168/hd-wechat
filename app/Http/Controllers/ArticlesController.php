@@ -43,7 +43,16 @@ class ArticlesController extends Controller
         $x = floor($n / 8);
         $h = date('H') + 1;
 
-        if ($n < 96) {
+
+        $row = DB::table('tour_project_wait_detail')
+            ->whereDate('addtime', '=', date('Y-m-d'))
+            ->where('HOUR(addtime)=' . date("G"))
+            ->orderBy('id', 'desc')
+            ->first();
+
+        return $row;
+
+   /*     if ($n < 96) {
             if ($y == 0) {
                 $t = (($x * 5) - 5);
 //                $startTime = date('Y-m-d '.$h.'-'.$t);
@@ -62,7 +71,7 @@ class ArticlesController extends Controller
 
 
 //        $z = array($x, $y);
-        return $startTime;
+       return $startTime;*/
 //        return $flag;
     }
 
