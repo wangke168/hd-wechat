@@ -65,7 +65,7 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="22" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.6048632" vertical-offset="876" max-vertical-offset="3042">
+            <state line="49" column="21" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.6048632" vertical-offset="876" max-vertical-offset="3042">
               <folding>
                 <element signature="e#40#64#0" expanded="true" />
               </folding>
@@ -602,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="22" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.6048632" vertical-offset="876" max-vertical-offset="3042">
+        <state line="49" column="21" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.6048632" vertical-offset="876" max-vertical-offset="3042">
           <folding>
             <element signature="e#40#64#0" expanded="true" />
           </folding>
