@@ -53,7 +53,7 @@ class ArticlesController extends Controller
         $startTime=date('Y-m-d H-{$c}');
         $endTime=date('Y-m-d H-{$d}');
         $e=array($startTime,$endTime);
-        return $e;
+        return $a;
 
 
 
