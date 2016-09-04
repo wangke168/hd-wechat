@@ -38,19 +38,20 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $n = 33;
-        $y = $n % 8;
-        $x = floor($n / 8);
-        $h = date('H') + 1;
 
-
-        $row = DB::table('tour_project_wait_detail')
+        $row_hour = DB::table('tour_project_wait_detail')
             ->whereDate('addtime', '=', date('Y-m-d'))
             ->whereRaw('HOUR(addtime)=' . date("G"))
             ->count();
-        return $row;
 
-   /*     if ($n < 96) {
+        $hour_id= $row_hour;
+
+//        $n = 33;
+        $y = $hour_id % 8;
+        $x = floor($hour_id / 8);
+        $h = date('G') + 1;
+
+       if ($hour_id < 96) {
             if ($y == 0) {
                 $t = (($x * 5) - 5);
 //                $startTime = date('Y-m-d '.$h.'-'.$t);
@@ -68,8 +69,13 @@ class ArticlesController extends Controller
             ->update(['verification_time' => $startTime]);
 
 
+        $tour=new Tour();
+        return $tour->insert_wait_info('sdsadsa',1);
+
+
+
 //        $z = array($x, $y);
-       return $startTime;*/
+//       return $startTime;
 //        return $flag;
     }
 

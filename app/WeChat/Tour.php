@@ -235,7 +235,6 @@ class Tour
     public function insert_wait_info($openid, $project_id)
     {
 
-//        $row = $db->query("select * from tour_project_wait_detail WHERE project_id=:project_id AND date(addtime)=:addtime ORDER BY id DESC  limit 0,1", array("project_id" => $project_id, "addtime" => date('Y-m-d')));
 
         $row_day = DB::table('tour_project_wait_detail')
             ->where('project_id', $project_id)
@@ -243,17 +242,51 @@ class Tour
             ->orderBy('id', 'desc')
             ->first();
 
+        $row_hour = DB::table('tour_project_wait_detail')
+            ->whereDate('addtime', '=', date('Y-m-d'))
+            ->whereRaw('HOUR(addtime)=' . date("G"))
+            ->count();
+
         if (!$row_day) {
             $user_id = "1";
+            $hour_id='1';
         } else {
             $user_id = ($row_day->user_id) + 1;
+
+            if($row_hour==0)
+            {
+                $hour_id='1';
+            }
+            else
+            {
+                $hour_id=$row_hour+1;
+            }
+
         }
 
+        $y = $hour_id % 8;
+        $x = floor($hour_id / 8);
+        $h = date('G') + 1;
+
+        if ($hour_id < 96) {
+            if ($y == 0) {
+                $t = (($x * 5) - 5);
+//                $startTime = date('Y-m-d '.$h.'-'.$t);
+
+            } else {
+                $t = ($x * 5);
+            }
+            $verification_time = date('Y-m-d ' . $h . '-' . $t);
+        } else {
+            $verification_time = date("Y-m-d H:i", time() + 3600);
+        }
+
+
         DB::table('tour_project_wait_detail')
-            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'wx_openid' => $openid]);
+            ->insert(['user_id' => $user_id, 'project_id' => $project_id,'verification_time'=>$verification_time, 'wx_openid' => $openid]);
 
 
-        $lasttime = DB::table('tour_project_wait_detail')
+      /*  $lasttime = DB::table('tour_project_wait_detail')
             ->orderBy('id', 'desc')
             ->first();
 
@@ -263,9 +296,9 @@ class Tour
             $addtime = date("Y-m-d H:i", time() + 3636);
         } else {
             $addtime = date("Y-m-d H:i", time() + 3600);
-        }
+        }*/
 
-        return "您的游玩时间段为" . $addtime . "---16：30。";
+        return "您的游玩时间段为" . $verification_time . "---16：30。";
 //    return "您的游玩时间段为" . date("Y-m-d H:i", time() + 3600) . "---" . date("H:i", time() + 7200);
 //    return "您已经成功预约".$zone_name."景区" . $project_name . "项目，您的游玩时间段为" . date("Y-m-d H:i", time() + 3600) . "---" . date("H:i", time() + 7200);
     }
