@@ -42,10 +42,10 @@ class ArticlesController extends Controller
         $startTime='2016-9-4 16:40';
         $endTime='2016-9-4 16:45';
 
-        $a=6;
-        $b=6%5;
-        $c=$a-$b+5;
-        $d=$a-$b;
+        $a=15;
+        $b=$a%5;
+        $d=$a-$b+5;
+        $c=$a-$b;
         $e=array($c,$d);
         return $e;
 
