@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Article.php" afterPath="$PROJECT_DIR$/app/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_ide_helper.php" afterPath="$PROJECT_DIR$/_ide_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -60,7 +56,7 @@
       <file leaf-file-name="routes.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="48" selection-start="897" selection-end="897" vertical-scroll-proportion="0.5289747" vertical-offset="190" max-vertical-offset="1118">
+            <state line="30" column="31" selection-start="880" selection-end="880" vertical-scroll-proportion="0.5289747" vertical-offset="190" max-vertical-offset="1118">
               <folding />
             </state>
           </provider>
@@ -583,7 +579,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="48" selection-start="897" selection-end="897" vertical-scroll-proportion="0.5289747" vertical-offset="190" max-vertical-offset="1118">
+        <state line="30" column="31" selection-start="880" selection-end="880" vertical-scroll-proportion="0.5289747" vertical-offset="190" max-vertical-offset="1118">
           <folding />
         </state>
       </provider>
