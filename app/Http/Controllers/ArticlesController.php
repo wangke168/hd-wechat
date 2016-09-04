@@ -41,22 +41,26 @@ class ArticlesController extends Controller
         $n = 6;
         $y = $n % 8;
         $x = floor($n / 8);
+        $h=date('H')+1;
 
         if ($n < 96) {
             if ($y == 0) {
-                $startMinute = ($x * 5) - 5;
+                $t = (($x * 5) - 5);
+//                $startTime = date('Y-m-d '.$h.'-'.$t);
 
             } else {
-                $startMinute = ($x * 5);
+                $t = ($x * 5);
             }
+            $startTime = date('Y-m-d '.$h.'-'.$t);
         }
         else{
-            $startMinute=date("Y-m-d H:i", time() + 3600);
+            $startTime=date("Y-m-d H:i", time() + 3600);
         }
+
 
 
 //        $z = array($x, $y);
-        return $startMinute;
+        return $startTime;
 //        return $flag;
     }
 
