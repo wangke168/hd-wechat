@@ -41,7 +41,7 @@ class ArticlesController extends Controller
         $n = 9;
         $y = $n % 8;
         $x = floor($n / 8);
-        $h=date('H')+1;
+        $h = date('H') + 1;
 
         if ($n < 96) {
             if ($y == 0) {
@@ -51,12 +51,14 @@ class ArticlesController extends Controller
             } else {
                 $t = ($x * 5);
             }
-            $startTime = date('Y-m-d '.$h.'-'.$t);
-        }
-        else{
-            $startTime=date("Y-m-d H:i", time() + 3600);
+            $startTime = date('Y-m-d ' . $h . '-' . $t);
+        } else {
+            $startTime = date("Y-m-d H:i", time() + 3600);
         }
 
+        DB::table('tour_project_wait_detail')
+            ->where('id', '17103')
+            ->update(['verification' => $startTime]);
 
 
 //        $z = array($x, $y);
