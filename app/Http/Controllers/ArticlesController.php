@@ -38,20 +38,22 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $nowTime=Carbon::now();
+        $nowTime=date('m');
         $startTime='2016-9-4 16:40';
         $endTime='2016-9-4 16:45';
 
         $tempTime=date('Y-m-d H-5');
 
-        return $tempTime;
+//        return $tempTime;
 
-        $a=1;
+        $a=date('i');
         $b=$a%5;
         $d=$a-$b+5;
         $c=$a-$b;
-        $e=array($c,$d);
-//        return $e;
+        $startTime=date('Y-m-d H-{$c}');
+        $endTime=date('Y-m-d H-{$d}');
+        $e=array($startTime,$endTime);
+        return $e;
 
 
 
