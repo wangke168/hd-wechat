@@ -38,12 +38,25 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $n = 96;
+        $n = 6;
         $y = $n % 8;
         $x = floor($n / 8);
 
-        $z = array($x, $y);
-        return $z;
+        if ($n < 96) {
+            if ($y == 0) {
+                $startMinute = ($x * 5) - 5;
+
+            } else {
+                $startMinute = ($x * 5);
+            }
+        }
+        else{
+            $startMinute=date("Y-m-d H:i", time() + 3600);
+        }
+
+
+//        $z = array($x, $y);
+        return $startMinute;
 //        return $flag;
     }
 
