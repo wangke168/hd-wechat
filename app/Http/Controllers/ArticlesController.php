@@ -41,11 +41,13 @@ class ArticlesController extends Controller
         $nowTime=Carbon::now();
         $startTime='2016-9-4 16:40';
         $endTime='2016-9-4 16:45';
-        $row=DB::table('tour_project_wait_detail')
+
+        return $nowTime;
+       /* $row=DB::table('tour_project_wait_detail')
             ->where('addtime','>=',$startTime)
             ->where('addtime','<',$endTime)
             ->count();
-        return $row;
+        return $row;*/
     }
 
     public function info()
