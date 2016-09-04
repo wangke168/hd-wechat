@@ -44,7 +44,10 @@ class ArticlesController extends Controller
 
         $a=6;
         $b=6%5;
-        return $b;
+        $c=$a-$b+5;
+        $d=$a-$b;
+        $e=array($c,$d);
+        return $e;
 
 //        return $nowTime;
        /* $row=DB::table('tour_project_wait_detail')
