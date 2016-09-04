@@ -38,23 +38,17 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $tour=new Tour();
-        if($tour->check_queue('1'))
-        {
-            return 'true';
-        }
-        if (!$tour->check_queue('1'))
-        {
-            return 'false';
-        }
-
-
+        $n = 27;
+        $x = $n % 8;
+        $y = $n / 8;
+        $z = array($x, $y);
+        return $z;
 //        return $flag;
     }
 
     public function info()
     {
-        $tour=new Tour();
+        $tour = new Tour();
         /*        $row = $db->query("select * from tour_project_wait_detail WHERE wx_openid=:wx_openid AND date(addtime)=:temptime",
                     array("wx_openid" => $fromUsername, "temptime" => date("Y-m-d")));*/
         $result = DB::table('tour_project_wait_detail')
@@ -66,22 +60,22 @@ class ArticlesController extends Controller
             $content = "您好，您今天没有预约。";
         } else {
 //            foreach ($row as $result) {
-                $project_id = $result->project_id;
+            $project_id = $result->project_id;
 
-                $project_name = $tour->get_project_name($project_id);
-                $zone_name = $tour->get_zone_name($project_id, "2");
-                $datetime = date($result->addtime);
-                $starttime = date("H:i", strtotime($result->addtime) + 3600);
+            $project_name = $tour->get_project_name($project_id);
+            $zone_name = $tour->get_zone_name($project_id, "2");
+            $datetime = date($result->addtime);
+            $starttime = date("H:i", strtotime($result->addtime) + 3600);
 //                $endtime = date("H:i", strtotime($result->addtime) + 7200);
-                if ($result->used == 0) {
-                    $used = "未使用";
-                } else {
-                    $used = "已使用";
-                }
-                $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16：30.状态：" . $used;
-//                $responseMsg->responseV_Text($fromUsername, $str);
-                $content = $str;
+            if ($result->used == 0) {
+                $used = "未使用";
+            } else {
+                $used = "已使用";
             }
+            $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16：30.状态：" . $used;
+//                $responseMsg->responseV_Text($fromUsername, $str);
+            $content = $str;
+        }
 //        }
         return $content;
     }

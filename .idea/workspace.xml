@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Tour.php" afterPath="$PROJECT_DIR$/app/WeChat/Tour.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -62,10 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticlesController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ArticlesController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="26" selection-start="976" selection-end="976" vertical-scroll-proportion="-5.0" vertical-offset="926" max-vertical-offset="2496">
+            <state line="44" column="18" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.6060606" vertical-offset="744" max-vertical-offset="2340">
               <folding>
                 <element signature="e#40#64#0" expanded="true" />
               </folding>
@@ -73,10 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tour.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Tour.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="21" selection-start="3388" selection-end="3388" vertical-scroll-proportion="0.8060606" vertical-offset="2770" max-vertical-offset="10010">
+            <state line="122" column="55" selection-start="3179" selection-end="3203" vertical-scroll-proportion="-17.142857" vertical-offset="2692" max-vertical-offset="10140">
               <folding>
                 <element signature="e#6#85#0" expanded="true" />
               </folding>
@@ -110,8 +111,8 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Article.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Tour.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
       </list>
     </option>
   </component>
@@ -549,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="31" selection-start="880" selection-end="880" vertical-scroll-proportion="-12.714286" vertical-offset="190" max-vertical-offset="1118">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="753" column="17" selection-start="26505" selection-end="26509" vertical-scroll-proportion="-3.9074075" vertical-offset="19003" max-vertical-offset="19734">
@@ -591,20 +585,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="26" selection-start="976" selection-end="976" vertical-scroll-proportion="-5.0" vertical-offset="926" max-vertical-offset="2496">
-          <folding>
-            <element signature="e#40#64#0" expanded="true" />
-          </folding>
+        <state line="30" column="31" selection-start="880" selection-end="880" vertical-scroll-proportion="-12.714286" vertical-offset="190" max-vertical-offset="1118">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="21" selection-start="3388" selection-end="3388" vertical-scroll-proportion="0.8060606" vertical-offset="2770" max-vertical-offset="10010">
+        <state line="122" column="55" selection-start="3179" selection-end="3203" vertical-scroll-proportion="-17.142857" vertical-offset="2692" max-vertical-offset="10140">
           <folding>
             <element signature="e#6#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="18" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.6060606" vertical-offset="744" max-vertical-offset="2340">
+          <folding>
+            <element signature="e#40#64#0" expanded="true" />
           </folding>
         </state>
       </provider>

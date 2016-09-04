@@ -105,12 +105,17 @@ class Tour
         }
     }
 
+    /**
+     * 检查5分钟内有多少人已经预约
+     * @param $project_id
+     * @return bool
+     */
 
-    public function check_queue($project_id)
+    public function check_queue($project_id,$numbers,$minute)
     {
         $nowMinute = date('i');
-        $b = $nowMinute % 5;
-        $d = $nowMinute - $b + 5;
+        $b = $nowMinute % $minute;
+        $d = $nowMinute - $b + $minute;
         $c = $nowMinute - $b;
         $startTime = date('Y-m-d H-' . $c);
         $endTime = date('Y-m-d H-' . $d);
@@ -120,12 +125,17 @@ class Tour
             ->where('addtime', '>=', $startTime)
             ->where('addtime', '<', $endTime)
             ->count();
-        if ($rowCount < 5) {
+        if ($rowCount < $numbers) {
             $flag = true;
         } else {
             $flag = false;
         }
         return $flag;
+    }
+
+    public function insert_queue($project_id)
+    {
+
     }
 
 
@@ -239,14 +249,9 @@ class Tour
             $user_id = ($row->user_id) + 1;
         }
 
-
-        /*    $db->query("insert into tour_project_wait_detail (user_id,project_id, wx_openid) VALUES (:user_id,:project_id,:wx_openid)",
-                array("user_id" => $user_id, "project_id" => $project_id, "wx_openid" => $fromUsername));*/
-
         DB::table('tour_project_wait_detail')
             ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'wx_openid' => $openid]);
 
-//        $lasttime = $db->row("select addtime from tour_project_wait_detail ORDER BY id DESC limit 0,1");
 
         $lasttime = DB::table('tour_project_wait_detail')
             ->orderBy('id', 'desc')
