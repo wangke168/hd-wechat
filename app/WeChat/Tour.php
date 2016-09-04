@@ -261,46 +261,29 @@ class Tour
 
         }
 
-        $verification_time = $this->get_verification_time($hour_id);
+        $verification_time = $this->get_verification_time($hour_id,8,5);
 
 
         DB::table('tour_project_wait_detail')
             ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id'=>$hour_id,'verification_time' => $verification_time, 'wx_openid' => $openid]);
 
-
-        /*  $lasttime = DB::table('tour_project_wait_detail')
-              ->orderBy('id', 'desc')
-              ->first();
-
-          $diffsecond = floor((strtotime(date('y-m-d H:i:s')) - strtotime($lasttime->addtime)) % 86400);
-          if ($diffsecond <= 36) {
-  //        echo "您的游玩时间段为" . date("Y-m-d H:i", time() + 3636);
-              $addtime = date("Y-m-d H:i", time() + 3636);
-          } else {
-              $addtime = date("Y-m-d H:i", time() + 3600);
-          }*/
-
         return "您的游玩时间段为" . $verification_time . "---16：30。";
-//    return "您的游玩时间段为" . date("Y-m-d H:i", time() + 3600) . "---" . date("H:i", time() + 7200);
-//    return "您已经成功预约".$zone_name."景区" . $project_name . "项目，您的游玩时间段为" . date("Y-m-d H:i", time() + 3600) . "---" . date("H:i", time() + 7200);
     }
 
 
-    private function get_verification_time($hour_id)
+    private function get_verification_time($hour_id,$numbers,$minute)
     {
-        $y = $hour_id % 8;
-        $x = floor($hour_id / 8);
+        $y = $hour_id % $numbers;
+        $x = floor($hour_id / $numbers);
         $h = date('G') + 1;
         $m = date('i');
 
         if ($hour_id < 96) {
             if ($y == 0) {
-                $t = (($x * 5) - 5);
-
-//                $startTime = date('Y-m-d '.$h.'-'.$t);
+                $t = (($x * $minute) - $minute);
 
             } else {
-                $t = ($x * 5);
+                $t = ($x * $minute);
             }
             if ($m > $t) {
                 $t = $m;
@@ -312,14 +295,6 @@ class Tour
         return $verification_time;
     }
 
-  /*  private function check_verification_time($hour_id, $numbers, $minute)
-    {
-//        $nowMinute = date('i');
-        $n = floor($hour_id / $numbers) * $minute;
-        $x = floor($hour_id / $numbers);
-        $y = $hour_id % $numbers;
-
-    }*/
 
     /**
      *获取该项目的地理位置
