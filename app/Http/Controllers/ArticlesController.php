@@ -47,7 +47,7 @@ class ArticlesController extends Controller
         $row = DB::table('tour_project_wait_detail')
             ->whereDate('addtime', '=', date('Y-m-d'))
             ->whereRaw('HOUR(addtime)=' . date("G"))
-            ->get();
+            ->count();
         return $row;
 
    /*     if ($n < 96) {
