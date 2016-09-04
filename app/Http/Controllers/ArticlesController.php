@@ -38,33 +38,31 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $nowTime=date('m');
-        $startTime='2016-9-4 16:40';
-        $endTime='2016-9-4 16:45';
 
-        $tempTime=date('Y-m-d H-5');
-
-//        return $tempTime;
-
-//        Carbon::now('');
-        $a=date('i');
-        $b=$a%5;
-        $d=$a-$b+5;
-        $c=$a-$b;
+        $nowMinute=date('i');
+        $b=$nowMinute%5;
+        $d=$nowMinute-$b+5;
+        $c=$nowMinute-$b;
         $startTime=date('Y-m-d H-'.$c);
         $endTime=date('Y-m-d H-'.$d);
-//        $e=array($a,$c,$d,$startTime,$endTime);
-//        return $e;
 
 
 
-//        return $nowTime;
-        $row=DB::table('tour_project_wait_detail')
+
+        $rowCount=DB::table('tour_project_wait_detail')
             ->where('addtime','>=',$startTime)
             ->where('addtime','<',$endTime)
             ->count();
-        $e=array($a,$c,$d,$startTime,$endTime,$row);
-        return $e;
+        if($rowCount<=5)
+        {
+            $flag=true;
+        }
+        else
+        {
+            $flag=false;
+        }
+//        $e=array($a,$c,$d,$startTime,$endTime,$row);
+        return $flag;
     }
 
     public function info()
