@@ -40,7 +40,7 @@ class ArticlesController extends Controller
     {
         $n = 27;
         $x = $n % 8;
-        $y = $n / 8;
+        $y = floor($n / 8);
         $z = array($x, $y);
         return $z;
 //        return $flag;
