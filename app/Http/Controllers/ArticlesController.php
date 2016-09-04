@@ -38,7 +38,7 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-        $n = 6;
+        $n = 9;
         $y = $n % 8;
         $x = floor($n / 8);
         $h=date('H')+1;
