@@ -290,7 +290,7 @@ class Tour
             }
             $verification_time = date('Y-m-d ' . $h . ':' . $t);
         } else {
-            $verification_time = date("Y-m-d H:i", time() + 3600);
+            $verification_time = date('Y-m-d '.($h+1).':00');
         }
         return $verification_time;
     }
