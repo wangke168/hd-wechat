@@ -111,7 +111,7 @@ class Tour
      * @return bool
      */
 
-    public function check_queue($project_id,$numbers,$minute)
+    public function check_queue($project_id, $numbers, $minute)
     {
         $nowMinute = date('i');
         $b = $nowMinute % $minute;
@@ -249,59 +249,77 @@ class Tour
 
         if (!$row_day) {
             $user_id = "1";
-            $hour_id='1';
+            $hour_id = '1';
         } else {
             $user_id = ($row_day->user_id) + 1;
 
-            if($row_hour==0)
-            {
-                $hour_id='1';
-            }
-            else
-            {
-                $hour_id=$row_hour+1;
-            }
-
-        }
-
-        $y = $hour_id % 8;
-        $x = floor($hour_id / 8);
-        $h = date('G') + 1;
-
-        if ($hour_id < 96) {
-            if ($y == 0) {
-                $t = (($x * 5) - 5);
-//                $startTime = date('Y-m-d '.$h.'-'.$t);
-
+            if ($row_hour == 0) {
+                $hour_id = '1';
             } else {
-                $t = ($x * 5);
+                $hour_id = $row_hour + 1;
             }
-            $verification_time = date('Y-m-d ' . $h . ':' . $t);
-        } else {
-            $verification_time = date("Y-m-d H:i", time() + 3600);
+
         }
+
+        $verification_time = $this->get_verification_time($hour_id);
 
 
         DB::table('tour_project_wait_detail')
-            ->insert(['user_id' => $user_id, 'project_id' => $project_id,'verification_time'=>$verification_time, 'wx_openid' => $openid]);
+            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
 
 
-      /*  $lasttime = DB::table('tour_project_wait_detail')
-            ->orderBy('id', 'desc')
-            ->first();
+        /*  $lasttime = DB::table('tour_project_wait_detail')
+              ->orderBy('id', 'desc')
+              ->first();
 
-        $diffsecond = floor((strtotime(date('y-m-d H:i:s')) - strtotime($lasttime->addtime)) % 86400);
-        if ($diffsecond <= 36) {
-//        echo "您的游玩时间段为" . date("Y-m-d H:i", time() + 3636);
-            $addtime = date("Y-m-d H:i", time() + 3636);
-        } else {
-            $addtime = date("Y-m-d H:i", time() + 3600);
-        }*/
+          $diffsecond = floor((strtotime(date('y-m-d H:i:s')) - strtotime($lasttime->addtime)) % 86400);
+          if ($diffsecond <= 36) {
+  //        echo "您的游玩时间段为" . date("Y-m-d H:i", time() + 3636);
+              $addtime = date("Y-m-d H:i", time() + 3636);
+          } else {
+              $addtime = date("Y-m-d H:i", time() + 3600);
+          }*/
 
         return "您的游玩时间段为" . $verification_time . "---16：30。";
 //    return "您的游玩时间段为" . date("Y-m-d H:i", time() + 3600) . "---" . date("H:i", time() + 7200);
 //    return "您已经成功预约".$zone_name."景区" . $project_name . "项目，您的游玩时间段为" . date("Y-m-d H:i", time() + 3600) . "---" . date("H:i", time() + 7200);
     }
+
+
+    private function get_verification_time($hour_id)
+    {
+        $y = $hour_id % 8;
+        $x = floor($hour_id / 8);
+        $h = date('G') + 1;
+        $m = date('i');
+
+        if ($hour_id < 96) {
+            if ($y == 0) {
+                $t = (($x * 5) - 5);
+
+//                $startTime = date('Y-m-d '.$h.'-'.$t);
+
+            } else {
+                $t = ($x * 5);
+            }
+            if ($m > $t) {
+                $t = $m;
+            }
+            $verification_time = date('Y-m-d ' . $h . ':' . $t);
+        } else {
+            $verification_time = date("Y-m-d H:i", time() + 3600);
+        }
+        return $verification_time;
+    }
+
+  /*  private function check_verification_time($hour_id, $numbers, $minute)
+    {
+//        $nowMinute = date('i');
+        $n = floor($hour_id / $numbers) * $minute;
+        $x = floor($hour_id / $numbers);
+        $y = $hour_id % $numbers;
+
+    }*/
 
     /**
      *获取该项目的地理位置
