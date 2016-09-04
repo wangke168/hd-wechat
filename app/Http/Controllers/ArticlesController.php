@@ -7,8 +7,7 @@ use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
 use Illuminate\Http\Request;
-//use Crypt;
-use App\WeChat\usage;
+
 use App\WeChat\Tour;
 use App\Http\Requests;
 
@@ -35,6 +34,18 @@ class ArticlesController extends Controller
     {
         $article = WechatArticle::find($id);
         return view('articles.detail', compact('article'));
+    }
+
+    public function queue()
+    {
+        $nowTime=Carbon::now();
+        $startTime='2016-9-4 16:40';
+        $endTime='2016-9-4 16:45';
+        $row=DB::table('tour_project_wait_detail')
+            ->where('addtime','>=',$startTime)
+            ->where('addtime','<',$endTime)
+            ->count();
+        return $row;
     }
 
     public function info()
