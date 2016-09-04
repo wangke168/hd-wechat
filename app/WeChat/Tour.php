@@ -106,6 +106,29 @@ class Tour
     }
 
 
+    public function check_queue($project)
+    {
+        $nowMinute = date('i');
+        $b = $nowMinute % 5;
+        $d = $nowMinute - $b + 5;
+        $c = $nowMinute - $b;
+        $startTime = date('Y-m-d H-' . $c);
+        $endTime = date('Y-m-d H-' . $d);
+
+        $rowCount = DB::table('tour_project_wait_detail')
+            ->where('project', $project)
+            ->where('addtime', '>=', $startTime)
+            ->where('addtime', '<', $endTime)
+            ->count();
+        if ($rowCount <= 5) {
+            $flag = true;
+        } else {
+            $flag = false;
+        }
+        return $flag;
+    }
+
+
     /*
      * 检查该小时取号数是否已满
      *
@@ -144,7 +167,7 @@ class Tour
         $project_amount = $this->get_wait_info($project_id, $type);
 
         if ($row >= $project_amount) {
-            return true;    //如果该小时取号数大于设定值，则返回true
+            return true; //如果该小时取号数大于设定值，则返回true
         } else {
             return false;
         }
@@ -252,8 +275,8 @@ class Tour
     public function get_project_location($project_id)
     {
 //        $row = $db->query("select project_location from tour_project_location where project_id=:project_id", array("project_id" => $project_id));
-        $row=DB::table('tour_project_location')
-            ->where('project_id',$project_id)
+        $row = DB::table('tour_project_location')
+            ->where('project_id', $project_id)
             ->first();
         if ($row) {
             return $row->project_location;
@@ -270,8 +293,8 @@ class Tour
      */
     public function get_project_name($classid)
     {
-        $row=DB::table('tour_project_class')
-            ->where('id',$classid)
+        $row = DB::table('tour_project_class')
+            ->where('id', $classid)
             ->first();
 
         if ($row) {
@@ -293,8 +316,8 @@ class Tour
     {
         switch ($type) {
             case "1":
-                $row=DB::table('tour_zone_class')
-                    ->where('id',$classid)
+                $row = DB::table('tour_zone_class')
+                    ->where('id', $classid)
                     ->first();
                 if ($row) {
                     return $row->zone_name;
@@ -304,8 +327,8 @@ class Tour
                 break;
             case "2":
 //                $row = $db->query("select zone_name from tour_zone_class where id=(select zone_classid from tour_project_class where id=:id)", array("id" => $classid));
-                $row=DB::table('tour_zone_class')
-                    ->whereRaw('id=(select zone_classid from tour_project_class where id='.$classid.')')
+                $row = DB::table('tour_zone_class')
+                    ->whereRaw('id=(select zone_classid from tour_project_class where id=' . $classid . ')')
                     ->first();
                 if ($row) {
                     return $row->zone_name;
@@ -318,11 +341,12 @@ class Tour
                 break;
         }
     }
-    public function subscribe($openid,$project_id)
+
+    public function subscribe($openid, $project_id)
     {
         $type = $this->get_wait_info('1', "3");
         if ($this->check_get_time('8:30', '19:00')) {
-            if ($this->check_amount($project_id, $type))     //确定当天或当小时预约是否已满
+            if ($this->check_amount($project_id, $type)) //确定当天或当小时预约是否已满
             {
                 if ($type == 1) {
                     $str = "<font color='red'>今天预约已满</font>";
@@ -330,7 +354,7 @@ class Tour
                     $str = "<font color='red'>该小时预约已满</font>";
                 }
             } else {
-                if ($this->check_wxid($openid, "1"))     //确定该微信号是否当下已经预约
+                if ($this->check_wxid($openid, "1")) //确定该微信号是否当下已经预约
                 {
                     $str = "<font color='red'>不能重复取号</font>";
                 } else {

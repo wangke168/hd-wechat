@@ -38,31 +38,18 @@ class ArticlesController extends Controller
 
     public function queue()
     {
-
-        $nowMinute=date('i');
-        $b=$nowMinute%5;
-        $d=$nowMinute-$b+5;
-        $c=$nowMinute-$b;
-        $startTime=date('Y-m-d H-'.$c);
-        $endTime=date('Y-m-d H-'.$d);
-
-
-
-
-        $rowCount=DB::table('tour_project_wait_detail')
-            ->where('addtime','>=',$startTime)
-            ->where('addtime','<',$endTime)
-            ->count();
-        if($rowCount<=5)
+        $tour=new Tour();
+        if($tour->check_queue('1'))
         {
-            $flag=true;
+            return 'true';
         }
-        else
+        if (!$tour->check_queue('1'))
         {
-            $flag=false;
+            return 'false';
         }
-//        $e=array($a,$c,$d,$startTime,$endTime,$row);
-        return $flag;
+
+
+//        return $flag;
     }
 
     public function info()
