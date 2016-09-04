@@ -62,7 +62,7 @@ class ArticlesController extends Controller
         $row=DB::table('tour_project_wait_detail')
             ->where('addtime','>=',$startTime)
             ->where('addtime','<',$endTime)
-            ->count();
+            ->get();
         return $row;
     }
 
