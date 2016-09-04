@@ -278,7 +278,7 @@ class Tour
         $h = date('G') + 1;
         $m = date('i');
 
-        if ($hour_id < 96) {
+        if ($hour_id < 20) {
             if ($y == 0) {
                 $t = (($x * $minute) - $minute);
 
