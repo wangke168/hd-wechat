@@ -51,7 +51,7 @@ class ArticlesController extends Controller
             } else {
                 $t = ($x * 5);
             }
-            $startTime = strtotime(date('Y-m-d '.$h.'-'.$t));
+            $startTime = date('Y-m-d '.$h.'-'.$t);
         }
         else{
             $startTime=date("Y-m-d H:i", time() + 3600);
