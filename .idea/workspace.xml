@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="" />
+    <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Tour.php" afterPath="$PROJECT_DIR$/app/WeChat/Tour.php" />
+    </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -74,7 +76,7 @@
       <file leaf-file-name="Tour.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="310" column="9" selection-start="9260" selection-end="9260" vertical-scroll-proportion="0.8419453" vertical-offset="7506" max-vertical-offset="11466">
+            <state line="267" column="94" selection-start="7801" selection-end="7801" vertical-scroll-proportion="1.1580547" vertical-offset="6180" max-vertical-offset="11466">
               <folding>
                 <element signature="e#6#85#0" expanded="true" />
               </folding>
@@ -600,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="9" selection-start="9260" selection-end="9260" vertical-scroll-proportion="0.8419453" vertical-offset="7506" max-vertical-offset="11466">
+        <state line="267" column="94" selection-start="7801" selection-end="7801" vertical-scroll-proportion="1.1580547" vertical-offset="6180" max-vertical-offset="11466">
           <folding>
             <element signature="e#6#85#0" expanded="true" />
           </folding>

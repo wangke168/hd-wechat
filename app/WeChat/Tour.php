@@ -265,7 +265,7 @@ class Tour
 
 
         DB::table('tour_project_wait_detail')
-            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
+            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id'=>$hour_id,'verification_time' => $verification_time, 'wx_openid' => $openid]);
 
 
         /*  $lasttime = DB::table('tour_project_wait_detail')
