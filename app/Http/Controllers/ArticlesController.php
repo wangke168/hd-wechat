@@ -42,12 +42,18 @@ class ArticlesController extends Controller
         $startTime='2016-9-4 16:40';
         $endTime='2016-9-4 16:45';
 
+        $tempTime=date('Y-m-d H-5');
+
+        return $tempTime;
+
         $a=1;
         $b=$a%5;
         $d=$a-$b+5;
         $c=$a-$b;
         $e=array($c,$d);
-        return $e;
+//        return $e;
+
+
 
 //        return $nowTime;
        /* $row=DB::table('tour_project_wait_detail')
