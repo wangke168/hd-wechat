@@ -54,16 +54,16 @@ class ArticlesController extends Controller
         $startTime=date('Y-m-d H-'.$c);
         $endTime=date('Y-m-d H-'.$d);
         $e=array($a,$c,$d,$startTime,$endTime);
-        return $e;
+//        return $e;
 
 
 
 //        return $nowTime;
-       /* $row=DB::table('tour_project_wait_detail')
+        $row=DB::table('tour_project_wait_detail')
             ->where('addtime','>=',$startTime)
             ->where('addtime','<',$endTime)
             ->count();
-        return $row;*/
+        return $row;
     }
 
     public function info()
