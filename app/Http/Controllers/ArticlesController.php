@@ -42,7 +42,11 @@ class ArticlesController extends Controller
         $startTime='2016-9-4 16:40';
         $endTime='2016-9-4 16:45';
 
-        return $nowTime;
+        $a=6;
+        $b=6%5;
+        return $b;
+
+//        return $nowTime;
        /* $row=DB::table('tour_project_wait_detail')
             ->where('addtime','>=',$startTime)
             ->where('addtime','<',$endTime)
