@@ -65,7 +65,7 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="39" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.5653495" vertical-offset="876" max-vertical-offset="3094">
+            <state line="49" column="22" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.6048632" vertical-offset="876" max-vertical-offset="3042">
               <folding>
                 <element signature="e#40#64#0" expanded="true" />
               </folding>
@@ -76,7 +76,7 @@
       <file leaf-file-name="Tour.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="168" column="22" selection-start="4720" selection-end="4758" vertical-scroll-proportion="-15.785714" vertical-offset="3926" max-vertical-offset="10140">
+            <state line="166" column="16" selection-start="4590" selection-end="4789" vertical-scroll-proportion="-13.928572" vertical-offset="3926" max-vertical-offset="10140">
               <folding>
                 <element signature="e#6#85#0" expanded="true" />
               </folding>
@@ -593,7 +593,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="22" selection-start="4720" selection-end="4758" vertical-scroll-proportion="-15.785714" vertical-offset="3926" max-vertical-offset="10140">
+        <state line="166" column="16" selection-start="4590" selection-end="4789" vertical-scroll-proportion="-13.928572" vertical-offset="3926" max-vertical-offset="10140">
           <folding>
             <element signature="e#6#85#0" expanded="true" />
           </folding>
@@ -602,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="39" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.5653495" vertical-offset="876" max-vertical-offset="3094">
+        <state line="49" column="22" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.6048632" vertical-offset="876" max-vertical-offset="3042">
           <folding>
             <element signature="e#40#64#0" expanded="true" />
           </folding>
