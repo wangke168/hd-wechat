@@ -7,9 +7,9 @@ use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
 use Illuminate\Http\Request;
-use Crypt;
+//use Crypt;
 use App\WeChat\usage;
-use App\WeChat\tour;
+use App\WeChat\Tour;
 use App\Http\Requests;
 
 class ArticlesController extends Controller
@@ -39,7 +39,7 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $tour=new tour();
+        $tour=new Tour();
         /*        $row = $db->query("select * from tour_project_wait_detail WHERE wx_openid=:wx_openid AND date(addtime)=:temptime",
                     array("wx_openid" => $fromUsername, "temptime" => date("Y-m-d")));*/
         $result = DB::table('tour_project_wait_detail')
