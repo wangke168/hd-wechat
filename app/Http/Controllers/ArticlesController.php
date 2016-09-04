@@ -46,7 +46,7 @@ class ArticlesController extends Controller
 
         $row = DB::table('tour_project_wait_detail')
             ->whereDate('addtime', '=', date('Y-m-d'))
-            ->where('HOUR(addtime)=' . date("G"))
+            ->whereRaw('HOUR(addtime)=' . date("G"))
             ->orderBy('id', 'desc')
             ->first();
 
