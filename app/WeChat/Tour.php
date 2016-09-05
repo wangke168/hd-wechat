@@ -397,6 +397,9 @@ class Tour
                     $str1 = "您已经成功预约" . $zone_name . "景区" . $project_name . "项目，\n" . $str . "。\n如果您不清楚具体演出地点，<a href='" . $project_loction . "'>点我</a>";
 
                     $str = "<font color='green'>预约成功<br>" . $str . "</font>";
+
+                    $app=app('wechat');
+                    $app->staff->message($str1)->by('1001@u_hengdian')->to($openid)->send();
 //                    $response = new responseMsg();
 //                    $response->responseV_Text($openid, $str1);
                 }
