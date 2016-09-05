@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Tour.php" afterPath="$PROJECT_DIR$/app/WeChat/Tour.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,10 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZoneController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ZoneController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="5" selection-start="450" selection-end="450" vertical-scroll-proportion="-15.607142" vertical-offset="135" max-vertical-offset="806">
+            <state line="20" column="12" selection-start="377" selection-end="377" vertical-scroll-proportion="0.57377046" vertical-offset="135" max-vertical-offset="806">
               <folding>
                 <element signature="e#40#68#0" expanded="true" />
               </folding>
@@ -85,16 +86,16 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-2.7857144" vertical-offset="884" max-vertical-offset="3016">
+            <state line="44" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-15.785714" vertical-offset="520" max-vertical-offset="3016">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tour.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Tour.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="411" column="18" selection-start="12450" selection-end="12450" vertical-scroll-proportion="2.93617" vertical-offset="8754" max-vertical-offset="10946">
+            <state line="375" column="20" selection-start="10728" selection-end="10728" vertical-scroll-proportion="-5.964286" vertical-offset="9583" max-vertical-offset="10946">
               <folding>
                 <element signature="e#6#85#0" expanded="true" />
               </folding>
@@ -138,8 +139,8 @@
         <option value="$PROJECT_DIR$/app/Article.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Tour.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
       </list>
     </option>
   </component>
@@ -583,22 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="5" selection-start="450" selection-end="450" vertical-scroll-proportion="-15.607142" vertical-offset="135" max-vertical-offset="806">
-          <folding>
-            <element signature="e#40#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-2.7857144" vertical-offset="884" max-vertical-offset="3016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Usage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="108" column="20" selection-start="2133" selection-end="2133" vertical-scroll-proportion="-17.428572" vertical-offset="2060" max-vertical-offset="5928">
@@ -606,11 +591,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-15.785714" vertical-offset="520" max-vertical-offset="3016">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="411" column="18" selection-start="12450" selection-end="12450" vertical-scroll-proportion="2.93617" vertical-offset="8754" max-vertical-offset="10946">
+        <state line="375" column="20" selection-start="10728" selection-end="10728" vertical-scroll-proportion="-5.964286" vertical-offset="9583" max-vertical-offset="10946">
           <folding>
             <element signature="e#6#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="12" selection-start="377" selection-end="377" vertical-scroll-proportion="0.57377046" vertical-offset="135" max-vertical-offset="806">
+          <folding>
+            <element signature="e#40#68#0" expanded="true" />
           </folding>
         </state>
       </provider>

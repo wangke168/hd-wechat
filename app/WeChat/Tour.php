@@ -409,7 +409,7 @@ class Tour
         } else {
             $str = "<font color='red'>您好，现在无法预约，\n预约时间是8：30---15：00。</font>";
         }
-        echo($str);
+        return $str;
     }
 
 
