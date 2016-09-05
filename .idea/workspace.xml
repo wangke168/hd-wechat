@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Tour.php" afterPath="$PROJECT_DIR$/app/WeChat/Tour.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,19 +53,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="60" selection-start="769" selection-end="769" vertical-scroll-proportion="0.14754099" vertical-offset="343" max-vertical-offset="1118">
+            <state line="26" column="60" selection-start="769" selection-end="769" vertical-scroll-proportion="-3.5357144" vertical-offset="343" max-vertical-offset="1118">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZoneController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ZoneController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="5" selection-start="336" selection-end="336" vertical-scroll-proportion="-11.892858" vertical-offset="135" max-vertical-offset="806">
+            <state line="22" column="5" selection-start="450" selection-end="450" vertical-scroll-proportion="0.65126675" vertical-offset="135" max-vertical-offset="806">
               <folding>
                 <element signature="e#40#68#0" expanded="true" />
               </folding>
@@ -131,8 +129,8 @@
         <option value="$PROJECT_DIR$/app/Article.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Tour.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
       </list>
     </option>
   </component>
@@ -592,19 +590,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="5" selection-start="336" selection-end="336" vertical-scroll-proportion="-11.892858" vertical-offset="135" max-vertical-offset="806">
-          <folding>
-            <element signature="e#40#68#0" expanded="true" />
-          </folding>
+        <state line="26" column="60" selection-start="769" selection-end="769" vertical-scroll-proportion="-3.5357144" vertical-offset="343" max-vertical-offset="1118">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="60" selection-start="769" selection-end="769" vertical-scroll-proportion="0.14754099" vertical-offset="343" max-vertical-offset="1118">
-          <folding />
+        <state line="22" column="5" selection-start="450" selection-end="450" vertical-scroll-proportion="0.65126675" vertical-offset="135" max-vertical-offset="806">
+          <folding>
+            <element signature="e#40#68#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

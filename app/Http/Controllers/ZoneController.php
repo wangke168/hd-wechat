@@ -15,7 +15,7 @@ class ZoneController extends Controller
         return view('subscribe.ldjl', ['openid' => $openid]);
     }
 
-    public function subscribe($openid,$project_id)
+    public function subscribe($project_id,$openid)
     {
         $tour = new Tour();
         return $tour->subscribe($openid,$project_id);
