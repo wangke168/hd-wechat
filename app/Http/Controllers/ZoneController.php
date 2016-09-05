@@ -18,7 +18,7 @@ class ZoneController extends Controller
     public function subscribe($project_id,$openid)
     {
         $tour = new Tour();
-        echo $tour->subscribe($openid,$project_id);
+        return $tour->subscribe($openid,$project_id);
 //        return 'sadas';
     }
 
