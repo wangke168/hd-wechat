@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Tour.php" afterPath="$PROJECT_DIR$/app/WeChat/Tour.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +30,7 @@
       <file leaf-file-name="Response.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="753" column="17" selection-start="26505" selection-end="26509" vertical-scroll-proportion="-176.27777" vertical-offset="9695" max-vertical-offset="19734">
+            <state line="753" column="17" selection-start="26505" selection-end="26509" vertical-scroll-proportion="-4.928571" vertical-offset="19076" max-vertical-offset="19734">
               <folding />
             </state>
           </provider>
@@ -56,7 +57,16 @@
       <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="31" selection-start="880" selection-end="880" vertical-scroll-proportion="-12.714286" vertical-offset="190" max-vertical-offset="1118">
+            <state line="26" column="68" selection-start="777" selection-end="777" vertical-scroll-proportion="-3.5357144" vertical-offset="343" max-vertical-offset="1118">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ZoneController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="7" selection-start="76" selection-end="76" vertical-scroll-proportion="0.19374068" vertical-offset="0" max-vertical-offset="806">
               <folding />
             </state>
           </provider>
@@ -65,18 +75,16 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="7" selection-start="1171" selection-end="1224" vertical-scroll-proportion="-5.857143" vertical-offset="1110" max-vertical-offset="3198">
-              <folding>
-                <element signature="e#40#64#0" expanded="true" />
-              </folding>
+            <state line="49" column="7" selection-start="1171" selection-end="1224" vertical-scroll-proportion="-5.857143" vertical-offset="928" max-vertical-offset="3016">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tour.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Tour.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="282" column="35" selection-start="8240" selection-end="8240" vertical-scroll-proportion="0.2887538" vertical-offset="7142" max-vertical-offset="10816">
+            <state line="375" column="20" selection-start="10728" selection-end="10728" vertical-scroll-proportion="-2.25" vertical-offset="9687" max-vertical-offset="10816">
               <folding>
                 <element signature="e#6#85#0" expanded="true" />
               </folding>
@@ -112,6 +120,7 @@
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Tour.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
       </list>
     </option>
   </component>
@@ -229,6 +238,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hd-wechat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hd-wechat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -293,16 +342,16 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23050848" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23050848" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -327,7 +376,9 @@
     <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9386">
-          <folding />
+          <folding>
+            <element signature="e#6#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -488,11 +539,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
@@ -544,42 +590,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="1352">
-          <folding />
-        </state>
+        <state line="17" column="13" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="1352" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/articles/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="673">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="673" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="375" column="20" selection-start="10728" selection-end="10728" vertical-scroll-proportion="-2.25" vertical-offset="9687" max-vertical-offset="10816">
+          <folding>
+            <element signature="e#6#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="31" selection-start="880" selection-end="880" vertical-scroll-proportion="-12.714286" vertical-offset="190" max-vertical-offset="1118">
+        <state line="49" column="7" selection-start="1171" selection-end="1224" vertical-scroll-proportion="-5.857143" vertical-offset="1110" max-vertical-offset="3198">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="753" column="17" selection-start="26505" selection-end="26509" vertical-scroll-proportion="-176.27777" vertical-offset="9695" max-vertical-offset="19734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="264" selection-end="264" vertical-scroll-proportion="6.5" vertical-offset="338" max-vertical-offset="3276">
+        <state line="753" column="17" selection-start="26505" selection-end="26509" vertical-scroll-proportion="-4.928571" vertical-offset="19076" max-vertical-offset="19734">
           <folding />
         </state>
       </provider>
@@ -591,21 +633,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="7" selection-start="1171" selection-end="1224" vertical-scroll-proportion="-5.857143" vertical-offset="1110" max-vertical-offset="3198">
-          <folding>
-            <element signature="e#40#64#0" expanded="true" />
-          </folding>
+        <state line="13" column="36" selection-start="264" selection-end="264" vertical-scroll-proportion="6.5" vertical-offset="338" max-vertical-offset="3276">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/WeChat/Tour.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="282" column="35" selection-start="8240" selection-end="8240" vertical-scroll-proportion="0.2887538" vertical-offset="7142" max-vertical-offset="10816">
-          <folding>
-            <element signature="e#6#85#0" expanded="true" />
-          </folding>
+        <state line="26" column="68" selection-start="777" selection-end="777" vertical-scroll-proportion="-3.5357144" vertical-offset="343" max-vertical-offset="1118">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="7" selection-start="76" selection-end="76" vertical-scroll-proportion="0.19374068" vertical-offset="0" max-vertical-offset="806">
+          <folding />
         </state>
       </provider>
     </entry>

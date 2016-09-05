@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\WeChat\tour;
+use App\WeChat\Tour;
 use App\Http\Requests;
 
 class ZoneController extends Controller
@@ -17,7 +17,7 @@ class ZoneController extends Controller
 
     public function subscribe($openid)
     {
-        $tour = new tour();
+        $tour = new Tour();
         return $tour->subscribe($openid,'1');
 //        return 'sadas';
     }
