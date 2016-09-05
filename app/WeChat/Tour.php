@@ -376,7 +376,7 @@ class Tour
     public function subscribe($openid, $project_id)
     {
         $type = $this->get_wait_info('1', "3");
-        if ($this->check_get_time('8:30', '19:00')) {
+        if ($this->check_get_time('8:30', '15:00')) {
             if ($this->check_amount($project_id, $type)) //确定当天或当小时预约是否已满
             {
                 if ($type == 1) {

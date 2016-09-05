@@ -15,10 +15,10 @@ class ZoneController extends Controller
         return view('subscribe.ldjl', ['openid' => $openid]);
     }
 
-    public function subscribe($openid)
+    public function subscribe($openid,$project_id)
     {
         $tour = new Tour();
-        return $tour->subscribe($openid,'1');
+        return $tour->subscribe($openid,$project_id);
 //        return 'sadas';
     }
 
