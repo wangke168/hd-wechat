@@ -36,7 +36,7 @@ class Tour
                 ->where('wx_openid', $openid)
                 ->where('project_id', $project_id)
                 ->whereDate('addtime', '=', date('Y-m-d'))
-                ->where('addtime', '<=', date("Y-m-d H:i", time() - 3300))
+                ->where('verification_time', '<=', date("Y-m-d H:i", time() - 300))
                 ->first();
 
             if (!$row1) {
