@@ -37,7 +37,7 @@ class Tour
                 ->where('project_id', $project_id)
                 ->whereDate('addtime', '=', date('Y-m-d'))
                 ->where('verification_time', '<=', date("Y-m-d H:i", time() + 300))
-                ->first();
+                ->first(); 
 
             if (!$row1) {
                 $content = "您好，现在未到您的预约时间";

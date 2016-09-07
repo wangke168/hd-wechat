@@ -39,10 +39,6 @@ class Update_Openid_Info extends Command
      */
     public function handle()
     {
-        //
-//        $token = 'tQXqe_lzp9eWnh-t84clyIUxwCBxKlBS_D765fD5Fo17dZZa6LRR4I4Rv6rouSvRGUw8Rkx0ox_Nc1ZT0JWPSe7ZJ6hip1u5E2VblDooeWDSXUBeyYxj90aVZCq73rfOYOGbACAHXP';
-
-
 
         $app = app('wechat');
         $token= $app->access_token->getToken();
@@ -57,6 +53,7 @@ class Update_Openid_Info extends Command
             $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $result->wx_openid;
             $json = $this->http_request_json($url);//这个地方不能用file_get_contents
             $data = json_decode($json, true);
+            
 //            $nickname = $data['nickname'];
 //            $sex = $data['sex'];
             $city = $data['city'];
@@ -70,7 +67,7 @@ class Update_Openid_Info extends Command
                 ->update(['city' => $city, 'province' => $province]);
             DB::table('wx_user_unionid')
                 ->insert(['wx_openid' => $result->wx_openid, 'wx_unionid' => $unionid]);
-            \Log::info($result->wx_openid);
+//            Log::info($result->wx_openid);
 
         }
     }

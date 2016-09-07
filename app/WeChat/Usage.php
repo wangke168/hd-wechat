@@ -80,6 +80,29 @@ class Usage
     }
 
     /**
+     * 查询该eventkey下是否有子eventkey
+     * @param $parentid
+     * @return array|bool
+     */
+    public function get_eventkey_son_info($parentid)
+    {
+        $eventkey=array();
+        $row=DB::table('wx_qrscene_info')
+            ->where('parent_id',$parentid)
+            ->get();
+        if ($row) {
+            foreach ($row as $result) {
+                $eventkey[] = $result->qrscene_id;
+            }
+            return $eventkey;
+        }
+        else{
+            return false;
+        }
+    }
+    
+
+    /**
      * 查询门店对应信息
      * @param $shop_id
      * @return mixed|string|static
