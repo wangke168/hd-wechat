@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
 use Illuminate\Http\Request;
+use EasyWeChat\Message\Text;
 
 use App\WeChat\Tour;
 use App\Http\Requests;
