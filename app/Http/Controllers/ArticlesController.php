@@ -89,7 +89,7 @@ class ArticlesController extends Controller
             ->get();
         foreach ($row as $result) {
             $aaa = explode(',', $result->show_time);
-            $prevtime = "";
+            $prevtime = date('Y-m-d');
             foreach ($aaa as $bbb) {
 //        if (strtotime($bbb)-(strtotime("now"))/60)
                 $temptime = (strtotime($bbb) - strtotime("now")) / 60;
