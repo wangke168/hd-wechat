@@ -99,7 +99,7 @@ class ArticlesController extends Controller
 
                     $row1 = DB::table('wx_user_info')
                         ->where('eventkey', $result->eventkey)
-                        ->whereDate('scandate', date('Y-m-d'))
+                        ->where('scandate', date('Y-m-d'))
                         ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
                         ->get();
 
@@ -123,7 +123,7 @@ class ArticlesController extends Controller
 
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $result->eventkey)
-                                ->whereDate('scandate', date('Y-m-d'))
+                                ->where('scandate', date('Y-m-d'))
                                 ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
                                 ->get();
 
