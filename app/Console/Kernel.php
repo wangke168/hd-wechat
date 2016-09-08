@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\Update_Openid_Info::class,
         \App\Console\Commands\AutoSendShowInfo::class,
+
     ];
 
     /**

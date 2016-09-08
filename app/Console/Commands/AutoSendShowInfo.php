@@ -7,7 +7,7 @@ use EasyWeChat\Message\Text;
 use Illuminate\Console\Command;
 use DB;
 
-class auto_send_show_info extends Command
+class AutoSendShowInfo extends Command
 {
     /**
      * The name and signature of the console command.
