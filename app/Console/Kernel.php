@@ -33,6 +33,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('update_openid_info')
             ->dailyAt('2:00');
         $schedule->command('AutoSendShowInfo')
-            ->cron('*/20 8-18 * * *');
+            ->cron('* * * * *');
     }
 }
