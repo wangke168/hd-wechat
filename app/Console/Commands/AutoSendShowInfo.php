@@ -49,11 +49,8 @@ class AutoSendShowInfo extends Command
             $aaa = explode(',', $result->show_time);
             $prevtime = date('Y-m-d');
             foreach ($aaa as $bbb) {
-//        if (strtotime($bbb)-(strtotime("now"))/60)
                 $temptime = (strtotime($bbb) - strtotime("now")) / 60;
                 if ($temptime < 30 && $temptime > 0) {
-                    /*                    $row1 = $db->query("SELECT * from wx_user_info where eventkey=:eventkey  and scandate = :days and UNIX_TIMESTAMP(endtime)>=:endtime order by id desc",
-                                            array("eventkey" => $result['eventkey'], "days" => date('Y-m-d'),"endtime"=>strtotime($prevtime)));*/
 
                     $row1 = DB::table('wx_user_info')
                         ->where('eventkey', $result->eventkey)
@@ -62,8 +59,6 @@ class AutoSendShowInfo extends Command
                         ->get();
 
                     foreach ($row1 as $send_openid) {
-                        /*                        $response->responseV_Text($ccc["wx_openID"], "您好，" .$result["zone_id"]."景区". $result["show_name"]."的演出时间是".$bbb."。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='".$result["location_url"]."'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。");
-                                                $response->responseV_News($ccc['wx_openID'], $result["show_name"], "2");*/
                         $content = new Text();
                         $content->content = "您好，" . $result->zone_id . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
                         $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
@@ -76,8 +71,6 @@ class AutoSendShowInfo extends Command
                     $qrscene_id = $Usage->get_eventkey_son_info($result->eventkey);
                     if ($qrscene_id) {
                         foreach ($qrscene_id as $key => $eventkey) {
-                            /*            $row2 = $db->query("SELECT * from wx_user_info where eventkey=:eventkey  and scandate = :days and UNIX_TIMESTAMP(endtime)>=:endtime order by id desc",
-                                            array("eventkey" => $eventkey, "days" => date('Y-m-d'),"endtime"=>strtotime($prevtime)));*/
 
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $result->eventkey)
@@ -86,8 +79,6 @@ class AutoSendShowInfo extends Command
                                 ->get();
 
                             foreach ($row2 as $send_openid) {
-                                /*  $response->responseV_Text($ddd["wx_openID"], "您好，" .$result["zone_id"]."景区". $result["show_name"]."的演出时间是".$bbb."。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='".$result["location_url"]."'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。");
-                                  $response->responseV_News($ddd['wx_openID'], $result["show_name"], "2");*/
                                 $content = new Text();
                                 $content->content = "您好，" . $result->zone_id . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
                                 $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
