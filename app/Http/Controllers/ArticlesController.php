@@ -119,8 +119,6 @@ class ArticlesController extends Controller
                     $qrscene_id = $Usage->get_eventkey_son_info($result->eventkey);
                     if ($qrscene_id) {
                         foreach ($qrscene_id as $key => $eventkey) {
-                            /*            $row2 = $db->query("SELECT * from wx_user_info where eventkey=:eventkey  and scandate = :days and UNIX_TIMESTAMP(endtime)>=:endtime order by id desc",
-                                            array("eventkey" => $eventkey, "days" => date('Y-m-d'),"endtime"=>strtotime($prevtime)));*/
 
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $result->eventkey)
