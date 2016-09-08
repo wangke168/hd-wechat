@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\Update_Openid_Info::class,
-        \App\Console\Commands\auto_send_show_info::class,
+        \App\Console\Commands\AutoSendShowInfo::class,
     ];
 
     /**
