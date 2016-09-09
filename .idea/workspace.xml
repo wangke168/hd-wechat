@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/CancelTag.php" afterPath="$PROJECT_DIR$/app/Console/Commands/CancelTag.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -72,8 +71,8 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
               </folding>
@@ -113,11 +112,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Usage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/WeChat/Usage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="61" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="636" column="20" selection-start-line="636" selection-start-column="20" selection-end-line="636" selection-end-column="20" />
+            <state relative-caret-position="201">
+              <caret line="353" column="33" selection-start-line="353" selection-start-column="33" selection-end-line="353" selection-end-column="33" />
               <folding>
                 <element signature="e#110#128#0#PHP" expanded="true" />
               </folding>
@@ -147,8 +156,8 @@
         <option value="$PROJECT_DIR$/app/Console/Commands/Inspire.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/AutoSendShowInfo.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/CancelTag.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
       </list>
     </option>
   </component>
@@ -311,12 +320,12 @@
       <workItem from="1473302289027" duration="69000" />
       <workItem from="1473302431939" duration="929000" />
       <workItem from="1473315566354" duration="9087000" />
-      <workItem from="1473383172274" duration="2154000" />
+      <workItem from="1473383172274" duration="2965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24692000" />
+    <option name="totallyTimeSpent" value="25503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1631" height="929" extended-state="6" />
@@ -602,14 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/WeChat/Usage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2184">
-          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/AutoSendShowInfo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-27">
@@ -638,16 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="636" column="20" selection-start-line="636" selection-start-column="20" selection-end-line="636" selection-end-column="20" />
-          <folding>
-            <element signature="e#110#128#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/CancelTag.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -656,10 +647,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="353" column="33" selection-start-line="353" selection-start-column="33" selection-end-line="353" selection-end-column="33" />
+          <folding>
+            <element signature="e#110#128#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/WeChat/Usage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="61" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="442">
+          <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
           </folding>
