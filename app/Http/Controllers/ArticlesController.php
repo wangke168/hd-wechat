@@ -50,8 +50,8 @@ class ArticlesController extends Controller
 //        $tag->batchUntagUsers($openIds, $tagId);
         */
         $usage=new Usage();
-        $uid = $usage->get_eventkey_info($usage->get_openid_info('opUv9v977Njll_YHpZYMymxI_aPE')->eventkey)->uid;
-        $endtime = $usage->get_openid_info('opUv9v977Njll_YHpZYMymxI_aPE')->endtime;
+        $uid = $usage->get_eventkey_info($usage->get_openid_info('o2e-YuAgS2_TGQtC1IEtEY6U_src')->eventkey)->uid;
+        $endtime = $usage->get_openid_info('o2e-YuAgS2_TGQtC1IEtEY6U_src')->endtime;
         if (!$uid) {
             $differs_days = (strtotime("now") - strtotime($endtime)) / 86400;
             if ($differs_days <= 10 && $differs_days > 1) {
