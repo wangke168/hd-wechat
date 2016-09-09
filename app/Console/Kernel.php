@@ -45,7 +45,7 @@ class Kernel extends ConsoleKernel
 
         /*龙帝惊临预约提醒*/
         $schedule->command('AutoRemindLdjl')
-            ->everyMinute();
+            ->cron('*/20 9-16 * * *');
 
     }
 }

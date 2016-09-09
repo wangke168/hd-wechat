@@ -60,13 +60,13 @@ class ArticlesController extends Controller
             ->where('verification_time','>',Carbon::now())
             ->whereRaw('UNIX_TIMESTAMP(verification_time)<=' . $endtime)
             ->get();
-        return $row;
-  /*      foreach ($row as $send_openid)
+//        return $row;
+        foreach ($row as $send_openid)
         {
             $content->content="您在龙帝惊临预约时间即将到时，请合理安排您的游玩时间。";
             $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
 
-        }*/
+        }
     }
     public function info_back_2()
     {
