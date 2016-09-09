@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('AutoSendShowInfo')
             ->cron('*/20 8-18 * * *');
         $schedule->command('CancelTag')
-            ->cron('* * * * *');
+            ->daily();
 
     }
 }
