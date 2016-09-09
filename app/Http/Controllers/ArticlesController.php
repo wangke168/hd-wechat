@@ -46,8 +46,8 @@ class ArticlesController extends Controller
         $tags = $tag->lists();
 //        $tag->create('测试号标签');
         $openIds = ['opUv9v1jQ2jTF4AIxirvBg2jrr_c', 'opUv9v977Njll_YHpZYMymxI_aPE'];
-        return $tag->batchTagUsers($openIds, $tagId);
-//        return $tag->usersOfTag($tagId, $nextOpenId = '');
+//        return $tag->batchTagUsers($openIds, $tagId);
+        return $tag->usersOfTag($tagId, $nextOpenId = '');
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
 //        return $tags;
     }
