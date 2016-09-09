@@ -40,6 +40,35 @@ class ArticlesController extends Controller
 
     public function info()
     {
+        $app=app('wechat');
+
+        $project_id="1";
+
+//        $starttime=strtotime(date("Y-m-d H:i:s", time() - 3600));
+
+        $endtime=strtotime(date("Y-m-d H:i:s", time() + 1200));
+
+        $content = new Text();
+
+        /*        $row=$db->query("select * from tour_project_wait_detail WHERE project_id=:project_id AND used=:used AND date(addtime)=:adddate AND UNIX_TIMESTAMP(addtime)>=:starttime AND UNIX_TIMESTAMP(addtime)<:endtime",
+                    array("project_id"=>$project_id,"used"=>"0","adddate"=>date("Y-m-d"),"starttime"=>$starttime,"endtime"=>$endtime));*/
+
+        $row=DB::table('tour_project_wait_detail')
+            ->where('project_id',$project_id)
+            ->where('used',0)
+            ->whereDay('addtime','=',date('Y-m-d'))
+            ->where('verification_time','>',Carbon::now())
+            ->whereRaw('UNIX_TIMESTAMP(verification_time)<=' . $endtime)
+            ->get();
+        foreach ($row as $send_openid)
+        {
+            $content->content="您在龙帝惊临预约时间即将到时，请合理安排您的游玩时间。";
+            $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
+
+        }
+    }
+    public function info_back_2()
+    {
         $tagId = '102';
         $app = app('wechat');
         $tag = $app->user_tag;
@@ -56,27 +85,6 @@ class ArticlesController extends Controller
         $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;*/
         return $openIds;
 
-
-        /*先删除原有tag*/
-
-      /*  $tag = $this->app->user_tag;
-        $userTags = $tag->userTags($openid);
-
-        if ($userTags->tagid_list) {
-            foreach ($userTags as $userTag) {
-                foreach ($userTag as $value) {
-                    $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
-                }
-            }
-        }
-
-        if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
-            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey));          //增加标签
-        }
-
-        */
-
-//        return $tags;
     }
 
     public function queue()
