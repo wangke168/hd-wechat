@@ -48,9 +48,10 @@ class ArticlesController extends Controller
 //        $openIds = ['opUv9v1jQ2jTF4AIxirvBg2jrr_c', 'opUv9v977Njll_YHpZYMymxI_aPE'];
 //        return $tag->batchTagUsers($openIds, $tagId);
         $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
-        return $openIds;
+        return $tag->batchUntagUsers($openIds, $tagId);
 
-//        return $tag->batchUntagUsers($openIds, $tagId);
+        $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
+        return $openIds;
 
 //        return $tags;
     }
