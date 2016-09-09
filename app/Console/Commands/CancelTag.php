@@ -40,7 +40,8 @@ class CancelTag extends Command
         $tagId = '102';
         $app = app('wechat');
         $tag = $app->user_tag;
-        $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
+        $openids = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
+        $openIds=$openids['openid'];
         $tag->batchUntagUsers($openIds, $tagId);
     }
 }

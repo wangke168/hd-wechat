@@ -49,7 +49,7 @@ class ArticlesController extends Controller
 //        return $tag->batchTagUsers($openIds, $tagId);
         $openids = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
 
-            $openIds=$openids->openid;
+            $openIds=$openids['openid'];
 
 /*        $tag->batchUntagUsers($openIds, $tagId);
 
