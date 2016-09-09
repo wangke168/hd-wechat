@@ -24,7 +24,7 @@ class ArticlesController extends Controller
         return view('articles.index', compact('articles'));
     }
 
-    public function  show($id)
+    public function show($id)
     {
         $article = WechatArticle::find($id);
 //        $aaa=WechatArticle::
@@ -40,11 +40,13 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $tagId='171';
-        $app=app('wechat');
-        $tag=$app->user_tag;
+        $tagId = '171';
+        $app = app('wechat');
+        $tag = $app->user_tag;
         $tags = $tag->lists();
 //        $tag->create('测试号标签');
+        $openIds = ['opUv9v1jQ2jTF4AIxirvBg2jrr_c', 'opUv9v_CE9-Kd3-HCt6i6hv8JNUw','opUv9v977Njll_YHpZYMymxI_aPE'];
+        $tag->batchUntagUsers($openIds, $tagId);
 
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
         return $tags;
@@ -59,14 +61,14 @@ class ArticlesController extends Controller
             ->whereRaw('HOUR(addtime)=' . date("G"))
             ->count();
 
-        $hour_id= $row_hour;
+        $hour_id = $row_hour;
 
 //        $n = 33;
         $y = $hour_id % 8;
         $x = floor($hour_id / 8);
         $h = date('G') + 1;
 
-       if ($hour_id < 96) {
+        if ($hour_id < 96) {
             if ($y == 0) {
                 $t = (($x * 5) - 5);
 //                $startTime = date('Y-m-d '.$h.'-'.$t);
@@ -84,9 +86,8 @@ class ArticlesController extends Controller
             ->update(['verification_time' => $startTime]);
 
 
-        $tour=new Tour();
-        return $tour->insert_wait_info('sdsadsa',1);
-
+        $tour = new Tour();
+        return $tour->insert_wait_info('sdsadsa', 1);
 
 
 //        $z = array($x, $y);
@@ -97,9 +98,9 @@ class ArticlesController extends Controller
     public function info_back_1()
     {
 
-        $app=app('wechat');
-        $row=DB::table('wx_location_list')
-            ->orderBy('id','desc')
+        $app = app('wechat');
+        $row = DB::table('wx_location_list')
+            ->orderBy('id', 'desc')
             ->get();
         foreach ($row as $result) {
             $aaa = explode(',', $result->show_time);
