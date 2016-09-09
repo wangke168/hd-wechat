@@ -50,7 +50,7 @@ class ArticlesController extends Controller
 //        $tag->batchUntagUsers($openIds, $tagId);
         */
         $usage=new Usage();
-        $uid = $usage->get_eventkey_info($this->get_openid_info('opUv9v977Njll_YHpZYMymxI_aPE')->eventkey)->uid;
+        $uid = $usage->get_eventkey_info($usage->get_openid_info('opUv9v977Njll_YHpZYMymxI_aPE')->eventkey)->uid;
         $endtime = $usage->get_openid_info('opUv9v977Njll_YHpZYMymxI_aPE')->endtime;
         if (!$uid) {
             $differs_days = (strtotime("now") - strtotime($endtime)) / 86400;
