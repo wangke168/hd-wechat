@@ -45,7 +45,7 @@ class ArticlesController extends Controller
         $tag=$app->user->user_tag;
         $tags = $tag->lists();
 
-        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
+//        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
         return $tags;
 //        $tag->batchUntagUsers($openIds, $tagId);
     }
