@@ -40,16 +40,16 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $tagId = '171';
+        $tagId = '102';
         $app = app('wechat');
         $tag = $app->user_tag;
         $tags = $tag->lists();
 //        $tag->create('测试号标签');
         $openIds = ['opUv9v1jQ2jTF4AIxirvBg2jrr_c', 'opUv9v_CE9-Kd3-HCt6i6hv8JNUw','opUv9v977Njll_YHpZYMymxI_aPE'];
         $tag->batchUntagUsers($openIds, $tagId);
-
+        return $tag->usersOfTag($tagId, $nextOpenId = '');
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
-        return $tags;
+//        return $tags;
 
     }
 
