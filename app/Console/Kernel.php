@@ -14,8 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
 //        \App\Console\Commands\Inspire::class,
-        \App\Console\Commands\Update_Openid_Info::class,
-        \App\Console\Commands\AutoSendShowInfo::class,
+        Commands\Update_Openid_Info::class,
+        Commands\AutoSendShowInfo::class,
+        Commands\CancelTag::class,
 
     ];
 
@@ -34,5 +35,8 @@ class Kernel extends ConsoleKernel
             ->dailyAt('2:00');
         $schedule->command('AutoSendShowInfo')
             ->cron('*/20 8-18 * * *');
+        $schedule->command('CancelTag')
+            ->cron('* * * * *');
+
     }
 }
