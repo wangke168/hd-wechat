@@ -38,6 +38,18 @@ class ArticlesController extends Controller
         return view('articles.detail', compact('article'));
     }
 
+    public function info()
+    {
+        $tagId='171';
+        $app=app('wechat');
+        $tag=$app->user->user_tag;
+        $tags = $tag->lists();
+
+        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
+        return $tags;
+//        $tag->batchUntagUsers($openIds, $tagId);
+    }
+
     public function queue()
     {
 
@@ -81,7 +93,7 @@ class ArticlesController extends Controller
 //        return $flag;
     }
 
-    public function info()
+    public function info_back_1()
     {
 
         $app=app('wechat');

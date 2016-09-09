@@ -11,14 +11,14 @@ class CancelTag extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'CancelTag';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'CancelTag';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,11 @@ class CancelTag extends Command
      */
     public function handle()
     {
-        //
+        $tagId='171';
+        $app=app('wechat');
+        $tag=$app->user->user_tag;
+        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
+        $tag->batchUntagUsers($openIds, $tagId);
+
     }
 }
