@@ -42,7 +42,7 @@ class ArticlesController extends Controller
     {
         $tagId='171';
         $app=app('wechat');
-        $tag=$app->user->user_tag;
+        $tag=$app->user_tag;
         $tags = $tag->lists();
 
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
