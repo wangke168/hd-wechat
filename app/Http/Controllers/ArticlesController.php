@@ -40,25 +40,15 @@ class ArticlesController extends Controller
 
     public function info()
     {
-/*        $tagId='171';
+        $tagId='171';
         $app=app('wechat');
         $tag=$app->user_tag;
         $tags = $tag->lists();
+        $tag->create('测试号标签');
 
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
         return $tags;
-//        $tag->batchUntagUsers($openIds, $tagId);
-        */
-        $usage=new Usage();
-        $uid = $usage->get_eventkey_info($usage->get_openid_info('o2e-YuAgS2_TGQtC1IEtEY6U_src')->eventkey)->uid;
-        $endtime = $usage->get_openid_info('o2e-YuAgS2_TGQtC1IEtEY6U_src')->endtime;
-        if (!$uid) {
-            $differs_days = (strtotime("now") - strtotime($endtime)) / 86400;
-            if ($differs_days <= 10 && $differs_days > 1) {
-                $uid = "627A7778313233";
-            }
-        }
-        return $uid;
+
     }
 
     public function queue()
