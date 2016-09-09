@@ -37,7 +37,7 @@ class CancelTag extends Command
      */
     public function handle()
     {
-        $tagId = '171';
+        $tagId = '102';
         $app = app('wechat');
         $tag = $app->user_tag;
         $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
