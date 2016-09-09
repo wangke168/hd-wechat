@@ -47,7 +47,7 @@ class ArticlesController extends Controller
 //        $tag->create('测试号标签');
 //        $openIds = ['opUv9v1jQ2jTF4AIxirvBg2jrr_c', 'opUv9v977Njll_YHpZYMymxI_aPE'];
 //        return $tag->batchTagUsers($openIds, $tagId);
-        $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
+        $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data->openid;
         return $openIds;
 
 //        return $tag->batchUntagUsers($openIds, $tagId);
