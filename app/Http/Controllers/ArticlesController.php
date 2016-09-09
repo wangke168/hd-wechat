@@ -49,8 +49,7 @@ class ArticlesController extends Controller
         $tag->batchUntagUsers($openIds, $tagId);
         return $tag->usersOfTag($tagId, $nextOpenId = '');
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
-//        return $tags;
-
+//        return $tags;    
     }
 
     public function queue()
