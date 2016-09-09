@@ -55,7 +55,6 @@ class AutoRemindLdjl extends Command
         $row=DB::table('tour_project_wait_detail')
             ->where('project_id',$project_id)
             ->where('used',0)
-            ->whereDay('addtime','=',date('Y-m-d'))
             ->where('verification_time','>',Carbon::now())
             ->whereRaw('UNIX_TIMESTAMP(verification_time)<=' . $endtime)
             ->get();
