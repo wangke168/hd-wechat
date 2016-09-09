@@ -44,7 +44,7 @@ class ArticlesController extends Controller
         $app=app('wechat');
         $tag=$app->user_tag;
         $tags = $tag->lists();
-        $tag->create('测试号标签');
+//        $tag->create('测试号标签');
 
 //        $openIds=$tag->usersOfTag($tagId, $nextOpenId = '');
         return $tags;
