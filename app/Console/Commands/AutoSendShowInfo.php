@@ -73,7 +73,7 @@ class AutoSendShowInfo extends Command
                         foreach ($qrscene_id as $key => $eventkey) {
 
                             $row2 = DB::table('wx_user_info')
-                                ->where('eventkey', $result->eventkey)
+                                ->where('eventkey', $eventkey)
                                 ->where('scandate', date('Y-m-d'))
                                 ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
                                 ->get();
