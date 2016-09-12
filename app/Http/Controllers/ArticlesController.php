@@ -70,7 +70,7 @@ class ArticlesController extends Controller
                     $qrscene_id = $Usage->get_eventkey_son_info($result->eventkey);
                     if ($qrscene_id) {
                         foreach ($qrscene_id as $eventkey) {
-
+echo $eventkey."<br>";
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $eventkey)
                                 ->where('scandate', date('Y-m-d'))
