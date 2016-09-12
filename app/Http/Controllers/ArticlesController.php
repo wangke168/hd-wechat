@@ -40,9 +40,10 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $app=app('wechat');
-        $row=DB::table('wx_location_list')
-            ->orderBy('id','desc')
+
+        $app = app('wechat');
+        $row = DB::table('wx_location_list')
+            ->orderBy('id', 'desc')
             ->get();
         foreach ($row as $result) {
             $aaa = explode(',', $result->show_time);
@@ -69,8 +70,8 @@ class ArticlesController extends Controller
                     $Usage = new Usage();
                     $qrscene_id = $Usage->get_eventkey_son_info($result->eventkey);
                     if ($qrscene_id) {
-                        foreach ($qrscene_id as $eventkey) {
-echo $eventkey."<br>";
+                        foreach ($qrscene_id as $key => $eventkey) {
+                            echo $eventkey;
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $eventkey)
                                 ->where('scandate', date('Y-m-d'))
@@ -90,6 +91,7 @@ echo $eventkey."<br>";
             }
         }
     }
+
     public function info_back_2()
     {
         $tagId = '102';
@@ -101,11 +103,11 @@ echo $eventkey."<br>";
 //        return $tag->batchTagUsers($openIds, $tagId);
         $openids = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
 
-            $openIds=$openids['openid'];
+        $openIds = $openids['openid'];
 
-/*        $tag->batchUntagUsers($openIds, $tagId);
+        /*        $tag->batchUntagUsers($openIds, $tagId);
 
-        $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;*/
+                $openIds = $tag->usersOfTag($tagId, $nextOpenId = '')->data;*/
         return $openIds;
 
     }

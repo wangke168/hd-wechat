@@ -70,7 +70,7 @@ class AutoSendShowInfo extends Command
                     $Usage = new Usage();
                     $qrscene_id = $Usage->get_eventkey_son_info($result->eventkey);
                     if ($qrscene_id) {
-                        foreach ($qrscene_id as $eventkey) {
+                        foreach ($qrscene_id as $key => $eventkey) {
 
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $eventkey)
