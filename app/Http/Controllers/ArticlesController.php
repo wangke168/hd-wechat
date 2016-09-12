@@ -43,7 +43,7 @@ class ArticlesController extends Controller
         $usage=new Usage();
         $qrscene_id = $usage->get_eventkey_son_info('91');
         if ($qrscene_id) {
-            foreach ($qrscene_id as $key => $eventkey) {
+            foreach ($qrscene_id as $eventkey) {
                 echo $eventkey;
             }
         }
