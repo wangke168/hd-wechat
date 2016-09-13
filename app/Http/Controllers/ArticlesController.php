@@ -40,10 +40,10 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $eventkey=123;
-/*        $row = DB::table('wx_article')
+        $eventkey="123";
+        $row = DB::table('wx_article')
 
-            ->whereRaw('FIND_IN_SET('.$eventkey.', eventkey)')
+            ->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
             ->where('msgtype', 'news')
             ->where('focus', '1')
             ->where('audit', '1')
@@ -54,10 +54,10 @@ class ArticlesController extends Controller
             ->whereDate('enddate', '>=', date('Y-m-d'))
             ->orderBy('priority', 'asc')
             ->orderBy('id', 'desc')
-            ->pluck('eventkey');*/
+            ->pluck('eventkey');
 
-                $row = WechatArticle::focusPublished('123')
-                    ->pluck('eventkey');
+/*                $row = WechatArticle::focusPublished('123')
+                    ->pluck('eventkey');*/
         return $row;
     }
 
