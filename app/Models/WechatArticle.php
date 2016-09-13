@@ -21,8 +21,8 @@ class WechatArticle extends Model
             ->where('enddate', '>=', date('Y-m-d'))
             ->orderBy('eventkey', 'asc')
             ->orderBy('priority', 'asc')
-            ->orderBy('id', 'desc')
-            ->skip(0)->take(8);
+            ->orderBy('id', 'desc');
+            
     }
 
     public function scopeFocusPublished($query, $eventkey)
@@ -36,8 +36,7 @@ class WechatArticle extends Model
             ->whereDate('startdate', '<=', date('Y-m-d'))
             ->whereDate('enddate', '>=', date('Y-m-d'))
             ->orderBy('priority', 'asc')
-            ->orderBy('id', 'desc')
-            ->skip(0)->take(8);
+            ->orderBy('id', 'desc');
 
     }
 }

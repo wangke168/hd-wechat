@@ -266,18 +266,8 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                $row_news = DB::table('wx_article')
-                    ->where('msgtype', 'news')
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->whereDate('startdate', '<=', date('Y-m-d'))
-                    ->whereDate('enddate', '>=', date('Y-m-d'))
+                $row_news=WechatArticle::where('keyword', 'like', '%' . $keyword . '%')
+                    ->usagePublished($eventkey)
                     ->first();
 
                 if ($row_news) {
@@ -357,58 +347,22 @@ class Response
         }
         switch ($type) {
             case 1:
-        /*        $row = DB::table('wx_article')
-                    ->where('msgtype', 'news')
-                    ->where('focus', '1')
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('eventkey', $eventkey)
-                    ->whereDate('startdate', '<=', date('Y-m-d'))
-                    ->whereDate('enddate', '>=', date('Y-m-d'))
-                    ->orderBy('priority', 'asc')
-                    ->orderBy('id', 'desc')
-                    ->skip(0)->take(8)->get();*/
-                $row = WechatArticle::focusPublished($eventkey)->get();
+
+                $row = WechatArticle::focusPublished($eventkey)
+                    ->skip(0)->take(8)->get();
                 break;
             case 2:
-              /*  $row = DB::table('wx_article')
-                    ->where('msgtype', 'news')
-                    ->where('classid', $menuid)
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('startdate', '<=', date('Y-m-d'))
-                    ->where('enddate', '>=', date('Y-m-d'))
-                    ->orderBy('eventkey', 'asc')
-                    ->orderBy('priority', 'asc')
-                    ->orderBy('id', 'desc')
-                    ->skip(0)->take(8)->get();*/
-                $row=WechatArticle::where('classid', $menuid)
-                ->usagePublished($eventkey)->get();
+
+                $row = WechatArticle::where('classid', $menuid)
+                    ->usagePublished($eventkey)
+                    ->skip(0)->take(8)->get();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
-/*                $row = DB::table('wx_article')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('startdate', '<=', date('Y-m-d'))
-                    ->where('enddate', '>=', date('Y-m-d'))
-                    ->orderBy('priority', 'asc')
-                    ->orderBy('id', 'desc')
-                    ->skip(0)->take(8)->get();*/
+
                 $row = WechatArticle::where('keyword', 'like', '%' . $keyword . '%')
-                    ->usagePublished($eventkey)->get();
+                    ->usagePublished($eventkey)
+                    ->skip(0)->take(8)->get();
                 break;
         }
         if ($row) {
@@ -438,11 +392,6 @@ class Response
             }
             $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
-
-        /*        else {
-                    $content = new Text();
-                    $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
-                }*/
 
     }
 
