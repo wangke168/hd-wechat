@@ -371,7 +371,7 @@ class Response
                     ->skip(0)->take(8)->get();
                 break;
             case 2:
-                $row = DB::table('wx_article')
+              /*  $row = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('classid', $menuid)
                     ->where(function ($query) use ($eventkey) {
@@ -386,6 +386,14 @@ class Response
                     ->orderBy('eventkey', 'asc')
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
+                    ->skip(0)->take(8)->get();*/
+                $row=WechatArticle::where('msgtype', 'news')
+                    ->where('classid', $menuid)
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
+                    ->MenuPublished()
                     ->skip(0)->take(8)->get();
                 break;
             case 3:
