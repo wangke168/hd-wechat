@@ -191,17 +191,9 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                $row_news = DB::table('wx_article')
-                    ->where('msgtype', 'news')
-                    ->where('focus', $focus)
-                    ->where('audit', '1')
-                    ->where('del', '0')
-                    ->where('online', '1')
-                    ->where('eventkey', $eventkey)
-                    ->whereDate('startdate', '<=', date('Y-m-d'))
-                    ->whereDate('enddate', '>=', date('Y-m-d'))
+                $row_news = WechatArticle::focusPublished($eventkey)
                     ->first();
-
+                
                 if ($row_news) {
                     $flag = true;
                 }
