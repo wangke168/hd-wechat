@@ -43,17 +43,18 @@ class ArticlesController extends Controller
         $eventkey="123";
         $row = DB::table('wx_article')
 
-            ->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
-            ->where('msgtype', 'news')
-            ->where('focus', '1')
-            ->where('audit', '1')
-            ->where('del', '0')
-            ->where('online', '1')
-//            ->where('eventkey', $eventkey)
-            ->whereDate('startdate', '<=', date('Y-m-d'))
-            ->whereDate('enddate', '>=', date('Y-m-d'))
-            ->orderBy('priority', 'asc')
-            ->orderBy('id', 'desc')
+            ->where(function ($query) use ($eventkey) {
+                $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
+                    ->orWhereRaw('FIND_IN_SET("all", eventkey)');
+            })
+                ->where('audit', '1')
+                ->where('del', '0')
+                ->where('online', '1')
+                ->where('startdate', '<=', date('Y-m-d'))
+                ->where('enddate', '>=', date('Y-m-d'))
+                ->orderBy('eventkey', 'asc')
+                ->orderBy('priority', 'asc')
+                ->orderBy('id', 'desc')
             ->pluck('eventkey');
 
 /*                $row = WechatArticle::focusPublished('123')

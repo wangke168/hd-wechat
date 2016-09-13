@@ -11,8 +11,8 @@ class WechatArticle extends Model
     public function scopeUsagePublished($query, $eventkey)
     {
         $query->where(function ($query) use ($eventkey) {
-            $query->where('eventkey', $eventkey)
-                ->orWhere('eventkey', 'all');
+            $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
+                ->orWhereRaw('FIND_IN_SET("all", eventkey)');
         })
             ->where('audit', '1')
             ->where('del', '0')
