@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Response.php" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -104,8 +103,8 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="556" column="77" selection-start-line="556" selection-start-column="77" selection-end-line="556" selection-end-column="77" />
+            <state relative-caret-position="634">
+              <caret line="555" column="105" selection-start-line="555" selection-start-column="105" selection-end-line="555" selection-end-column="105" />
               <folding>
                 <element signature="e#110#128#0#PHP" expanded="true" />
               </folding>
@@ -303,12 +302,12 @@
       <workItem from="1473315566354" duration="9087000" />
       <workItem from="1473383172274" duration="17385000" />
       <workItem from="1473645233115" duration="5558000" />
-      <workItem from="1473727827066" duration="395000" />
+      <workItem from="1473727827066" duration="490000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45876000" />
+    <option name="totallyTimeSpent" value="45971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1631" height="1026" extended-state="6" />
@@ -650,8 +649,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="556" column="77" selection-start-line="556" selection-start-column="77" selection-end-line="556" selection-end-column="77" />
+        <state relative-caret-position="634">
+          <caret line="555" column="105" selection-start-line="555" selection-start-column="105" selection-end-line="555" selection-end-column="105" />
           <folding>
             <element signature="e#110#128#0#PHP" expanded="true" />
           </folding>
