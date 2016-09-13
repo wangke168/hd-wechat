@@ -388,11 +388,12 @@ class Response
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
                     ->skip(0)->take(8)->get();*/
-                $row=WechatArticle::menuPublished($menuid,$eventkey)->get();
+                $row=WechatArticle::where('classid', $menuid)
+                ->usagePublished($eventkey)->get();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
-                $row = DB::table('wx_article')
+/*                $row = DB::table('wx_article')
                     ->where('keyword', 'like', '%' . $keyword . '%')
                     ->where(function ($query) use ($eventkey) {
                         $query->where('eventkey', $eventkey)
@@ -405,7 +406,9 @@ class Response
                     ->where('enddate', '>=', date('Y-m-d'))
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
-                    ->skip(0)->take(8)->get();
+                    ->skip(0)->take(8)->get();*/
+                $row = WechatArticle::where('keyword', 'like', '%' . $keyword . '%')
+                    ->usagePublished($eventkey)->get();
                 break;
         }
         if ($row) {

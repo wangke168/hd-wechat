@@ -8,10 +8,9 @@ class WechatArticle extends Model
 {
     protected $table = 'wx_article';
 
-    public function scopeMenuPublished($query, $menuid, $eventkey)
+    public function scopeUsagePublished($query, $eventkey)
     {
-        $query->where('classid', $menuid)
-            ->where(function ($query) use ($eventkey) {
+        $query->where(function ($query) use ($eventkey) {
                 $query->where('eventkey', $eventkey)
                     ->orWhere('eventkey', 'all');
             })
