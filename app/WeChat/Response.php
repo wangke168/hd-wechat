@@ -357,7 +357,7 @@ class Response
         }
         switch ($type) {
             case 1:
-                $row = DB::table('wx_article')
+        /*        $row = DB::table('wx_article')
                     ->where('msgtype', 'news')
                     ->where('focus', '1')
                     ->where('audit', '1')
@@ -368,8 +368,8 @@ class Response
                     ->whereDate('enddate', '>=', date('Y-m-d'))
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
-                    ->skip(0)->take(8)->get();
-//                $row = WechatArticle::focusPublished($eventkey)->get();
+                    ->skip(0)->take(8)->get();*/
+                $row = WechatArticle::focusPublished($eventkey)->get();
                 break;
             case 2:
               /*  $row = DB::table('wx_article')
