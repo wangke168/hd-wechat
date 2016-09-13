@@ -11,9 +11,9 @@ class WechatArticle extends Model
     public function scopeUsagePublished($query, $eventkey)
     {
         $query->where(function ($query) use ($eventkey) {
-                $query->where('eventkey', $eventkey)
-                    ->orWhere('eventkey', 'all');
-            })
+            $query->where('eventkey', $eventkey)
+                ->orWhere('eventkey', 'all');
+        })
             ->where('audit', '1')
             ->where('del', '0')
             ->where('online', '1')
@@ -22,17 +22,17 @@ class WechatArticle extends Model
             ->orderBy('eventkey', 'asc')
             ->orderBy('priority', 'asc')
             ->orderBy('id', 'desc');
-            
+
     }
 
     public function scopeFocusPublished($query, $eventkey)
     {
-        $query->where('msgtype', 'news')
+        $query->whereRaw('FIND_IN_SET('.$eventkey.', eventkey)')
+            ->where('msgtype', 'news')
             ->where('focus', '1')
             ->where('audit', '1')
             ->where('del', '0')
             ->where('online', '1')
-            ->where('eventkey', $eventkey)
             ->whereDate('startdate', '<=', date('Y-m-d'))
             ->whereDate('enddate', '>=', date('Y-m-d'))
             ->orderBy('priority', 'asc')

@@ -193,7 +193,7 @@ class Response
             case "news":
                 $row_news = WechatArticle::focusPublished($eventkey)
                     ->first();
-                
+
                 if ($row_news) {
                     $flag = true;
                 }
@@ -339,19 +339,16 @@ class Response
         }
         switch ($type) {
             case 1:
-
                 $row = WechatArticle::focusPublished($eventkey)
                     ->skip(0)->take(8)->get();
                 break;
             case 2:
-
                 $row = WechatArticle::where('classid', $menuid)
                     ->usagePublished($eventkey)
                     ->skip(0)->take(8)->get();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
-
                 $row = WechatArticle::where('keyword', 'like', '%' . $keyword . '%')
                     ->usagePublished($eventkey)
                     ->skip(0)->take(8)->get();

@@ -40,8 +40,25 @@ class ArticlesController extends Controller
 
     public function info()
     {
+        $eventkey=123;
+/*        $row = DB::table('wx_article')
 
-       return WechatArticle::menuPublished('2','101')->get();
+            ->whereRaw('FIND_IN_SET('.$eventkey.', eventkey)')
+            ->where('msgtype', 'news')
+            ->where('focus', '1')
+            ->where('audit', '1')
+            ->where('del', '0')
+            ->where('online', '1')
+//            ->where('eventkey', $eventkey)
+            ->whereDate('startdate', '<=', date('Y-m-d'))
+            ->whereDate('enddate', '>=', date('Y-m-d'))
+            ->orderBy('priority', 'asc')
+            ->orderBy('id', 'desc')
+            ->pluck('eventkey');*/
+
+                $row = WechatArticle::focusPublished('123')
+                    ->pluck('eventkey');
+        return $row;
     }
 
     public function info_back_2()
