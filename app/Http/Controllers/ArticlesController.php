@@ -41,7 +41,7 @@ class ArticlesController extends Controller
     public function info()
     {
 
-       return WechatArticle::Published()->get();
+       return WechatArticle::menuPublished('2','101')->get();
     }
 
     public function info_back_2()

@@ -387,14 +387,7 @@ class Response
                     ->orderBy('priority', 'asc')
                     ->orderBy('id', 'desc')
                     ->skip(0)->take(8)->get();*/
-                $row=WechatArticle::where('msgtype', 'news')
-                    ->where('classid', $menuid)
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->MenuPublished()
-                    ->skip(0)->take(8)->get();
+                $row=WechatArticle::menuPublished($menuid,$eventkey)->get();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
