@@ -188,7 +188,7 @@ class Response
     /**
      * 检查关注是否有对应二维码的消息回复（图文、语音、文字、图片）
      * @param $eventkey
-     * @param $type ：   news:图文    txt:文字      voice:语音
+     * @param $type ：   news:图文    txt:文字      voice:语音     image:图片
      * @param $focus :   1:关注    0：不关注
      * @return boolkey
      */
@@ -218,7 +218,7 @@ class Response
                     $flag = true;
                 }
                 break;
-            case "images":
+            case "image":
                 $row_images = WechatImage:: focusPublished($eventkey)->first();
                 
                 if ($row_images) {

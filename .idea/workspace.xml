@@ -77,8 +77,8 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="435" column="35" selection-start-line="435" selection-start-column="35" selection-end-line="435" selection-end-column="35" />
+            <state relative-caret-position="-7">
+              <caret line="190" column="68" selection-start-line="190" selection-start-column="68" selection-end-line="190" selection-end-column="68" />
               <folding>
                 <element signature="e#110#137#0#PHP" expanded="true" />
               </folding>
@@ -320,12 +320,12 @@
       <workItem from="1473645233115" duration="5558000" />
       <workItem from="1473727827066" duration="778000" />
       <workItem from="1473728637786" duration="11664000" />
-      <workItem from="1473813680142" duration="7337000" />
+      <workItem from="1473813680142" duration="7439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65260000" />
+    <option name="totallyTimeSpent" value="65362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1631" height="929" extended-state="6" />
@@ -665,8 +665,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="435" column="35" selection-start-line="435" selection-start-column="35" selection-end-line="435" selection-end-column="35" />
+        <state relative-caret-position="-7">
+          <caret line="190" column="68" selection-start-line="190" selection-start-column="68" selection-end-line="190" selection-end-column="68" />
           <folding>
             <element signature="e#110#137#0#PHP" expanded="true" />
           </folding>
