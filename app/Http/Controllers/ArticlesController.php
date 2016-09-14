@@ -60,8 +60,8 @@ class ArticlesController extends Controller
 
 /*                $row = WechatArticle::focusPublished('123')
                     ->pluck('eventkey');*/
-        $row=WechatTxt::focusPublished('91')->pluck('eventkey');
-        return $row;
+        $usage=new Usage();
+        $usage->make_user_tag('opUv9v977Njll_YHpZYMymxI_aPE', '123');
     }
 
     public function info_back_2()
