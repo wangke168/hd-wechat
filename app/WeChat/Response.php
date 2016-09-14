@@ -136,7 +136,10 @@ class Response
             $flag = true;
             $this->request_txt($openid, '2', $eventkey, $keyword);             //直接在查询文本回复时使用客服接口
         }
-
+        if ($this->check_keyword_message($eventkey, "image", $keyword)) {
+            $flag = true;
+            $this->request_image($openid, '2', $eventkey, $keyword);             //直接在查询文本回复时使用客服接口
+        }
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
             $content = new Text();
