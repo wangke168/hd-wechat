@@ -60,8 +60,23 @@ class ArticlesController extends Controller
 
 /*                $row = WechatArticle::focusPublished('123')
                     ->pluck('eventkey');*/
-        $response=new Response();
-        $response->make_user_tag('opUv9v977Njll_YHpZYMymxI_aPE', '123');
+        $app=app('wechat');
+        $tag = $app->user_tag;
+        $usage=new Usage();
+        $userTags = $tag->userTags('opUv9v977Njll_YHpZYMymxI_aPE');
+
+        if ($userTags->tagid_list) {
+            foreach ($userTags as $userTag) {
+                foreach ($userTag as $value) {
+                    $tag->batchUntagUsers(['opUv9v977Njll_YHpZYMymxI_aPE'], $value);                      //删除原有标签
+                }
+            }
+        }
+
+        if ($usage->query_tag_id('123')) {                          //获取eventkey对应的tag
+            $tag->batchTagUsers(['opUv9v977Njll_YHpZYMymxI_aPE'], $usage->query_tag_id('123'));          //增加标签
+        }
+//        $response->make_user_tag('opUv9v977Njll_YHpZYMymxI_aPE', '123');
     }
 
     public function info_back_2()
