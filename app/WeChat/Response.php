@@ -401,7 +401,7 @@ class Response
                     ->orderBy('id', 'desc')
                     ->get();*/
                 $row=DB::table('wx_voice_request')
-                    ->where('event',$eventkey)
+                    ->where('eventkey',$eventkey)
                     ->where('online', '1')
                     ->where('focus', '1')
                     ->whereDate('start_date', '<=', date('Y-m-d'))
