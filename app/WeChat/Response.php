@@ -200,13 +200,6 @@ class Response
                 }
                 break;
             case "txt":
-                /*               $row_txt = DB::table('wx_txt_request')
-                                   ->where('eventkey', $eventkey)
-                                   ->where('online', '1')
-                                   ->where('focus', $focus)
-                                   ->whereDate('start_date', '<=', date('Y-m-d'))
-                                   ->whereDate('end_date', '>=', date('Y-m-d'))
-                                   ->first();*/
                 $row_txt = WechatTxt::focusPublished($eventkey)
                     ->first();
 
@@ -269,16 +262,6 @@ class Response
                 }
                 break;
             case "txt":
-                /*                $row_txt = DB::table('wx_txt_request')
-                                    ->where('keyword', 'like', '%' . $keyword . '%')
-                                    ->where(function ($query) use ($eventkey) {
-                                        $query->where('eventkey', $eventkey)
-                                            ->orWhere('eventkey', 'all');
-                                    })
-                                    ->where('online', '1')
-                                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                                    ->whereDate('end_date', '>=', date('Y-m-d'))
-                                    ->first();*/
                 $row_txt = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->first();
@@ -401,14 +384,6 @@ class Response
 //        $app = app('wechat');
         switch ($type) {
             case 1:
-                /*                $row = DB::table('wx_txt_request')
-                                    ->where('eventkey', $eventkey)
-                                    ->where('focus', '1')
-                                    ->where('online', '1')
-                                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                                    ->whereDate('end_date', '>=', date('Y-m-d'))
-                                    ->orderBy('id', 'desc')
-                                    ->get();*/
                 $row = WechatTxt::focusPublished($eventkey)
                     ->orderBy('id', 'desc')
                     ->get();
