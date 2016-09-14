@@ -63,11 +63,13 @@ class ArticlesController extends Controller
                     ->pluck('eventkey');*/
 //        $row=WechatVoice::focusPublished('123')->get();
         $row=DB::table('wx_voice_request')
-            ->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
+            ->where('event',$eventkey)
             ->where('online', '1')
             ->where('focus', '1')
             ->whereDate('start_date', '<=', date('Y-m-d'))
-            ->whereDate('end_date', '>=', date('Y-m-d'))->get();
+            ->whereDate('end_date', '>=', date('Y-m-d'))
+            ->orderBy('id', 'desc')
+            ->get();
         return $row;
 
     }
