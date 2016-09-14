@@ -128,7 +128,7 @@ class Response
         }
         if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
             $flag = true;
-            $this->request_voice($openid, '2', $eventkey, $keyword);
+//            $this->request_voice($openid, '2', $eventkey, $keyword);
         }
         if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
             $flag = true;

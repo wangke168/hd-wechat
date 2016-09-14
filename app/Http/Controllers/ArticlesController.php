@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WechatTxt;
+use App\Models\WechatVoice;
 use App\WeChat\Response;
 use App\WeChat\Usage;
 use Carbon\Carbon;
@@ -41,7 +42,7 @@ class ArticlesController extends Controller
 
     public function info()
     {
-//        $eventkey="";
+        $eventkey="123";
        /* $row = DB::table('wx_article')
 
             ->where(function ($query) use ($eventkey) {
@@ -60,6 +61,14 @@ class ArticlesController extends Controller
 
 /*                $row = WechatArticle::focusPublished('123')
                     ->pluck('eventkey');*/
+//        $row=WechatVoice::focusPublished('123')->get();
+        $row=DB::table('wx_voice_request')
+            ->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
+            ->where('online', '1')
+            ->where('focus', '1')
+            ->whereDate('start_date', '<=', date('Y-m-d'))
+            ->whereDate('end_date', '>=', date('Y-m-d'))->get();
+        return $row;
 
     }
 
