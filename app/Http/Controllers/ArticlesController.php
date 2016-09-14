@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WechatTxt;
 use App\WeChat\Response;
 use App\WeChat\Usage;
 use Carbon\Carbon;
@@ -40,8 +41,8 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $eventkey="123";
-        $row = DB::table('wx_article')
+//        $eventkey="";
+       /* $row = DB::table('wx_article')
 
             ->where(function ($query) use ($eventkey) {
                 $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
@@ -55,10 +56,11 @@ class ArticlesController extends Controller
                 ->orderBy('eventkey', 'asc')
                 ->orderBy('priority', 'asc')
                 ->orderBy('id', 'desc')
-            ->pluck('eventkey');
+            ->pluck('eventkey');*/
 
 /*                $row = WechatArticle::focusPublished('123')
                     ->pluck('eventkey');*/
+        $row=WechatTxt::focusPublished('91')->pluck('eventkey');
         return $row;
     }
 
