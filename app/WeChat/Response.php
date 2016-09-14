@@ -172,6 +172,10 @@ class Response
             $flag = true;
             $this->request_txt($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
         }
+        if ($this->check_eventkey_message($eventkey, "image", "1")) {
+            $flag = true;
+            $this->request_image($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
+        }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
         {
@@ -380,7 +384,7 @@ class Response
 
     /*
     * 回复Voice
-    *$focus:1（关注）；2（关键字）$this->request_voice($openid, '1', $eventkey, '');
+    *$focus:1（关注）；2（关键字）
     */
     public function request_voice($openid, $type, $eventkey, $keyword)
     {
@@ -404,6 +408,35 @@ class Response
             $voice = new Voice();
             $voice->media_id = $result->media_id;
             $this->app->staff->message($voice)->by('1001@u_hengdian')->to($openid)->send();
+        }
+    }
+
+    /*
+   * 回复Image
+   *$focus:1（关注）；2（关键字）
+   */
+    public function request_image($openid, $type, $eventkey, $keyword)
+    {
+        switch ($type) {
+            case '1':
+                $row = WechatImage::focusPublished($eventkey)
+                    ->orderBy('id', 'desc')
+                    ->get();
+
+                break;
+            case "2":
+                $keyword = $this->check_keywowrd($keyword);
+
+                $row = WechatImage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
+                    ->orderBy('id', 'desc')
+                    ->get();
+                break;
+        }
+        foreach ($row as $result) {
+            $image = new Image();
+            $image->media_id = $result->media_id;
+            $this->app->staff->message($image)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
 
