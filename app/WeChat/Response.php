@@ -397,7 +397,6 @@ class Response
                 break;
             case "2":
                 $keyword = $this->check_keywowrd($keyword);
-
                 $row = WechatVoice::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->orderBy('id', 'desc')

@@ -48,7 +48,7 @@ class ArticlesController extends Controller
             ->where('online', '1')
             ->where('focus', '1')
             ->whereDate('start_date', '<=', date('Y-m-d'))
-            ->whereDate('end_date', '>=', date('Y-m-d'));
+            ->whereDate('end_date', '>=', date('Y-m-d'))->get();
         return $row;
         /*                $row = WechatArticle::focusPublished('123')
                             ->pluck('eventkey');*/
