@@ -62,15 +62,11 @@ class ArticlesController extends Controller
 /*                $row = WechatArticle::focusPublished('123')
                     ->pluck('eventkey');*/
 //        $row=WechatVoice::focusPublished('123')->get();
-        $row=DB::table('wx_voice_request')
-            ->where('eventkey',$eventkey)
-            ->where('online', '1')
-            ->where('focus', '1')
-            ->whereDate('start_date', '<=', date('Y-m-d'))
-            ->whereDate('end_date', '>=', date('Y-m-d'))
-            ->orderBy('id', 'desc')
-            ->get();
-        return $row;
+        $app=app('wechat');
+        $material = $app->material;
+        $resource = $material->lists('voice', 0, 10);
+
+        return $resource;
 
     }
 
