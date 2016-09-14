@@ -174,7 +174,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "image", "1")) {
             $flag = true;
-            $this->request_image($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
+//            $this->request_image($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
         }
 
         if (!$flag)     //如果该二维码没有对应的关注推送信息
