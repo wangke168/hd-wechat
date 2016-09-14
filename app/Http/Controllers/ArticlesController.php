@@ -10,6 +10,7 @@ use App\WeChat\Usage;
 use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
+use EasyWeChat\Message\Image;
 use Illuminate\Http\Request;
 use EasyWeChat\Message\Text;
 

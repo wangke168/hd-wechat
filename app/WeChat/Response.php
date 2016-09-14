@@ -17,6 +17,7 @@ use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
+use EasyWeChat\Message\Image;
 use App\Models\WechatArticle;
 use App\Http\Requests;
 use Crypt;
