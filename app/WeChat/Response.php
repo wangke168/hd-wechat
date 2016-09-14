@@ -163,10 +163,10 @@ class Response
             $this->request_news($openid, $eventkey, '1', '', '');
 //            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
         }
-/*        if ($this->check_eventkey_message($eventkey, "voice", "1")) {
+        if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-            $this->request_voice($openid, '1', $eventkey, '');
-        }*/
+//            $this->request_voice($openid, '1', $eventkey, '');
+        }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
             $this->request_txt($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
