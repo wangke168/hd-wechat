@@ -10,7 +10,7 @@ class WechatTxt extends Model
 
     public function scopeFocusPublished($query, $eventkey)
     {
-        $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
+        $query->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
             ->where('online', '1')
             ->where('focus', '1')
             ->whereDate('start_date', '<=', date('Y-m-d'))
@@ -20,7 +20,7 @@ class WechatTxt extends Model
     public function scopeUsagePublished($query, $eventkey)
     {
         $query->where(function ($query) use ($eventkey) {
-            $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
+            $query->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
                 ->orWhereRaw('FIND_IN_SET("all", eventkey)');
         })
             ->where('online', '1')

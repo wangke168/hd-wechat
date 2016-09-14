@@ -8,6 +8,7 @@
 namespace App\WeChat;
 
 use App\Models\WechatTxt;
+use App\Models\WechatVoice;
 use Carbon\Carbon;
 use EasyWeChat\Message\Voice;
 use Illuminate\Database\Eloquent\Model;
@@ -192,29 +193,21 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                $row_news = WechatArticle::focusPublished($eventkey)
-                    ->first();
+                $row_news = WechatArticle::focusPublished($eventkey)->first();
 
                 if ($row_news) {
                     $flag = true;
                 }
                 break;
             case "txt":
-                $row_txt = WechatTxt::focusPublished($eventkey)
-                    ->first();
+                $row_txt = WechatTxt::focusPublished($eventkey)->first();
 
                 if ($row_txt) {
                     $flag = true;
                 }
                 break;
             case "voice":
-                $row_voice = DB::table('wx_voice_request')
-                    ->where('eventkey', $eventkey)
-                    ->where('online', '1')
-                    ->where('focus', $focus)
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
-                    ->first();
+                $row_voice = WechatVoice::focusPublished($eventkey)->first();
 
                 if ($row_voice) {
                     $flag = true;
@@ -271,15 +264,8 @@ class Response
                 }
                 break;
             case "voice":
-                $row_voice = DB::table('wx_voice_request')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('online', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                $row_voice = WechatVoice::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
                     ->first();
 
                 if ($row_voice) {
@@ -411,26 +397,14 @@ class Response
     {
         switch ($type) {
             case '1':
-                $row = DB::table('wx_voice_request')
-                    ->where('eventkey', $eventkey)
-                    ->where('online', '1')
-                    ->where('focus', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                $row = WechatVoice::focusPublished($eventkey)
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
             case "2":
                 $keyword = $this->check_keywowrd($keyword);
-                $row = DB::table('wx_voice_request')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('online', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                $row = WechatVoice::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
