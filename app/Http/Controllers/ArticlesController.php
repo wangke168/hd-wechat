@@ -43,11 +43,16 @@ class ArticlesController extends Controller
 
     public function info()
     {
+        $app=app('wechat');
         $eventkey = "123";
         $row = WechatImage::focusPublished($eventkey)
             ->orderBy('id', 'desc')
             ->get();
-        return $row;
+        foreach ($row as $result) {
+            $image = new Image();
+            $image->media_id = $result->media_id;
+            $app->staff->message($image)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+        }
         /*                $row = WechatArticle::focusPublished('123')
                             ->pluck('eventkey');*/
 //        $row=WechatVoice::focusPublished('123')->get();
