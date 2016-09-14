@@ -7,6 +7,7 @@
  */
 namespace App\WeChat;
 
+use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
 use Carbon\Carbon;
@@ -214,13 +215,8 @@ class Response
                 }
                 break;
             case "images":
-                $row_images = DB::table('wx_images_request')
-                    ->where('eventkey', $eventkey)
-                    ->where('online', '1')
-                    ->where('focus', $focus)
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
-                    ->first();
+                $row_images = WechatImage:: focusPublished($eventkey)->first();
+                
                 if ($row_images) {
                     $flag = true;
                 }
@@ -273,15 +269,8 @@ class Response
                 }
                 break;
             case "images":
-                $row_images = DB::table('wx_images_request')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('online', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                $row_images = WechatImage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
                     ->first();
                 if ($row_images) {
                     $flag = true;

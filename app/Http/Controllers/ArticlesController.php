@@ -64,9 +64,13 @@ class ArticlesController extends Controller
 //        $row=WechatVoice::focusPublished('123')->get();
         $app=app('wechat');
         $material = $app->material;
-        $resource = $material->lists('voice', 0, 10);
 
-        return $resource;
+        $result = $material->uploadImage("/public/images/bg.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
+        var_dump($result);
+
+   /*     $resource = $material->lists('voice', 0, 10);
+
+        return $resource;*/
 
     }
 
