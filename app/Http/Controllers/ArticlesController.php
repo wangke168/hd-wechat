@@ -65,7 +65,7 @@ class ArticlesController extends Controller
         $app=app('wechat');
         $material = $app->material;
 
-        $result = $material->uploadImage("/images/bg.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
+        $result = $material->uploadImage(public_path()."/images/bg.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
         var_dump($result);
 
    /*     $resource = $material->lists('voice', 0, 10);
