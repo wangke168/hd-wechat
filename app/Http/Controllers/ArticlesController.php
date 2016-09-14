@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
 use App\WeChat\Response;
@@ -43,12 +44,9 @@ class ArticlesController extends Controller
     public function info()
     {
         $eventkey = "123";
-        $row = DB::table('wx_images_request')
-            ->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
-            ->where('online', '1')
-            ->where('focus', '1')
-            ->whereDate('start_date', '<=', date('Y-m-d'))
-            ->whereDate('end_date', '>=', date('Y-m-d'))->get();
+        $row = WechatImage::focusPublished($eventkey)
+            ->orderBy('id', 'desc')
+            ->get();
         return $row;
         /*                $row = WechatArticle::focusPublished('123')
                             ->pluck('eventkey');*/
