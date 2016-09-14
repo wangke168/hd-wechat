@@ -42,35 +42,26 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $eventkey="123";
-       /* $row = DB::table('wx_article')
-
-            ->where(function ($query) use ($eventkey) {
-                $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
-                    ->orWhereRaw('FIND_IN_SET("all", eventkey)');
-            })
-                ->where('audit', '1')
-                ->where('del', '0')
-                ->where('online', '1')
-                ->where('startdate', '<=', date('Y-m-d'))
-                ->where('enddate', '>=', date('Y-m-d'))
-                ->orderBy('eventkey', 'asc')
-                ->orderBy('priority', 'asc')
-                ->orderBy('id', 'desc')
-            ->pluck('eventkey');*/
-
-/*                $row = WechatArticle::focusPublished('123')
-                    ->pluck('eventkey');*/
+        $eventkey = "123";
+        $row = DB::table('wx_images_request')
+            ->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
+            ->where('online', '1')
+            ->where('focus', '1')
+            ->whereDate('start_date', '<=', date('Y-m-d'))
+            ->whereDate('end_date', '>=', date('Y-m-d'));
+        return $row;
+        /*                $row = WechatArticle::focusPublished('123')
+                            ->pluck('eventkey');*/
 //        $row=WechatVoice::focusPublished('123')->get();
-        $app=app('wechat');
-        $material = $app->material;
+        /*      $app=app('wechat');
+              $material = $app->material;
 
-        $result = $material->uploadImage(public_path()."/images/bg.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
-        var_dump($result);
+              $result = $material->uploadImage(public_path()."/images/bg.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
+              var_dump($result);*/
 
-   /*     $resource = $material->lists('voice', 0, 10);
+        /*     $resource = $material->lists('voice', 0, 10);
 
-        return $resource;*/
+             return $resource;*/
 
     }
 
