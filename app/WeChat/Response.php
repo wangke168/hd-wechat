@@ -165,7 +165,7 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
-//            $this->request_voice($openid, '1', $eventkey, '');
+            $this->request_voice($openid, '1', $eventkey, '');
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
@@ -391,13 +391,21 @@ class Response
 
     /*
     * 回复Voice
-    *$focus:1（关注）；2（关键字）
+    *$focus:1（关注）；2（关键字）$this->request_voice($openid, '1', $eventkey, '');
     */
     public function request_voice($openid, $type, $eventkey, $keyword)
     {
         switch ($type) {
             case '1':
-                $row = WechatVoice::focusPublished($eventkey)
+   /*             $row = WechatVoice::focusPublished($eventkey)
+                    ->orderBy('id', 'desc')
+                    ->get();*/
+                $row=DB::table('wx_voice_request')
+                    ->where('event',$eventkey)
+                    ->where('online', '1')
+                    ->where('focus', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
