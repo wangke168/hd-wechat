@@ -29,7 +29,8 @@ Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneContr
 //测试
 Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
-
+Route::get('/card', 'CardController@index');
+Route::get('/cardcreate', 'CardController@create');
 //输出token
 Route::get('/hd-token','TokenController@token');
 
