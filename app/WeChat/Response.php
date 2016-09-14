@@ -569,9 +569,9 @@ class Response
             }
         }
 
-        if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
+ /*       if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
             $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey));          //增加标签
-        }
+        }*/
 
     }
 

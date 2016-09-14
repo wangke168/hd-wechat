@@ -65,7 +65,7 @@ class WechatController extends Controller
                             } else {
                                 $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
                                 $response->request_focus($openid, $eventkey);                       //推送关注信息
-//                                $response->make_user_tag($openid, $eventkey);                        //标签管理
+                                $response->make_user_tag($openid, $eventkey);                        //标签管理
                             }
                             break;
                         case 'unsubscribe':
