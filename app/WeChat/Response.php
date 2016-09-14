@@ -258,7 +258,7 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                $row_news=WechatArticle::where('keyword', 'like', '%' . $keyword . '%')
+                $row_news=WechatArticle::whereRaw('FIND_IN_SET("'.$keyword.'", keyword)')
                     ->usagePublished($eventkey)
                     ->first();
 
@@ -349,7 +349,7 @@ class Response
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
-                $row = WechatArticle::where('keyword', 'like', '%' . $keyword . '%')
+                $row = WechatArticle::whereRaw('FIND_IN_SET("'.$keyword.'", keyword)')
                     ->usagePublished($eventkey)
                     ->skip(0)->take(8)->get();
                 break;
