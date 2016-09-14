@@ -403,8 +403,15 @@ class Response
                 break;
             case "2":
                 $keyword = $this->check_keywowrd($keyword);
-                $row = WechatVoice::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
-                    ->usagePublished($eventkey)
+                $row = DB::table('wx_voice_request')
+                    ->where('keyword', 'like', '%' . $keyword . '%')
+                    ->where(function ($query) use ($eventkey) {
+                        $query->where('eventkey', $eventkey)
+                            ->orWhere('eventkey', 'all');
+                    })
+                    ->where('online', '1')
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('end_date', '>=', date('Y-m-d'))
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
