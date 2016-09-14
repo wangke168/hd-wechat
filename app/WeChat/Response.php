@@ -7,6 +7,7 @@
  */
 namespace App\WeChat;
 
+use App\Models\WechatTxt;
 use Carbon\Carbon;
 use EasyWeChat\Message\Voice;
 use Illuminate\Database\Eloquent\Model;
@@ -199,12 +200,14 @@ class Response
                 }
                 break;
             case "txt":
-                $row_txt = DB::table('wx_txt_request')
-                    ->where('eventkey', $eventkey)
-                    ->where('online', '1')
-                    ->where('focus', $focus)
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                /*               $row_txt = DB::table('wx_txt_request')
+                                   ->where('eventkey', $eventkey)
+                                   ->where('online', '1')
+                                   ->where('focus', $focus)
+                                   ->whereDate('start_date', '<=', date('Y-m-d'))
+                                   ->whereDate('end_date', '>=', date('Y-m-d'))
+                                   ->first();*/
+                $row_txt = WechatTxt::focusPublished($eventkey)
                     ->first();
 
                 if ($row_txt) {
@@ -248,7 +251,6 @@ class Response
      * 检查关键字是否有对应的消息回复（图文、语音、文字、图片）
      * @param $eventkey
      * @param $type ：   news:图文    txt:文字      voice:语音
-     * @param $focus :   1:关注    0：不关注
      * @return boolkey
      */
     private function check_keyword_message($eventkey, $type, $keyword)
@@ -258,7 +260,7 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                $row_news=WechatArticle::whereRaw('FIND_IN_SET("'.$keyword.'", keyword)')
+                $row_news = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->first();
 
@@ -267,15 +269,18 @@ class Response
                 }
                 break;
             case "txt":
-                $row_txt = DB::table('wx_txt_request')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('online', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                /*                $row_txt = DB::table('wx_txt_request')
+                                    ->where('keyword', 'like', '%' . $keyword . '%')
+                                    ->where(function ($query) use ($eventkey) {
+                                        $query->where('eventkey', $eventkey)
+                                            ->orWhere('eventkey', 'all');
+                                    })
+                                    ->where('online', '1')
+                                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                                    ->first();*/
+                $row_txt = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
                     ->first();
 
                 if ($row_txt) {
@@ -349,7 +354,7 @@ class Response
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
-                $row = WechatArticle::whereRaw('FIND_IN_SET("'.$keyword.'", keyword)')
+                $row = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->skip(0)->take(8)->get();
                 break;
@@ -396,26 +401,22 @@ class Response
 //        $app = app('wechat');
         switch ($type) {
             case 1:
-                $row = DB::table('wx_txt_request')
-                    ->where('eventkey', $eventkey)
-                    ->where('focus', '1')
-                    ->where('online', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                /*                $row = DB::table('wx_txt_request')
+                                    ->where('eventkey', $eventkey)
+                                    ->where('focus', '1')
+                                    ->where('online', '1')
+                                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                                    ->orderBy('id', 'desc')
+                                    ->get();*/
+                $row = WechatTxt::focusPublished($eventkey)
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
             case 2:
                 $keyword = $this->check_keywowrd($keyword);
-                $row = DB::table('wx_txt_request')
-                    ->where('keyword', 'like', '%' . $keyword . '%')
-                    ->where(function ($query) use ($eventkey) {
-                        $query->where('eventkey', $eventkey)
-                            ->orWhere('eventkey', 'all');
-                    })
-                    ->where('online', '1')
-                    ->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'))
+                $row = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
                     ->orderBy('id', 'desc')
                     ->get();
                 break;
