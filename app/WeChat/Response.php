@@ -276,7 +276,7 @@ class Response
                     $flag = true;
                 }
                 break;
-            case "images":
+            case "image":
                 $row_images = WechatImage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->first();
