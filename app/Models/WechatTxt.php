@@ -10,7 +10,7 @@ class WechatTxt extends Model
 
     public function scopeFocusPublished($query, $eventkey)
     {
-        $query->where('eventkey', $eventkey)
+        $query->whereRaw('FIND_IN_SET("'.$eventkey.'", eventkey)')
             ->where('online', '1')
             ->where('focus', '1')
             ->whereDate('start_date', '<=', date('Y-m-d'))
