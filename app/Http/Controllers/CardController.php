@@ -38,7 +38,7 @@ class CardController extends Controller
         $cardType = 'GIFT';
         $baseInfo = [
             'logo_url' => 'http://mmbiz.qpic.cn/mmbiz/2aJY6aCPatSeibYAyy7yct9zJXL9WsNVL4JdkTbBr184gNWS6nibcA75Hia9CqxicsqjYiaw2xuxYZiaibkmORS2oovdg/0',
-            'brand_name' => 'MV优惠券测试',
+            'brand_name' => 'MV兑换券',
             'code_type' => 'CODE_TYPE_QRCODE',
             'title' => '测试',
             'sub_title' => '测试副标题',
@@ -72,7 +72,7 @@ class CardController extends Controller
             'source' => '造梦空间',
         ];
         $especial = [
-            'deal_detail' => 'deal_detail',
+            'gift' => '兑换MV拍摄50元',
         ];
         $result = $this->card->create($cardType, $baseInfo, $especial);
         return $result;
