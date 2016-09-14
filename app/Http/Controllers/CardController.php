@@ -34,7 +34,8 @@ class CardController extends Controller
     
     public function create()
     {
-        $cardType = 'GIFT';
+
+        $cardType = 'GROUPON';
         $baseInfo = [
             'logo_url' => 'http://mmbiz.qpic.cn/mmbiz/2aJY6aCPatSeibYAyy7yct9zJXL9WsNVL4JdkTbBr184gNWS6nibcA75Hia9CqxicsqjYiaw2xuxYZiaibkmORS2oovdg/0',
             'brand_name' => '测试商户造梦空间',
@@ -53,9 +54,9 @@ class CardController extends Controller
             'sku' => [
                 'quantity' => '0', //自定义code时设置库存为0
             ],
-//            'location_id_list' => ['461907340'],  //获取门店位置poi_id，具备线下门店的商户为必填
+            'location_id_list' => ['461907340'],  //获取门店位置poi_id，具备线下门店的商户为必填
             'get_limit' => 1,
-            'use_custom_code' => false, //自定义code时必须为true
+            'use_custom_code' => true, //自定义code时必须为true
             'get_custom_code_mode' => 'GET_CUSTOM_CODE_MODE_DEPOSIT',  //自定义code时设置
             'bind_openid' => false,
             'can_share' => true,
