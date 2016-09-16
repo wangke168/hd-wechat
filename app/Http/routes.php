@@ -11,6 +11,11 @@
 |
 */
 
+Route::any('/wechat', 'WechatController@serve');
+//输出token
+Route::get('/hd-token','TokenController@token');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,10 +34,17 @@ Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneContr
 //测试
 Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
+
+//卡券测试
 Route::get('/card', 'CardController@index');
 Route::get('/cardcreate', 'CardController@create');
-//输出token
-Route::get('/hd-token','TokenController@token');
+
+//用户相关测试
+Route::get('/users','UserController@users');
+Route::get('/user/{openId}','UserController@user');
+//wx_click_hits  获取openid的eventkey并update
+Route::get('/update','UserController@update');
+
 
 //素材管理
 Route::get('/audio','MaterialController@audio');
@@ -40,8 +52,9 @@ Route::get('/audio','MaterialController@audio');
 //获取门店信息
 Route::get('/shop_info','ShopController@index');
 
-Route::get('/users','UserController@users');
-Route::get('/user/{openId}','UserController@user');
+//队列测试
+Route::get('/queue','QueueController@queue');
 
-Route::any('/wechat', 'WechatController@serve');
+
+
 
