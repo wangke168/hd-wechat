@@ -14,8 +14,8 @@ class QueueController extends Controller
     public function queue()
     {
        $row=DB::table('wx_click_hits')
-           ->where('id','>','0')
-           ->where('id','<','61')
+           ->whereDate('adddate','>','2016-8-28')
+//           ->where('id','<','61')
            ->get();
         foreach ($row as $openid)
         {
