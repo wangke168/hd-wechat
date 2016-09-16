@@ -32,7 +32,7 @@ class TestQueue extends Job implements ShouldQueue
      */
     public function handle()
     {
-        \Log::info('openid is ' . $this->user->wx_openid);
+//        \Log::info('openid is ' . $this->user->wx_openid);
 
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $this->user->wx_openid)
