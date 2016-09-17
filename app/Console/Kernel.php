@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\AutoSendShowInfo::class,
         Commands\CancelTag::class,
         Commands\AutoRemindLdjl::class,
+        Commands\UpdateInfo::class,
 
     ];
 
@@ -46,6 +47,10 @@ class Kernel extends ConsoleKernel
         /*龙帝惊临预约提醒*/
         $schedule->command('AutoRemindLdjl')
             ->cron('*/20 9-16 * * *');
+
+        /*更新测试*/
+        $schedule->command('UpdateInfo')
+            ->cron('* * * * *');
 
     }
 }

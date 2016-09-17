@@ -13,6 +13,7 @@ class UpdateQueue extends Job implements ShouldQueue
     use InteractsWithQueue, SerializesModels;
 
     public $OpenidInfo;
+
     /**
      * Create a new job instance.
      *
@@ -20,7 +21,7 @@ class UpdateQueue extends Job implements ShouldQueue
      */
     public function __construct($OpenidInfo)
     {
-        $this->OpenidInfo=$OpenidInfo;
+        $this->OpenidInfo = $OpenidInfo;
     }
 
     /**
@@ -30,9 +31,8 @@ class UpdateQueue extends Job implements ShouldQueue
      */
     public function handle()
     {
-        \Log::info($this->OpenidInfo->wx_openid);
         $app = app('wechat');
-        $token= $app->access_token->getToken();
+        $token = $app->access_token->getToken();
         $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $this->OpenidInfo->wx_openid;
         $json = $this->http_request_json($url);//这个地方不能用file_get_contents
         $data = json_decode($json, true);
@@ -41,13 +41,13 @@ class UpdateQueue extends Job implements ShouldQueue
 //            $sex = $data['sex'];
         $city = $data['city'];
         $province = $data['province'];
-            $country = $data['country'];
-            $subscribe_time = $data['subscribe_time'];
+        $country = $data['country'];
+        $subscribe_time = $data['subscribe_time'];
         $unionid = $data['unionid'];
 
         DB::table('wx_user_info')
             ->where('id', $this->OpenidInfo->id)
-            ->update(['city' => $city, 'province' => $province,'country'=>$country,'subscribe_time'=>$subscribe_time]);
+            ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
         DB::table('wx_user_unionid')
             ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => $unionid]);
 //            Log::info($result->wx_openid);
