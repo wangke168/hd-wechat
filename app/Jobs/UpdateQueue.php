@@ -30,6 +30,7 @@ class UpdateQueue extends Job implements ShouldQueue
      */
     public function handle()
     {
+        \Log::info($this->OpenidInfo->wx_openid);
         $app = app('wechat');
         $token= $app->access_token->getToken();
         $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $this->OpenidInfo->wx_openid;

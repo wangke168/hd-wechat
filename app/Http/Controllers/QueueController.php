@@ -32,8 +32,8 @@ class QueueController extends Controller
             ->get();
         foreach ($row as $OpenidInfo)
         {
-//            $this->dispatch(new UpdateQueue($OpenidInfo));
-            $app = app('wechat');
+            $this->dispatch(new UpdateQueue($OpenidInfo));
+/*            $app = app('wechat');
             $token= $app->access_token->getToken();
             $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $OpenidInfo->wx_openid;
             $json = $this->http_request_json($url);//这个地方不能用file_get_contents
@@ -51,7 +51,7 @@ class QueueController extends Controller
                 ->where('id', $OpenidInfo->id)
                 ->update(['city' => $city, 'province' => $province,'country'=>$country,'subscribe_time'=>$subscribe_time]);
             DB::table('wx_user_unionid')
-                ->insert(['wx_openid' => $OpenidInfo->wx_openid, 'wx_unionid' => $unionid]);
+                ->insert(['wx_openid' => $OpenidInfo->wx_openid, 'wx_unionid' => $unionid]);*/
         }
         
         return 'Done';
