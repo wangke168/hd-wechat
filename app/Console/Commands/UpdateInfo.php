@@ -40,7 +40,7 @@ class UpdateInfo extends Command
     {
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
-            ->where('city','')
+//            ->where('city','')
             ->where('id', '>=', '427039')
 //            ->where('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
             ->orderBy('id','desc')
