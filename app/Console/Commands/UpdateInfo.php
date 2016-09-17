@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\UpdateClickQueue;
 use Illuminate\Console\Command;
 use App\Jobs\UpdateQueue;
 use DB;
@@ -41,14 +42,24 @@ class UpdateInfo extends Command
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
 //            ->where('city','')
-            ->where('id', '>=', '427039')
-//            ->where('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
+//            ->where('id', '>=', '427039')
+//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
+                ->whereDate('endtime','>=','2016-08-26')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo)
         {
             dispatch(new UpdateQueue($OpenidInfo));
 //            $this->dispatch(new UpdateQueue($OpenidInfo));
+        }
+
+        $rowClick=DB::table('wx_click_hits')
+//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('adddate','>=','2016-08-26')
+            ->get();
+        foreach ($rowClick as $openidinfo)
+        {
+            dispatch(new UpdateClickQueue($openidinfo));
         }
     }
 }
