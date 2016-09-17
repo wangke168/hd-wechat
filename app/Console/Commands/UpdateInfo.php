@@ -44,7 +44,7 @@ class UpdateInfo extends Command
 //            ->where('city','')
 //            ->where('id', '>=', '427039')
 //            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
-                ->whereDate('endtime','>=','2016-08-26')
+                ->whereDate('endtime','>=','2016-08-28')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo)
@@ -55,7 +55,7 @@ class UpdateInfo extends Command
 
         $rowClick=DB::table('wx_click_hits')
 //            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('adddate','>=','2016-08-26')
+            ->whereDate('adddate','>=','2016-08-28')
             ->get();
         foreach ($rowClick as $openidinfo)
         {
