@@ -18,7 +18,8 @@ class Kernel extends ConsoleKernel
         Commands\AutoSendShowInfo::class,
         Commands\CancelTag::class,
         Commands\AutoRemindLdjl::class,
-        Commands\UpdateInfo::class,
+        Commands\UpdateClickInfo::class,
+        Commands\UpdateOpenidInfo::class,
 
     ];
 
@@ -49,7 +50,11 @@ class Kernel extends ConsoleKernel
             ->cron('*/20 9-16 * * *');
 
         /*更新测试*/
-        $schedule->command('UpdateInfo')
+        $schedule->command('UpdateClickInfo')
+            ->cron('* * * * *');
+
+        /*更新wx_user_info里的信息*/
+        $schedule->command('UpdateOpenidInfo')
             ->cron('* * * * *');
 
     }

@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use DB;
 
-class UpdateQueue extends Job implements ShouldQueue
+class UpdateOpenidQueue extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 

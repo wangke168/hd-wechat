@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\UpdateOpenidQueue;
 use Illuminate\Console\Command;
 use DB;
 use App\Http\Requests;
@@ -40,7 +41,7 @@ class Update_Openid_Info extends Command
     public function handle()
     {
 
-        $app = app('wechat');
+    /*    $app = app('wechat');
         $token= $app->access_token->getToken();
 
         $row = DB::table('wx_user_info')
@@ -69,6 +70,17 @@ class Update_Openid_Info extends Command
                 ->insert(['wx_openid' => $result->wx_openid, 'wx_unionid' => $unionid]);
 //            Log::info($result->wx_openid);
 
+        }*/
+        $row = DB::table('wx_user_info')
+            ->where('esc', '0')
+//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('endtime','>=','2016-08-28')
+            ->orderBy('id','desc')
+            ->get();
+        foreach ($row as $OpenidInfo)
+        {
+            dispatch(new UpdateOpenidQueue($OpenidInfo));
+//            $this->dispatch(new UpdateQueue($OpenidInfo));
         }
     }
 
