@@ -47,19 +47,19 @@ class UpdateInfo extends Command
                 ->whereDate('endtime','>=','2016-08-28')
             ->orderBy('id','desc')
             ->get();
-        foreach ($row as $OpenidInfo)
+/*        foreach ($row as $OpenidInfo)
         {
             dispatch(new UpdateQueue($OpenidInfo));
 //            $this->dispatch(new UpdateQueue($OpenidInfo));
-        }
+        }*/
 
         $rowClick=DB::table('wx_click_hits')
 //            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
             ->whereDate('adddate','>=','2016-08-28')
             ->get();
-        foreach ($rowClick as $openidinfo)
+        foreach ($rowClick as $clickinfo)
         {
-            dispatch(new UpdateClickQueue($openidinfo));
+            dispatch(new UpdateClickQueue($clickinfo));
         }
     }
 }
