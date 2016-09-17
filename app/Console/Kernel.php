@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
 //        \App\Console\Commands\Inspire::class,
-        Commands\Update_Openid_Info::class,
+//        Commands\Update_Openid_Info::class,
         Commands\AutoSendShowInfo::class,
         Commands\CancelTag::class,
         Commands\AutoRemindLdjl::class,
@@ -34,8 +34,8 @@ class Kernel extends ConsoleKernel
 /*        $schedule->command('inspire')
             ->everyMinute();*/
         /*更新wx_user_info里的信息*/
-        $schedule->command('update_openid_info')
-            ->dailyAt('2:00');
+/*        $schedule->command('update_openid_info')
+            ->dailyAt('2:00');*/
 
         /*演艺秀自动推送*/
         $schedule->command('AutoSendShowInfo')
@@ -49,13 +49,15 @@ class Kernel extends ConsoleKernel
         $schedule->command('AutoRemindLdjl')
             ->cron('*/20 9-16 * * *');
 
-        /*更新测试*/
-        $schedule->command('UpdateClickInfo')
-            ->cron('* * * * *');
-
         /*更新wx_user_info里的信息*/
         $schedule->command('UpdateOpenidInfo')
-            ->cron('* * * * *');
+            ->dailyAt('17:27');
+
+        /*更新wx_click_hits中的eventkey*/
+        $schedule->command('UpdateClickInfo')
+            ->dailyAt('17:30');
+
+
 
     }
 }

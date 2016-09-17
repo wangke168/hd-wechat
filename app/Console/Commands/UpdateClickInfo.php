@@ -39,8 +39,8 @@ class UpdateClickInfo extends Command
     public function handle()
     {
         $rowClick=DB::table('wx_click_hits')
-//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('adddate','>=','2016-08-28')
+            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+//            ->whereDate('adddate','>=','2016-08-28')
             ->get();
         foreach ($rowClick as $clickinfo)
         {

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\TestQueue;
-use App\Jobs\UpdateQueue;
+
+use App\Jobs\UpdateOpenidQueue;
+//use App\Jobs\UpdateOpenidQueue;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,7 +33,7 @@ class QueueController extends Controller
         foreach ($row as $OpenidInfo)
         {
 
-            $this->dispatch(new UpdateQueue($OpenidInfo));
+            $this->dispatch(new UpdateOpenidQueue($OpenidInfo));
         }
         
         return 'Done';
