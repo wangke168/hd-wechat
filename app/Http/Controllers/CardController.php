@@ -30,8 +30,8 @@ class CardController extends Controller
         $statusList = 'CARD_STATUS_VERIFY_OK';
 //        $result = $this->card->lists($offset, $count, $statusList);
 
-        $result=$this->card->attachExtension('p2e-YuPji_LBT34qx0xSCE4LKj-E');
-        return $result->cardId;
+        $result=$this->card->jsConfigForAssign('p2e-YuLyjE-EbQpZd3-F2-ayqAfQ');
+        return $result;
     }
     
     public function create()
