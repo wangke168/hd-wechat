@@ -29,9 +29,9 @@ class CardController extends Controller
         //CARD_STATUS_DISPATCH，在公众平台投放过的卡券；
         $statusList = 'CARD_STATUS_VERIFY_OK';
 //        $result = $this->card->lists($offset, $count, $statusList);
-
-        $cardid=array('p2e-YuLyjE-EbQpZd3-F2-ayqAfQ');
-        $result=$this->card->jsConfigForAssign($cardid);
+        $cards=array();
+        $cards[]='p2e-YuPji_LBT34qx0xSCE4LKj-E';
+        $result=$this->card->jsConfigForAssign($cards);
         return $result;
     }
     
