@@ -22,7 +22,7 @@ class JssdkController extends Controller
     
     public function index()
     {
-        $cardinfo=$this->card->attachExtension('p2e-YuPji_LBT34qx0xSCE4LKj-E');
+        $cardinfo=$this->card->attachExtension('p2e-YuLyjE-EbQpZd3-F2-ayqAfQ');
             return view('test.jssdk')->with(['js'=>$this->js,'cardinfo'=>$cardinfo]);
 
     }
