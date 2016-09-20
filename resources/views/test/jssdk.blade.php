@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>微信JS-SDK Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sytle.css')}}">
 </head>
 <body ontouchstart="">
 <div class="wxapi_container">
@@ -646,7 +646,7 @@
             wx.addCard({
                 cardList: [
                     {
-                        cardId: '{{$cardinfo->cardId}}',
+                        cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
                         cardExt: '{"code": "", "openid": "", "timestamp": "1474353655", "signature":"fc056a3f1276cb8ab78c6776ccb64de9b983bf63"}'
                     },
                     {
