@@ -646,8 +646,8 @@
             wx.addCard({
                 cardList: [
                     {
-                        cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
-                        cardExt: '{"code": "", "openid": "", "timestamp": "1474353655", "signature":"fc056a3f1276cb8ab78c6776ccb64de9b983bf63"}'
+                        cardId: 'p2e-YuLyjE-EbQpZd3-F2-ayqAfQ',
+                        cardExt: '{"code": "", "openid": "", "timestamp": "1474357424", "signature":"46343759d52d62260a9dca0b6a4c504fe2fe8d62"}'
                     },
                     {
                         cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
