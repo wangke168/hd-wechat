@@ -55,3 +55,5 @@ Route::get('/shop_info','ShopController@index');
 //队列测试
 Route::get('/queue','QueueController@queue');
 
+//jssdk测试
+Route::get('/jssdk','JssdkController@index');
