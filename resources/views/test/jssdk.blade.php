@@ -647,11 +647,11 @@
                 cardList: [
                     {
                         cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
-                        cardExt: '{"code": "", "openid": "", "timestamp": "1418301401", "signature":"ad9cf9463610bc8752c95084716581d52cd33aa0"}'
+                        cardExt: '{"code": "", "openid": "", "timestamp": "1474353655", "signature":"fc056a3f1276cb8ab78c6776ccb64de9b983bf63"}'
                     },
                     {
                         cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
-                        cardExt: '{"code": "", "openid": "", "timestamp": "1418301401", "signature":"ad9cf9463610bc8752c95084716581d52cd33aa0"}'
+                        cardExt: '{"code": "", "openid": "", "timestamp": "1474353655", "signature":"fc056a3f1276cb8ab78c6776ccb64de9b983bf63"}'
                     }
                 ],
                 success: function (res) {
