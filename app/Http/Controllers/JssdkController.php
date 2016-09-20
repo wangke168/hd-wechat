@@ -12,14 +12,18 @@ class JssdkController extends Controller
     //
     public $app;
     public $js;
+    public $card;
     public function __construct(Application $app)
     {
         $this->app=$app;
         $this->js=$this->app->js;
+        $this->card = $this->app->card;
     }
     
     public function index()
     {
-        return view('test.jssdk')->with('js',$this->js);
+        $cardinfo=$this->card->attachExtension('p2e-YuPji_LBT34qx0xSCE4LKj-E');
+            return view('test.jssdk')->with(['js'=>$this->js,'cardinfo'=>$cardinfo]);
+
     }
 }

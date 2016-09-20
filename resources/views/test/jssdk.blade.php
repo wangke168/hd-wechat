@@ -645,14 +645,7 @@
         document.querySelector('#addCard').onclick = function () {
             wx.addCard({
                 cardList: [
-                    {
-                        cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
-                        cardExt: '{"code": "", "openid": "", "timestamp": "1474353655", "signature":"fc056a3f1276cb8ab78c6776ccb64de9b983bf63"}'
-                    },
-                    {
-                        cardId: 'p2e-YuPji_LBT34qx0xSCE4LKj-E',
-                        cardExt: '{"code": "", "openid": "", "timestamp": "1474353655", "signature":"fc056a3f1276cb8ab78c6776ccb64de9b983bf63"}'
-                    }
+                    {{cardinfo}}
                 ],
                 success: function (res) {
                     alert('已添加卡券：' + JSON.stringify(res.cardList));
