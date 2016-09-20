@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>微信JS-SDK Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="stylesheet" href="{{asset('css/mbcss.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body ontouchstart="">
 <div class="wxapi_container">
