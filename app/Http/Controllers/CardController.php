@@ -31,7 +31,7 @@ class CardController extends Controller
 //        $result = $this->card->lists($offset, $count, $statusList);
 
         $result=$this->card->attachExtension('p2e-YuPji_LBT34qx0xSCE4LKj-E');
-        return $result;
+        return $result->cardId;
     }
     
     public function create()
