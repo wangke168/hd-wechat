@@ -28,7 +28,9 @@ class CardController extends Controller
         //CARD_STATUS_USER_DELETE，卡券被商户删除；
         //CARD_STATUS_DISPATCH，在公众平台投放过的卡券；
         $statusList = 'CARD_STATUS_VERIFY_OK';
-        $result = $this->card->lists($offset, $count, $statusList);
+//        $result = $this->card->lists($offset, $count, $statusList);
+
+        $result=attachExtension('p2e-YuPji_LBT34qx0xSCE4LKj-E');
         return $result;
     }
     
