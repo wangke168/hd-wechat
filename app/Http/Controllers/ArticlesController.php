@@ -44,12 +44,9 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $row = DB::table('wx_user_info')
-            ->where('esc', '0')
-//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('endtime','>=','2016-08-28')
-            ->orderBy('id','desc')
-            ->get();
+        $eventkey='1306';
+        $row = WechatArticle::focusPublished($eventkey)
+            ->skip(0)->take(8)->get();
         return $row;
         
         /*                $row = WechatArticle::focusPublished('123')
