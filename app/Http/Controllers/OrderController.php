@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 
 class OrderController extends Controller
@@ -21,7 +21,7 @@ class OrderController extends Controller
 
     public function send($openid, $sellid)
     {
-        return $this->Repost_order($openid,$sellid);
+        return $this->Repost_order($openid, $sellid);
     }
 
     private function test()
@@ -53,8 +53,7 @@ class OrderController extends Controller
 
         $ticket_id = "";
         $hotel = "";
-//        $db = new DB();
-//    $url = "http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid;
+
         $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
@@ -80,9 +79,6 @@ class OrderController extends Controller
                 if ($flag == "未支付" || $flag == "已取消") {
                     break;
                 }
-
-
-//          $ticketorder=$data['ticketorder'][$j]['code'];
 
                 if ($data['ticketorder'][$j]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][$j]['ticket'] == '网络联票+梦幻谷') {
                     $ticketorder = "注意：该票种需要身份证检票";
@@ -143,7 +139,6 @@ class OrderController extends Controller
             $ticket_id = 3;
             for ($j = 0; $j < $hotelcount; $j++) {
                 $i = $i + 1;
-//            $first = "        " . $data['hotelorder'][$j]['name'] . "，您好，您已经成功预订" . $data['hotelorder'][$j]['hotel'] . "，酒店所有工作人员静候您的光临。\\n";
                 $sellid = $data['hotelorder'][$j]['sellid'];
                 $name = $data['hotelorder'][$j]['name'];
                 $date = $data['hotelorder'][$j]['date2'];
@@ -174,6 +169,11 @@ class OrderController extends Controller
             }
         }
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
+
+        DB::table('wx_order_detail')
+            ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
+                'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
+                'hotel' => $hotel]);
 
         /*       $db->query("insert into wx_order_detail (sellid,wx_openid,k_name,arrivedate,ticket_id,ticket,hotel) VALUES (:sellid,:wx_openid,:k_name,:arrivedate,:ticket_id,:ticket,:hotel)",
                    array("sellid" => "$sellid", "wx_openid" => "$openid", "k_name" => $name, "arrivedate" => "$date", "ticket_id" => "$ticket_id", "ticket" => "$ticket", "hotel" => "$hotel"));*/
