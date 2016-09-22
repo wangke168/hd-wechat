@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\WeChat\Usage;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
@@ -12,37 +13,45 @@ class OrderController extends Controller
     //
     public $app;
     public $notice;
+    public $usage;
 
     public function __construct(Application $app)
     {
         $this->app = $app;
         $this->notice = $app->notice;
+        $this->usage = new Usage();
     }
 
     public function send($openid, $sellid)
     {
-        return $this->Repost_order($openid, $sellid);
+        if ($this->check_order($sellid)) {
+            $this->insert_order($openid, $sellid);
+            $this->Repost_order($openid, $sellid);
+        }
     }
 
-    private function test()
+    private function insert_order($openid, $sellid)
     {
-        $userId = 'opUv9v977Njll_YHpZYMymxI_aPE';
-        $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';
-        $url = 'http://weix2.hengdianworld.com/article/articledetail.php?id=44';
-        $color = '#FF0000';
-        $data = array(
-            "first" => array("恭喜你购买成功！", "#000000"),
-            "keyword1" => array("巧克力", "#173177"),
-            "keyword2" => array("39.8元", "#173177"),
-            "keyword3" => array("39.8元", "#173177"),
-            "keyword4" => array("39.8元", "#173177"),
-            "keyword5" => array("39.8元", "#173177"),
-            "remark" => array("欢迎再次购买！", "#000000"),
-        );
+        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+        $focusdate = $this->usage->get_openid_info($openid)->adddate;
 
+        DB::table('wx_order_send')
+            ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
 
-        $result = $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
-        var_dump($result);
+    }
+
+    private function check_order($sellid)
+    {
+        $row = DB::table('wx_order_send')
+            ->where('sellid', $sellid)
+            ->count();
+
+        if ($row == 0) {
+            $flag = true;
+        } else {
+            $flag = false;
+        }
+        return $flag;
     }
 
     private function Repost_order($openid, $sellid)
@@ -53,10 +62,8 @@ class OrderController extends Controller
 
         $ticket_id = "";
         $hotel = "";
-
         $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
-
 
         $ticketcount = count($data['ticketorder']);
         $inclusivecount = count($data['inclusiveorder']);
@@ -86,7 +93,6 @@ class OrderController extends Controller
                     $ticketorder = $data['ticketorder'][$j]['code'];
                 }
 
-
                 $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
 
                 $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';
@@ -112,13 +118,11 @@ class OrderController extends Controller
                 $date = $data['inclusiveorder'][$j]['date2'];
                 $ticket = $data['inclusiveorder'][$j]['ticket'];
                 $hotel = $data['inclusiveorder'][$j]['hotel'];
-
                 $flag = $data['inclusiveorder'][$j]['flag'];
 
                 if ($flag == "未支付" || $flag == "已取消") {
                     break;
                 }
-
 
                 $remark = "人数：" . $data['inclusiveorder'][$j]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
@@ -146,7 +150,6 @@ class OrderController extends Controller
                 $hotel = $data['hotelorder'][$j]['hotel'];
                 $numbers = $data['hotelorder'][$j]['numbers'];
                 $roomtype = $data['hotelorder'][$j]['roomtype'];
-
                 $flag = $data['hotelorder'][$j]['flag'];
 
                 if ($flag == "未支付" || $flag == "已取消") {
@@ -173,15 +176,8 @@ class OrderController extends Controller
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
                 'hotel' => $hotel]);
-        
+
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
-
-
-
-        /*       $db->query("insert into wx_order_detail (sellid,wx_openid,k_name,arrivedate,ticket_id,ticket,hotel) VALUES (:sellid,:wx_openid,:k_name,:arrivedate,:ticket_id,:ticket,:hotel)",
-                   array("sellid" => "$sellid", "wx_openid" => "$openid", "k_name" => $name, "arrivedate" => "$date", "ticket_id" => "$ticket_id", "ticket" => "$ticket", "hotel" => "$hotel"));*/
-
-//        return $xjson;
 
     }
 }

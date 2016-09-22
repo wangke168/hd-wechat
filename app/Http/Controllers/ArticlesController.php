@@ -45,9 +45,15 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        \Cache::put('foo','bar',10);
-        return \Cache::get('foo');
-        
+        $row=DB::table('wx_order_send')
+            ->where('sellid','V1311130095')
+            ->count();
+        if ($row == 0) {
+            $flag = '0';
+        } else {
+            $flag = '1';
+        }
+        return $flag;
         /*                $row = WechatArticle::focusPublished('123')
                             ->pluck('eventkey');*/
 //        $row=WechatVoice::focusPublished('123')->get();
