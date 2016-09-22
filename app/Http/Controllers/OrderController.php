@@ -21,7 +21,7 @@ class OrderController extends Controller
 
     public function send($openid, $sellid)
     {
-        return $this->test();
+        return $this->Repost_order('opUv9v977Njll_YHpZYMymxI_aPE','V1609220394');
     }
 
     private function test()
@@ -47,6 +47,10 @@ class OrderController extends Controller
 
     private function Repost_order($openid, $sellid)
     {
+        $userId = $openid;
+        $url = 'http://weix2.hengdianworld.com/article/articledetail.php?id=44';
+        $color = '#FF0000';
+
         $ticket_id = "";
         $hotel = "";
 //        $db = new DB();
@@ -89,43 +93,17 @@ class OrderController extends Controller
 
                 $remark = "\\n在检票口出示此识别码可直接进入景区。\\n如有疑问，请致电4009999141。";
 
+                $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';
+                $data = array(
+                    "first" => array($first, "#000000"),
+                    "keyword1" => array($sellid, "#173177"),
+                    "keyword2" => array($date, "#173177"),
+                    "keyword3" => array($ticket, "#173177"),
+                    "keyword4" => array($numbers, "#173177"),
+                    "keyword5" => array($ticketorder, "#173177"),
+                    "remark" => array($remark, "#000000"),
+                );
 
-                $xjson = "{
-	\"touser\":\"" . $openid . "\",
-	\"template_id\":\"GO-MX6boWkOW_0RPdX_p1L5roVshgyHxttG4Ruw_GqM\",
-	\"url\":\"http://weix2.hengdianworld.com/article/articledetail.php?id=44\",
-	\"topcolor\":\"#FF0000\",
-	\"data\":{
-	\"first\": {
-	\"value\":\"" . $first . "\",
-	\"color\":\"#000000\"
-	},
-	\"keyword1\": {
-	\"value\":\"" . $sellid . "\",
-	\"color\":\"#173177\"
-	},
-	\"keyword2\":{
-	\"value\":\"" . $date . "\",
-	\"color\":\"#173177\"
-	},
-	\"keyword3\":{
-	\"value\":\"" . $ticket . "\",
-	\"color\":\"#173177\"
-	},
-	\"keyword4\":{
-	\"value\":\"" . $numbers . "\",
-	\"color\":\"#173177\"
-	},
-	\"keyword5\":{
-	\"value\":\"" . $ticketorder . "\",
-	\"color\":\"#173177\"
-	},
-	\"remark\":{
-	\"value\":\"" . $remark . "\",
-	\"color\":\"#000000\"
-	}
-	}
-}";
             }
         }
         if ($inclusivecount <> 0) {
@@ -249,11 +227,12 @@ class OrderController extends Controller
 
             }
         }
+        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
         /*       $db->query("insert into wx_order_detail (sellid,wx_openid,k_name,arrivedate,ticket_id,ticket,hotel) VALUES (:sellid,:wx_openid,:k_name,:arrivedate,:ticket_id,:ticket,:hotel)",
                    array("sellid" => "$sellid", "wx_openid" => "$openid", "k_name" => $name, "arrivedate" => "$date", "ticket_id" => "$ticket_id", "ticket" => "$ticket", "hotel" => "$hotel"));*/
 
-        return $xjson;
+//        return $xjson;
 
     }
 }
