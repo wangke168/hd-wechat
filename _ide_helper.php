@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.45 on 2016-09-15.
+ * Generated for Laravel 5.2.45 on 2016-09-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -6707,11 +6707,10 @@ namespace {
          * @param mixed $data
          * @param string $queue
          * @return mixed 
-         * @throws \Exception|\Throwable
          * @static 
          */
         public static function push($job, $data = '', $queue = null){
-            return \Illuminate\Queue\SyncQueue::push($job, $data, $queue);
+            return \Illuminate\Queue\BeanstalkdQueue::push($job, $data, $queue);
         }
         
         /**
@@ -6724,7 +6723,7 @@ namespace {
          * @static 
          */
         public static function pushRaw($payload, $queue = null, $options = array()){
-            return \Illuminate\Queue\SyncQueue::pushRaw($payload, $queue, $options);
+            return \Illuminate\Queue\BeanstalkdQueue::pushRaw($payload, $queue, $options);
         }
         
         /**
@@ -6738,7 +6737,7 @@ namespace {
          * @static 
          */
         public static function later($delay, $job, $data = '', $queue = null){
-            return \Illuminate\Queue\SyncQueue::later($delay, $job, $data, $queue);
+            return \Illuminate\Queue\BeanstalkdQueue::later($delay, $job, $data, $queue);
         }
         
         /**
@@ -6749,7 +6748,40 @@ namespace {
          * @static 
          */
         public static function pop($queue = null){
-            return \Illuminate\Queue\SyncQueue::pop($queue);
+            return \Illuminate\Queue\BeanstalkdQueue::pop($queue);
+        }
+        
+        /**
+         * Delete a message from the Beanstalk queue.
+         *
+         * @param string $queue
+         * @param string $id
+         * @return void 
+         * @static 
+         */
+        public static function deleteMessage($queue, $id){
+            \Illuminate\Queue\BeanstalkdQueue::deleteMessage($queue, $id);
+        }
+        
+        /**
+         * Get the queue or return the default.
+         *
+         * @param string|null $queue
+         * @return string 
+         * @static 
+         */
+        public static function getQueue($queue){
+            return \Illuminate\Queue\BeanstalkdQueue::getQueue($queue);
+        }
+        
+        /**
+         * Get the underlying Pheanstalk instance.
+         *
+         * @return \Pheanstalk\Pheanstalk 
+         * @static 
+         */
+        public static function getPheanstalk(){
+            return \Illuminate\Queue\BeanstalkdQueue::getPheanstalk();
         }
         
         /**
@@ -6763,7 +6795,7 @@ namespace {
          */
         public static function pushOn($queue, $job, $data = ''){
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::pushOn($queue, $job, $data);
+            return \Illuminate\Queue\BeanstalkdQueue::pushOn($queue, $job, $data);
         }
         
         /**
@@ -6778,7 +6810,7 @@ namespace {
          */
         public static function laterOn($queue, $delay, $job, $data = ''){
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::laterOn($queue, $delay, $job, $data);
+            return \Illuminate\Queue\BeanstalkdQueue::laterOn($queue, $delay, $job, $data);
         }
         
         /**
@@ -6792,7 +6824,7 @@ namespace {
          */
         public static function bulk($jobs, $data = '', $queue = null){
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::bulk($jobs, $data, $queue);
+            return \Illuminate\Queue\BeanstalkdQueue::bulk($jobs, $data, $queue);
         }
         
         /**
@@ -6804,7 +6836,7 @@ namespace {
          */
         public static function setContainer($container){
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\SyncQueue::setContainer($container);
+            \Illuminate\Queue\BeanstalkdQueue::setContainer($container);
         }
         
         /**
@@ -6816,7 +6848,7 @@ namespace {
          */
         public static function setEncrypter($encrypter){
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\SyncQueue::setEncrypter($encrypter);
+            \Illuminate\Queue\BeanstalkdQueue::setEncrypter($encrypter);
         }
         
     }
@@ -6974,6 +7006,61 @@ namespace {
          */
         public static function setSession($session){
             \Illuminate\Routing\Redirector::setSession($session);
+        }
+        
+    }
+
+
+    class Redis extends \Illuminate\Support\Facades\Redis{
+        
+        /**
+         * Get a specific Redis connection instance.
+         *
+         * @param string $name
+         * @return \Predis\ClientInterface|null 
+         * @static 
+         */
+        public static function connection($name = 'default'){
+            return \Illuminate\Redis\Database::connection($name);
+        }
+        
+        /**
+         * Run a command against the Redis database.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return mixed 
+         * @static 
+         */
+        public static function command($method, $parameters = array()){
+            return \Illuminate\Redis\Database::command($method, $parameters);
+        }
+        
+        /**
+         * Subscribe to a set of given channels for messages.
+         *
+         * @param array|string $channels
+         * @param \Closure $callback
+         * @param string $connection
+         * @param string $method
+         * @return void 
+         * @static 
+         */
+        public static function subscribe($channels, $callback, $connection = null, $method = 'subscribe'){
+            \Illuminate\Redis\Database::subscribe($channels, $callback, $connection, $method);
+        }
+        
+        /**
+         * Subscribe to a set of given channels with wildcards.
+         *
+         * @param array|string $channels
+         * @param \Closure $callback
+         * @param string $connection
+         * @return void 
+         * @static 
+         */
+        public static function psubscribe($channels, $callback, $connection = null){
+            \Illuminate\Redis\Database::psubscribe($channels, $callback, $connection);
         }
         
     }
@@ -11362,6 +11449,179 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Wechat extends \Overtrue\LaravelWechat\Facade{
+        
+        /**
+         * Add a provider.
+         *
+         * @param string $provider
+         * @return \EasyWeChat\Foundation\Application 
+         * @static 
+         */
+        public static function addProvider($provider){
+            return \EasyWeChat\Foundation\Application::addProvider($provider);
+        }
+        
+        /**
+         * Set providers.
+         *
+         * @param array $providers
+         * @static 
+         */
+        public static function setProviders($providers){
+            return \EasyWeChat\Foundation\Application::setProviders($providers);
+        }
+        
+        /**
+         * Return all providers.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getProviders(){
+            return \EasyWeChat\Foundation\Application::getProviders();
+        }
+        
+        /**
+         * Sets a parameter or an object.
+         * 
+         * Objects must be defined as Closures.
+         * 
+         * Allowing any PHP callable leads to difficult to debug problems
+         * as function names (strings) are callable (creating a function with
+         * the same name as an existing parameter would break your container).
+         *
+         * @param string $id The unique identifier for the parameter or object
+         * @param mixed $value The value of the parameter or a closure to define an object
+         * @throws \RuntimeException Prevent override of a frozen service
+         * @static 
+         */
+        public static function offsetSet($id, $value){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::offsetSet($id, $value);
+        }
+        
+        /**
+         * Gets a parameter or an object.
+         *
+         * @param string $id The unique identifier for the parameter or object
+         * @return mixed The value of the parameter or an object
+         * @throws \InvalidArgumentException if the identifier is not defined
+         * @static 
+         */
+        public static function offsetGet($id){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::offsetGet($id);
+        }
+        
+        /**
+         * Checks if a parameter or an object is set.
+         *
+         * @param string $id The unique identifier for the parameter or object
+         * @return bool 
+         * @static 
+         */
+        public static function offsetExists($id){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::offsetExists($id);
+        }
+        
+        /**
+         * Unsets a parameter or an object.
+         *
+         * @param string $id The unique identifier for the parameter or object
+         * @static 
+         */
+        public static function offsetUnset($id){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::offsetUnset($id);
+        }
+        
+        /**
+         * Marks a callable as being a factory service.
+         *
+         * @param callable $callable A service definition to be used as a factory
+         * @return callable The passed callable
+         * @throws \InvalidArgumentException Service definition has to be a closure of an invokable object
+         * @static 
+         */
+        public static function factory($callable){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::factory($callable);
+        }
+        
+        /**
+         * Protects a callable from being interpreted as a service.
+         * 
+         * This is useful when you want to store a callable as a parameter.
+         *
+         * @param callable $callable A callable to protect from being evaluated
+         * @return callable The passed callable
+         * @throws \InvalidArgumentException Service definition has to be a closure of an invokable object
+         * @static 
+         */
+        public static function protect($callable){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::protect($callable);
+        }
+        
+        /**
+         * Gets a parameter or the closure defining an object.
+         *
+         * @param string $id The unique identifier for the parameter or object
+         * @return mixed The value of the parameter or the closure defining an object
+         * @throws \InvalidArgumentException if the identifier is not defined
+         * @static 
+         */
+        public static function raw($id){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::raw($id);
+        }
+        
+        /**
+         * Extends an object definition.
+         * 
+         * Useful when you want to extend an existing object definition,
+         * without necessarily loading that object.
+         *
+         * @param string $id The unique identifier for the object
+         * @param callable $callable A service definition to extend the original
+         * @return callable The wrapped callable
+         * @throws \InvalidArgumentException if the identifier is not defined or not a service definition
+         * @static 
+         */
+        public static function extend($id, $callable){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::extend($id, $callable);
+        }
+        
+        /**
+         * Returns all defined value names.
+         *
+         * @return array An array of value names
+         * @static 
+         */
+        public static function keys(){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::keys();
+        }
+        
+        /**
+         * Registers a service provider.
+         *
+         * @param \Pimple\ServiceProviderInterface $provider A ServiceProviderInterface instance
+         * @param array $values An array of values that customizes the provider
+         * @return static 
+         * @static 
+         */
+        public static function register($provider, $values = array()){
+            //Method inherited from \Pimple\Container            
+            return \EasyWeChat\Foundation\Application::register($provider, $values);
         }
         
     }
