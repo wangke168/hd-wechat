@@ -168,12 +168,15 @@ class OrderController extends Controller
 
             }
         }
-        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
                 'hotel' => $hotel]);
+        
+        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
+
+
 
         /*       $db->query("insert into wx_order_detail (sellid,wx_openid,k_name,arrivedate,ticket_id,ticket,hotel) VALUES (:sellid,:wx_openid,:k_name,:arrivedate,:ticket_id,:ticket,:hotel)",
                    array("sellid" => "$sellid", "wx_openid" => "$openid", "k_name" => $name, "arrivedate" => "$date", "ticket_id" => "$ticket_id", "ticket" => "$ticket", "hotel" => "$hotel"));*/
