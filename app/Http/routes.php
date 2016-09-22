@@ -31,6 +31,9 @@ Route::get('/articles/{id}', 'ArticlesController@detail');
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');
 
+//订单相关
+Route::get('/sendorder/{openid}/{sellid}','OrderController@send');
+
 //测试
 Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
