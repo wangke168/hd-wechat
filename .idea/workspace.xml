@@ -47,11 +47,11 @@
       <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
+            <state relative-caret-position="304">
+              <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
               <folding>
                 <element signature="e#40#78#0#PHP" expanded="true" />
-                <marker date="1474532092478" expanded="true" signature="7332:7493" ph="insert into wx_order_detail... " />
+                <marker date="1474532766846" expanded="true" signature="6810:6971" ph="insert into wx_order_detail... " />
               </folding>
             </state>
           </provider>
@@ -302,12 +302,12 @@
       <workItem from="1474436764851" duration="252000" />
       <workItem from="1474441216359" duration="558000" />
       <workItem from="1474444890732" duration="3755000" />
-      <workItem from="1474509143499" duration="12722000" />
+      <workItem from="1474509143499" duration="13396000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130832000" />
+    <option name="totallyTimeSpent" value="131506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1631" height="929" extended-state="6" />
@@ -724,11 +724,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
+        <state relative-caret-position="304">
+          <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
           <folding>
             <element signature="e#40#78#0#PHP" expanded="true" />
-            <marker date="1474532092478" expanded="true" signature="7332:7493" ph="insert into wx_order_detail... " />
+            <marker date="1474532766846" expanded="true" signature="6810:6971" ph="insert into wx_order_detail... " />
           </folding>
         </state>
       </provider>

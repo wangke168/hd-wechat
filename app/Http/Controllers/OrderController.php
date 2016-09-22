@@ -21,7 +21,7 @@ class OrderController extends Controller
 
     public function send($openid, $sellid)
     {
-        return $this->Repost_order('opUv9v977Njll_YHpZYMymxI_aPE','V1609220394');
+        return $this->Repost_order('opUv9v977Njll_YHpZYMymxI_aPE','V1609220397');
     }
 
     private function test()
@@ -110,7 +110,7 @@ class OrderController extends Controller
             $ticket_id = 2;
             for ($j = 0; $j < $inclusivecount; $j++) {
                 $i = $i + 1;
-                $first = $data['inclusiveorder'][$j]['name'] . "，您好，您已经成功预订组合套餐。\\n";
+                $first = $data['inclusiveorder'][$j]['name'] . "，您好，您已经成功预订组合套餐。\n";
                 $sellid = $data['inclusiveorder'][$j]['sellid'];
                 $name = $data['inclusiveorder'][$j]['name'];
                 $date = $data['inclusiveorder'][$j]['date2'];
@@ -124,45 +124,19 @@ class OrderController extends Controller
                 }
 
 
-                $remark = "人数：" . $data['inclusiveorder'][$j]['numbers'] . "\\n\\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
+                $remark = "人数：" . $data['inclusiveorder'][$j]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
+                $templateId = '1QHtqCEjUWyWL26hnLMnJ7GFI5-0kVOLEcxfmJR3wms';
+                $data = array(
+                    "first" => array($first, "#000000"),
+                    "keyword1" => array($sellid, "#173177"),
+                    "keyword2" => array($name, "#173177"),
+                    "keyword3" => array($date, "#173177"),
+                    "keyword4" => array($ticket, "#173177"),
+                    "keyword5" => array($hotel, "#173177"),
+                    "remark" => array($remark, "#000000"),
+                );
 
-                $xjson = "{
-		\"touser\":\"" . $openid . "\",
-		\"template_id\":\"6_xcQ3_C7ypfMkuU2YPZo_gxx7XyQC99Sn9gkBomFpI\",
-		\"url\":\"http://weix2.hengdianworld.com/article/articledetail.php?id=44\",
-		\"topcolor\":\"#FF0000\",
-		\"data\":{
-		\"first\": {
-		\"value\":\"" . $first . "\",
-		\"color\":\"#000000\"
-		},
-		\"keyword1\": {
-		\"value\":\"" . $sellid . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword2\":{
-		\"value\":\"" . $name . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword3\":{
-		\"value\":\"" . $date . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword4\":{
-		\"value\":\"" . $ticket . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword5\":{
-		\"value\":\"" . $hotel . "\",
-		\"color\":\"#173177\"
-		},
-		\"remark\":{
-		\"value\":\"" . $remark . "\",
-		\"color\":\"#000000\"
-		}
-		}
-	}";
             }
         }
         if ($hotelcount <> 0) {
@@ -183,47 +157,19 @@ class OrderController extends Controller
                 if ($flag == "未支付" || $flag == "已取消") {
                     break;
                 }
+                $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
+                $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
 
-
-                $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\\n";
-
-                $remark = "\\n        预达日凭身份证到酒店前台办理入住办手续。\\n如有疑问，请致电4009999141。";
-                $xjson = "{
-		\"touser\":\"" . $openid . "\",
-		\"template_id\":\"KEoAPCC2TM5A7D7Va8-LbwJCZ6qrTPuxYcge0If5sMI\",
-		\"url\":\"http://weix2.hengdianworld.com/article/articledetail.php?id=44\",
-		\"topcolor\":\"#FF0000\",
-		\"data\":{
-		\"first\": {
-		\"value\":\"" . $first . "\",
-		\"color\":\"#000000\"
-		},
-		\"keyword1\": {
-		\"value\":\"" . $sellid . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword2\":{
-		\"value\":\"" . $date . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword3\":{
-		\"value\":\"" . $days . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword4\":{
-		\"value\":\"" . $roomtype . "\",
-		\"color\":\"#173177\"
-		},
-		\"keyword5\":{
-		\"value\":\"" . $numbers . "\",
-		\"color\":\"#173177\"
-		},
-		\"remark\":{
-		\"value\":\"" . $remark . "\",
-		\"color\":\"#000000\"
-		}
-		}
-	}";
+                $templateId = 'jXTW9HWSE_oighJr9L940ZG-HCkrI84onzdk5s0b9hs';
+                $data = array(
+                    "first" => array($first, "#000000"),
+                    "keyword1" => array($sellid, "#173177"),
+                    "keyword2" => array($date, "#173177"),
+                    "keyword3" => array($days, "#173177"),
+                    "keyword4" => array($roomtype, "#173177"),
+                    "keyword5" => array($numbers, "#173177"),
+                    "remark" => array($remark, "#000000"),
+                );
 
             }
         }
