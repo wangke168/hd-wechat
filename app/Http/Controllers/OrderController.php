@@ -21,7 +21,7 @@ class OrderController extends Controller
 
     public function send($openid, $sellid)
     {
-        return $this->Repost_order('opUv9v977Njll_YHpZYMymxI_aPE','V1609220397');
+        return $this->Repost_order($openid,$sellid);
     }
 
     private function test()
