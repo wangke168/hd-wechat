@@ -16,6 +16,7 @@ use EasyWeChat\Message\Text;
 
 use App\WeChat\Tour;
 use App\Http\Requests;
+//use Illuminate\Support\Facades\Cache;
 
 class ArticlesController extends Controller
 {
@@ -44,10 +45,8 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $eventkey='1306';
-        $row = WechatArticle::focusPublished($eventkey)
-            ->skip(0)->take(8)->get();
-        return $row;
+        \Cache::put('foo','bar',10);
+        return \Cache::get('foo');
         
         /*                $row = WechatArticle::focusPublished('123')
                             ->pluck('eventkey');*/
