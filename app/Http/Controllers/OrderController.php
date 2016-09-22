@@ -69,7 +69,7 @@ class OrderController extends Controller
             for ($j = 0; $j < $ticketcount; $j++) {
                 $i = $i + 1;
                 $name = $data['ticketorder'][$j]['name'];
-                $first = $data['ticketorder'][$j]['name'] . "，您好，您已经成功预订门票。\\n";
+                $first = $data['ticketorder'][$j]['name'] . "，您好，您已经成功预订门票。\n";
                 $sellid = $data['ticketorder'][$j]['sellid'];
                 $date = $data['ticketorder'][$j]['date2'];
                 $ticket = $data['ticketorder'][$j]['ticket'];
@@ -91,7 +91,7 @@ class OrderController extends Controller
                 }
 
 
-                $remark = "\\n在检票口出示此识别码可直接进入景区。\\n如有疑问，请致电4009999141。";
+                $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
 
                 $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';
                 $data = array(
