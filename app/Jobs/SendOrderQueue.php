@@ -40,7 +40,7 @@ class SendOrderQueue extends Job implements ShouldQueue
     {
         /*$this->insert_order($this->openid,$this->sellid);*/
         $this->Repost_order($this->openid,$this->sellid);
-        \Log::info('this is'.$this->openid );
+//        \Log::info('this is'.$this->openid );
     }
 /*
     private function insert_order($openid, $sellid)
@@ -173,11 +173,11 @@ class SendOrderQueue extends Job implements ShouldQueue
 
             }
         }
-/*
+
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
-                'hotel' => $hotel]);*/
+                'hotel' => $hotel]);
 
         $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
