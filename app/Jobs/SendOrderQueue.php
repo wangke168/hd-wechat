@@ -24,11 +24,10 @@ class SendOrderQueue extends Job implements ShouldQueue
      */
     public function __construct($openid,$sellid)
     {
-        $this->app = app('wechat');
-        $this->notice = $this->app->notice;
+        
         $this->openid=$openid;
         $this->sellid=$sellid;
-        $this->usage=new Usage();
+
     }
 
     /**
@@ -45,7 +44,7 @@ class SendOrderQueue extends Job implements ShouldQueue
 
     private function insert_order($openid, $sellid)
     {
-        
+        $this->usage=new Usage();
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         $focusdate = $this->usage->get_openid_info($openid)->adddate;
 
@@ -55,6 +54,8 @@ class SendOrderQueue extends Job implements ShouldQueue
     }
     private function Repost_order($openid, $sellid)
     {
+        $app = app('wechat');
+        $notice = $app->notice;
         $userId = $openid;
         $url = 'http://weix2.hengdianworld.com/article/articledetail.php?id=44';
         $color = '#FF0000';
@@ -176,7 +177,7 @@ class SendOrderQueue extends Job implements ShouldQueue
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
                 'hotel' => $hotel]);
 
-        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
+        $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
     }
 }
