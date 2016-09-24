@@ -38,8 +38,8 @@ class SendOrderQueue extends Job implements ShouldQueue
 
     public function handle()
     {
-        /*$this->insert_order($this->openid,$this->sellid);
-        $this->Repost_order($this->openid,$this->sellid);*/
+        /*$this->insert_order($this->openid,$this->sellid);*/
+        $this->Repost_order($this->openid,$this->sellid);
         \Log::info('this is'.$this->openid );
     }
 /*
@@ -53,6 +53,7 @@ class SendOrderQueue extends Job implements ShouldQueue
             ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
 
     }
+*/
     private function Repost_order($openid, $sellid)
     {
         $app = app('wechat');
@@ -172,14 +173,14 @@ class SendOrderQueue extends Job implements ShouldQueue
 
             }
         }
-
+/*
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
-                'hotel' => $hotel]);
+                'hotel' => $hotel]);*/
 
         $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
     }
-   */
+
 }
