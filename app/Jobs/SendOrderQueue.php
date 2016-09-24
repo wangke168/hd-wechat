@@ -38,8 +38,9 @@ class SendOrderQueue extends Job implements ShouldQueue
      */
     public function handle()
     {
-        $this->insert_order($this->openid,$this->sellid);
-        $this->Repost_order($this->openid,$this->sellid);
+       /* $this->insert_order($this->openid,$this->sellid);
+        $this->Repost_order($this->openid,$this->sellid);*/
+        \Log::info('this is'.$this->openid );
     }
 
     private function insert_order($openid, $sellid)
