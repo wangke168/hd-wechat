@@ -24,7 +24,6 @@ class SendOrderQueue extends Job implements ShouldQueue
      */
     public function __construct($openid,$sellid)
     {
-        
         $this->openid=$openid;
         $this->sellid=$sellid;
 
@@ -35,13 +34,15 @@ class SendOrderQueue extends Job implements ShouldQueue
      *
      * @return void
      */
+
+
     public function handle()
     {
-       /* $this->insert_order($this->openid,$this->sellid);
+        /*$this->insert_order($this->openid,$this->sellid);
         $this->Repost_order($this->openid,$this->sellid);*/
-        \Log::info('this is'.$this->openid );
+//        \Log::info('this is'.$this->openid );
     }
-
+/*
     private function insert_order($openid, $sellid)
     {
         $this->usage=new Usage();
@@ -180,4 +181,5 @@ class SendOrderQueue extends Job implements ShouldQueue
         $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
     }
+   */
 }
