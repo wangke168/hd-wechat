@@ -1,39 +1,50 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Jobs;
 
-use App\Jobs\SendOrderQueue;
+use App\Jobs\Job;
 use App\WeChat\Usage;
-use EasyWeChat\Foundation\Application;
-use Illuminate\Http\Request;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use DB;
-use App\Http\Requests;
-
-class OrderController extends Controller
+class SendOrderQueue extends Job implements ShouldQueue
 {
-    //
+    use InteractsWithQueue, SerializesModels;
+
+    public $sellid;
+    public $openid;
     public $app;
     public $notice;
     public $usage;
-
-    public function __construct(Application $app)
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($openid,$sellid)
     {
-        $this->app = $app;
-        $this->notice = $app->notice;
-        $this->usage = new Usage();
+        $this->app = app('wechat');
+        $this->notice = $this->app->notice;
+        $this->openid=$openid;
+        $this->sellid=$sellid;
+        $this->usage=new Usage();
     }
 
-    public function send($openid, $sellid)
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
     {
-        if ($this->check_order($sellid)) {
-    /*        $this->insert_order($openid, $sellid);
-            $this->Repost_order($openid, $sellid);*/
-            $this->dispatch(new SendOrderQueue($openid,$sellid));
-        }
+        $this->insert_order($this->openid,$this->sellid);
+        $this->Repost_order($this->openid,$this->sellid);
     }
 
     private function insert_order($openid, $sellid)
     {
+        
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         $focusdate = $this->usage->get_openid_info($openid)->adddate;
 
@@ -41,21 +52,6 @@ class OrderController extends Controller
             ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
 
     }
-
-    private function check_order($sellid)
-    {
-        $row = DB::table('wx_order_send')
-            ->where('sellid', $sellid)
-            ->count();
-
-        if ($row == 0) {
-            $flag = true;
-        } else {
-            $flag = false;
-        }
-        return $flag;
-    }
-
     private function Repost_order($openid, $sellid)
     {
         $userId = $openid;

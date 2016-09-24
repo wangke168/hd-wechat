@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
+use App\WeChat\Order;
 use App\WeChat\Response;
 use App\WeChat\Usage;
 use Carbon\Carbon;
@@ -16,6 +17,7 @@ use EasyWeChat\Message\Text;
 
 use App\WeChat\Tour;
 use App\Http\Requests;
+
 //use Illuminate\Support\Facades\Cache;
 
 class ArticlesController extends Controller
@@ -45,28 +47,10 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $row=DB::table('wx_order_send')
-            ->where('sellid','V1311130095')
-            ->count();
-        if ($row == 0) {
-            $flag = '0';
-        } else {
-            $flag = '1';
-        }
-        return $flag;
-        /*                $row = WechatArticle::focusPublished('123')
-                            ->pluck('eventkey');*/
-//        $row=WechatVoice::focusPublished('123')->get();
-        /*      $app=app('wechat');
-              $material = $app->material;
 
-              $result = $material->uploadImage(public_path()."/images/bg.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
-              var_dump($result);*/
-
-        /*     $resource = $material->lists('voice', 0, 10);
-
-             return $resource;*/
-
+        $sellid='V1609240081';
+     $order=new Order();
+        return $order->get_order_detail($sellid)['ticket_id'];
     }
 
     public function info_back_2()
