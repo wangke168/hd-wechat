@@ -64,6 +64,7 @@ class SendOrderQueue extends Job implements ShouldQueue
 
         $ticket_id = "";
         $hotel = "";
+        $ticket="";
         $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
