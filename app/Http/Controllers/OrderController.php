@@ -26,9 +26,9 @@ class OrderController extends Controller
     public function send($openid, $sellid)
     {
         if ($this->check_order($sellid)) {
-            $this->insert_order($openid, $sellid);
-            $this->Repost_order($openid, $sellid);
-//            $this->dispatch(new SendOrderQueue($openid,$sellid));
+//            $this->insert_order($openid, $sellid);
+//            $this->Repost_order($openid, $sellid);
+            $this->dispatch(new SendOrderQueue($openid,$sellid));
         }
     }
 
