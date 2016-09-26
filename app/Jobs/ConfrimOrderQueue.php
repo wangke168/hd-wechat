@@ -29,7 +29,8 @@ class ConfrimOrderQueue extends Job implements ShouldQueue
     {
         $this->usage=new Usage();
         $this->order=new Order();
-        $this->openid = $this->usage->authcode($openid, 'DECODE', 0);
+//        $this->openid = $this->usage->authcode($openid, 'DECODE', 0);
+        $this->openid=$openid;
         $this->sellid = $sellid;
     }
 
