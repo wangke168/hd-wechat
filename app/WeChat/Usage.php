@@ -204,6 +204,28 @@ class Usage
         }
     }
 
+    /**
+     * 查询手机归属地
+     * @param $tel ： 输入手机号
+     * @return null ： 正确手机号输出地区，错误的输出null
+     */
+
+    function MobileQueryAttribution($tel)
+    {
+        $queryurl = "http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile={$tel}";
+
+        $mobileinfo = simplexml_load_file($queryurl);
+        $json_xml = json_encode($mobileinfo);
+        $cityinfo = (object)json_decode($json_xml, true);
+//        $a = (object)$a
+        if (!array_key_exists("city", $cityinfo)) {
+            return null;
+        } else {
+            return $cityinfo;
+        }
+    }
+
+
 
     public function v($openid, $project_id)
     {

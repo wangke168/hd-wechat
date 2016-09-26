@@ -24,87 +24,83 @@ class Order
         $ticketcount = count($data['ticketorder']);
         $inclusivecount = count($data['inclusiveorder']);
         $hotelcount = count($data['hotelorder']);
-
-        $i = 0;
+        
         if ($ticketcount <> 0) {
             $ticket_id = 1;
-            for ($j = 0; $j < $ticketcount; $j++) {
-                $i = $i + 1;
-                $name = $data['ticketorder'][$j]['name'];
-                $date = $data['ticketorder'][$j]['date2'];
-                $ticket = $data['ticketorder'][$j]['ticket'];
-                $numbers = $data['ticketorder'][$j]['numbers'];
-                $ticketorder = $data['ticketorder'][$j]['ticket'];
-                $flag = $data['ticketorder'][$j]['flag'];
 
-                if ($flag == "未支付" || $flag == "已取消") {
-                    break;
-                }
+                $name = $data['ticketorder'][0]['name'];
+                $phone = $data['ticketorder'][0]['phone'];
+                $date = $data['ticketorder'][0]['date2'];
+                $ticket = $data['ticketorder'][0]['ticket'];
+                $numbers = $data['ticketorder'][0]['numbers'];
+                $ticketorder = $data['ticketorder'][0]['ticket'];
+                $flag = $data['ticketorder'][0]['flag'];
+
                 $result = array(
                     "ticket_id" => $ticket_id,
                     "name" => $name,
+                    "phone"=>$phone,
                     "sellid" => $sellid,
                     "date" => $date,
                     "ticket" => $ticket,
                     "numbers" => $numbers,
                     "ticketorder" => $ticketorder,
+                    "flag"=>$flag,
                 );
-            }
+//            }
         }
         if ($inclusivecount <> 0) {
             $ticket_id = 2;
-            for ($j = 0; $j < $inclusivecount; $j++) {
-                $i = $i + 1;
-                $name = $data['inclusiveorder'][$j]['name'];
-                $date = $data['inclusiveorder'][$j]['date2'];
-                $ticket = $data['inclusiveorder'][$j]['ticket'];
-                $hotel = $data['inclusiveorder'][$j]['hotel'];
-                $flag = $data['inclusiveorder'][$j]['flag'];
 
-                if ($flag == "未支付" || $flag == "已取消") {
-                    break;
-                }
+                $name = $data['inclusiveorder'][0]['name'];
+                $phone = $data['inclusiveorder'][0]['phone'];
+                $date = $data['inclusiveorder'][0]['date2'];
+                $ticket = $data['inclusiveorder'][0]['ticket'];
+                $hotel = $data['inclusiveorder'][0]['hotel'];
+                $flag = $data['inclusiveorder'][0]['flag'];
+
+
 
                 $result = array(
                     "ticket_id" => $ticket_id,
                     "name" => $name,
+                    "phone"=>$phone,
                     "sellid" => $sellid,
                     "date" => $date,
                     "ticket" => $ticket,
                     "hotel" => $hotel,
+                    "flag"=>$flag,
                 );
-            }
+//            }
         }
         if ($hotelcount <> 0) {
             $ticket_id = 3;
-            for ($j = 0; $j < $hotelcount; $j++) {
-                $i = $i + 1;
-                $sellid = $data['hotelorder'][$j]['sellid'];
-                $name = $data['hotelorder'][$j]['name'];
-                $date = $data['hotelorder'][$j]['date2'];
-                $days = $data['hotelorder'][$j]['days'];
-                $hotel = $data['hotelorder'][$j]['hotel'];
-                $numbers = $data['hotelorder'][$j]['numbers'];
-                $roomtype = $data['hotelorder'][$j]['roomtype'];
-                $flag = $data['hotelorder'][$j]['flag'];
 
-                if ($flag == "未支付" || $flag == "已取消") {
-                    break;
-                }
+                $name = $data['hotelorder'][0]['name'];
+                $phone = $data['hotelorder'][0]['phone'];
+                $date = $data['hotelorder'][0]['date2'];
+                $days = $data['hotelorder'][0]['days'];
+                $hotel = $data['hotelorder'][0]['hotel'];
+                $numbers = $data['hotelorder'][0]['numbers'];
+                $roomtype = $data['hotelorder'][0]['roomtype'];
+                $flag = $data['hotelorder'][0]['flag'];
+
 
                 $result = array(
                     "ticket_id" => $ticket_id,
                     "name" => $name,
+                    "phone"=>$phone,
                     "sellid" => $sellid,
                     "date" => $date,
                     "days" => $days,
                     "hotel" => $hotel,
                     "numbers" => $numbers,
                     "roomtype" => $roomtype,
+                    "flag"=>$flag,
 
                 );
 
-            }
+//            }
 
         }
         return $result;
