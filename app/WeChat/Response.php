@@ -341,7 +341,7 @@ class Response
                         $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     }
 //                    $url = $linkjump . "&link=" . $url;*/
-                    $url="/jump/{$id}/{$openid}";
+                    $url="http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
                 } else {
                     $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                 }
