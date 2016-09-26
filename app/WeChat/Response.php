@@ -340,8 +340,8 @@ class Response
                     } else {
                         $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     }
-                    $url = $linkjump . "&link=" . $url;
-//                    $url=$linkjump."/{$url}";
+//                    $url = $linkjump . "&link=" . $url;
+                    $url="http://w.unclewang.me/jump/{$id}/{$openid}";
                 } else {
                     $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                 }

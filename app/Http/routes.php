@@ -14,7 +14,7 @@
 Route::any('/wechat', 'WechatController@serve');
 //输出token
 Route::get('/hd-token','TokenController@token');
-Route::get('/jump/{id}/{openid}/{url}','LinkJumpController@index');
+Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 
 Route::get('/', function () {
     return view('welcome');
