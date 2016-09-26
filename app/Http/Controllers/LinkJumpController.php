@@ -10,9 +10,9 @@ class LinkJumpController extends Controller
 {
     public function index($id,$openid,$url)
     {
-//        header("Location: " . $url);
+       header("Location:www.baidu.com ");
 
-        return redirect('www.baidu.com');
+//        return redirect('www.baidu.com');
 
 
     }
