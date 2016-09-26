@@ -333,15 +333,15 @@ class Response
                 /*如果只直接跳转链接页面时，判断是否已经带参数*/
                 if ($url != '') {
                     /*链接跳转的数据统计*/
-//                    $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
-                    $linkjump = "http://wechat.hengdianworld.com/jump/{$id}/{$wxnumber}";
+                    $linkjump = "http://weix2.hengdianworld.com/inc/linkjump.php?id=" . $id;
+//                    $linkjump = "http://wechat.hengdianworld.com/jump/{$id}/{$wxnumber}";
                     if (strstr($url, '?') != '') {
                         $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     } else {
                         $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     }
-//                    $url = $linkjump . "&link=" . $url;
-                    $url=$linkjump."/{$url}";
+                    $url = $linkjump . "&link=" . $url;
+//                    $url=$linkjump."/{$url}";
                 } else {
                     $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                 }
