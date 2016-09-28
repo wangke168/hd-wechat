@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdateEscQueue;
 use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
@@ -48,24 +49,16 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $usage=new Usage();
-        $order=new Order();
-        $openid='o2e-YuBgnbLLgJGMQykhSg_V3VRI';
-        $sellid='V1609260247';
-        $eventkey = $usage->get_openid_info($openid)->eventkey;  //获取客人所属市场
-        $focusdate = $usage->get_openid_info($openid)->adddate;   //获取客人关注时间
-
-//        $name=get_order_info($sellid,"name");
-        $name=$order->get_order_detail($sellid)['name'];
-//        $phone=get_order_info($sellid,"phone");
-        $phone=$order->get_order_detail($sellid)['phone'];
-//        $arrive_date=get_order_info($sellid,"date");
-        $arrive_date=$order->get_order_detail($sellid)['date'];
-        $city=$usage->MobileQueryAttribution($phone)->city;      //根据手机号获取归属地
-
-        DB::table('wx_order_confirm')
-            ->insert(['wx_openid'=>$openid,'sellid'=>$sellid ,'order_name'=>$name,'tel'=>$phone,
-                'arrive_date'=>$arrive_date,'eventkey'=>$eventkey,'focusdate'=>$focusdate,'city'=>$city]);
+        $rowEsc=DB::table('wx_user_esc')
+//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('esc_time','>=','2016-08-28')
+            ->get();
+        foreach ($rowEsc as $EscInfo)
+        {
+//            $this->dispatch()
+            $this->dispatch(new UpdateEscQueue($EscInfo));
+//            $this->dispatch(new UpdateEscQueue($EscInfo));
+        }
     }
 
     public function info_back_2()

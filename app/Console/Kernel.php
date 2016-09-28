@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         Commands\AutoRemindLdjl::class,
         Commands\UpdateClickInfo::class,
         Commands\UpdateOpenidInfo::class,
+        Commands\UpdateEscInfo::class,
 
     ];
 
@@ -57,6 +58,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('UpdateClickInfo')
             ->dailyAt('1:30');
 
+        $schedule->command('UpdateEscInfo')
+            ->cron('* * * * *');
 
 
     }
