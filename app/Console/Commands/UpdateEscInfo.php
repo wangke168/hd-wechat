@@ -39,8 +39,8 @@ class UpdateEscInfo extends Command
     public function handle()
     {
         $rowEsc=DB::table('wx_user_esc')
-//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('esc_time','>=','2016-08-28')
+            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+//            ->whereDate('esc_time','>=','2016-08-28')
             ->get();
         foreach ($rowEsc as $EscInfo)
         {
