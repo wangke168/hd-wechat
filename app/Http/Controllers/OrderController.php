@@ -13,15 +13,15 @@ use App\WeChat\Order;
 class OrderController extends Controller
 {
     //
-    /*public $app;
+    public $app;
     public $notice;
-    public $usage;*/
+//    public $usage;
 
     public function __construct(Application $app)
     {
-        /*$this->app = $app;
+        $this->app = $app;
         $this->notice = $app->notice;
-        $this->usage = new Usage();*/
+//        $this->usage = new Usage();
     }
 
     public function send($sellid,$openid)
@@ -75,10 +75,10 @@ class OrderController extends Controller
 
     private function insert_order($openid, $sellid)
     {
-        $this->usage = new Usage();
-        if ($this->usage->get_openid_info($openid)) {
-            $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-            $focusdate = $this->usage->get_openid_info($openid)->adddate;
+        $usage = new Usage();
+        if ($usage->get_openid_info($openid)) {
+            $eventkey = $usage->get_openid_info($openid)->eventkey;
+            $focusdate = $usage->get_openid_info($openid)->adddate;
         }
         DB::table('wx_order_send')
             ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
@@ -87,8 +87,8 @@ class OrderController extends Controller
 
     private function Repost_order($openid, $sellid)
     {
-        $app = app('wechat');
-        $notice = $app->notice;
+//        $app = app('wechat');
+//        $notice = $app->notice;
         $userId = $openid;
         $url = 'http://weix2.hengdianworld.com/article/articledetail.php?id=44';
         $color = '#FF0000';
@@ -214,7 +214,7 @@ class OrderController extends Controller
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
                 'hotel' => $hotel]);
 
-        $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
+        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
     }
 }
