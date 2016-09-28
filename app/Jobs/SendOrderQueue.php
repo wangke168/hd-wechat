@@ -134,7 +134,8 @@ class SendOrderQueue extends Job implements ShouldQueue
 
                 $remark = "人数：" . $data['inclusiveorder'][$j]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
-                $templateId = '1QHtqCEjUWyWL26hnLMnJ7GFI5-0kVOLEcxfmJR3wms';    //测试模板
+//                $templateId = '1QHtqCEjUWyWL26hnLMnJ7GFI5-0kVOLEcxfmJR3wms';    //测试模板
+                $templateId=env('TEMPLATEID_PACKAGES');
 //                $templateId = '6_xcQ3_C7ypfMkuU2YPZo_gxx7XyQC99Sn9gkBomFpI';
                 $data = array(
                     "first" => array($first, "#000000"),
@@ -167,7 +168,8 @@ class SendOrderQueue extends Job implements ShouldQueue
                 $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
                 $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
 
-                $templateId = 'jXTW9HWSE_oighJr9L940ZG-HCkrI84onzdk5s0b9hs';    //测试模板
+//                $templateId = 'jXTW9HWSE_oighJr9L940ZG-HCkrI84onzdk5s0b9hs';    //测试模板
+                $templateId=env('TEMPLATEID_HOTEL');
 //                $templateId = 'KEoAPCC2TM5A7D7Va8-LbwJCZ6qrTPuxYcge0If5sMI';
                 $data = array(
                     "first" => array($first, "#000000"),
