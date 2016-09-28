@@ -101,7 +101,8 @@ class SendOrderQueue extends Job implements ShouldQueue
 
                 $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
 
-                $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';    //测试模板
+//                $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';    //测试模板
+                $templateId=env('templateId_ticket');
 //                $templateId = 'GO-MX6boWkOW_0RPdX_p1L5roVshgyHxttG4Ruw_GqM';
                 $data = array(
                     "first" => array($first, "#000000"),
