@@ -16,6 +16,12 @@ Route::any('/wechat', 'WechatController@serve');
 Route::get('/hd-token','TokenController@token');
 Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 
+//订单相关
+Route::get('/ordersend/{sellid}/{openid}','OrderController@send');
+Route::get('/orderconfrim/{sellid}/{openid?}','OrderController@confrim');
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,14 +37,12 @@ Route::get('/articles/{id}', 'ArticlesController@detail');
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');
 
-//订单相关
-Route::get('/ordersend/{sellid}/{openid}','OrderController@send');
-Route::get('/orderconfrim/{sellid}/{openid?}','OrderController@confrim');
+
 
 //测试
 Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
-Route::get('/a/{id}/{openid?}', 'ArticlesController@info');
+Route::get('/info/{sellid}/{openid?}', 'ArticlesController@info');
 /*{
     if ($openid)
     return $openid;

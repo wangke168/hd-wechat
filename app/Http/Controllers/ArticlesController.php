@@ -47,15 +47,30 @@ class ArticlesController extends Controller
         return view('articles.detail', compact('article'));
     }
 
-    public function info()
+    public function info($sellid,$openid=null)
     {
+ /*       $openid='7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ';
+        $sellid='V1609280555';*/
+        $usage = new Usage();
+        $order = new Order();
 
-        $usage=new Usage();
-        $openId = $usage->authcode('dfgdf', 'DECODE', 0);
-        if(!$usage->get_openid_info($openId))
-        {
-            return 'null';
+        $eventkey = '';
+        $focusdate = '';
+
+        $openId = $usage->authcode($openid, 'DECODE', 0);
+        if ($usage->get_openid_info($openId)) {
+            $eventkey = $usage->get_openid_info($openId)->eventkey;     //获取客人所属市场
+            $focusdate = $usage->get_openid_info($openId)->adddate;     //获取客人关注时间
         }
+
+        $name = $order->get_order_detail($sellid)['name'];            //获取客人姓名
+        $phone = $order->get_order_detail($sellid)['phone'];          //获取客人电话
+        $arrive_date = $order->get_order_detail($sellid)['date'];     //获取客人与大日期
+        $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
+
+        DB::table('wx_order_confirm')
+            ->insert(['wx_openid' => $openId, 'sellid' => $sellid, 'order_name' => $name, 'tel' => $phone,
+                'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'focusdate' => $focusdate, 'city' => $city]);
     }
 
     public function info_back_2()
