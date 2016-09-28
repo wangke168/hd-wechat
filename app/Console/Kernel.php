@@ -59,7 +59,7 @@ class Kernel extends ConsoleKernel
             ->dailyAt('1:30');
 
         $schedule->command('UpdateEscInfo')
-            ->cron('* * * * *');
+            ->dailyAt('2:00');
 
 
     }
