@@ -49,15 +49,12 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $rowEsc=DB::table('wx_user_esc')
-//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('esc_time','>=','2016-08-28')
-            ->get();
-        foreach ($rowEsc as $EscInfo)
+
+        $usage=new Usage();
+        $openId = $usage->authcode('dfgdf', 'DECODE', 0);
+        if(!$usage->get_openid_info($openId))
         {
-//            $this->dispatch()
-            $this->dispatch(new UpdateEscQueue($EscInfo));
-//            $this->dispatch(new UpdateEscQueue($EscInfo));
+            return 'null';
         }
     }
 

@@ -24,7 +24,7 @@ class SendOrderQueue extends Job implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($openid, $sellid)
+    public function __construct($sellid,$openid)
     {
         $this->openid = $openid;
         $this->sellid = $sellid;
@@ -48,9 +48,10 @@ class SendOrderQueue extends Job implements ShouldQueue
     private function insert_order($openid, $sellid)
     {
         $this->usage = new Usage();
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $focusdate = $this->usage->get_openid_info($openid)->adddate;
-
+        if ($this->usage->get_openid_info($openid)) {
+            $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+            $focusdate = $this->usage->get_openid_info($openid)->adddate;
+        }
         DB::table('wx_order_send')
             ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
 
@@ -100,8 +101,8 @@ class SendOrderQueue extends Job implements ShouldQueue
 
                 $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
 
-//                $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';    //测试模板
-                $templateId = 'GO-MX6boWkOW_0RPdX_p1L5roVshgyHxttG4Ruw_GqM';
+                $templateId = 'SHuJTADBgVyIrGlpFgM2NY9ec84UOXqfxfoGsLy17DI';    //测试模板
+//                $templateId = 'GO-MX6boWkOW_0RPdX_p1L5roVshgyHxttG4Ruw_GqM';
                 $data = array(
                     "first" => array($first, "#000000"),
                     "keyword1" => array($sellid, "#173177"),
@@ -132,8 +133,8 @@ class SendOrderQueue extends Job implements ShouldQueue
 
                 $remark = "人数：" . $data['inclusiveorder'][$j]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
-//                $templateId = '1QHtqCEjUWyWL26hnLMnJ7GFI5-0kVOLEcxfmJR3wms';    //测试模板
-                $templateId = '6_xcQ3_C7ypfMkuU2YPZo_gxx7XyQC99Sn9gkBomFpI';
+                $templateId = '1QHtqCEjUWyWL26hnLMnJ7GFI5-0kVOLEcxfmJR3wms';    //测试模板
+//                $templateId = '6_xcQ3_C7ypfMkuU2YPZo_gxx7XyQC99Sn9gkBomFpI';
                 $data = array(
                     "first" => array($first, "#000000"),
                     "keyword1" => array($sellid, "#173177"),
@@ -165,8 +166,8 @@ class SendOrderQueue extends Job implements ShouldQueue
                 $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
                 $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
 
-//                $templateId = 'jXTW9HWSE_oighJr9L940ZG-HCkrI84onzdk5s0b9hs';    //测试模板
-                $templateId = 'KEoAPCC2TM5A7D7Va8-LbwJCZ6qrTPuxYcge0If5sMI';
+                $templateId = 'jXTW9HWSE_oighJr9L940ZG-HCkrI84onzdk5s0b9hs';    //测试模板
+//                $templateId = 'KEoAPCC2TM5A7D7Va8-LbwJCZ6qrTPuxYcge0If5sMI';
                 $data = array(
                     "first" => array($first, "#000000"),
                     "keyword1" => array($sellid, "#173177"),

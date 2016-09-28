@@ -32,12 +32,20 @@ Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');
 
 //订单相关
-Route::get('/ordersend/{openid}/{sellid}','OrderController@send');
-Route::get('/orderconfrim/{openid}/{sellid}','OrderController@confrim');
+Route::get('/ordersend/{sellid}/{openid}','OrderController@send');
+Route::get('/orderconfrim/{sellid}/{openid?}','OrderController@confrim');
 
 //测试
 Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
+Route::get('/a/{id}/{openid?}', 'ArticlesController@info');
+/*{
+    if ($openid)
+    return $openid;
+    else
+        return 'null';
+});*/
+
 
 //卡券测试
 Route::get('/card', 'CardController@index');

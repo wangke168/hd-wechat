@@ -22,7 +22,7 @@ class Usage
      * @param $openid
      * @return mixed|static
      */
-    public function get_openid_info($openid)
+    public function get_openid_info($openid=null)
     {
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)

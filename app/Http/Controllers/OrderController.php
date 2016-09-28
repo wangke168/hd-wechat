@@ -9,7 +9,7 @@ use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
-
+use App\WeChat\Order;
 class OrderController extends Controller
 {
     //
@@ -24,17 +24,16 @@ class OrderController extends Controller
         $this->usage = new Usage();
     }
 
-    public function send($openid, $sellid)
+    public function send($sellid,$openid=null)
     {
         if ($this->check_order($sellid)) {
-            $this->dispatch(new SendOrderQueue($openid,$sellid));
+            $this->dispatch(new SendOrderQueue($sellid,$openid));
         }
     }
     
-    public function confrim($openid, $sellid)
+    public function confrim($sellid,$openid=null)
     {
-        $this->dispatch(new ConfrimOrderQueue($openid,$sellid));
-        
+        $this->dispatch(new ConfrimOrderQueue($sellid,$openid));
     }
 
 

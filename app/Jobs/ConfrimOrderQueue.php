@@ -17,18 +17,15 @@ class ConfrimOrderQueue extends Job implements ShouldQueue
     public $sellid;
     public $openid;
 
-    
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($openid, $sellid)
+    public function __construct($sellid, $openid)
     {
-     /*   $this->usage=new Usage();
-        $this->order=new Order();*/
-//        $this->openid = $this->usage->authcode($openid, 'DECODE', 0);
-        $this->openid=$openid;
+        $this->openid = $openid;
         $this->sellid = $sellid;
     }
 
@@ -39,20 +36,27 @@ class ConfrimOrderQueue extends Job implements ShouldQueue
      */
     public function handle()
     {
-        $usage=new Usage();
-        $order=new Order();
+        $usage = new Usage();
+        $order = new Order();
+
+        $eventkey = '';
+        $focusdate = '';
+
         $openId = $usage->authcode($this->openid, 'DECODE', 0);
-        $eventkey = $usage->get_openid_info($openId)->eventkey;     //获取客人所属市场
-        $focusdate = $usage->get_openid_info($openId)->adddate;     //获取客人关注时间
-        $name=$order->get_order_detail($this->sellid)['name'];            //获取客人姓名
-        $phone=$order->get_order_detail($this->sellid)['phone'];          //获取客人电话
-        $arrive_date=$order->get_order_detail($this->sellid)['date'];     //获取客人与大日期
-        $city=$usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
+        if ($usage->get_openid_info($openId)) {
+            $eventkey = $usage->get_openid_info($openId)->eventkey;     //获取客人所属市场
+            $focusdate = $usage->get_openid_info($openId)->adddate;     //获取客人关注时间
+        }
+
+        $name = $order->get_order_detail($this->sellid)['name'];            //获取客人姓名
+        $phone = $order->get_order_detail($this->sellid)['phone'];          //获取客人电话
+        $arrive_date = $order->get_order_detail($this->sellid)['date'];     //获取客人与大日期
+        $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
 
         DB::table('wx_order_confirm')
-            ->insert(['wx_openid'=>$openId,'sellid'=>$this->sellid ,'order_name'=>$name,'tel'=>$phone,
-                'arrive_date'=>$arrive_date,'eventkey'=>$eventkey,'focusdate'=>$focusdate,'city'=>$city]);
+            ->insert(['wx_openid' => $openId, 'sellid' => $this->sellid, 'order_name' => $name, 'tel' => $phone,
+                'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'focusdate' => $focusdate, 'city' => $city]);
     }
-    
-    
+
+
 }
