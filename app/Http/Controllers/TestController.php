@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdateClickQueue;
 use App\Jobs\UpdateOpenidQueue;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
@@ -32,5 +33,16 @@ class TestController extends Controller
             $this->dispatch(new UpdateOpenidQueue($OpenidInfo));
             }
     }
-
+    //更新
+    public function update_click_info()
+    {
+        $rowClick=DB::table('wx_click_hits')
+//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('adddate','>=','2016-09-28')
+            ->get();
+        foreach ($rowClick as $clickinfo)
+        {
+            dispatch(new UpdateClickQueue($clickinfo));
+        }
+    }
 }
