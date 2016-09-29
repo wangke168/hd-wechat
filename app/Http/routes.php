@@ -78,3 +78,4 @@ Route::get('/jssdk','JssdkController@index');
 //测试
 Route::get('/test/updateopenidinfo','TestController@update_openid_info');
 Route::get('/test/updateclickinfo','TestController@update_click_info');
+Route::get('/test/sendorder/{id}/{openid?}','TestController@send_order');
