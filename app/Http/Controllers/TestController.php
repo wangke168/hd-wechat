@@ -25,7 +25,7 @@ class TestController extends Controller
     {
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
-            ->whereDate('endtime','>=','2016-08-28')
+            ->whereDate('endtime','>=','2016-09-28')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo) {
