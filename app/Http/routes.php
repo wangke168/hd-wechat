@@ -40,6 +40,9 @@ Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneContr
 
 
 //测试
+Route::get('/test/updateopenidinfo','TestController@update_openid_info');
+
+
 Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
 Route::get('/info/{sellid}/{openid?}', 'ArticlesController@info');
