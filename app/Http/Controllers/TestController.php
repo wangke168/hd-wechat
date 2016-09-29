@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ConfrimOrderQueue;
 use App\Jobs\SendOrderQueue;
 use App\Jobs\UpdateClickQueue;
 use App\Jobs\UpdateOpenidQueue;
@@ -46,11 +47,17 @@ class TestController extends Controller
             dispatch(new UpdateClickQueue($clickinfo));
         }
     }
-    //发送订单
-    public function send_order($sellid,$openid=null)
+    //发送订单wx_order_send,wx_order_detail
+    public function order_send($sellid,$openid=null)
     {
         $this->dispatch(new SendOrderQueue($sellid,$openid));
-//        dispatch(new SendOrderQueue($sellid,$openid));
+
+        //openid=opUv9v977Njll_YHpZYMymxI_aPE;
         //openid=7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ;
+    }
+    //确认订单wx_order_confrim
+    public function order_confrim($sellid,$openid=null)
+    {
+        $this->dispatch(new ConfrimOrderQueue($sellid,$openid));
     }
 }
