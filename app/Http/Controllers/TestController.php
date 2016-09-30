@@ -16,10 +16,17 @@ class TestController extends Controller
     public $app;
     public $usage;
     public $order;
-
+    public $openid_1;   //正式
+    public $openid_1_1; //正式加密
+    public $openid_2;   //测试
+    public $openid_2_2;  //测试加密
     public function __construct(Application $app)
     {
         $this->app=$app;
+        $this->openid_1='o2e-YuBgnbLLgJGMQykhSg_V3VRI';
+        $this->openid_1_1='04faIYgdOH15020shuCxbbuWLPmrjTdsVj92Hw5edgc1Uboe0tAg6OZWxi9uul5IKYq7Ccybm7[c]b';
+        $this->openid_2='opUv9v977Njll_YHpZYMymxI_aPE';
+        $this->openid_2_2='7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ';
     }
 
 
@@ -51,9 +58,6 @@ class TestController extends Controller
     public function order_send($sellid,$openid=null)
     {
         $this->dispatch(new SendOrderQueue($sellid,$openid));
-
-        //openid=opUv9v977Njll_YHpZYMymxI_aPE;
-        //openid=7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ;
     }
     //确认订单wx_order_confrim
     public function order_confrim($sellid,$openid=null)
