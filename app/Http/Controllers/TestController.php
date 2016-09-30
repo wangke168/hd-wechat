@@ -49,7 +49,7 @@ class TestController extends Controller
     {
         $rowEsc=DB::table('wx_user_esc')
             ->whereDate('esc_time','>=',date("Y-m-d", strtotime("-1 day")))
-//            ->whereDate('adddate','>=','2016-09-28')
+//            ->whereDate('esc_time','>=','2016-09-28')
             ->get();
         foreach ($rowEsc as $EscInfo)
         {
