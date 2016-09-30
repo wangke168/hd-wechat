@@ -48,8 +48,8 @@ class TestController extends Controller
     public function update_esc_info()
     {
         $rowEsc=DB::table('wx_user_esc')
-//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('adddate','>=','2016-09-28')
+            ->whereDate('esc_time','>=',date("Y-m-d", strtotime("-1 day")))
+//            ->whereDate('adddate','>=','2016-09-28')
             ->get();
         foreach ($rowEsc as $EscInfo)
         {
