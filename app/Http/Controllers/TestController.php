@@ -52,7 +52,7 @@ class TestController extends Controller
             ->get();
         foreach ($rowEsc as $EscInfo)
         {
-            dispatch(new UpdateEscQueue($EscInfo));
+            $this->dispatch(new UpdateEscQueue($EscInfo));
         }
     }
     //更新wx_click_hits的信息
