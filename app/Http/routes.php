@@ -21,14 +21,14 @@ Route::get('/ordersend/{sellid}/{openid}','OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','OrderController@confrim');
 
 
-/*
+
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('about', function () {
     return 'Hello World';
 });
-*/
+
 
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/{id}', 'ArticlesController@detail');
