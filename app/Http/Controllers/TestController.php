@@ -35,7 +35,8 @@ class TestController extends Controller
     {
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
-            ->whereDate('endtime','>=','2016-08-28')
+            ->whereDate('endtime','>=',date("Y-m-d", strtotime("-1 day")))
+//            ->whereDate('endtime','>=','2016-08-28')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo) {
@@ -46,8 +47,8 @@ class TestController extends Controller
     public function update_click_info()
     {
         $rowClick=DB::table('wx_click_hits')
-//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('adddate','>=','2016-09-28')
+            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+//            ->whereDate('adddate','>=','2016-09-28')
             ->get();
         foreach ($rowClick as $clickinfo)
         {
