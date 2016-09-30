@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\ConfrimOrderQueue;
 use App\Jobs\SendOrderQueue;
 use App\Jobs\UpdateClickQueue;
+use App\Jobs\UpdateEscQueue;
 use App\Jobs\UpdateOpenidQueue;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
@@ -42,6 +43,17 @@ class TestController extends Controller
         foreach ($row as $OpenidInfo) {
             $this->dispatch(new UpdateOpenidQueue($OpenidInfo));
             }
+    }
+    //更新wx_esc_info的信息
+    public function update_esc_info()
+    {
+        $rowEsc=DB::table('wx_user_esc')
+            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+            ->get();
+        foreach ($rowEsc as $EscInfo)
+        {
+            dispatch(new UpdateEscQueue($EscInfo));
+        }
     }
     //更新wx_click_hits的信息
     public function update_click_info()

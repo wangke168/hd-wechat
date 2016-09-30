@@ -21,14 +21,14 @@ Route::get('/ordersend/{sellid}/{openid}','OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','OrderController@confrim');
 
 
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('about', function () {
     return 'Hello World';
 });
-
+*/
 
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/{id}', 'ArticlesController@detail');
@@ -77,6 +77,7 @@ Route::get('/jssdk','JssdkController@index');
 
 //测试
 Route::get('/test/updateopenidinfo','TestController@update_openid_info');
+Route::get('test/updateescinfo','TestController@update_esc_info');
 Route::get('/test/updateclickinfo','TestController@update_click_info');
 Route::get('/test/ordersend/{id}/{openid?}','TestController@order_send');
 Route::get('test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
