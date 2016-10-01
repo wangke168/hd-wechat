@@ -333,7 +333,7 @@ class Response
                 /*如果只直接跳转链接页面时，判断是否已经带参数*/
                 if ($url != '') {
                     /*链接跳转的数据统计*/
-//                    $url="http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
+                    $url="http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
                 } else {
                     $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                 }
