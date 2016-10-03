@@ -51,42 +51,47 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $eventkey='145';
+        $eventkey = '145';
+//        $eventkey_temp = array("145", "100000");
+//        if (in_array($eventkey, $eventkey_temp)) {
+        /*            $row = DB::table('wx_article')
+                        ->where('remark', 'test')
+                        ->whereDate('startdate', '<=', date('Y-m-d'))
+                        ->whereDate('enddate', '>=', date('Y-m-d'))
+                        ->orderBy('id', 'asc')
+                        ->skip(0)->take(8)->get();*/
+        $usage = new Usage();
+        $eventkey = $usage->CheckEventkey($eventkey);
         $eventkey_temp = array("145", "100000");
         if (in_array($eventkey, $eventkey_temp)) {
-/*            $row = DB::table('wx_article')
-                ->where('remark', 'test')
-                ->whereDate('startdate', '<=', date('Y-m-d'))
-                ->whereDate('enddate', '>=', date('Y-m-d'))
-                ->orderBy('id', 'asc')
-                ->skip(0)->take(8)->get();*/
-            $row=WechatArticle::focusPublished_temp($eventkey)
-                ->skip(0)->take(8)->get();
-        }
-        if ($row) {
-            $content = array();
-            foreach ($row as $result) {
-                $url = $result->url;
-                $id = $result->id;
-                /*如果只直接跳转链接页面时，判断是否已经带参数*/
-//                $url='';
-                if ($url != '') {
-                    /*链接跳转的数据统计*/
-//                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
-                } else {
-//                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                }
-                $new = new News();
-                $new->title = $result->title;
-                $new->description = $result->description;
-                $new->url = $url;
-                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
-                $content[] = $new;
 
+            $row = WechatArticle::focusPublished_temp($eventkey)
+                ->skip(0)->take(8)->get();
+            if ($row) {
+                $content = array();
+                foreach ($row as $result) {
+                    $url = $result->url;
+                    $id = $result->id;
+                    /*如果只直接跳转链接页面时，判断是否已经带参数*/
+//                $url='';
+                    if ($url != '') {
+                        /*链接跳转的数据统计*/
+//                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
+                    } else {
+//                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                    }
+                    $new = new News();
+                    $new->title = $result->title;
+                    $new->description = $result->description;
+                    $new->url = $url;
+                    $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                    $content[] = $new;
+
+                }
+                return $content;
+                /*            $app=app('wechat');
+                            $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();*/
             }
-            return $content;
-/*            $app=app('wechat');
-            $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();*/
         }
     }
 

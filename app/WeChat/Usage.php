@@ -225,7 +225,37 @@ class Usage
         }
     }
 
+    /**
+     * 查询该eventkey下是否有对应article，如果没有，返回其parent_id
+     * @param $eventkey
+     * @return mixed
+     */
 
+    public  function CheckEventkey($eventkey)
+    {
+        $rowParentId = DB::table('wx_qrscene_info')
+            ->where('qrscene_id', $eventkey)
+            ->first();
+        if (!$rowParentId) {
+            return $eventkey;
+        } else {
+            $row = DB::table('wx_article')
+                ->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
+                ->where('msgtype', 'news')
+                ->where('focus', '1')
+                ->where('audit', '1')
+                ->where('del', '0')
+                ->where('online', '1')
+                ->whereDate('startdate', '<=', date('Y-m-d'))
+                ->whereDate('enddate', '>=', date('Y-m-d'))
+                ->first();
+            if ($row) {
+                return $eventkey;
+            } else {
+                return $rowParentId->parent_id;
+            }
+        }
+    }
 
     public function v($openid, $project_id)
     {
