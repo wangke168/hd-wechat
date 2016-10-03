@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
 use EasyWeChat\Message\Image;
+use EasyWeChat\Message\News;
 use Illuminate\Http\Request;
 use EasyWeChat\Message\Text;
 
@@ -66,7 +67,7 @@ class ArticlesController extends Controller
                 $url = $result->url;
                 $id = $result->id;
                 /*如果只直接跳转链接页面时，判断是否已经带参数*/
-                $url='';
+//                $url='';
                 if ($url != '') {
                     /*链接跳转的数据统计*/
 //                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
