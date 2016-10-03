@@ -680,4 +680,66 @@ class Response
         }
         return $content;
     }
+
+    /**
+     * 推送图文(五一黄金周景区用，各地区特惠门票）
+     * @param $openid
+     * @param $eventkey
+     * @param $type 1：关注    2：菜单    3：关键字
+     * @param $keyword      关键字
+     * @param $menuid       菜单ID
+     */
+    public function request_focus_temp($openid, $eventkey)
+    {
+//        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
+        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
+        $uid = $this->usage->get_uid($openid);
+        if (!$eventkey) {
+            $eventkey = 'all';
+        }
+
+        $row=WechatArticle::scopeFocusPublished_temp($eventkey)
+            ->skip(0)->take(8)->get();
+
+/*        switch ($type) {
+            case 1:
+                $row = WechatArticle::focusPublished($eventkey)
+                    ->skip(0)->take(8)->get();
+                break;
+            case 2:
+                $row = WechatArticle::where('classid', $menuid)
+                    ->usagePublished($eventkey)
+                    ->skip(0)->take(8)->get();
+                break;
+            case 3:
+                $keyword = $this->check_keywowrd($keyword);
+                $row = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
+                    ->skip(0)->take(8)->get();
+                break;
+        }*/
+        if ($row) {
+            $content = array();
+            foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
+                /*如果只直接跳转链接页面时，判断是否已经带参数*/
+                if ($url != '') {
+                    /*链接跳转的数据统计*/
+                    $url="http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
+                } else {
+                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                }
+                $new = new News();
+                $new->title = $result->title;
+                $new->description = $result->description;
+                $new->url = $url;
+                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                $content[] = $new;
+            }
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        }
+
+    }
+
 }

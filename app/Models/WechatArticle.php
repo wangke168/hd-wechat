@@ -42,6 +42,19 @@ class WechatArticle extends Model
 
     }
 
+    public function scopeFocusPublished_temp($query,$eventkey)
+    {
+        $eventkey=$this->CheckEventkey($eventkey);
+//        $eventkey_temp = array("85", "86", "87", "88","89","90","91");
+        $eventkey_temp = array("145");
+        if (in_array($eventkey, $eventkey_temp)) {
+            $query->where('remark', 'test')
+                ->whereDate('startdate', '<=', date('Y-m-d'))
+                ->whereDate('enddate', '>=', date('Y-m-d'))
+                ->orderBy('id', 'asc');
+        }
+    }
+
     private function CheckEventkey($eventkey)
     {
         $rowParentId = DB::table('wx_qrscene_info')
