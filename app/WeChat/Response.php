@@ -698,9 +698,13 @@ class Response
             $eventkey = 'all';
         }
 
-        $row = WechatArticle::focusPublished($eventkey)
+        $row = DB::table('wx_article')
+            ->where('remark', 'test')
+            ->whereDate('startdate', '<=', date('Y-m-d'))
+            ->whereDate('enddate', '>=', date('Y-m-d'))
+            ->orderBy('id', 'asc')
             ->skip(0)->take(8)->get();
-                
+
 
         if ($row) {
             $content = array();
