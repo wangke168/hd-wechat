@@ -697,7 +697,7 @@ class Response
             $eventkey = 'all';
         }
         $eventkey = $this->usage->CheckEventkey($eventkey);
-        $eventkey_temp = array("145", "100000");
+        $eventkey_temp = array("85", "86", "87", "88","89","90","91","145");          //景区和测试市场的eventkey
         if (in_array($eventkey, $eventkey_temp)) {
             $row = WechatArticle::focusPublished_temp($eventkey)
                 ->skip(0)->take(8)->get();
