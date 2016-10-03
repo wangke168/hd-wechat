@@ -50,12 +50,16 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $row = DB::table('wx_article')
-            ->where('remark', 'test')
-            ->whereDate('startdate', '<=', date('Y-m-d'))
-            ->whereDate('enddate', '>=', date('Y-m-d'))
-            ->orderBy('id', 'asc')
-            ->skip(0)->take(8)->get();
+        $eventkey='145';
+        $eventkey_temp = array("145", "100000");
+        if (in_array($eventkey, $eventkey_temp)) {
+            $row = DB::table('wx_article')
+                ->where('remark', 'test')
+                ->whereDate('startdate', '<=', date('Y-m-d'))
+                ->whereDate('enddate', '>=', date('Y-m-d'))
+                ->orderBy('id', 'asc')
+                ->skip(0)->take(8)->get();
+        }
         return $row;
         
     }
