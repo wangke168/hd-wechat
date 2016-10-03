@@ -50,9 +50,13 @@ class ArticlesController extends Controller
 
     public function info()
     {
-        $openid='7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ';
-        $sellid='V1609280555';
-        $this->dispatch(new ConfrimOrderQueue($sellid,$openid));
+        $row = DB::table('wx_article')
+            ->where('remark', 'test')
+            ->whereDate('startdate', '<=', date('Y-m-d'))
+            ->whereDate('enddate', '>=', date('Y-m-d'))
+            ->orderBy('id', 'asc')
+            ->skip(0)->take(8)->get();
+        return $row;
         
     }
 

@@ -71,7 +71,7 @@ class WechatController extends Controller
                                 $response->request_focus($openid, $eventkey);                       //推送关注信息
                                 if ($eventkey=='145')
                                 {
-                                    $response->request_focus($openid, $eventkey);                  //黄金周景区预定推送
+                                    $response->request_focus_temp($openid, $eventkey);                  //黄金周景区预定推送
                                 }
                                 $response->make_user_tag($openid, $eventkey);                        //标签管理
                             }
