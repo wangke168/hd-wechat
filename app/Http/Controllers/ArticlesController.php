@@ -54,11 +54,13 @@ class ArticlesController extends Controller
         $eventkey='145';
         $eventkey_temp = array("145", "100000");
         if (in_array($eventkey, $eventkey_temp)) {
-            $row = DB::table('wx_article')
+/*            $row = DB::table('wx_article')
                 ->where('remark', 'test')
                 ->whereDate('startdate', '<=', date('Y-m-d'))
                 ->whereDate('enddate', '>=', date('Y-m-d'))
                 ->orderBy('id', 'asc')
+                ->skip(0)->take(8)->get();*/
+            $row=WechatArticle::focusPublished_temp($eventkey)
                 ->skip(0)->take(8)->get();
         }
         if ($row) {
@@ -82,9 +84,9 @@ class ArticlesController extends Controller
                 $content[] = $new;
 
             }
-//            return $content;
-            $app=app('wechat');
-            $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+            return $content;
+/*            $app=app('wechat');
+            $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();*/
         }
     }
 
