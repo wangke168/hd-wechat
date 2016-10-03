@@ -60,8 +60,29 @@ class ArticlesController extends Controller
                 ->orderBy('id', 'asc')
                 ->skip(0)->take(8)->get();
         }
-        return $row;
-        
+        if ($row) {
+            $content = array();
+            foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
+                /*如果只直接跳转链接页面时，判断是否已经带参数*/
+                $url='';
+                if ($url != '') {
+                    /*链接跳转的数据统计*/
+//                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
+                } else {
+//                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                }
+                $new = new News();
+                $new->title = $result->title;
+                $new->description = $result->description;
+                $new->url = $url;
+                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                $content[] = $new;
+
+            }
+            return $content;
+        }
     }
 
     public function info_back_2()
