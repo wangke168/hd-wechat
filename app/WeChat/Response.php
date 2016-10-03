@@ -121,7 +121,7 @@ class Response
         }
 //        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
 
-        $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
+        $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该关键字回复中是否有图文消息
         if ($this->check_keyword_message($eventkey, "news", $keyword)) {
             $flag = true;
@@ -134,13 +134,13 @@ class Response
         }
         if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
             $flag = true;
-            $this->request_txt($openid, '2', $eventkey, $keyword);             //直接在查询文本回复时使用客服接口
+            $this->request_txt($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
         }
         if ($this->check_keyword_message($eventkey, "image", $keyword)) {
             $flag = true;
-            $this->request_image($openid, '2', $eventkey, $keyword);             //直接在查询文本回复时使用客服接口
+            $this->request_image($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
         }
-        if (!$flag)     //如果该二维码没有对应的关注推送信息
+        if (!$flag) //如果该二维码没有对应的关注推送信息
         {
             $content = new Text();
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
@@ -161,7 +161,7 @@ class Response
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
         }
-        $flag = false;    //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
+        $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
@@ -174,14 +174,14 @@ class Response
         }
         if ($this->check_eventkey_message($eventkey, "txt", "1")) {
             $flag = true;
-            $this->request_txt($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
+            $this->request_txt($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
         }
         if ($this->check_eventkey_message($eventkey, "image", "1")) {
             $flag = true;
-            $this->request_image($openid, '1', $eventkey, '');             //直接在查询文本回复时使用客服接口
+            $this->request_image($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
         }
 
-        if (!$flag)     //如果该二维码没有对应的关注推送信息
+        if (!$flag) //如果该二维码没有对应的关注推送信息
         {
             $this->request_news($openid, 'all', '1', '', '');
 //            $this->app->staff->message($content_news)->to($openid)->send();
@@ -498,10 +498,10 @@ class Response
                 ->update(['eventkey' => $eventkey, 'tag_id' => $tag_id, 'subscribe' => 1, 'esc' => '0', 'scandate' => Carbon::now(), 'endtime' => Carbon::now()]);
         }
 
-        if ($type == "subscribe")//新关注
+        if ($type == "subscribe") //新关注
         {
             DB::table('wx_user_add')
-                ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey]);             //插入数据统计的表
+                ->insert(['wx_openid' => $openid, 'eventkey' => $eventkey]); //插入数据统计的表
         }
     }
 
@@ -512,8 +512,8 @@ class Response
      */
     public function insert_unsubscribe($openid)
     {
-        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1', 'subscribe' => '0', 'esctime' => Carbon::now()]);   //设置取消关键字为1，以及取消时间
-        DB::table('wx_user_esc')->insert(['wx_openid' => $openid]);                           //增加到wx_user_esc表中
+        DB::table('wx_user_info')->where('wx_openid', $openid)->update(['esc' => '1', 'subscribe' => '0', 'esctime' => Carbon::now()]); //设置取消关键字为1，以及取消时间
+        DB::table('wx_user_esc')->insert(['wx_openid' => $openid]); //增加到wx_user_esc表中
     }
 
 
@@ -537,7 +537,7 @@ class Response
      */
     public function insert_user_unionid($openid, $unionid)
     {
-        if (!$this->check_unionid($openid)) {//检查union表中是否存在
+        if (!$this->check_unionid($openid)) { //检查union表中是否存在
             DB::table('wx_user_unionid')
                 ->insert(['wx_openid' => $openid, "wx_unionid" => $unionid]);
         }
@@ -559,13 +559,13 @@ class Response
         if ($userTags->tagid_list) {
             foreach ($userTags as $userTag) {
                 foreach ($userTag as $value) {
-                    $tag->batchUntagUsers([$openid], $value);                      //删除原有标签
+                    $tag->batchUntagUsers([$openid], $value); //删除原有标签
                 }
             }
         }
 
-        if ($this->usage->query_tag_id($eventkey)) {                          //获取eventkey对应的tag
-            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey));          //增加标签
+        if ($this->usage->query_tag_id($eventkey)) { //获取eventkey对应的tag
+            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey)); //增加标签
         }
 
     }
@@ -623,8 +623,8 @@ class Response
             ->first();
 
         $eventkey = $row->eventkey;
-        $this->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
-        $this->make_user_tag($openid, $eventkey);                        //标签管理
+        $this->insert_subscribe($openid, $eventkey, 'scan'); //更新openid信息
+        $this->make_user_tag($openid, $eventkey); //标签管理
 
 
     }
@@ -693,14 +693,13 @@ class Response
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
-//        $uid = $this->usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }
-        $eventkey=$this->usage->CheckEventkey($eventkey);
+        $eventkey = $this->usage->CheckEventkey($eventkey);
         $eventkey_temp = array("145", "100000");
         if (in_array($eventkey, $eventkey_temp)) {
-            $row=WechatArticle::focusPublished_temp($eventkey)
+            $row = WechatArticle::focusPublished_temp($eventkey)
                 ->skip(0)->take(8)->get();
             if ($row) {
                 $content = array();
