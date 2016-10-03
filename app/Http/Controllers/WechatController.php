@@ -50,15 +50,8 @@ class WechatController extends Controller
                                 $eventkey = $response->check_openid_wificonnected($openid);
                             }
                             $response->insert_subscribe($openid, $eventkey, 'subscribe');       //更新openid信息
-                            if($eventkey=='145')
-                            {
-                                $response->request_focus_temp($openid, $eventkey);                  //黄金周景区预定推送
-                            }
-                            else{
-                                $response->request_focus($openid, $eventkey);                       //推送关注信息
-                            }
-
-
+                            $response->request_focus($openid, $eventkey);                       //推送关注信息
+                            $response->request_focus_temp($openid, $eventkey);                  //黄金周景区预定推送
                             $response->make_user_tag($openid, $eventkey);                        //标签管理
                             break;
                         case 'SCAN':
@@ -73,6 +66,7 @@ class WechatController extends Controller
                             } else {
                                 $response->insert_subscribe($openid, $eventkey, 'scan');            //更新openid信息
                                 $response->request_focus($openid, $eventkey);                       //推送关注信息
+                                $response->request_focus_temp($openid, $eventkey);                  //黄金周景区预定推送
                                 $response->make_user_tag($openid, $eventkey);                        //标签管理
                             }
                             break;
