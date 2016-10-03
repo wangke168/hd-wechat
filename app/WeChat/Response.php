@@ -697,7 +697,7 @@ class Response
         if (!$eventkey) {
             $eventkey = 'all';
         }
-        $eventkey=$this->CheckEventkey($eventkey);
+//        $eventkey=$this->CheckEventkey($eventkey);
         $eventkey_temp = array("145", "100000");
         if (in_array($eventkey, $eventkey_temp)) {
  /*           $row = DB::table('wx_article')
