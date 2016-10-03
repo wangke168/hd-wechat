@@ -698,8 +698,8 @@ class Response
         $eventkey = $this->CheckEventkey($eventkey);
         if ($eventkey == '')
 //        $eventkey_temp = array("85", "86", "87", "88","89","90","91");
-            $eventkey_temp = array("145", "100000");
-        if (in_array($eventkey, $eventkey_temp)) {
+//            $eventkey_temp = array("145", "100000");
+//        if (in_array($eventkey, $eventkey_temp)) {
             $row = DB::table('wx_article')
                 ->where('remark', 'test')
                 ->whereDate('startdate', '<=', date('Y-m-d'))
@@ -730,6 +730,6 @@ class Response
                 $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
             }
         }
-        }
+//        }
 
     }
