@@ -83,6 +83,8 @@ class ArticlesController extends Controller
 
             }
             return $content;
+            $app=app('wechat');
+            $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
         }
     }
 
