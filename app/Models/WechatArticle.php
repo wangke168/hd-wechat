@@ -46,7 +46,7 @@ class WechatArticle extends Model
     {
         $eventkey=$this->CheckEventkey($eventkey);
 //        $eventkey_temp = array("85", "86", "87", "88","89","90","91");
-        $eventkey_temp = array("145");
+        $eventkey_temp = array("145","100000");
         if (in_array($eventkey, $eventkey_temp)) {
             $query->where('remark', 'test')
                 ->whereDate('startdate', '<=', date('Y-m-d'))
