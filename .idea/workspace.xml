@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Response.php" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,21 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="729" column="16" selection-start-line="729" selection-start-column="16" selection-end-line="729" selection-end-column="97" />
+            <state relative-caret-position="264">
+              <caret line="702" column="16" selection-start-line="702" selection-start-column="16" selection-end-line="702" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="86" column="99" selection-start-line="86" selection-start-column="99" selection-end-line="86" selection-end-column="99" />
+            <state relative-caret-position="832">
+              <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -91,8 +92,8 @@
         <option value="$PROJECT_DIR$/app/WeChat/Usage.php" />
         <option value="$PROJECT_DIR$/app/Models/WechatArticle.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" />
-        <option value="$PROJECT_DIR$/app/WeChat/Response.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
+        <option value="$PROJECT_DIR$/app/WeChat/Response.php" />
       </list>
     </option>
   </component>
@@ -282,12 +283,12 @@
       <workItem from="1475194721745" duration="9073000" />
       <workItem from="1475283534532" duration="147000" />
       <workItem from="1475285033127" duration="648000" />
-      <workItem from="1475474225969" duration="4214000" />
+      <workItem from="1475474225969" duration="4701000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202680000" />
+    <option name="totallyTimeSpent" value="203167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1631" height="929" extended-state="6" />
@@ -671,10 +672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="729" column="16" selection-start-line="729" selection-start-column="16" selection-end-line="729" selection-end-column="97" />
+        <state relative-caret-position="520">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -695,18 +696,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="53" />
+        <state relative-caret-position="832">
+          <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+    <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="86" column="99" selection-start-line="86" selection-start-column="99" selection-end-line="86" selection-end-column="99" />
+        <state relative-caret-position="264">
+          <caret line="702" column="16" selection-start-line="702" selection-start-column="16" selection-end-line="702" selection-end-column="16" />
           <folding />
         </state>
       </provider>
