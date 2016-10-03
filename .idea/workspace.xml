@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/Response.php" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -66,7 +65,7 @@
       <file leaf-file-name="WechatController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="32" selection-start="3469" selection-end="3469" vertical-scroll-proportion="0.59090906" vertical-offset="1352" max-vertical-offset="3484">
+            <state line="55" column="28" selection-start="2264" selection-end="2264" vertical-scroll-proportion="-0.1969697" vertical-offset="1378" max-vertical-offset="3432">
               <folding />
             </state>
           </provider>
@@ -589,7 +588,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="32" selection-start="3469" selection-end="3469" vertical-scroll-proportion="0.59090906" vertical-offset="1352" max-vertical-offset="3484">
+        <state line="55" column="28" selection-start="2264" selection-end="2264" vertical-scroll-proportion="-0.1969697" vertical-offset="1378" max-vertical-offset="3432">
           <folding />
         </state>
       </provider>
