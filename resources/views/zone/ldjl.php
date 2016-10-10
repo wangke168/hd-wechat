@@ -23,7 +23,7 @@ $project_id="1";
 
     <title>{{$openid}}</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
     <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
 
     <script>
@@ -157,5 +157,5 @@ $imgUrl="http://weix2.hengdianworld.com/control/editor/attached/image/20160324/2
 $url="http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 ?>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
