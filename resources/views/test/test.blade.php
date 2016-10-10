@@ -182,7 +182,7 @@
                 jsApiList: [
                     'getNetworkType',
                     'previewImage',
-                    'getLocation'
+//                    'getLocation'
 
                 ],
                 success: function (res) {
