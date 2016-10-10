@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <script>
-        wx.getLocation({
-            success: function (res) {
-                alert(JSON.stringify(res));
-            },
-            cancel: function (res) {
-                alert('用户拒绝授权获取地理位置');
-            }
+        wx.ready(function () {
+
+            wx.getLocation({
+                success: function (res) {
+                    alert(JSON.stringify(res));
+                },
+                cancel: function (res) {
+                    alert('用户拒绝授权获取地理位置');
+                }
+            });
         });
     </script>
 
