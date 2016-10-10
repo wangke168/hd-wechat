@@ -546,7 +546,7 @@
         };
 
         // 7.2 获取当前地理位置
-        document.querySelector('#getLocation').onclick = function () {
+//        document.querySelector('#getLocation').onclick = function () {
             wx.getLocation({
                 success: function (res) {
                     alert(JSON.stringify(res));
@@ -555,7 +555,7 @@
                     alert('用户拒绝授权获取地理位置');
                 }
             });
-        };
+//        };
 
         // 8 界面操作接口
         // 8.1 隐藏右上角菜单
