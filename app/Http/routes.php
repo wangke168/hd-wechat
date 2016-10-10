@@ -73,7 +73,7 @@ Route::get('/queue','QueueController@queue');
 
 //jssdk测试
 Route::get('/jssdk','JssdkController@index');
-Route::get('/jssdk/test','JssdkController@index');
+Route::get('/jssdk/test','JssdkController@test');
 
 
 //测试
