@@ -27,8 +27,8 @@
       <file leaf-file-name="ldjl.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2322">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="113" selection-end-column="13" />
+            <state relative-caret-position="286">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -56,16 +56,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jssdk.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -79,7 +69,7 @@
       <file leaf-file-name="JssdkController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JssdkController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="312">
               <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
               <folding />
             </state>
@@ -103,6 +93,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-546">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jssdk.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -558,12 +558,12 @@
       <workItem from="1475283534532" duration="147000" />
       <workItem from="1475285033127" duration="648000" />
       <workItem from="1475474225969" duration="5278000" />
-      <workItem from="1476077132802" duration="10406000" />
+      <workItem from="1476077132802" duration="10581000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214150000" />
+    <option name="totallyTimeSpent" value="214325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1551" height="779" extended-state="6" />
@@ -911,14 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Foundation/Application.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
@@ -943,14 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JssdkController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ZoneController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -969,6 +953,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JssdkController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/test/test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -979,8 +979,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2322">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="113" selection-end-column="13" />
+        <state relative-caret-position="286">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
