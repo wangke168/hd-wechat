@@ -26,10 +26,10 @@ class JssdkController extends Controller
             return view('test.jssdk')->with(['js'=>$this->js,'cardinfo'=>$cardinfo]);
 
     }
-    public function test()
+    public function test($openid)
     {
 //        $cardinfo=$this->card->attachExtension('p2e-YuLyjE-EbQpZd3-F2-ayqAfQ');
-        return view('zone.ldjl')->with(['js'=>$this->js]);
+        return view('zone.ldjl')->with(['js'=>$this->js,'openid' => $openid]);
 
     }
 }
