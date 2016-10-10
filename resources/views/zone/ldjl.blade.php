@@ -85,10 +85,7 @@
         <span class="desc">识别音频并返回识别结果接口</span>
         <button class="btn btn_primary" id="translateVoice">translateVoice</button>
 
-        <h3 id="menu-device">设备信息接口</h3>
-        <span class="desc">获取网络状态接口</span>
-        <button class="btn btn_primary" id="getNetworkType">getNetworkType</button>
-
+ 
         <h3 id="menu-location">地理位置接口</h3>
         <span class="desc">使用微信内置地图查看位置接口</span>
         <button class="btn btn_primary" id="openLocation">openLocation</button>
@@ -127,7 +124,7 @@
             'previewImage',
             'uploadImage',
             'downloadImage',
-            
+
             'openLocation',
             'getLocation'), false) ?>);
 
@@ -136,8 +133,8 @@
         document.querySelector('#checkJsApi').onclick = function () {
             wx.checkJsApi({
                 jsApiList: [
-                    'getNetworkType',
-                    'previewImage'
+                    /*'getNetworkType',
+                    'previewImage'*/
 //                    'getLocation'
 
                 ],
