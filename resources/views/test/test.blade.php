@@ -181,12 +181,12 @@
             wx.checkJsApi({
                 jsApiList: [
                     'getNetworkType',
-                    'previewImage',
+                    'previewImage'
 //                    'getLocation'
 
                 ],
                 success: function (res) {
-                    alert(JSON.stringify(res));
+//                    alert(JSON.stringify(res));
 /*                    if (res.checkResult.getLocation == false) {
                         alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
                         return;*/
