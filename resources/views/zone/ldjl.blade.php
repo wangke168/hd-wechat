@@ -1,4 +1,58 @@
 
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <title>{{$openid}}</title>
+    <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
+
+
+</head>
+<body>
+<div id="page">
+    <a class="quhaobtn" href="javascript:getqh()">
+        点击取号
+    </a>
+    <div class="dwlabel">
+        <div class="info">
+            定位中...
+        </div>
+        <a class="btn" href="javascript:gpsdw()">
+            <i class="gpsico"></i>
+            定位
+        </a>
+    </div>
+</div>
+<div class="overdiv" style="display:none;">
+    <div class="tootip">
+        <a class="closebtn" href="javascript:closeoverdiv()">
+            +
+        </a>
+            <span>
+                提示区文字
+            </span>
+    </div>
+</div>
+</body>
+</html>
+<script language="JavaScript">
+    function get_wait() {
+        $.get("/zone/subscribe/ldjl/get_subscribe/<?php echo $fn?>", function (data) {
+        });
+    }
+</script>
+
+
+<?php
+$pyq_title = "秦王宫龙帝惊临智能排队系统";
+$imgUrl = "http://weix2.hengdianworld.com/control/editor/attached/image/20160324/20160324130222_32090.jpg";
+$url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
+?>
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('checkJsApi',
