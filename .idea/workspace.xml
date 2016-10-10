@@ -27,8 +27,8 @@
       <file leaf-file-name="ldjl.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+            <state relative-caret-position="44">
+              <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -556,12 +556,12 @@
       <workItem from="1475283534532" duration="147000" />
       <workItem from="1475285033127" duration="648000" />
       <workItem from="1475474225969" duration="5278000" />
-      <workItem from="1476077132802" duration="10983000" />
+      <workItem from="1476077132802" duration="11021000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214727000" />
+    <option name="totallyTimeSpent" value="214765000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1551" height="779" extended-state="6" />
@@ -977,8 +977,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+        <state relative-caret-position="44">
+          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
           <folding />
         </state>
       </provider>
