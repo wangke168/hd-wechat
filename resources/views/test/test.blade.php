@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,13 +6,16 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <script>
-        wx.getLocation({
-            success: function (res) {
-                alert(JSON.stringify(res));
-            },
-            cancel: function (res) {
-                alert('用户拒绝授权获取地理位置');
-            }
+        wx.ready(function () {
+
+            wx.getLocation({
+                success: function (res) {
+                    alert(JSON.stringify(res));
+                },
+                cancel: function (res) {
+                    alert('用户拒绝授权获取地理位置');
+                }
+            });
         });
     </script>
 
@@ -134,11 +136,9 @@
 </body>
 
 
-
-
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
-    wx.config(<?php echo $js->config(array( 'checkJsApi',
+    wx.config(<?php echo $js->config(array('checkJsApi',
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
             'onMenuShareQQ',
@@ -482,6 +482,7 @@
                     }
                 });
             }
+
             upload();
         };
 
@@ -506,6 +507,7 @@
                     }
                 });
             }
+
             download();
         };
 
