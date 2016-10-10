@@ -1,15 +1,23 @@
-
 <html>
 <head>
     <meta charset="utf-8">
     <title>微信JS-SDK Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>{{$openid}}</title>
-    <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <script>
+        /*        wx.ready(function () {
 
-
+         wx.getLocation({
+         success: function (res) {
+         alert(JSON.stringify(res));
+         },
+         cancel: function (res) {
+         alert('用户拒绝授权获取地理位置');
+         }
+         });
+         });*/
+    </script>
 
 </head>
 <body>
