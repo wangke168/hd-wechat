@@ -95,40 +95,7 @@
         <span class="desc">获取地理位置接口</span>
         <button class="btn btn_primary" id="getLocation">getLocation</button>
 
-        <h3 id="menu-webview">界面操作接口</h3>
-        <span class="desc">隐藏右上角菜单接口</span>
-        <button class="btn btn_primary" id="hideOptionMenu">hideOptionMenu</button>
-        <span class="desc">显示右上角菜单接口</span>
-        <button class="btn btn_primary" id="showOptionMenu">showOptionMenu</button>
-        <span class="desc">关闭当前网页窗口接口</span>
-        <button class="btn btn_primary" id="closeWindow">closeWindow</button>
-        <span class="desc">批量隐藏功能按钮接口</span>
-        <button class="btn btn_primary" id="hideMenuItems">hideMenuItems</button>
-        <span class="desc">批量显示功能按钮接口</span>
-        <button class="btn btn_primary" id="showMenuItems">showMenuItems</button>
-        <span class="desc">隐藏所有非基础按钮接口</span>
-        <button class="btn btn_primary" id="hideAllNonBaseMenuItem">hideAllNonBaseMenuItem</button>
-        <span class="desc">显示所有功能按钮接口</span>
-        <button class="btn btn_primary" id="showAllNonBaseMenuItem">showAllNonBaseMenuItem</button>
 
-        <h3 id="menu-scan">微信扫一扫</h3>
-        <span class="desc">调起微信扫一扫接口</span>
-        <button class="btn btn_primary" id="scanQRCode0">scanQRCode(微信处理结果)</button>
-        <button class="btn btn_primary" id="scanQRCode1">scanQRCode(直接返回结果)</button>
-
-        <h3 id="menu-shopping">微信小店接口</h3>
-        <span class="desc">跳转微信商品页接口</span>
-        <button class="btn btn_primary" id="openProductSpecificView">openProductSpecificView</button>
-
-        <h3 id="menu-card">微信卡券接口</h3>
-        <span class="desc">批量添加卡券接口</span>
-        <button class="btn btn_primary" id="addCard">addCard</button>
-        <span class="desc">调起适用于门店的卡券列表并获取用户选择列表</span>
-        <button class="btn btn_primary" id="chooseCard">chooseCard</button>
-        <span class="desc">查看微信卡包中的卡券接口</span>
-        <button class="btn btn_primary" id="openCard">openCard</button>
-
-      
     </div>
 </div>
 </body>
