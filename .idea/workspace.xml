@@ -27,8 +27,8 @@
       <file leaf-file-name="ldjl.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/subscribe/ldjl.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+            <state relative-caret-position="350">
+              <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="74" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -47,8 +47,8 @@
       <file leaf-file-name="test.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/test/test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="183" column="34" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
+            <state relative-caret-position="375">
+              <caret line="556" column="104" selection-start-line="556" selection-start-column="104" selection-end-line="556" selection-end-column="104" />
               <folding />
             </state>
           </provider>
@@ -409,12 +409,12 @@
       <workItem from="1475283534532" duration="147000" />
       <workItem from="1475285033127" duration="648000" />
       <workItem from="1475474225969" duration="5278000" />
-      <workItem from="1476077132802" duration="7233000" />
+      <workItem from="1476077132802" duration="7472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210977000" />
+    <option name="totallyTimeSpent" value="211216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1551" height="779" extended-state="6" />
@@ -817,16 +817,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/subscribe/ldjl.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+        <state relative-caret-position="350">
+          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="74" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/test/test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="183" column="34" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
+        <state relative-caret-position="375">
+          <caret line="556" column="104" selection-start-line="556" selection-start-column="104" selection-end-line="556" selection-end-column="104" />
           <folding />
         </state>
       </provider>
