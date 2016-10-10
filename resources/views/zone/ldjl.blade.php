@@ -78,7 +78,8 @@
         <button class="btn btn_primary" id="stopVoice">stopVoice</button>
         <span class="desc">上传语音接口</span>
         <button class="btn btn_primary" id="uploadVoice">uploadVoice</button>
-        
+        <span class="desc">下载语音接口</span>
+        <button class="btn btn_primary" id="downloadVoice">downloadVoice</button>
 
         <h3 id="menu-smart">智能接口</h3>
         <span class="desc">识别音频并返回识别结果接口</span>
