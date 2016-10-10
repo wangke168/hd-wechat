@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
 use App\WeChat\Tour;
@@ -9,7 +10,15 @@ use App\Http\Requests;
 
 class ZoneController extends Controller
 {
-    //
+    public $app;
+    public $js;
+
+    public function __construct(Application $app)
+    {
+        $this->app=$app;
+        $this->js=$this->app->js;
+        $this->card = $this->app->card;
+    }
     public function ldjl($openid)
     {
         return view('subscribe.ldjl', ['openid' => $openid]);
