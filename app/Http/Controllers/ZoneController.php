@@ -14,7 +14,12 @@ class ZoneController extends Controller
     {
         return view('subscribe.ldjl', ['openid' => $openid]);
     }
+    public function test($openid)
+    {
+//        $cardinfo=$this->card->attachExtension('p2e-YuLyjE-EbQpZd3-F2-ayqAfQ');
+        return view('zone.ldjl')->with(['js'=>$this->js,'openid' => $openid]);
 
+    }
     public function subscribe($project_id,$openid)
     {
         $tour = new Tour();

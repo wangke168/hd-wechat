@@ -283,7 +283,7 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
         };
 
 
-     
+
     });
 
     wx.error(function (res) {
