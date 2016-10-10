@@ -7,7 +7,7 @@
     <title>{{$openid}}</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
+
 
 
 
