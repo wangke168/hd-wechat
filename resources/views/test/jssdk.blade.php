@@ -161,7 +161,7 @@
             'openProductSpecificView',
             'addCard',
             'chooseCard',
-            'openCard'), true) ?>);
+            'openCard'), false) ?>);
 
     wx.ready(function () {
         // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
