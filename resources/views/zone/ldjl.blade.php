@@ -127,7 +127,7 @@
             'previewImage',
             'uploadImage',
             'downloadImage',
-            'getNetworkType',
+            
             'openLocation',
             'getLocation'), false) ?>);
 
