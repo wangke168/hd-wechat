@@ -39,7 +39,7 @@ $project_id="1";
                     .find(".closebtn").hide(1)
                     .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({ "margin-top": "30px" });
             }
-        });
+        })
 
         //定位
         function gpsdw() {

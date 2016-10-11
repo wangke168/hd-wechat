@@ -7,7 +7,7 @@
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
-   
+
 
 </head>
 <body ontouchstart="">
@@ -134,5 +134,17 @@
     wx.error(function (res) {
         alert(res.errMsg);
     });
+
+    var qhterm=true;
+    $(function () {
+        if (qhterm) {   //满足取号条件,开始定位
+//            gpsdw();
+        }
+        else {    //不满足取号条件
+            $(".overdiv").show(1)
+                    .find(".closebtn").hide(1)
+                    .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({ "margin-top": "30px" });
+        }
+    })
 
 </script>
