@@ -12,7 +12,7 @@
 </head>
 <body ontouchstart="">
 <div id="page">
-    <a class="quhaobtn" href="javascript:getqh()">
+    <a class="quhaobtn" id="getqh">
         点击取号
     </a>
     <div class="dwlabel">
@@ -147,7 +147,7 @@
         }
     })
     /*取号*/
-    function getqh() {
+    document.querySelector('#getqh').onclick = function (){
         if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处")==0) {
             $(".overdiv").show(1)
                     .find(".closebtn").show(1)
