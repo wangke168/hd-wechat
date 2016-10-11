@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
     <script>
-        var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
-
+{{--        var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足--}}
+        var qhterm=true;
         //页面加载后即开始第一次定位
         $(function () {
             if (qhterm) {   //满足取号条件,开始定位
@@ -56,7 +56,7 @@
             }
         }*/
         //位置读取错误时
-        function showerror(error) {
+ /*       function showerror(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
                     alert("您拒绝了定位申请,请重试");
@@ -72,7 +72,7 @@
                     break;
             }
             $(".info").html("出现错误,请按提示解决");
-        }
+        }*/
 
 
         /*取号*/
