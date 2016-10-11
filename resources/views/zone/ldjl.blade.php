@@ -39,7 +39,17 @@
         </ul>
     </div>
     <div class="lbox_close wxapi_form">
-        
+        <h3 id="menu-basic">基础接口</h3>
+        <span class="desc">判断当前客户端是否支持指定JS接口</span>
+        <button class="btn btn_primary" id="checkJsApi">checkJsApi</button>
+
+   
+
+        <h3 id="menu-location">地理位置接口</h3>
+        <span class="desc">使用微信内置地图查看位置接口</span>
+        <button class="btn btn_primary" id="openLocation">openLocation</button>
+        <span class="desc">获取地理位置接口</span>
+        <button class="btn btn_primary" id="getLocation">getLocation</button>
 
 
     </div>
