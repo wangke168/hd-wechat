@@ -4,7 +4,9 @@
     <title>微信JS-SDK Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
+    <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
     <script>
         /*        wx.ready(function () {
 
@@ -21,8 +23,32 @@
 
 </head>
 <body ontouchstart="">
+<div id="page">
+    <a class="quhaobtn" href="javascript:getqh()">
+        点击取号
+    </a>
+    <div class="dwlabel">
+        <div class="info">
+            定位中...
+        </div>
+        <a class="btn" href="javascript:gpsdw()">
+            <i class="gpsico"></i>
+            定位
+        </a>
+    </div>
+</div>
+<div class="overdiv" style="display:none;">
+    <div class="tootip">
+        <a class="closebtn" href="javascript:closeoverdiv()">
+            +
+        </a>
+            <span>
+                提示区文字
+            </span>
+    </div>
+</div>
 <div class="wxapi_container">
-  
+
     <div class="lbox_close wxapi_form">
 
 
