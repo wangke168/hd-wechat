@@ -16,10 +16,10 @@
         点击取号
     </a>
     <div class="dwlabel">
-        <div class="info">
+        <div id="info" class="info">
             定位中...
         </div>
-        <a class="btn" href="javascript:gpsdw()">
+        <a class="btn" href="javascript:aaa()">
             <i class="gpsico"></i>
             定位
         </a>
@@ -156,6 +156,6 @@
         }
     }
     function aaa() {
-        alert ("aaa");
+        alert (document.getElementById("info").innerHTML);
     }
 </script>
