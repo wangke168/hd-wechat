@@ -85,9 +85,7 @@
         <span class="desc">识别音频并返回识别结果接口</span>
         <button class="btn btn_primary" id="translateVoice">translateVoice</button>
 
-        <h3 id="menu-device">设备信息接口</h3>
-        <span class="desc">获取网络状态接口</span>
-        <button class="btn btn_primary" id="getNetworkType">getNetworkType</button>
+      
 
         <h3 id="menu-location">地理位置接口</h3>
         <span class="desc">使用微信内置地图查看位置接口</span>
@@ -149,6 +147,35 @@
                 }
             });
         };
+
+
+        wx.getLocation({
+            success: function (res) {
+                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                var speed = res.speed; // 速度，以米/每秒计
+                var accuracy = res.accuracy; // 位置精度
+                if (latitude > 29.136 && latitude < 29.140 && longitude > 120.306 && longitude < 120.315) {
+//                        $(".info").html("您所在位置:龙帝惊临取号处");
+                    alert("您所在位置:龙帝惊临取号处");
+                }
+                else if (latitude > 29.154 && latitude < 29.1549 && longitude > 120.312 && longitude < 120.320) {
+//                        $(".info").html("您所在位置:横店影视城有限公司");
+                    alert("您所在位置:横店影视城有限公司");
+                }
+                /*影视城位置以上可注释*/
+                else {
+//                        $(".info").html("您不在龙帝惊临取号范围");
+                    alert("您不在龙帝惊临取号范围");
+                }
+//                    alert(latitude);
+//                    alert(JSON.stringify(res));
+            },
+            cancel: function (res) {
+                alert('用户拒绝授权获取地理位置');
+            }
+        });
+
 
         // 2. 分享接口
         // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
@@ -500,32 +527,7 @@
 
         // 7.2 获取当前地理位置
 //        document.querySelector('#getLocation').onclick = function () {
-        wx.getLocation({
-            success: function (res) {
-                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-                var speed = res.speed; // 速度，以米/每秒计
-                var accuracy = res.accuracy; // 位置精度
-                if (latitude > 29.136 && latitude < 29.140 && longitude > 120.306 && longitude < 120.315) {
-//                        $(".info").html("您所在位置:龙帝惊临取号处");
-                    alert("您所在位置:龙帝惊临取号处");
-                }
-                else if (latitude > 29.154 && latitude < 29.1549 && longitude > 120.312 && longitude < 120.320) {
-//                        $(".info").html("您所在位置:横店影视城有限公司");
-                    alert("您所在位置:横店影视城有限公司");
-                }
-                /*影视城位置以上可注释*/
-                else {
-//                        $(".info").html("您不在龙帝惊临取号范围");
-                    alert("您不在龙帝惊临取号范围");
-                }
-//                    alert(latitude);
-//                    alert(JSON.stringify(res));
-            },
-            cancel: function (res) {
-                alert('用户拒绝授权获取地理位置');
-            }
-        });
+
 //        };
 
         var shareData = {
