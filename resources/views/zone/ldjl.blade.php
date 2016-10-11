@@ -20,10 +20,10 @@
                         .find(".closebtn").hide(1)
                         .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({ "margin-top": "30px" });
             }
-        })
+        });
 
         //定位
-        function gpsdw() {
+ /*       function gpsdw() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showposition, showerror, {
                     // 指示浏览器获取高精度的位置，默认为false
@@ -36,7 +36,7 @@
             } else {
                 alert("非常抱歉,您的浏览器不支持定位功能");
             }
-        }
+        }*/
 
         //输出位置坐标
 /*        function showposition(position) {
