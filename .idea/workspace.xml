@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/subscribe/ldjl.blade.php" afterPath="$PROJECT_DIR$/resources/views/subscribe/ldjl.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/zone/ldjl.blade.php" afterPath="$PROJECT_DIR$/resources/views/zone/ldjl.blade.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="ldjl.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-338">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="-1196">
+              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -565,12 +564,12 @@
       <workItem from="1475474225969" duration="5278000" />
       <workItem from="1476077132802" duration="11931000" />
       <workItem from="1476146713794" duration="482000" />
-      <workItem from="1476147219347" duration="1730000" />
+      <workItem from="1476147219347" duration="1816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217887000" />
+    <option name="totallyTimeSpent" value="217973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1871" height="1079" extended-state="6" />
@@ -932,14 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JssdkController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -972,10 +963,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="-1196">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
           <folding />
         </state>
       </provider>

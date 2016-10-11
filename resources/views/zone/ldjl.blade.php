@@ -9,7 +9,7 @@
     <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
     <script>
 {{--        var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足--}}
-        var qhterm=true;
+{{--        var qhterm=true;
         //页面加载后即开始第一次定位
         $(function () {
             if (qhterm) {   //满足取号条件,开始定位
@@ -20,7 +20,7 @@
                         .find(".closebtn").hide(1)
                         .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({ "margin-top": "30px" });
             }
-        });
+        });--}}
 
         //定位
  /*       function gpsdw() {
