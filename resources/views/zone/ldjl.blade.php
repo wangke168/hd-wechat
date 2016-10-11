@@ -148,7 +148,7 @@
     });
 
     /*取号*/
-    function getqh() {
+/*    function getqh() {
         if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处")==0) {
             $(".overdiv").show(1)
                     .find(".closebtn").show(1)
@@ -161,5 +161,5 @@
                         .nextAll("span").html(content).css({ "margin-top": "30px" });
             });
         }
-    }
+    }*/
 </script>
