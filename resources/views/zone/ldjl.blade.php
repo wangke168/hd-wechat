@@ -1,102 +1,148 @@
-<html>
+<?php
+
+//require_once("../classes/jssdk.class.php");
+//require_once("../inc/function.php");
+//$fn=$_GET["wxnumber"];
+$fn=$openid;
+if ($fn=="")
+{
+    $show_flag="false";
+}
+else{
+    $show_flag="true";
+}
+$project_id="1";
+//$jssdk=new JSSDK("wx3e632d57ac5dcc68", "5eadb547deeb37ab3fb3f82078bb2663");
+//$signPackage = $jssdk->GetSignPackage();
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <title>微信JS-SDK Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+    <title>{{$openid}}</title>
+    <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
 
     <script>
-        /*        wx.ready(function () {
+        var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
 
-         wx.getLocation({
-         success: function (res) {
-         alert(JSON.stringify(res));
-         },
-         cancel: function (res) {
-         alert('用户拒绝授权获取地理位置');
-         }
-         });
-         });*/
+        //页面加载后即开始第一次定位
+        $(function () {
+            if (qhterm) {   //满足取号条件,开始定位
+                gpsdw();
+            }
+            else {    //不满足取号条件
+                $(".overdiv").show(1)
+                        .find(".closebtn").hide(1)
+                        .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({ "margin-top": "30px" });
+            }
+        })
+
+        //定位
+        function gpsdw() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showposition, showerror, {
+                    // 指示浏览器获取高精度的位置，默认为false
+                    enableHighAccuracy: true,
+                    // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+                    timeout: 5000,
+                    // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+                    maximumAge: 3000
+                });
+            } else {
+                alert("非常抱歉,您的浏览器不支持定位功能");
+            }
+        }
+
+        //输出位置坐标
+        function showposition(position) {
+            $(".info").html("");
+            var weidu = position.coords.latitude;//维度
+            var jingdu = position.coords.longitude;//经度
+            if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
+                $(".info").html("您所在位置:龙帝惊临取号处");
+            }
+            /*影视城位置以下可注释*/
+            else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
+                $(".info").html("您所在位置:横店影视城有限公司");
+            }
+            /*影视城位置以上可注释*/
+            else {
+                $(".info").html("您不在龙帝惊临取号范围");
+            }
+        }
+        //位置读取错误时
+        function showerror(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("您拒绝了定位申请,请重试");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("无法获取到地理位置");
+                    break;
+                case error.TIMEOUT:
+                    alert("请求超时,请重试");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("出现未知原因");
+                    break;
+            }
+            $(".info").html("出现错误,请按提示解决");
+        }
+
+
+        /*取号*/
+        function getqh() {
+            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处")==0) {
+                $(".overdiv").show(1)
+                        .find(".closebtn").show(1)
+                        .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
+            } else {
+                $.get('test.php?p_id=<?php echo $project_id?>&fn=<?php echo $fn?>', function (data) {
+                    var content=data;
+                    $(".overdiv").show(1)
+                            .find(".closebtn").hide(1)
+                            .nextAll("span").html(content).css({ "margin-top": "30px" });
+                });
+            }
+        }
+        /*关闭按钮*/
+        function closeoverdiv() {
+            $(".overdiv").hide(1);
+        }
     </script>
 
 </head>
-<body ontouchstart="">
-<div class="wxapi_container">
-    <div class="wxapi_index_container">
-        <ul class="label_box lbox_close wxapi_index_list">
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-basic">基础接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-share">分享接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-image">图像接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-voice">音频接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-smart">智能接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-device">设备信息接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-location">地理位置接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-webview">界面操作接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-scan">微信扫一扫接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-shopping">微信小店接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-card">微信卡券接口</a></li>
-            <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-pay">微信支付接口</a></li>
-        </ul>
+<body>
+<div id="page">
+    <a class="quhaobtn" href="javascript:getqh()">
+        点击取号
+    </a>
+    <div class="dwlabel">
+        <div class="info">
+            定位中...
+        </div>
+        <a class="btn" href="javascript:gpsdw()">
+            <i class="gpsico"></i>
+            定位
+        </a>
     </div>
-    <div class="lbox_close wxapi_form">
-        <h3 id="menu-basic">基础接口</h3>
-        <span class="desc">判断当前客户端是否支持指定JS接口</span>
-        <button class="btn btn_primary" id="checkJsApi">checkJsApi</button>
-
-        <h3 id="menu-share">分享接口</h3>
-        <span class="desc">获取“分享到朋友圈”按钮点击状态及自定义分享内容接口</span>
-        <button class="btn btn_primary" id="onMenuShareTimeline">onMenuShareTimeline</button>
-        <span class="desc">获取“分享给朋友”按钮点击状态及自定义分享内容接口</span>
-        <button class="btn btn_primary" id="onMenuShareAppMessage">onMenuShareAppMessage</button>
-        <span class="desc">获取“分享到QQ”按钮点击状态及自定义分享内容接口</span>
-        <button class="btn btn_primary" id="onMenuShareQQ">onMenuShareQQ</button>
-        <span class="desc">获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口</span>
-        <button class="btn btn_primary" id="onMenuShareWeibo">onMenuShareWeibo</button>
-        <span class="desc">获取“分享到QZone”按钮点击状态及自定义分享内容接口</span>
-        <button class="btn btn_primary" id="onMenuShareQZone">onMenuShareQZone</button>
-
-        <h3 id="menu-image">图像接口</h3>
-        <span class="desc">拍照或从手机相册中选图接口</span>
-        <button class="btn btn_primary" id="chooseImage">chooseImage</button>
-        <span class="desc">预览图片接口</span>
-        <button class="btn btn_primary" id="previewImage">previewImage</button>
-        <span class="desc">上传图片接口</span>
-        <button class="btn btn_primary" id="uploadImage">uploadImage</button>
-        <span class="desc">下载图片接口</span>
-        <button class="btn btn_primary" id="downloadImage">downloadImage</button>
-
-        <h3 id="menu-voice">音频接口</h3>
-        <span class="desc">开始录音接口</span>
-        <button class="btn btn_primary" id="startRecord">startRecord</button>
-        <span class="desc">停止录音接口</span>
-        <button class="btn btn_primary" id="stopRecord">stopRecord</button>
-        <span class="desc">播放语音接口</span>
-        <button class="btn btn_primary" id="playVoice">playVoice</button>
-        <span class="desc">暂停播放接口</span>
-        <button class="btn btn_primary" id="pauseVoice">pauseVoice</button>
-        <span class="desc">停止播放接口</span>
-        <button class="btn btn_primary" id="stopVoice">stopVoice</button>
-        <span class="desc">上传语音接口</span>
-        <button class="btn btn_primary" id="uploadVoice">uploadVoice</button>
-        <span class="desc">下载语音接口</span>
-        <button class="btn btn_primary" id="downloadVoice">downloadVoice</button>
-
-        <h3 id="menu-smart">智能接口</h3>
-        <span class="desc">识别音频并返回识别结果接口</span>
-        <button class="btn btn_primary" id="translateVoice">translateVoice</button>
-
-
-
-        <h3 id="menu-location">地理位置接口</h3>
-        <span class="desc">使用微信内置地图查看位置接口</span>
-        <button class="btn btn_primary" id="openLocation">openLocation</button>
-        <span class="desc">获取地理位置接口</span>
-        <button class="btn btn_primary" id="getLocation">getLocation</button>
-
-
+</div>
+<div class="overdiv" style="display:none;">
+    <div class="tootip">
+        <a class="closebtn" href="javascript:closeoverdiv()">
+            +
+        </a>
+            <span>
+                提示区文字
+            </span>
     </div>
 </div>
 </body>
+</html>
 
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
