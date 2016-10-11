@@ -12,7 +12,7 @@
 </head>
 <body ontouchstart="">
 <div id="page">
-    <a class="quhaobtn" id="getqh">
+    <a class="quhaobtn" id="getqh" href="javascript:aaa()">
         点击取号
     </a>
     <div class="dwlabel">
@@ -147,11 +147,14 @@
         }
     })
     /*取号*/
-    document.querySelector('#getqh').onclick = function (){
+    function getqh() {
         if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处")==0) {
             $(".overdiv").show(1)
                     .find(".closebtn").show(1)
                     .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
         }
+    }
+    function aaa() {
+        alert ("aaa");
     }
 </script>
