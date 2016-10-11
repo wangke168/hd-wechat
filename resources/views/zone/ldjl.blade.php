@@ -39,15 +39,11 @@
         </ul>
     </div>
     <div class="lbox_close wxapi_form">
-        <h3 id="menu-basic">基础接口</h3>
-        <span class="desc">判断当前客户端是否支持指定JS接口</span>
-        <button class="btn btn_primary" id="checkJsApi">checkJsApi</button>
+       
 
-   
+
 
         <h3 id="menu-location">地理位置接口</h3>
-        <span class="desc">使用微信内置地图查看位置接口</span>
-        <button class="btn btn_primary" id="openLocation">openLocation</button>
         <span class="desc">获取地理位置接口</span>
         <button class="btn btn_primary" id="getLocation">getLocation</button>
 
@@ -68,24 +64,6 @@
             'getLocation'), false) ?>);
 
     wx.ready(function () {
-        // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
-        document.querySelector('#checkJsApi').onclick = function () {
-            wx.checkJsApi({
-                jsApiList: [
-                    /*'getNetworkType',
-                    'previewImage'*/
-//                    'getLocation'
-
-                ],
-                success: function (res) {
-//                    alert(JSON.stringify(res));
-                    /*                    if (res.checkResult.getLocation == false) {
-                     alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
-                     return;*/
-                }
-            });
-        };
-
 
         wx.getLocation({
             success: function (res) {
@@ -113,6 +91,27 @@
                 alert('用户拒绝授权获取地理位置');
             }
         });
+
+        // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+        document.querySelector('#checkJsApi').onclick = function () {
+            wx.checkJsApi({
+                jsApiList: [
+                    /*'getNetworkType',
+                    'previewImage'*/
+//                    'getLocation'
+
+                ],
+                success: function (res) {
+//                    alert(JSON.stringify(res));
+                    /*                    if (res.checkResult.getLocation == false) {
+                     alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+                     return;*/
+                }
+            });
+        };
+
+
+
 
 
         // 7.2 获取当前地理位置
