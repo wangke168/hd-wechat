@@ -155,8 +155,8 @@
 //            alert ("bbb");
         }
     }
-    function aaa() {
-
-        alert (document.getElementById("info").innerHTML);
+    /*关闭按钮*/
+    function closeoverdiv() {
+        $(".overdiv").hide(1);
     }
 </script>
