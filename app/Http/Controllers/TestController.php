@@ -7,6 +7,7 @@ use App\Jobs\SendOrderQueue;
 use App\Jobs\UpdateClickQueue;
 use App\Jobs\UpdateEscQueue;
 use App\Jobs\UpdateOpenidQueue;
+use App\WeChat\Tour;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
@@ -83,11 +84,8 @@ class TestController extends Controller
     public function test()
     {
         $openid='asdasd';
-        $row = DB::table('tour_project_wait_detail')
-            ->where('wx_openid', $openid)
-            ->whereDate('addtime', '=', date('Y-m-d'))
-            ->count();
-        return $row;
+        $tour=new Tour();
+        return $tour->check_wxid($openid, "1");
     }
 
 }

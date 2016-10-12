@@ -219,9 +219,9 @@ class Tour
         }
 
         if ($row == 0) {
-            return false;
+            return '0';
         } else {
-            return true;
+            return '1';
         }
     }
 
