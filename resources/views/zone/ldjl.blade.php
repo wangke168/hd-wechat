@@ -35,16 +35,7 @@
             </span>
     </div>
 </div>
-<div class="wxapi_container">
 
-    <div class="lbox_close wxapi_form">
-
-
-
-
-
-    </div>
-</div>
 </body>
 
 
