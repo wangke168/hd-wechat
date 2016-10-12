@@ -387,7 +387,7 @@ class Tour
                     $str = "<font color='red'>该小时预约已满</font>";
                 }
             } else {
-                if (!$this->check_wxid($openid, "1")) //确定该微信号是否当下已经预约
+                if ($this->check_wxid($openid, "1")) //确定该微信号是否当下已经预约
                 {
                     $str = "<font color='red'>不能重复取号</font>";
                 } else {

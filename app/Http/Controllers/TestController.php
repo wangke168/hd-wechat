@@ -85,14 +85,7 @@ class TestController extends Controller
     {
         $openid='asdasd';
         $tour=new Tour();
-        if($tour->check_wxid($openid, "1"))
-        {
-            return '1';
-        }
-        else
-        {
-            return '0';
-        }
+        $tour->insert_wait_info($openid, '1');
     }
 
 }
