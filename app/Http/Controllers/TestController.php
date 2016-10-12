@@ -85,7 +85,14 @@ class TestController extends Controller
     {
         $openid='asdasd';
         $tour=new Tour();
-        return $tour->check_wxid($openid, "1");
+        if($tour->check_wxid($openid, "1"))
+        {
+            return '1';
+        }
+        else
+        {
+            return '0';
+        }
     }
 
 }
