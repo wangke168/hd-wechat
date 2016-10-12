@@ -1,3 +1,20 @@
+<?php
+
+//require_once("../classes/jssdk.class.php");
+//require_once("../inc/function.php");
+//$fn=$_GET["wxnumber"];
+$fn=$openid;
+if ($fn=="")
+{
+    $show_flag="false";
+}
+else{
+    $show_flag="true";
+}
+$project_id="1";
+//$jssdk=new JSSDK("wx3e632d57ac5dcc68", "5eadb547deeb37ab3fb3f82078bb2663");
+//$signPackage = $jssdk->GetSignPackage();
+?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -122,7 +139,9 @@
         alert(res.errMsg);
     });
 
-    var qhterm=true;
+    //var qhterm=true;
+    var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
+
     $(function () {
         if (qhterm) {   //满足取号条件,开始定位
 //            gpsdw();
