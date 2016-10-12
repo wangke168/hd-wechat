@@ -85,7 +85,7 @@ class TestController extends Controller
     {
         $openid='asdasd';
         $tour=new Tour();
-        $tour->insert_wait_info($openid, '1');
+        return $tour->insert_wait_info($openid, '1');
     }
 
 }
