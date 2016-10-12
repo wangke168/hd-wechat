@@ -81,4 +81,6 @@ Route::get('/test/updateopenidinfo','TestController@update_openid_info');
 Route::get('/test/updateescinfo','TestController@update_esc_info');
 Route::get('/test/updateclickinfo','TestController@update_click_info');
 Route::get('/test/ordersend/{id}/{openid?}','TestController@order_send');
-Route::get('test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
+Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
+
+Route::get('/test/test','TestController@test');

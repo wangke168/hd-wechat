@@ -78,4 +78,16 @@ class TestController extends Controller
     {
         $this->dispatch(new ConfrimOrderQueue($sellid,$openid));
     }
+
+
+    public function test()
+    {
+        $openid='asdasd';
+        $row = DB::table('tour_project_wait_detail')
+            ->where('wx_openid', $openid)
+            ->whereDate('addtime', '=', date('Y-m-d'))
+            ->count();
+        return $row;
+    }
+
 }
