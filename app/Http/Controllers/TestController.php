@@ -84,8 +84,42 @@ class TestController extends Controller
     public function test()
     {
         $openid='asdasd';
+        $project_id='1';
         $tour=new Tour();
-        return $tour->insert_wait_info($openid, '1');
+
+        $row_day = DB::table('tour_project_wait_detail')
+            ->where('project_id', $project_id)
+            ->whereDate('addtime', '=', date('Y-m-d'))
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $row_hour = DB::table('tour_project_wait_detail')
+            ->whereDate('addtime', '=', date('Y-m-d'))
+            ->whereRaw('HOUR(addtime)=' . date("G"))
+            ->count();
+
+        if (!$row_day) {
+            $user_id = "1";
+            $hour_id = '1';
+        } else {
+            $user_id = ($row_day->user_id) + 1;
+
+            if ($row_hour == 0) {
+                $hour_id = '1';
+            } else {
+                $hour_id = $row_hour + 1;
+            }
+
+        }
+
+        $verification_time = $tour->get_verification_time($hour_id, 8, 5);
+
+
+        DB::table('tour_project_wait_detail')
+            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id' => $hour_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
+
+        return "您的游玩时间段为" . $verification_time . "---16：30。";
+//        return $tour->insert_wait_info($openid, '1');
     }
 
 }

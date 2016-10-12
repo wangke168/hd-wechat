@@ -271,7 +271,7 @@ class Tour
     }
 
 
-    private function get_verification_time($hour_id, $numbers, $minute)
+    public function get_verification_time($hour_id, $numbers, $minute)
     {
         $y = $hour_id % $numbers;
         $x = floor($hour_id / $numbers);
