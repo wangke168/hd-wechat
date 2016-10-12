@@ -154,7 +154,7 @@ $project_id="1";
     })
     /*取号*/
     function getqh() {
-        if (document.getElementById("info").innerHTML!="您所在位置:龙帝惊临取号处") {
+        if (document.getElementById("info").innerHTML!="您不在龙帝惊临取号范围") {
             $(".overdiv").show(1)
                     .find(".closebtn").show(1)
                     .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
