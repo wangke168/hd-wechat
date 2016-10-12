@@ -160,6 +160,14 @@ $project_id="1";
                     .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
 //            alert ("bbb");
         }
+        else {
+            $.get('/zone/subscribe/ldjl/get_subscribe/{{$project_id}}/{{$fn}}', function (data) {
+                var content=data;
+                $(".overdiv").show(1)
+                        .find(".closebtn").hide(1)
+                        .nextAll("span").html(content).css({ "margin-top": "30px" });
+            });
+        }
     }
     /*关闭按钮*/
     function closeoverdiv() {

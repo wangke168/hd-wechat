@@ -37,7 +37,7 @@ class Tour
                 ->where('project_id', $project_id)
                 ->whereDate('addtime', '=', date('Y-m-d'))
                 ->where('verification_time', '<=', date("Y-m-d H:i", time() + 300))
-                ->first(); 
+                ->first();
 
             if (!$row1) {
                 $content = "您好，现在未到您的预约时间";
@@ -261,17 +261,17 @@ class Tour
 
         }
 
-        $verification_time = $this->get_verification_time($hour_id,8,5);
+        $verification_time = $this->get_verification_time($hour_id, 8, 5);
 
 
         DB::table('tour_project_wait_detail')
-            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id'=>$hour_id,'verification_time' => $verification_time, 'wx_openid' => $openid]);
+            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id' => $hour_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
 
         return "您的游玩时间段为" . $verification_time . "---16：30。";
     }
 
 
-    private function get_verification_time($hour_id,$numbers,$minute)
+    private function get_verification_time($hour_id, $numbers, $minute)
     {
         $y = $hour_id % $numbers;
         $x = floor($hour_id / $numbers);
@@ -290,7 +290,7 @@ class Tour
             }
             $verification_time = date('Y-m-d ' . $h . ':' . $t);
         } else {
-            $verification_time = date('Y-m-d '.($h+1).':00');
+            $verification_time = date('Y-m-d ' . ($h + 1) . ':00');
         }
         return $verification_time;
     }
@@ -375,7 +375,7 @@ class Tour
 
     public function subscribe($openid, $project_id)
     {
-        $usage=new Usage();
+        $usage = new Usage();
         $openid = $usage->authcode($openid, 'DECODE', 0);
         $type = $this->get_wait_info('1', "3");
         if ($this->check_get_time('8:30', '15:00')) {
@@ -400,7 +400,7 @@ class Tour
 
                     $str = "<font color='green'>预约成功<br>" . $str . "</font>";
 
-                    $app=app('wechat');
+                    $app = app('wechat');
                     $app->staff->message($str1)->by('1001@u_hengdian')->to($openid)->send();
 //                    $response = new responseMsg();
 //                    $response->responseV_Text($openid, $str1);
