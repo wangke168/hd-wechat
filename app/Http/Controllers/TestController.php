@@ -37,8 +37,8 @@ class TestController extends Controller
     {
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
-            ->whereDate('endtime','>=',date("Y-m-d", strtotime("-1 day")))
-//            ->whereDate('endtime','>=','2016-08-28')
+//            ->whereDate('endtime','>=',date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('endtime','>=','2016-10-1')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo) {
@@ -49,8 +49,8 @@ class TestController extends Controller
     public function update_esc_info()
     {
         $rowEsc=DB::table('wx_user_esc')
-            ->whereDate('esc_time','>=',date("Y-m-d", strtotime("-1 day")))
-//            ->whereDate('esc_time','>=','2016-09-28')
+//            ->whereDate('esc_time','>=',date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('esc_time','>=','2016-10-1')
             ->get();
         foreach ($rowEsc as $EscInfo)
         {
@@ -61,8 +61,8 @@ class TestController extends Controller
     public function update_click_info()
     {
         $rowClick=DB::table('wx_click_hits')
-            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-//            ->whereDate('adddate','>=','2016-09-28')
+//            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
+            ->whereDate('adddate','>=','2016-10-1')
             ->get();
         foreach ($rowClick as $clickinfo)
         {
@@ -83,43 +83,7 @@ class TestController extends Controller
 
     public function test()
     {
-        $openid='asdasd';
-        $project_id='1';
-        $tour=new Tour();
-
-        $row_day = DB::table('tour_project_wait_detail')
-            ->where('project_id', $project_id)
-            ->whereDate('addtime', '=', date('Y-m-d'))
-            ->orderBy('id', 'desc')
-            ->first();
-
-        $row_hour = DB::table('tour_project_wait_detail')
-            ->whereDate('addtime', '=', date('Y-m-d'))
-            ->whereRaw('HOUR(addtime)=' . date("G"))
-            ->count();
-
-        if (!$row_day) {
-            $user_id = "1";
-            $hour_id = '1';
-        } else {
-            $user_id = ($row_day->user_id) + 1;
-
-            if ($row_hour == 0) {
-                $hour_id = '1';
-            } else {
-                $hour_id = $row_hour + 1;
-            }
-
-        }
-
-        $verification_time = $tour->get_verification_time($hour_id, 8, 5);
-
-
-        DB::table('tour_project_wait_detail')
-            ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id' => $hour_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
-
-        return "您的游玩时间段为" . $verification_time . "---16：30。";
-//        return $tour->insert_wait_info($openid, '1');
+        phpinfo();
     }
 
 }
