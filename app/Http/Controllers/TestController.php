@@ -83,7 +83,14 @@ class TestController extends Controller
 
     public function test()
     {
-        phpinfo();
+//        $starttime = strtotime($start_time);
+        $endtime = strtotime('10:00');
+
+        if (strtotime("now") > $endtime) {
+            return date('Y-m-d 15:30');
+        } else {
+            return 'false';
+        }
     }
 
 }

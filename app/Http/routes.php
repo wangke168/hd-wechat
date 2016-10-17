@@ -17,8 +17,8 @@ Route::get('/hd-token','TokenController@token');
 Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 
 //订单相关
-Route::get('/ordersend/{sellid}/{openid}','OrderController@send');
-Route::get('/orderconfrim/{sellid}/{openid?}','OrderController@confrim');
+Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
+Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');
 
 
 
@@ -83,4 +83,4 @@ Route::get('/test/updateclickinfo','TestController@update_click_info');
 Route::get('/test/ordersend/{id}/{openid?}','TestController@order_send');
 Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
 
-Route::get('/test/test','TestController@test');
+Route::get('/test/test','Test\ArticleController@test');

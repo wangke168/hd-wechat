@@ -12,3 +12,6 @@
 
 模板的TemplateId放在.env中
 
+##2016-10-17
+
+Controller做目录结构
