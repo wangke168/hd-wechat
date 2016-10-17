@@ -210,6 +210,7 @@ class OrderController extends Controller
             }
         }
 
+
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
