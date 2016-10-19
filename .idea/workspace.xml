@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/SecondSell.php" afterPath="$PROJECT_DIR$/app/WeChat/SecondSell.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Test/ArticleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Test/ArticleController.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/ArticleController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.25788498">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding>
                 <element signature="e#45#81#0#PHP" expanded="true" />
               </folding>
@@ -59,7 +59,7 @@
       <file leaf-file-name="SecondSell.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/SecondSell.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.0">
+            <state vertical-scroll-proportion="-69.23077">
               <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
               <folding>
                 <element signature="e#112#119#0#PHP" expanded="true" />
@@ -163,8 +163,8 @@
         <option value="$PROJECT_DIR$/app/WeChat/Popular.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Order/SecondController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Test/ArticleController.php" />
         <option value="$PROJECT_DIR$/app/WeChat/SecondSell.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Test/ArticleController.php" />
       </list>
     </option>
   </component>
@@ -940,7 +940,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/SecondSell.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.0">
+        <state vertical-scroll-proportion="-69.23077">
           <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
           <folding>
             <element signature="e#112#119#0#PHP" expanded="true" />
@@ -952,7 +952,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/ArticleController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25788498">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
           <folding>
             <element signature="e#45#81#0#PHP" expanded="true" />
           </folding>
