@@ -97,10 +97,10 @@ class SecondSell
                     }
                 break;
         }
-//        return $content;
+        return $content;
 
-        $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
-        return $result;
+//        $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+//        return $result;
     }
 
 }
