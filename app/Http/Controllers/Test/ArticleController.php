@@ -27,9 +27,10 @@ class ArticleController extends Controller
         $message=new Text();
         $message->content='Hello world!';
 //        $message=new Text([['content' => 'Hello world!']]);
-        $result = $app->staff->message($message)->to($openid)->send();
+//        $result = $app->staff->message($message)->to($openid)->send();
+        $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         return $result;
-//        $app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+
     }
 
 
