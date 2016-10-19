@@ -123,9 +123,9 @@ class OrderController extends Controller
 
             $flag = $data['ticketorder'][0]['flag'];
 
-            if ($flag != "未支付" || $flag != "已取消") {
+            if ($flag =="未支付" || $flag == "已取消") {
 //                break;
-            
+            }{
 
 
                 if ($data['ticketorder'][0]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
