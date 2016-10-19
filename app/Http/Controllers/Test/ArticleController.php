@@ -40,7 +40,7 @@ class ArticleController extends Controller
         $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
         $aaaa[]=$content;
 //        return $aaaa;
-          $result=$app->staff->message($aaaa)->by('1001@u_hengdian')->to($openid)->send();
+          $result=$app->staff->message([$content])->by('1001@u_hengdian')->to($openid)->send();
         return $result;
     }
 
