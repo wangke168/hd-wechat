@@ -16,7 +16,7 @@ class ArticleController extends Controller
 
     public function test()
     {
-//        $app=app('wechat');
+        $app=app('wechat');
         $openid='opUv9v977Njll_YHpZYMymxI_aPE';
         $Second=new SecondSell();
 //        $content1 = array();
@@ -39,10 +39,9 @@ class ArticleController extends Controller
         $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
         $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
         $aaaa[]=$content;
-        return $aaaa;
-        /*  $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
-        return $result;*/
-
+//        return $aaaa;
+          $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        return $result;
     }
 
 
