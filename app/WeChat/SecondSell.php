@@ -1,44 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: wangke
+ * Date: 16/10/17
+ * Time: 下午3:52
+ */
 
-namespace App\Http\Controllers\Test;
+namespace App\WeChat;
 
-use App\Http\Controllers\Controller;
-use App\WeChat\SecondSell;
-use EasyWeChat\Message\News;
-use Illuminate\Http\Request;
 use DB;
-use App\Http\Requests;
+use EasyWeChat\Message\News;
 
-class ArticleController extends Controller
+class SecondSell
 {
 
-    public function test()
-    {
-        $Second=new SecondSell();
-        $content = array();
-        $content[] = $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼');
-//        $content2[]= $this->second_info_send('1','秦王宫+梦幻谷');
-//        return array_combine($content1,$content2);
-        return $content;
-    }
-
-
-    private function get_second_info()
-    {
-
-    }
-
-    private function get_second_info_public()
-    {
-        $row = DB::table('se_info_detail')
-            ->where('online', '1')
-            ->where('is_all', '1')
-            ->orderBy('id', 'desc')
-            ->get();
-
-    }
-
-    private function second_info_send($type, $order_info)
+    public function second_info_send($type, $order_info)
     {
 
 
@@ -123,6 +99,5 @@ class ArticleController extends Controller
         return $content;
 
     }
-
 
 }

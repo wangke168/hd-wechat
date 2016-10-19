@@ -5,17 +5,20 @@ namespace App\Http\Controllers\Order;
 use App\Http\Controllers\Controller;
 use App\Jobs\ConfrimOrderQueue;
 use App\Jobs\SendOrderQueue;
+use App\WeChat\SecondSell;
 use App\WeChat\Usage;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\WeChat\Order;
+
 class OrderController extends Controller
 {
     //
     public $app;
     public $notice;
+
 //    public $usage;
 
     public function __construct(Application $app)
@@ -25,7 +28,7 @@ class OrderController extends Controller
 //        $this->usage = new Usage();
     }
 
-    public function send($sellid,$openid)
+    public function send($sellid, $openid)
     {
         if ($this->check_order($sellid)) {
 //            $this->dispatch(new SendOrderQueue($sellid,$openid));
@@ -33,8 +36,8 @@ class OrderController extends Controller
             $this->Repost_order($openid, $sellid);
         }
     }
-    
-    public function confrim($sellid,$openid=null)
+
+    public function confrim($sellid, $openid = null)
     {
 //        $this->dispatch(new ConfrimOrderQueue($sellid,$openid));
         $usage = new Usage();
@@ -88,6 +91,7 @@ class OrderController extends Controller
 
     private function Repost_order($openid, $sellid)
     {
+        $second = new SecondSell();
 //        $app = app('wechat');
 //        $notice = $app->notice;
         $userId = $openid;
@@ -107,30 +111,30 @@ class OrderController extends Controller
         $i = 0;
         if ($ticketcount <> 0) {
             $ticket_id = 1;
-            for ($j = 0; $j < $ticketcount; $j++) {
-                $i = $i + 1;
-                $name = $data['ticketorder'][$j]['name'];
-                $first = $data['ticketorder'][$j]['name'] . "，您好，您已经成功预订门票。\n";
-                $sellid = $data['ticketorder'][$j]['sellid'];
-                $date = $data['ticketorder'][$j]['date2'];
-                $ticket = $data['ticketorder'][$j]['ticket'];
-                $numbers = $data['ticketorder'][$j]['numbers'];
+//            for ($j = 0; $j < $ticketcount; $j++) {
+//                $i = $i + 1;
+            $name = $data['ticketorder'][0]['name'];
+            $first = $data['ticketorder'][0]['name'] . "，您好，您已经成功预订门票。\n";
+            $sellid = $data['ticketorder'][0]['sellid'];
+            $date = $data['ticketorder'][0]['date2'];
+            $ticket = $data['ticketorder'][0]['ticket'];
+            $numbers = $data['ticketorder'][0]['numbers'];
 
-                $flag = $data['ticketorder'][$j]['flag'];
+            $flag = $data['ticketorder'][0]['flag'];
 
-                if ($flag == "未支付" || $flag == "已取消") {
-                    break;
-                }
+            if ($flag != "未支付" && $flag != "已取消") {
+//                break;
 
-                if ($data['ticketorder'][$j]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][$j]['ticket'] == '网络联票+梦幻谷') {
+
+                if ($data['ticketorder'][0]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
                     $ticketorder = "注意：该票种需要身份证检票";
                 } else {
-                    $ticketorder = $data['ticketorder'][$j]['code'];
+                    $ticketorder = $data['ticketorder'][0]['code'];
                 }
 
                 $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
 
-                $templateId=env('TEMPLATEID_TICKET');
+                $templateId = env('TEMPLATEID_TICKET');
 
                 $data = array(
                     "first" => array($first, "#000000"),
@@ -141,6 +145,8 @@ class OrderController extends Controller
                     "keyword5" => array($ticketorder, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
+
+                $content[] = $second->second_info_send('ticket', $ticket);
 
             }
         }
@@ -162,7 +168,7 @@ class OrderController extends Controller
 
                 $remark = "人数：" . $data['inclusiveorder'][$j]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
-                $templateId=env('TEMPLATEID_PACKAGES');
+                $templateId = env('TEMPLATEID_PACKAGES');
 
                 $data = array(
                     "first" => array($first, "#000000"),
@@ -195,7 +201,7 @@ class OrderController extends Controller
                 $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
                 $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
 
-                $templateId=env('TEMPLATEID_HOTEL');
+                $templateId = env('TEMPLATEID_HOTEL');
 
                 $data = array(
                     "first" => array($first, "#000000"),
@@ -218,5 +224,6 @@ class OrderController extends Controller
 
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
+        $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
     }
 }
