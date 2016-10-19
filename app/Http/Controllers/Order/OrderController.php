@@ -148,7 +148,7 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 
-                $content = $second->second_info_send('ticket', $ticket);
+//                $content = $second->second_info_send('ticket', $ticket);
 
             }
         }
