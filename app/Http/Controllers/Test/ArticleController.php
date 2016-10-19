@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Test;
 use App\Http\Controllers\Controller;
 use App\WeChat\SecondSell;
 use EasyWeChat\Message\News;
+use EasyWeChat\Message\Text;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -16,13 +17,17 @@ class ArticleController extends Controller
     public function test()
     {
         $app=app('wechat');
+        $openid='opUv9v977Njll_YHpZYMymxI_aPE';
         $Second=new SecondSell();
         $content = array();
         $content[] = $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼');
 //        $content2[]= $this->second_info_send('1','秦王宫+梦幻谷');
 //        return array_combine($content1,$content2);
 //        return $content;
-        $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
+        $message=new Text([['content' => 'Hello world!']]);
+        $result = $app->staff->message($message)->to($openid)->send();
+        return $result;
+//        $app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
     }
 
 
