@@ -125,7 +125,7 @@ class OrderController extends Controller
 
             if ($flag !="未支付" || $flag != "已取消") {
 //                break;
-            
+
 
 
                 if ($data['ticketorder'][0]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
@@ -148,7 +148,7 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 
-//                $content = $second->second_info_send('ticket', $ticket);
+                $content = $second->second_info_send('inclusive', '明清宫苑+梦幻谷+贵宾楼');
 
             }
         }
@@ -227,7 +227,7 @@ class OrderController extends Controller
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
 //        return $content;
-//        $this->app->staff->message($content)->to($openid)->send();
+        $this->app->staff->message($content)->to($openid)->send();
 //        $app->staff->message($news)->to($openid)->send();
     }
 }
