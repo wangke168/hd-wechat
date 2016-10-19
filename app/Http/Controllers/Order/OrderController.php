@@ -147,7 +147,7 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 
-                $content[] = $second->second_info_send('ticket', $ticket);
+                $content = $second->second_info_send('ticket', $ticket);
 
             }
         }
@@ -225,6 +225,6 @@ class OrderController extends Controller
 
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
-        $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        $this->app->staff->message($content)->to($openid)->send();
     }
 }
