@@ -20,10 +20,10 @@ class ArticleController extends Controller
         $openid='opUv9v977Njll_YHpZYMymxI_aPE';
         $Second=new SecondSell();
 //        $content1 = array();
-        $content[]= $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼',$openid);
+//        $content[]= $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼',$openid);
 //        $content2[]= $this->second_info_send('1','秦王宫+梦幻谷');
 //        return array_combine($content1,$content2);
-        return $content;
+//        return $content;
 //        $message=new Text();
 //        $message->content='Hello world!';
 //        $message=new Text([['content' => 'Hello world!']]);
@@ -32,13 +32,14 @@ class ArticleController extends Controller
 //        return $result;
 //        return $content;
 
-        /*
+
         $content = new News();
         $content->title = "laravel-wechat";
         $content->description = "测试";
         $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
         $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-        $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        return $content;
+        /*  $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         return $result;*/
 
     }
