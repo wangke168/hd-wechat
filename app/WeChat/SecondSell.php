@@ -14,9 +14,10 @@ use EasyWeChat\Message\News;
 class SecondSell
 {
 
-    public function second_info_send($type, $order_info)
+    public function second_info_send($type, $order_info,$openid)
     {
 
+        $app=app('wechat');
 
         $rows = DB::table('se_info_detail')
             ->where('online', '1')
@@ -96,8 +97,10 @@ class SecondSell
                     }
                 break;
         }
-        return $content;
+//        return $content;
 
+        $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        return $result;
     }
 
 }
