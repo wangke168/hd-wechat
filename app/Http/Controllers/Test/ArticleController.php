@@ -38,7 +38,8 @@ class ArticleController extends Controller
         $content->description = "测试";
         $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
         $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-        return $content;
+        $aaaa[]=$content;
+        return $aaaa;
         /*  $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         return $result;*/
 
