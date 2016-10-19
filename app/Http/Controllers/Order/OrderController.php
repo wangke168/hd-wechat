@@ -225,6 +225,8 @@ class OrderController extends Controller
 
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
-        $this->app->staff->message($content)->to($openid)->send();
+//        return $content;
+//        $this->app->staff->message($content)->to($openid)->send();
+//        $app->staff->message($news)->to($openid)->send();
     }
 }
