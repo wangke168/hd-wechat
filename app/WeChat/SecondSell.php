@@ -39,7 +39,7 @@ class SecondSell
                     ->orderBy('id', 'desc')
                     ->get();
                 foreach ($rows as $row) {
-//                    if ($rows->zone) {
+                    if ($rows->zone) {
                         if (strpos($order_info, $row->zone) !== false) {
                             $news = new News();
                             $news->title = $row->title;
@@ -47,7 +47,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-//                        }
+                        }
                     }
                 }
                 break;
