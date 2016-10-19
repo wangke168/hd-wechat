@@ -39,7 +39,7 @@ class SecondSell
                     ->orderBy('id', 'desc')
                     ->get();
                 foreach ($rows as $row) {
-                    if ($rows->zone) {
+                    if ($row->zone) {
                         if (strpos($order_info, $row->zone) !== false) {
                             $news = new News();
                             $news->title = $row->title;
