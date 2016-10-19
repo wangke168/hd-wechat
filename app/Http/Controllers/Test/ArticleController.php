@@ -20,7 +20,7 @@ class ArticleController extends Controller
         $openid='opUv9v977Njll_YHpZYMymxI_aPE';
         $Second=new SecondSell();
 //        $content1 = array();
-        $news= $Second->second_info_send('ticket', '明清宫苑+梦幻谷+贵宾楼');
+        $news= $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼');
 //        $content2[]= $this->second_info_send('1','秦王宫+梦幻谷');
 //        return array_combine($content1,$content2);
 //        return $news;
