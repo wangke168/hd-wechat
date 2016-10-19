@@ -68,14 +68,15 @@ class SecondSell
                             $content[] = $news;
                         }
                     }
-
-                    if (strpos($order_info, $row->hotel) !== false) {
-                        $news = new News();
-                        $news->title = $row->title;
-                        $news->description = $row->description;
-                        $news->url = $row->article_url;
-                        $news->image = $row->pic_url;
-                        $content[] = $news;
+                    if ($row->hotel) {
+                        if (strpos($order_info, $row->hotel) !== false) {
+                            $news = new News();
+                            $news->title = $row->title;
+                            $news->description = $row->description;
+                            $news->url = $row->article_url;
+                            $news->image = $row->pic_url;
+                            $content[] = $news;
+                        }
                     }
                 }
 
@@ -88,13 +89,15 @@ class SecondSell
                     ->orderBy('id', 'desc')
                     ->get();
                 foreach ($rows as $row)
-                    if (strpos($order_info, $row->hotel) !== false) {
-                        $news = new News();
-                        $news->title = $row->title;
-                        $news->description = $row->description;
-                        $news->url = $row->article_url;
-                        $news->image = $row->pic_url;
-                        $content[] = $news;
+                    if ($row->hotel) {
+                        if (strpos($order_info, $row->hotel) !== false) {
+                            $news = new News();
+                            $news->title = $row->title;
+                            $news->description = $row->description;
+                            $news->url = $row->article_url;
+                            $news->image = $row->pic_url;
+                            $content[] = $news;
+                        }
                     }
                 break;
         }
