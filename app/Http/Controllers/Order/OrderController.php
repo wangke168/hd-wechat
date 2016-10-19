@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\WeChat\Order;
+use EasyWeChat\Message\News;
 
 class OrderController extends Controller
 {

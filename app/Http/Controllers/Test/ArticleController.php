@@ -12,14 +12,17 @@ use App\Http\Requests;
 class ArticleController extends Controller
 {
 
+
     public function test()
     {
+        $app=app('wechat');
         $Second=new SecondSell();
         $content = array();
         $content[] = $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼');
 //        $content2[]= $this->second_info_send('1','秦王宫+梦幻谷');
 //        return array_combine($content1,$content2);
-        return $content;
+//        return $content;
+        $app->staff->message($content)->by('1001@u_hengdian')->to('opUv9v977Njll_YHpZYMymxI_aPE')->send();
     }
 
 
