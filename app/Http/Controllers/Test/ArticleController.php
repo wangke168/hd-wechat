@@ -23,14 +23,14 @@ class ArticleController extends Controller
         $content[] = $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼');
 //        $content2[]= $this->second_info_send('1','秦王宫+梦幻谷');
 //        return array_combine($content1,$content2);
-//        echo $content;
-        $message=new Text();
-        $message->content='Hello world!';
+        return $content;
+//        $message=new Text();
+//        $message->content='Hello world!';
 //        $message=new Text([['content' => 'Hello world!']]);
 //        $result = $app->staff->message($message)->to($openid)->send();
         $result=$app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
-        return $result;
-
+//        return $result;
+//        return $content;
     }
 
 
