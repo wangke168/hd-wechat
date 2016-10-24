@@ -17,6 +17,8 @@ class SecondSell
     public function second_info_send($type, $order_info)
     {
 
+//        $sendid=[];
+
         $rows = DB::table('se_info_detail')
             ->where('online', '1')
             ->where('is_all', '1')
@@ -29,6 +31,7 @@ class SecondSell
             $news->url = $row->article_url;
             $news->image = $row->pic_url;
             $content[] = $news;
+            $sendId[]=$row->id;
         }
 
         switch ($type) {
@@ -47,6 +50,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
+                            $sendId[]=$row->id;
                         }
                     }
                 }
@@ -66,6 +70,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
+                            $sendId[]=$row->id;
                         }
                     }
                     if ($row->hotel) {
@@ -76,6 +81,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
+                            $sendId[]=$row->id;
                         }
                     }
                 }
@@ -97,10 +103,14 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
+                            $sendId[]=$row->id;
                         }
                     }
                 break;
         }
+
+        
+
         return $content;
 
     }
