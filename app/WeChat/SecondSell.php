@@ -19,7 +19,7 @@ class SecondSell
 
         $usage=new Usage();
         $openid_article=$usage->authcode($openid,'ENCODE',0);
-        $url=$_SERVER['SERVER_NAME']."/secondarticle/".$sellid.'/'.$openid_article.'/';
+        $url='http://'.$_SERVER['SERVER_NAME'].'/secondarticle/'.$sellid.'/'.$openid_article.'/';
 //        $sendid=[];
 
         $rows = DB::table('se_info_detail')
