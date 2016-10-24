@@ -26,6 +26,34 @@ use App\Http\Requests;
 class ArticlesController extends Controller
 {
 
+    public function second_article($sellid,$info_id,$openid)
+    {
+        $usage = new Usage();
+//        $openid = $usage->authcode($openid, 'DECODE', 0);
+
+        //设置se_info_send阅读
+        DB::table('se_info_send')
+            ->where('sellid',$sellid)
+            ->where('wx_openid',$openid)
+            ->where('info_id',$info_id)
+            ->update(['is_read'=>1,'readtime'=>Carbon::now()]);
+
+        //找出对应url并跳转
+        $row=DB::table('se_info_detail')
+            ->where('id',$info_id)
+            ->first();
+        $url=$row->article_url;
+        return redirect($url);
+    }
+
+
+
+
+
+
+
+
+
 
     public function index()
     {

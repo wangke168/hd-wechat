@@ -20,7 +20,8 @@ Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');
 
-
+//二次营销
+Route::get('/secondarticle/{sellid}/{info_id}/{openid}','ArticlesController@secondarticle');
 
 Route::get('/', function () {
     return view('welcome');
