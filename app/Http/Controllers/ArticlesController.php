@@ -38,6 +38,11 @@ class ArticlesController extends Controller
             ->where('info_id',$info_id)
             ->update(['is_read'=>1,'readtime'=>Carbon::now()]);
 
+        //增加阅读数
+        DB::table('se_info_detail')
+            ->where('id',$info_id)
+            ->increment('hits');
+
         //找出对应url并跳转
         $row=DB::table('se_info_detail')
             ->where('id',$info_id)
