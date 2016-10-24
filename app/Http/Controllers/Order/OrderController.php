@@ -148,7 +148,7 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 
-                $content = $second->second_info_send('ticket', $ticket);
+                $content = $second->second_info_send('ticket', $ticket,$openid,$sellid);
 
             }
         }
@@ -181,7 +181,7 @@ class OrderController extends Controller
                         "keyword5" => array($hotel, "#173177"),
                         "remark" => array($remark, "#000000"),
                     );
-                    $content = $second->second_info_send('inclusive', $ticket.$hotel);
+                    $content = $second->second_info_send('inclusive', $ticket.$hotel,$openid,$sellid);
 //                }
             }
         }
@@ -215,7 +215,7 @@ class OrderController extends Controller
                     "keyword5" => array($numbers, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
-                    $content = $second->second_info_send('hotel', $hotel);
+                    $content = $second->second_info_send('hotel', $hotel,$openid,$sellid);
             }
         }
 
