@@ -36,7 +36,7 @@ class ArticlesController extends Controller
             ->where('sellid',$sellid)
             ->where('wx_openid',$openid)
             ->where('info_id',$info_id)
-            ->update(['is_read'=>1,'readtime'=>Carbon::now()]);
+            ->update(['is_read'=>1]);
 
         //找出对应url并跳转
         $row=DB::table('se_info_detail')
