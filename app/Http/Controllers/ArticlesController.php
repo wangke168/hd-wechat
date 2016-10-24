@@ -26,10 +26,10 @@ use App\Http\Requests;
 class ArticlesController extends Controller
 {
 
-    public function second_article($sellid,$info_id,$openid)
+    public function second_article($sellid,$openid,$info_id)
     {
         $usage = new Usage();
-//        $openid = $usage->authcode($openid, 'DECODE', 0);
+        $openid = $usage->authcode($openid, 'DECODE', 0);
 
         //设置se_info_send阅读
         DB::table('se_info_send')

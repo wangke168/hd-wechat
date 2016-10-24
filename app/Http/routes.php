@@ -21,7 +21,7 @@ Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');
 
 //二次营销
-Route::get('/secondarticle/{sellid}/{info_id}/{openid}','ArticlesController@second_article');
+Route::get('/secondarticle/{sellid}/{openid}/{info_id}','ArticlesController@second_article');
 
 Route::get('/', function () {
     return view('welcome');

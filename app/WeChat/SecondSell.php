@@ -17,6 +17,9 @@ class SecondSell
     public function second_info_send($type, $order_info,$openid,$sellid)
     {
 
+        $usage=new Usage();
+        $openid_article=$usage->authcode($openid,'ENCODE',0);
+        $url="/secondarticle/".$sellid.'/'.$openid_article.'/';
 //        $sendid=[];
 
         $rows = DB::table('se_info_detail')
@@ -28,7 +31,8 @@ class SecondSell
             $news = new News();
             $news->title = $row->title;
             $news->description = $row->description;
-            $news->url = $row->article_url;
+//            $news->url = $row->article_url;
+            $news->url=$url.$row->id;
             $news->image = $row->pic_url;
             $content[] = $news;
             $info_ids[]=$row->id;
@@ -47,7 +51,8 @@ class SecondSell
                             $news = new News();
                             $news->title = $row->title;
                             $news->description = $row->description;
-                            $news->url = $row->article_url;
+//                            $news->url = $row->article_url;
+                            $news->url=$url.$row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
                             $info_ids[]=$row->id;
@@ -67,7 +72,8 @@ class SecondSell
                             $news = new News();
                             $news->title = $row->title;
                             $news->description = $row->description;
-                            $news->url = $row->article_url;
+//                            $news->url = $row->article_url;
+                            $news->url=$url.$row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
                             $info_ids[]=$row->id;
@@ -78,7 +84,8 @@ class SecondSell
                             $news = new News();
                             $news->title = $row->title;
                             $news->description = $row->description;
-                            $news->url = $row->article_url;
+//                            $news->url = $row->article_url;
+                            $news->url=$url.$row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
                             $info_ids[]=$row->id;
@@ -100,7 +107,8 @@ class SecondSell
                             $news = new News();
                             $news->title = $row->title;
                             $news->description = $row->description;
-                            $news->url = $row->article_url;
+//                            $news->url = $row->article_url;
+                            $news->url=$url.$row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
                             $info_ids[]=$row->id;
