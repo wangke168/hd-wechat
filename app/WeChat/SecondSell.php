@@ -14,7 +14,7 @@ use EasyWeChat\Message\News;
 class SecondSell
 {
 
-    public function second_info_send($type, $order_info)
+    public function second_info_send($type, $order_info,$openid,$sellid)
     {
 
 //        $sendid=[];
@@ -31,7 +31,7 @@ class SecondSell
             $news->url = $row->article_url;
             $news->image = $row->pic_url;
             $content[] = $news;
-            $sendId[]=$row->id;
+            $info_ids[]=$row->id;
         }
 
         switch ($type) {
@@ -50,7 +50,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $sendId[]=$row->id;
+                            $info_ids[]=$row->id;
                         }
                     }
                 }
@@ -70,7 +70,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $sendId[]=$row->id;
+                            $info_ids[]=$row->id;
                         }
                     }
                     if ($row->hotel) {
@@ -81,7 +81,7 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $sendId[]=$row->id;
+                            $info_ids[]=$row->id;
                         }
                     }
                 }
@@ -103,15 +103,19 @@ class SecondSell
                             $news->url = $row->article_url;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $sendId[]=$row->id;
+                            $info_ids[]=$row->id;
                         }
                     }
                 break;
         }
 
-        return $sendId;
+        foreach ($info_ids as $info_id)
+        {
+            DB::table('se_info_send')
+                ->insert(['wx_openid'=>$openid,'sellid'=>$sellid,'info_id'=>$info_id]);
+        }
 
-//        return $content;
+        return $content;
 
     }
 
