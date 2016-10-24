@@ -32,11 +32,11 @@ class ArticlesController extends Controller
 //        $openid = $usage->authcode($openid, 'DECODE', 0);
 
         //设置se_info_send阅读
-        DB::table('se_info_send')
+    /*    DB::table('se_info_send')
             ->where('sellid',$sellid)
             ->where('wx_openid',$openid)
             ->where('info_id',$info_id)
-            ->update(['is_read'=>1]);
+            ->update(['is_read'=>1]);*/
 
         //找出对应url并跳转
         $row=DB::table('se_info_detail')
