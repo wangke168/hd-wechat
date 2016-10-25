@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-hans">
+<html>
 <head>
     <meta charset="utf-8">
     <title>微信JS-SDK Demo</title>
