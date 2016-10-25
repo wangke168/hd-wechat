@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-hans">
+
+<html>
     <head id="Head2">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="format-detection" content="telephone=no"/>
@@ -11,21 +11,6 @@
         <meta name="keywords" content="掌上横店,掌上横店影视城,横店影视城手机版网站"/>
         <title>{{$article->title}}</title>
         <link href="{{asset('css/mbcss.css')}}" rel="stylesheet" type="text/css"/>
-        <style type="text/css">
-            img {
-                max-width: 100%;
-            }
-        </style>
-        <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
-        <script type="text/javascript" src="{{asset('js/divheight.js')}}"></script>
-
-        <script>
-            $(function () {
-                var awidth = parseInt($(document).width());//获取屏幕的宽度
-                $("iframe").css({"width": "100%"})  //设置宽度
-                    .height(awidth / 4 * 3);  //设置高度
-            })
-        </script>
 
     </head>
     <body>
@@ -198,7 +183,7 @@
 
 
             var shareData = {
-                title: '微信JS-SDK Demo',
+                title: '微信JS-SDK Demo111',
                 desc: '微信JS-SDK,帮助第三方为用户提供更优质的移动web服务',
                 link: 'http://demo.open.weixin.qq.com/jssdk/',
                 imgUrl: 'http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRt8Qia4lv7k3M9J1SKqKCImxJCt7j9rHYicKDI45jRPBxdzdyREWnk0ia0N5TMnMfth7SdxtzMvVgXg/0'
