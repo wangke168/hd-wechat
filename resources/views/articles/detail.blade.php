@@ -76,6 +76,8 @@
                 link: 'http://demo.open.weixin.qq.com/jssdk/',
                 imgUrl: 'http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRt8Qia4lv7k3M9J1SKqKCImxJCt7j9rHYicKDI45jRPBxdzdyREWnk0ia0N5TMnMfth7SdxtzMvVgXg/0'
             };
+
+
             wx.onMenuShareAppMessage(shareData);
             wx.onMenuShareTimeline({
                 title: '互联网之子',
@@ -95,6 +97,7 @@
                     alert(JSON.stringify(res));
                 }
 
+            });
         });
 
         wx.error(function (res) {
