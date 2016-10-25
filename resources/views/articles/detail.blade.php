@@ -65,10 +65,9 @@
         wx.config(<?php echo $js->config(array('checkJsApi',
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
-
-
-            'openLocation',
-            'getLocation'), false) ?>);
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'), false) ?>);
 
         wx.ready(function () {
 
