@@ -31,32 +31,7 @@
     <body>
 
 
-    <div id="main">
-
-        <div id="header">
-            <!--       <span class="left-head"  onclick="javascript:history.go(-1);"></span>
-                   <span class="right-head" onclick="javascript:location.href='http://m.hengdianworld.com';"></span>
-         -->
-
-        </div>
-        <div id="title">
-            {{$article->title}}</div>
-        <div id="titleinfo">
-            横店影视城        {{$article->adddate}}</div>
-        <div id="contents">
-
-        {!!str_replace("/control/editor/attached/image/","http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
-         </div>
-
-        <div id="tempheight" style="clear:both;  "></div>
-        <div id="bottom">
-            <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-                热线电话：<a href="tel:4009999141"> 400-9999141</a>
-            </div>
-            <div>©2013-2014 横店影视城 版权所有</div>
-        </div>
-
-    </div>
+ 
     </body>
 
 
