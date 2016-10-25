@@ -169,7 +169,8 @@
             wx.checkJsApi({
                 jsApiList: [
                     'getNetworkType',
-                    'previewImage'
+                    'previewImage',
+                        'onMenuShareTimeline'
                 ],
                 success: function (res) {
                     alert(JSON.stringify(res));
