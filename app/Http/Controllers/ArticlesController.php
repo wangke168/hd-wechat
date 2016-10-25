@@ -13,6 +13,7 @@ use App\WeChat\Usage;
 use Carbon\Carbon;
 use DB;
 use App\Models\WechatArticle;
+use EasyWeChat\Foundation\Application;
 use EasyWeChat\Message\Image;
 use EasyWeChat\Message\News;
 use Illuminate\Http\Request;
@@ -25,6 +26,14 @@ use App\Http\Requests;
 
 class ArticlesController extends Controller
 {
+    public $app;
+    public $js;
+
+    public function __construct(Application $app)
+    {
+        $this->app=$app;
+        $this->js=$this->app->js;
+    }
 
     public function second_article($sellid,$openid,$info_id)
     {
@@ -56,17 +65,14 @@ class ArticlesController extends Controller
 
     public function index()
     {
-//        $articles = Article::all();
         $articles = DB::table('wx_article')->where('title', 'like', '门票%')->orderBy('id', 'desc')->skip(0)->take(2)->get();
-//        return $articles;
         return view('articles.index', compact('articles'));
     }
 
     public function show($id)
     {
         $article = WechatArticle::find($id);
-//        $aaa=WechatArticle::
-//        return $article;
+
         return view('articles.show', compact('article'));
     }
 
