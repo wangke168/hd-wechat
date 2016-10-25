@@ -27,7 +27,7 @@
       <file leaf-file-name="ldjl.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-145.1923">
+            <state vertical-scroll-proportion="-101.07692">
               <caret line="151" column="19" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
               <folding />
             </state>
@@ -47,9 +47,12 @@
       <file leaf-file-name="detail.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5946717">
-              <caret line="172" column="45" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
-              <folding />
+            <state vertical-scroll-proportion="0.809705">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,8 +60,8 @@
       <file leaf-file-name="jssdk.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.962264">
-              <caret line="141" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="729" selection-end-column="9" />
+            <state vertical-scroll-proportion="-52.83019">
+              <caret line="112" column="30" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1047,7 +1050,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/zone/ldjl.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-145.1923">
+        <state vertical-scroll-proportion="-101.07692">
           <caret line="151" column="19" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
           <folding />
         </state>
@@ -1055,17 +1058,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.962264">
-          <caret line="141" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="729" selection-end-column="9" />
+        <state vertical-scroll-proportion="-52.83019">
+          <caret line="112" column="30" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5946717">
-          <caret line="172" column="45" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
-          <folding />
+        <state vertical-scroll-proportion="0.809705">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
