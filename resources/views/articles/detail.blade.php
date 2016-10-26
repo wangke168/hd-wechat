@@ -106,7 +106,7 @@ if ($article->pyq_title) {
 
         wx.onMenuShareAppMessage({
             title: '<?php echo $pyq_title;?>', // 分享标题
-            desc: '<?php echo $article->$description;?>', // 分享描述
+            desc: '<?php echo $article->description;?>', // 分享描述
             link: '<?php echo $resp_url;?>', // 分享链接
             imgUrl: '<?php echo $imgUrl?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
