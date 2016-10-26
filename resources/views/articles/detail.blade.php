@@ -124,7 +124,7 @@ if ($article->pyq_title) {
             link: '<?php echo $resp_url?>',
             imgUrl: '<?php echo $imgUrl?>',
             success: function (res) {
-                alert('已分享');
+//                alert('已分享');
                 $.get('/count/addresp/<?php echo $id;?>/<?php echo $openid;?>');
             },
             fail: function (res) {
