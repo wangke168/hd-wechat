@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -30,9 +30,14 @@ Route::get('about', function () {
     return 'Hello World';
 });
 
+//数据统计
+
+Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
+
+
 
 Route::get('/articles', 'ArticlesController@index');
-Route::get('/articles/{id}', 'ArticlesController@detail');
+Route::get('/article', 'ArticlesController@detail');
 
 //预约系统
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
@@ -85,3 +90,10 @@ Route::get('/test/ordersend/{id}/{openid?}','TestController@order_send');
 Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
 
 Route::get('/test/test','Test\ArticleController@test');
+
+/*Route::get('article', function(){
+//    $book = Input::get('openid');
+//    'Test\ArticleController@test';
+    return $book;
+});*/
+//Route::get('article','Test\ArticleController@test');

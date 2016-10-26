@@ -7,6 +7,7 @@ use App\Jobs\UpdateEscQueue;
 use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
+use App\WeChat\Count;
 use App\WeChat\Order;
 use App\WeChat\Response;
 use App\WeChat\Usage;
@@ -18,7 +19,7 @@ use EasyWeChat\Message\Image;
 use EasyWeChat\Message\News;
 use Illuminate\Http\Request;
 use EasyWeChat\Message\Text;
-
+use Illuminate\Support\Facades\Input;
 use App\WeChat\Tour;
 use App\Http\Requests;
 
@@ -28,11 +29,15 @@ class ArticlesController extends Controller
 {
     public $app;
     public $js;
+    public $count;
+    public $usage;
 
     public function __construct(Application $app)
     {
         $this->app=$app;
         $this->js=$this->app->js;
+        $this->count=new Count();
+        $this->usage=new Usage();
     }
 
     public function second_article($sellid,$openid,$info_id)
@@ -76,10 +81,28 @@ class ArticlesController extends Controller
         return view('articles.show', compact('article'));
     }
 
-    public function detail($id)
+    public function detail(Request $request)
     {
+        $id=$request->input('id');
+        $wxnumber=$request->input('wxnumber');
+        $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
+        $openid=$request->input('openid');
+
+        if ($wxnumber)
+        {
+            $openid=$wxnumber;
+        }
+
         $article = WechatArticle::find($id);
-        return view('articles.detail', compact('article'));
+        if (!$article || $article->online=='0' ||$article->enddate<Carbon::now())
+        {
+            abort(404);
+        }
+        else {
+            $this->count->add_article_hits($id);
+            $this->count->insert_hits($id,$openid);
+            return view('articles.detail', compact('article', 'id', 'openid'));
+        }
     }
 
     public function info()
