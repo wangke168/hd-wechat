@@ -8,7 +8,7 @@ use EasyWeChat\Message\Text;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Voice;
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 
 class WechatController extends Controller
@@ -87,6 +87,10 @@ class WechatController extends Controller
                     }
                     break;
                 case 'text':
+
+                    //把内容加入wx_recevice_txt
+                    DB::table('wx_recevice_txt')
+                        ->insert(['wx_openid'=>$openid,'content'=>$message->Content]);
 
                     switch ($message->Content) {
                         case 's':

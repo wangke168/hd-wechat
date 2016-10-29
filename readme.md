@@ -6,12 +6,17 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
+##2016-10-26
+
+articledetail转过来
+
+##2016-10-17
+
+Controller做目录结构
+
 ##2016-9-28
 
 更新确认订单和成功订单的队列
 
 模板的TemplateId放在.env中
 
-##2016-10-17
-
-Controller做目录结构
