@@ -143,7 +143,7 @@ class Response
         if (!$flag) //如果该二维码没有对应的关注推送信息
         {
             $content = new Text();
-            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打400-9999141立刻接通小横横。";
+            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
             $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
 

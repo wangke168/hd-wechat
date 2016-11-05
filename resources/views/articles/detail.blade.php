@@ -58,7 +58,7 @@
     <div id="tempheight" style="clear:both;  "></div>
     <div id="bottom">
         <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-            热线电话：<a href="tel:4009999141"> 400-9999141</a>
+            热线电话：<a href="tel:057986547211"> 0579-86547211</a>
         </div>
         <div>©2013-2014 横店影视城 版权所有</div>
     </div>
