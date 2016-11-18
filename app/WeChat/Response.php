@@ -345,7 +345,7 @@ class Response
                 /*检查索引图所在服务器并生成链接*/
                 if(starts_with($result->picurl, 'uploads'))
                 {
-                    $pic_url='http://wechat/hengdianworld.com/'.$result->picurl;
+                    $pic_url='http://control.unclewang.me/'.$result->picurl;
                 }
                 else
                 {
