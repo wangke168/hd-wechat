@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\WeChat\SecondSell;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
+use EasyWeChat\Support\Str;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -22,7 +23,8 @@ class ArticleController extends Controller
         $news= $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼',$openid,'asdafds');
 
         return $news;*/
-        return $_SERVER['HTTP_HOST'];
+
+        dd(starts_with('1This is my name', 'This'));
 
 //        return $content;
 /*

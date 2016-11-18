@@ -341,11 +341,24 @@ class Response
                     $url = "http://".$_SERVER['HTTP_HOST']."/article?id=" . $id . "&wxnumber=" . $wxnumber;
 
                 }
+
+                /*检查索引图所在服务器并生成链接*/
+                if(starts_with($result->picurl, 'uploads'))
+                {
+                    $pic_url='http://wechat/hengdianworld.com/'.$result->picurl;
+                }
+                else
+                {
+                    $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
+                }
+
+                /*索引图检查结束*/
                 $new = new News();
                 $new->title = $result->title;
                 $new->description = $result->description;
                 $new->url = $url;
-                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+//                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                $new->image=$pic_url;
                 $content[] = $new;
             }
             $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
