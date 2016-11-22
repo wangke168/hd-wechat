@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
+use App\WeChat\Order;
 use App\WeChat\SecondSell;
+use App\WeChat\Usage;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Support\Str;
@@ -16,27 +18,29 @@ class ArticleController extends Controller
 
 
     public function test()
-    {/*
-        $app=app('wechat');
-        $openid='opUv9v977Njll_YHpZYMymxI_aPE';
-        $Second=new SecondSell();
-        $news= $Second->second_info_send('hotel', '明清宫苑+梦幻谷+贵宾楼',$openid,'asdafds');
+    {
+        $openid='d3228mRSj4ObBLjaMl0zjGNcZOK7k8N7TZXRu7DEFIgoKi8zBaRM6RKiUSLIGmDHJ9SoqCEz[a]TkA';
+        $sellid='V1611220022';
+        $usage = new Usage();
+        $order = new Order();
 
-        return $news;*/
+        $eventkey = '';
+        $focusdate = '';
 
-        dd(starts_with('1This is my name', 'This'));
+        $openId = $usage->authcode($openid, 'DECODE', 0);
+        if ($usage->get_openid_info($openId)) {
+            $eventkey = $usage->get_openid_info($openId)->eventkey;     //获取客人所属市场
+            $focusdate = $usage->get_openid_info($openId)->adddate;     //获取客人关注时间
+        }
 
-//        return $content;
-/*
-        $content = new News();
-        $content->title = "laravel-wechat";
-        $content->description = "测试";
-        $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
-        $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-        $aaaa[]=$content;
-//        return $aaaa;
-          $result=$app->staff->message($aaaa)->by('1001@u_hengdian')->to($openid)->send();
-        return $result;*/
+        $name = $order->get_order_detail($sellid)['name'];            //获取客人姓名
+        $phone = $order->get_order_detail($sellid)['phone'];          //获取客人电话
+        $arrive_date = $order->get_order_detail($sellid)['date'];     //获取客人与大日期
+   //     $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
+
+        DB::table('wx_order_confirm')
+            ->insert(['wx_openid' => $openId, 'sellid' => $sellid, 'order_name' => $name, 'tel' => $phone,
+                'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
     }
 
 
