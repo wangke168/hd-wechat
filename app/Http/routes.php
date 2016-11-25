@@ -53,7 +53,7 @@ Route::get('/info/{sellid}/{openid?}', 'ArticlesController@info');
 
 //菜单及自定义菜单
 Route::get('/menu/add','MenuController@add');
-
+Route::get('/menu/index','MenuController@index');
 /*{
     if ($openid)
     return $openid;

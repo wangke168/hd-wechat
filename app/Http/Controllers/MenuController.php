@@ -21,6 +21,12 @@ class MenuController extends Controller
 //        $this->usage = new Usage();
     }
 
+    public function index()
+    {
+        $menus = $this->menu->current();
+        return $menus;
+    }
+
     public function add()
     {
         $buttons = [
