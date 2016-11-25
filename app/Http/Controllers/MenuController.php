@@ -97,7 +97,7 @@ class MenuController extends Controller
         ];
 
         $matchRule = [
-            "group_id"             => "173",
+            "group_id"             => "173"
         ];
 
         $this->menu->add($buttons, $matchRule);
