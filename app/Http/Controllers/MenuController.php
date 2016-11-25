@@ -23,7 +23,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menus = $this->menu->current();
+        $menus = $this->menu->all();
         return $menus;
     }
 
