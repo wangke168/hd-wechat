@@ -36,7 +36,7 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 
 
 
-Route::get('/articles', 'ArticlesController@index');
+//Route::get('/articles', 'ArticlesController@index');
 Route::get('/article', 'ArticlesController@detail');
 
 //预约系统
