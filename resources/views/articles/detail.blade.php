@@ -29,11 +29,7 @@
 
 </head>
 <body>
-<?php
-$count=new \App\WeChat\Count();
-    //    $count->add_article_hits($id);
-        $count->insert_hits($id,$openid);
-?>
+
 
 <div id="main">
 
