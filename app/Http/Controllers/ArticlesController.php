@@ -103,9 +103,9 @@ class ArticlesController extends Controller
             DB::table('a_test')
                 ->insert(['test'=>$temp_rando]);
             $this->count->add_article_hits($id);
-            $this->count->insert_hits($id,$openid);
-
-            return view('articles.detail', compact('article', 'id', 'openid'));
+            if($this->count->insert_hits($id,$openid)) {
+                return view('articles.detail', compact('article', 'id', 'openid'));
+            }
         }
     }
 

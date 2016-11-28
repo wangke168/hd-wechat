@@ -31,8 +31,9 @@ class Count
      */
     public function insert_hits($id,$openid)
     {
-        DB::table('wx_article_hits')
+        $row=DB::table('wx_article_hits')
             ->insert(['article_id'=>$id,'wx_openid'=>$openid]);
+        return $row;
     }
 
     /*
