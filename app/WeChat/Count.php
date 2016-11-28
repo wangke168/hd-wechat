@@ -33,8 +33,6 @@ class Count
     {
         DB::table('wx_article_hits')
             ->insert(['article_id'=>$id,'wx_openid'=>$openid]);
-
-        return 'aaa';
     }
 
     /*
