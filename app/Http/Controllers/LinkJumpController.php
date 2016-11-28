@@ -13,10 +13,10 @@ class LinkJumpController extends Controller
     public function index($id, $openid)
     {
 
-        $count=new Count();
+        /*$count=new Count();
         $count->add_article_hits($id);
-        $count->insert_hits($id,$openid);
-//        $this->addclick($id,$openid);
+        $count->insert_hits($id,$openid);*/
+        $this->addclick($id,$openid);
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $uid = $usage->get_uid($openid);
