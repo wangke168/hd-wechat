@@ -112,7 +112,7 @@ class ArticlesController extends Controller
     }
 
 
- 
+
 
     public function info()
     {

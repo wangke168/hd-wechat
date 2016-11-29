@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/articles/detail.blade.php" afterPath="$PROJECT_DIR$/resources/views/articles/detail.blade.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -46,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67254174">
-              <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+            <state vertical-scroll-proportion="62.5">
+              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding>
                 <element signature="e#40#71#0#PHP" expanded="true" />
               </folding>
@@ -110,13 +108,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.807692">
-              <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.57977736">
+              <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1480386107000" expanded="true" signature="2525:2889" placeholder="..." />
+                <marker date="1480386107000" expanded="true" signature="2897:2983" placeholder="..." />
+                <marker date="1480386107000" expanded="true" signature="3234:3273" placeholder="..." />
+                <marker date="1480386107000" expanded="true" signature="3281:3316" placeholder="..." />
+                <marker date="1480386107000" expanded="true" signature="3516:3681" placeholder="..." />
+                <marker date="1480386107000" expanded="true" signature="3522:3673" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -172,8 +176,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/LinkJumpController.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Count.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/resources/views/articles/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
+        <option value="$PROJECT_DIR$/resources/views/articles/detail.blade.php" />
       </list>
     </option>
   </component>
@@ -976,22 +980,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.807692">
-          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+        <state vertical-scroll-proportion="62.5">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#40#71#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67254174">
-          <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.57977736">
+          <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
           <folding>
-            <element signature="e#40#71#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1480386107000" expanded="true" signature="2525:2889" placeholder="..." />
+            <marker date="1480386107000" expanded="true" signature="2897:2983" placeholder="..." />
+            <marker date="1480386107000" expanded="true" signature="3234:3273" placeholder="..." />
+            <marker date="1480386107000" expanded="true" signature="3281:3316" placeholder="..." />
+            <marker date="1480386107000" expanded="true" signature="3516:3681" placeholder="..." />
+            <marker date="1480386107000" expanded="true" signature="3522:3673" placeholder="..." />
           </folding>
         </state>
       </provider>
