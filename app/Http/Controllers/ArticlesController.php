@@ -107,9 +107,12 @@ class ArticlesController extends Controller
             $this->count->add_article_hits($id);
             $this->count->insert_hits($id,$openid);
 
-            return view('articles.detail', compact('article', 'id', 'openid'));
+            return view('articles.detail', compact('article', 'id', 'openid','temp_rando'));
         }
     }
+
+
+ 
 
     public function info()
     {

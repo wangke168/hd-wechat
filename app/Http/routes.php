@@ -46,9 +46,9 @@ Route::get('/zone/ldjl/{openid}','ZoneController@test');
 
 
 
-Route::get('/info', 'ArticlesController@info');
+/*Route::get('/info', 'ArticlesController@info');
 Route::get('/queue','ArticlesController@queue');
-Route::get('/info/{sellid}/{openid?}', 'ArticlesController@info');
+Route::get('/info/{sellid}/{openid?}', 'ArticlesController@info');*/
 
 
 //菜单及自定义菜单

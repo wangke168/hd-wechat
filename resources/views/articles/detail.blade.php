@@ -62,7 +62,7 @@
         </div>
         <div>©2013-2014 横店影视城 版权所有</div>
     </div>
-
+<input type="text"  value="{!! temp_rando !!}"  style="display:none" >
 </div>
 </body>
 
