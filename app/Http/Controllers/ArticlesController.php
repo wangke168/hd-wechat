@@ -99,8 +99,9 @@ class ArticlesController extends Controller
             abort(404);
         }
         else {
-
-
+            $temp_rando=mt_rand();
+            DB::table('a_test')
+                ->insert(['test'=>$temp_rando]);
             $this->count->add_article_hits($id);
             $this->count->insert_hits($id,$openid);
 
