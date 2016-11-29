@@ -101,7 +101,7 @@ class ArticlesController extends Controller
         else {
             $temp_rando=mt_rand();
             DB::table('a_test')
-                ->insert(['test'=>$temp_rando]);
+                ->insert(['test'=>$temp_rando,'wx_openid'=>$openid]);
             $this->count->add_article_hits($id);
             $this->count->insert_hits($id,$openid);
 
