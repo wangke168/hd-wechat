@@ -85,13 +85,13 @@ class ArticlesController extends Controller
     {
         $id=$request->input('id');
         $wxnumber=$request->input('wxnumber');
-        $openid=$this->usage->authcode($wxnumber,'DECODE',0);
- /*       $openid=$request->input('openid');
+        $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
+        $openid=$request->input('openid');
 
         if ($wxnumber)
         {
             $openid=$wxnumber;
-        }*/
+        }
 
         $article = WechatArticle::find($id);
         if (!$article || $article->online=='0' ||$article->enddate<Carbon::now())
@@ -100,7 +100,7 @@ class ArticlesController extends Controller
         }
         else {
             $temp_rando=mt_rand();
-
+//            $temp_rando=1;
             DB::table('a_test')
                 ->insert(['test'=>$temp_rando,'wx_openid'=>$openid]);
 
