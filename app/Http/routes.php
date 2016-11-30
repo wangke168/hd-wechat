@@ -39,6 +39,8 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 //Route::get('/articles', 'ArticlesController@index');
 Route::get('/article', 'ArticlesController@detail');
 
+Route::get('/article_test','ArticleController@test');
+
 //预约系统
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');

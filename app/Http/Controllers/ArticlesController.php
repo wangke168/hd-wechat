@@ -112,6 +112,15 @@ class ArticlesController extends Controller
     }
 
 
+    public function test()
+    {
+        $temp_rando=mt_rand();
+//            $temp_rando=1;
+        DB::table('a_test')
+            ->insert(['test'=>$temp_rando,'wx_openid'=>'sadasedsa']);
+        $this->count->insert_hits('1290','sadasedsa');
+        return $temp_rando;
+    }
 
 
     public function info()
