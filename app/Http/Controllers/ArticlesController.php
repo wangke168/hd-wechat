@@ -112,14 +112,25 @@ class ArticlesController extends Controller
     }
 
 
-    public function test()
+    public function second_article_detail(Request $request)
     {
-        $temp_rando=mt_rand();
-//            $temp_rando=1;
-        DB::table('a_test')
-            ->insert(['test'=>$temp_rando,'wx_openid'=>'sadasedsa']);
-        $this->count->insert_hits('1290','sadasedsa');
-        return $temp_rando;
+        $id=$request->input('id');
+        $wxnumber=$request->input('wxnumber');
+        $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
+        $openid=$request->input('openid');
+        if ($wxnumber)
+        {
+            $openid=$wxnumber;
+        }
+
+        $article = WechatArticle::find($id);
+        if (!$article || $article->online=='0' ||$article->enddate<Carbon::now())
+        {
+            abort(404);
+        }
+        else {
+            return view('articles.detail', compact('article', 'id', 'openid','temp_rando'));
+        }
     }
 
 
