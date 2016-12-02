@@ -61,11 +61,25 @@ class ArticlesController extends Controller
         $row=DB::table('se_info_detail')
             ->where('id',$info_id)
             ->first();
+
+        $this->count->insert_hits('1285',$openid);
         $url='http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl='.$row->article_url;
         return redirect($url);
     }
 
-
+    public function second_article_detail(Request $request)
+    {
+        $id=$request->input('id');
+        $openid=$request->input('openid');
+        $article = WechatArticle::find($id);
+        if (!$article || $article->online=='0' ||$article->enddate<Carbon::now())
+        {
+            abort(404);
+        }
+        else {
+            return view('articles.seconddetail', compact('article', 'id', 'openid'));
+        }
+    }
 
 
     public function index()
@@ -112,26 +126,7 @@ class ArticlesController extends Controller
     }
 
 
-    public function second_article_detail(Request $request)
-    {
-        $id=$request->input('id');
-        $wxnumber=$request->input('wxnumber');
-        $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
-        $openid=$request->input('openid');
-        if ($wxnumber)
-        {
-            $openid=$wxnumber;
-        }
 
-        $article = WechatArticle::find($id);
-        if (!$article || $article->online=='0' ||$article->enddate<Carbon::now())
-        {
-            abort(404);
-        }
-        else {
-            return view('articles.seconddetail', compact('article', 'id', 'openid'));
-        }
-    }
 
 
     public function info()
