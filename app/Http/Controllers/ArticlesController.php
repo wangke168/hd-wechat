@@ -129,7 +129,7 @@ class ArticlesController extends Controller
             abort(404);
         }
         else {
-            return view('articles.detail', compact('article', 'id', 'openid','temp_rando'));
+            return view('articles.seconddetail', compact('article', 'id', 'openid'));
         }
     }
 
