@@ -61,7 +61,7 @@ class ArticlesController extends Controller
         $row=DB::table('se_info_detail')
             ->where('id',$info_id)
             ->first();
-        $url=$row->article_url;
+        $url='http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl='.$row->article_url;
         return redirect($url);
     }
 
