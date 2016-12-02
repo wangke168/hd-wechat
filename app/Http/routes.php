@@ -23,7 +23,7 @@ Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');
 //二次营销
 Route::get('/secondarticle/{sellid}/{openid}/{info_id}','ArticlesController@second_article');
 //二次营销阅读
-Route::get('/secondarticledetail','ArticlesController@second_article_detail');
+Route::get('/searticledetail','ArticlesController@second_article_detail');
 
 
 Route::get('/', function () {
