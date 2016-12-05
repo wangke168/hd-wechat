@@ -99,10 +99,7 @@ class ArticlesController extends Controller
     {
         $id=$request->input('id');
         $wxnumber=$request->input('wxnumber');
-        $temp_rando=mt_rand();
-//            $temp_rando=1;
-        DB::table('a_test')
-            ->insert(['test'=>$temp_rando,'wx_openid'=>$wxnumber]);
+
         $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
         $openid=$request->input('openid');
 
@@ -117,7 +114,10 @@ class ArticlesController extends Controller
             abort(404);
         }
         else {
-
+            $temp_rando=mt_rand();
+//            $temp_rando=1;
+            DB::table('a_test')
+                ->insert(['test'=>$temp_rando,'wx_openid'=>$openid]);
 
             $this->count->add_article_hits($id);
             $this->count->insert_hits($id,$openid);

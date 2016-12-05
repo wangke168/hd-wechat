@@ -1,15 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Input;
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+
 
 Route::any('/wechat', 'WechatController@serve');
 //输出token
@@ -41,8 +31,7 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 
 //Route::get('/articles', 'ArticlesController@index');
 Route::get('/article', 'ArticlesController@detail');
-Route::get('/aaa','ArticlesController@aaa');
-
+Route::get('/article/detail', 'ArticlesController@detail');
 
 //预约系统
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
