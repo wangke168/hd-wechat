@@ -34,6 +34,9 @@ Route::get('/article', 'ArticlesController@detail');
 
 Route::get('/article/detail', 'ArticlesController@detail');
 
+//预览
+Route::get('/article/review', 'ArticlesController@detail_review');
+
 //预约系统
 Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');

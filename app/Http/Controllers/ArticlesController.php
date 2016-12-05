@@ -104,4 +104,16 @@ class ArticlesController extends Controller
         }
     }
 
+    public function detail_review(Request $request)
+    {
+        $id = $request->input('id');
+
+        $openid = $request->input('openid');
+
+        $article = WechatArticle::find($id);
+
+        return view('articles.detailreview', compact('article', 'id', 'openid'));
+
+    }
+
 }

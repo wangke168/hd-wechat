@@ -54,7 +54,7 @@ class ArticleController extends Controller
 
             $count->insert_hits($id, $openid);
 
-        
+
 
     }
 
