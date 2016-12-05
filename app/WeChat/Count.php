@@ -20,7 +20,7 @@ class Count
     public function add_article_hits($id)
     {
         DB::table('wx_article')
-            ->where('id',$id)
+            ->where('id', $id)
             ->increment('hits');
     }
 
@@ -29,12 +29,31 @@ class Count
      * $id: 文章id
      * $openid
      */
-    public function insert_hits($id,$openid)
+    public function insert_hits($id, $openid)
     {
+
+
         DB::table('wx_article_hits')
-            ->insert(['article_id'=>$id,'wx_openid'=>$openid]);
+            ->insert(['article_id' => $id, 'wx_openid' => $openid]);
 
     }
+
+    public function time_check($id, $openid)
+    {
+        $past_time = Carbon::now()->subSeconds(30);
+        $row = DB::table('wx_article_hits')
+            ->where('article_id', $id)
+            ->where('wx_openid', $openid)
+            ->where('adddate', '>', $past_time)
+            ->orderBy('id', 'desc')
+            ->get();
+        if ($row) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /*
      * 增加转发数 wx_article表中的resp增加
@@ -43,7 +62,7 @@ class Count
     public function add_article_resp($id)
     {
         DB::table('wx_article')
-            ->where('id',$id)
+            ->where('id', $id)
             ->increment('resp');
     }
 
@@ -51,10 +70,10 @@ class Count
      * 插入转发信息 wx_article_res
      *
      */
-    public function insert_resp($id,$openid)
+    public function insert_resp($id, $openid)
     {
         DB::table('wx_article_res')
-            ->insert(['article_id'=>$id,'wx_openid'=>$openid]);
+            ->insert(['article_id' => $id, 'wx_openid' => $openid]);
     }
 
     /*
@@ -63,7 +82,7 @@ class Count
     public function add_article_respf($id)
     {
         DB::table('wx_article')
-            ->where('id',$id)
+            ->where('id', $id)
             ->increment('resp_f');
     }
 
