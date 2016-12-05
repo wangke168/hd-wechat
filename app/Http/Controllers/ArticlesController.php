@@ -62,7 +62,7 @@ class ArticlesController extends Controller
             ->where('id',$info_id)
             ->first();
 
-        $this->count->insert_hits('1285',$openid);
+//        $this->count->insert_hits('1285',$openid);
         $url='http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl='.$row->article_url;
         return redirect($url);
     }
@@ -99,7 +99,7 @@ class ArticlesController extends Controller
     {
         $id=$request->input('id');
         $wxnumber=$request->input('wxnumber');
-//        $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
+        $wxnumber=$this->usage->authcode($wxnumber,'DECODE',0);
         $openid=$request->input('openid');
 
         if ($wxnumber)
