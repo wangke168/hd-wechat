@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
+use App\WeChat\Count;
 use App\WeChat\Order;
 use App\WeChat\SecondSell;
 use App\WeChat\Usage;
@@ -47,21 +48,13 @@ class ArticleController extends Controller
 
     public function time_test()
     {
-        $past_time=Carbon::now()->subSeconds(30);
-        $row=DB::table('wx_article_hits')
-            ->where('article_id','2')
-            ->where('wx_openid','o2e-YuEO9CB4szncvkbtn9ueF2Ec')
-            ->where('adddate','>',$past_time)
-            ->orderBy('id','desc')
-            ->get();
+        $count=new Count();
+        $id='1269';
+        $openid='213123123';
 
-        echo $past_time;
-        if ($row) {
-            return $row;
-        }
-        else{
-            return 'false';
-        }
+            $count->insert_hits($id, $openid);
+
+        
 
     }
 

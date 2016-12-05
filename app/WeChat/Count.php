@@ -32,13 +32,13 @@ class Count
     public function insert_hits($id, $openid)
     {
 
-
-        DB::table('wx_article_hits')
-            ->insert(['article_id' => $id, 'wx_openid' => $openid]);
-
+        if (!$this->time_check($id, $openid)) {
+            DB::table('wx_article_hits')
+                ->insert(['article_id' => $id, 'wx_openid' => $openid]);
+        }
     }
 
-    public function time_check($id, $openid)
+    private function time_check($id, $openid)
     {
         $past_time = Carbon::now()->subSeconds(30);
         $row = DB::table('wx_article_hits')
