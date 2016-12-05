@@ -338,7 +338,7 @@ class Response
 
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                    $url = "http://".$_SERVER['HTTP_HOST']."/article?id=" . $id . "&wxnumber=" . $wxnumber;
+                    $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
 
                 }
 
@@ -731,7 +731,7 @@ class Response
 
                     } else {
 //                        $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                        $url = "http://".$_SERVER['HTTP_HOST']."/article?id=" . $id . "&wxnumber=" . $wxnumber;
+                        $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
 
                     }
                     $new = new News();
