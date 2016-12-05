@@ -96,12 +96,12 @@ class ArticlesController extends Controller
         if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
             abort(404);
         } else {
-            if ($this->count->time_check($id, $openid)) {
+            if (!$this->count->time_check($id, $openid)) {
                 $this->count->add_article_hits($id);
                 $this->count->insert_hits($id, $openid);
             }
             return view('articles.detail', compact('article', 'id', 'openid'));
         }
     }
-    
+
 }
