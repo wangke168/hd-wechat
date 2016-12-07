@@ -54,13 +54,13 @@ class Kernel extends ConsoleKernel
         $schedule->command('UpdateOpenidInfo')
             ->dailyAt('1:00');
 
-        /*更新wx_click_hits中的eventkey
+        /*更新wx_click_hits中的eventkey*/
         $schedule->command('UpdateClickInfo')
-            ->dailyAt('1:30');*/
+            ->dailyAt('1:30');
 
-        /*更新wx_user_esc
+        /*更新wx_user_esc*/
         $schedule->command('UpdateEscInfo')
-            ->dailyAt('2:00');*/
+            ->dailyAt('2:00');
 
 
     }
