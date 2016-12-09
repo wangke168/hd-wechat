@@ -4,8 +4,10 @@
 Route::any('/wechat', 'WechatController@serve');
 //输出token
 Route::get('/hd-token','TokenController@token');
-Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 
+//跳转
+Route::get('/jump/{id}/{openid}','LinkJumpController@index');
+Route::get('/jump/ehengdian','LinkJumpController@jump_dyh');
 //订单相关
 Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');

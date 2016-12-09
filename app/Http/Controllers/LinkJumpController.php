@@ -45,4 +45,10 @@ class LinkJumpController extends Controller
             ->first();
         return $row;
     }
+
+    public function jump_dyh()
+    {
+        $url='http://m.hengdianworld.com/default.aspx?wxnumber=o2e-dyh';
+        return redirect($url);
+    }
 }
