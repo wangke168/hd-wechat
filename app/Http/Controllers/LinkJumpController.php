@@ -48,7 +48,7 @@ class LinkJumpController extends Controller
 
     public function jump_dyh()
     {
-        $url='http://m.hengdianworld.com/default.aspx?wxnumber=o2e-dyh';
+        $url='http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
         return redirect($url);
     }
 }

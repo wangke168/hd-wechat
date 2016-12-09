@@ -48,12 +48,8 @@ class ArticleController extends Controller
 
     public function time_test()
     {
-        $count=new Count();
-        $id='1269';
-        $openid='213123123';
-
-            $count->insert_hits($id, $openid);
-
+        $usage = new Usage();
+        return $usage->authcode('o2e-dyh', 'ENCODE', 0);
 
 
     }
