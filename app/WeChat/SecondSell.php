@@ -25,7 +25,7 @@ class SecondSell
         $rows = DB::table('se_info_detail')
             ->where('online', '1')
             ->where('is_all', '1')
-            ->orderBy('id', 'desc')
+            ->orderBy('sequence', 'asc')
             ->get();
         foreach ($rows as $row) {
             $news = new News();
@@ -43,7 +43,7 @@ class SecondSell
                 $rows = DB::table('se_info_detail')
                     ->where('online', '1')
                     ->where('is_all', '0')
-                    ->orderBy('id', 'desc')
+                    ->orderBy('sequence', 'asc')
                     ->get();
                 foreach ($rows as $row) {
                     if ($row->zone) {
@@ -64,7 +64,7 @@ class SecondSell
                 $rows = DB::table('se_info_detail')
                     ->where('online', '1')
                     ->where('is_all', '0')
-                    ->orderBy('id', 'desc')
+                    ->orderBy('sequence', 'asc')
                     ->get();
                 foreach ($rows as $row) {
                     if ($row->zone) {
@@ -99,7 +99,7 @@ class SecondSell
                 $rows = DB::table('se_info_detail')
                     ->where('online', '1')
                     ->where('is_all', '0')
-                    ->orderBy('id', 'desc')
+                    ->orderBy('sequence', 'asc')
                     ->get();
                 foreach ($rows as $row)
                     if ($row->hotel) {
