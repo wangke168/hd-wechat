@@ -41,29 +41,55 @@ class OrderController extends Controller
     public function confrim($sellid, $openid = null)
     {
 //        $this->dispatch(new ConfrimOrderQueue($sellid,$openid));
-        $usage = new Usage();
-        $order = new Order();
+        if ($this->check_order_confrim($sellid)) {
+            $usage = new Usage();
+            $order = new Order();
 
-        $eventkey = '';
-        $focusdate = '';
+            $eventkey = '';
+            $focusdate = '';
 
-        $openId = $usage->authcode($openid, 'DECODE', 0);
-        if ($usage->get_openid_info($openId)) {
-            $eventkey = $usage->get_openid_info($openId)->eventkey;     //获取客人所属市场
-            $focusdate = $usage->get_openid_info($openId)->adddate;     //获取客人关注时间
+            $openId = $usage->authcode($openid, 'DECODE', 0);
+            if ($usage->get_openid_info($openId)) {
+                $eventkey = $usage->get_openid_info($openId)->eventkey;     //获取客人所属市场
+                $focusdate = $usage->get_openid_info($openId)->adddate;     //获取客人关注时间
+            }
+
+            $name = $order->get_order_detail($sellid)['name'];            //获取客人姓名
+            $phone = $order->get_order_detail($sellid)['phone'];          //获取客人电话
+            $arrive_date = $order->get_order_detail($sellid)['date'];     //获取客人预达日期
+            $adddate = $order->get_order_detail($sellid)['addtime'];     //获取客人预订时间
+            // $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
+
+            DB::table('wx_order_confirm')
+                ->insert(['wx_openid' => $openId, 'sellid' => $sellid, 'order_name' => $name, 'tel' => $phone,
+                    'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'adddate' => $adddate, 'focusdate' => $focusdate]);
         }
-
-        $name = $order->get_order_detail($sellid)['name'];            //获取客人姓名
-        $phone = $order->get_order_detail($sellid)['phone'];          //获取客人电话
-        $arrive_date = $order->get_order_detail($sellid)['date'];     //获取客人与大日期
-       // $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
-
-        DB::table('wx_order_confirm')
-            ->insert(['wx_openid' => $openId, 'sellid' => $sellid, 'order_name' => $name, 'tel' => $phone,
-                'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
     }
 
+    /**
+     * 检查提交订单表中是否已经存在订单号
+     * @param $sellid
+     * @return bool
+     */
+    private function check_order_confrim($sellid)
+    {
+        $row = DB::table('wx_order_confirm')
+            ->where('sellid', $sellid)
+            ->count();
 
+        if ($row == 0) {
+            $flag = true;
+        } else {
+            $flag = false;
+        }
+        return $flag;
+    }
+
+    /**
+     * 检查预订成功表里是否已经存在改订单号
+     * @param $sellid
+     * @return bool
+     */
     private function check_order($sellid)
     {
         $row = DB::table('wx_order_send')
