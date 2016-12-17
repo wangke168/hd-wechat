@@ -44,6 +44,7 @@ Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
 Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');
 Route::get('/zone/ldjl/{openid}','ZoneController@test');
 
+Route::get('/zone/subscribe/ldjl','ZoneController@ldjl');
 
 
 /*Route::get('/info', 'ArticlesController@info');

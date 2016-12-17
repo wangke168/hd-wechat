@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('articles.detail', 'App\Http\ViewComposers\ArticleComposer');
         View::composer('articles.detailreview', 'App\Http\ViewComposers\ArticleComposer');
         View::composer('articles.seconddetail', 'App\Http\ViewComposers\ArticleComposer');
+
+        View::composer('subscribe.ldjl', 'App\Http\ViewComposers\ArticleComposer');
     }
 
     /**
