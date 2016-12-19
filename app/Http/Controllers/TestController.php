@@ -38,7 +38,7 @@ class TestController extends Controller
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
 //            ->whereDate('endtime','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('endtime','>=','2016-11-23')
+            ->whereDate('endtime','>=','2016-12-16')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo) {
@@ -50,7 +50,7 @@ class TestController extends Controller
     {
         $rowEsc=DB::table('wx_user_esc')
 //            ->whereDate('esc_time','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('esc_time','>=','2016-11-23')
+            ->whereDate('esc_time','>=','2016-12-16')
             ->get();
         foreach ($rowEsc as $EscInfo)
         {
@@ -62,7 +62,7 @@ class TestController extends Controller
     {
         $rowClick=DB::table('wx_click_hits')
 //            ->whereDate('adddate','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('adddate','>=','2016-11-23')
+            ->whereDate('adddate','>=','2016-12-16')
             ->get();
         foreach ($rowClick as $clickinfo)
         {
