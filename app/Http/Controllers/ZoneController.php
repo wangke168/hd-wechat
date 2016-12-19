@@ -39,7 +39,8 @@ class ZoneController extends Controller
                 return view('subscribe.ldjl', compact('openid'));
                 break;
         }*/
-
+        $wechat = app('wechat');
+        $js=$wechat->js;
         $usage = new Usage();
         $count=new Count();
         $id = $request->input('id');
@@ -63,7 +64,7 @@ class ZoneController extends Controller
             $count->add_article_hits($id);
             $count->insert_hits($id, $openid);
 
-            return view('subscribe.ldjl', compact('article', 'id', 'openid',$this->js));
+            return view('subscribe.ldjl', compact('article', 'id', 'openid','js'));
         }
     }
 
