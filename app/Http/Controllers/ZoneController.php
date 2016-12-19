@@ -37,11 +37,12 @@ class ZoneController extends Controller
                 return view('subscribe.ldjl', compact('openid'));
                 break;
         }*/
+        $usage = new Usage();
         $id = $request->input('id');
         $id='1358';
         $wxnumber = $request->input('wxnumber');
 
-        $wxnumber = $this->usage->authcode($wxnumber, 'DECODE', 0);
+        $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
         $openid = $request->input('openid');
 
         if ($wxnumber) {
