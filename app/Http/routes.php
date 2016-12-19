@@ -95,7 +95,10 @@ Route::get('/test/updateclickinfo','TestController@update_click_info');
 Route::get('/test/ordersend/{id}/{openid?}','TestController@order_send');
 Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
 
-Route::get('/test/test','Test\ArticleController@time_test');
+Route::get('/test/test','Test\TestController@test');
+
+
+
 
 /*Route::get('article', function(){
 //    $book = Input::get('openid');
