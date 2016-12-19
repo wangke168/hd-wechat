@@ -157,10 +157,7 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('onMenuShareTimeline',
             'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo',
-            'getLocation',
-            'onMenuShareQZone'), false) ?>);
+            'getLocation'), false) ?>);
 
     wx.ready(function () {
 
@@ -193,25 +190,25 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 
         });
         // 7.2 获取当前地理位置
-      /*  wx.getLocation({
+        wx.getLocation({
             success: function (res) {
                 alert(JSON.stringify(res));
-               /!* var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+               /* var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
                 var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 var speed = res.speed; // 速度，以米/每秒计
                 var accuracy = res.accuracy; // 位置精度
-                *!/
+                */
                 $(".info").html("");
                 var weidu = res.latitude; //维度
                 var jingdu = res.longitude;//经度
                 if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
                     $(".info").html("您所在位置:龙帝惊临取号处");
                 }
-                /!*影视城位置以下可注释*!/
+                /*影视城位置以下可注释*/
                 else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
                     $(".info").html("您所在位置:横店影视城有限公司");
                 }
-                /!*影视城位置以上可注释*!/
+                /*影视城位置以上可注释*/
                 else {
                     $(".info").html("您不在龙帝惊临取号范围");
                 }
@@ -221,15 +218,7 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
                 alert('用户拒绝授权获取地理位置');
             }
         });
-        */
-        wx.getLocation({
-            success: function (res) {
-                alert(JSON.stringify(res));
-            },
-            cancel: function (res) {
-                alert('用户拒绝授权获取地理位置');
-            }
-        });
+
     });
 
     wx.error(function (res) {
