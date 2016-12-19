@@ -40,7 +40,7 @@ $project_id = "1";
         })
 
         //定位
-        function gpsdw() {
+   /*     function gpsdw() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showposition, showerror, {
                     // 指示浏览器获取高精度的位置，默认为false
@@ -53,27 +53,27 @@ $project_id = "1";
             } else {
                 alert("非常抱歉,您的浏览器不支持定位功能");
             }
-        }
+        }*/
 
         //输出位置坐标
-        function showposition(position) {
+   /*     function showposition(position) {
             $(".info").html("");
             var weidu = position.coords.latitude;//维度
             var jingdu = position.coords.longitude;//经度
             if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
                 $(".info").html("您所在位置:龙帝惊临取号处");
             }
-            /*影视城位置以下可注释*/
+            /!*影视城位置以下可注释*!/
             else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
                 $(".info").html("您所在位置:横店影视城有限公司");
             }
-            /*影视城位置以上可注释*/
+            /!*影视城位置以上可注释*!/
             else {
                 $(".info").html("您不在龙帝惊临取号范围");
             }
-        }
+        }*/
         //位置读取错误时
-        function showerror(error) {
+      /*  function showerror(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
                     alert("您拒绝了定位申请,请重试");
@@ -89,7 +89,7 @@ $project_id = "1";
                     break;
             }
             $(".info").html("出现错误,请按提示解决");
-        }
+        }*/
 
 
         /*取号*/
@@ -199,6 +199,26 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
         // 7.2 获取当前地理位置
         wx.getLocation({
             success: function (res) {
+
+               /* var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                var speed = res.speed; // 速度，以米/每秒计
+                var accuracy = res.accuracy; // 位置精度
+                */
+                $(".info").html("");
+                var weidu = res.latitude; //维度
+                var jingdu = res.longitude;//经度
+                if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
+                    $(".info").html("您所在位置:龙帝惊临取号处");
+                }
+                /*影视城位置以下可注释*/
+                else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
+                    $(".info").html("您所在位置:横店影视城有限公司");
+                }
+                /*影视城位置以上可注释*/
+                else {
+                    $(".info").html("您不在龙帝惊临取号范围");
+                }
                 alert(JSON.stringify(res));
             },
             cancel: function (res) {
