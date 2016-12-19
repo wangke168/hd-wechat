@@ -157,7 +157,7 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('onMenuShareTimeline',
             'onMenuShareAppMessage',
-            'getLocation'), false) ?>);
+            'getLocation'), true) ?>);
 
     wx.ready(function () {
 
