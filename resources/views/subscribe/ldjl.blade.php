@@ -9,7 +9,7 @@
     <meta name="copyright" content="Copyright &copy; 2013 hengdianworld.com Inc. All Rights Reserved."/>
     <meta name="description" content="掌上横店！掌上横店是国家5A级旅游景区横店影视城的移动门户- m.hengdianworld.com"/>
     <meta name="keywords" content="掌上横店,掌上横店影视城,横店影视城手机版网站"/>
-    <title></title>
+    <title>{{$article->title}}</title>
     <link href="{{asset('css/mbcss.css')}}" rel="stylesheet" type="text/css"/>
     <style type="text/css">
         img {
@@ -19,7 +19,13 @@
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/divheight.js')}}"></script>
 
-
+    <script>
+        $(function () {
+            var awidth = parseInt($(document).width());//获取屏幕的宽度
+            $("iframe").css({"width": "100%"})  //设置宽度
+                    .height(awidth / 4 * 3);  //设置高度
+        })
+    </script>
 
 </head>
 <body>
@@ -34,12 +40,18 @@
 
     </div>
     <div id="title">
-        </div>
+        {{$article->title}}</div>
     <div id="titleinfo">
-        横店影视城 </div>
+        横店影视城 {{$article->adddate}}</div>
     <div id="contents">
 
+        {!!str_replace("/control/editor/attached/image/","http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
 
+        <?php
+        if ($article->show_qr == 1) {
+            echo "<p><img src=\images\market\\" . $article->eventkey . ".jpg width=100%></p>";
+        }
+        ?>
 
     </div>
 
@@ -54,36 +66,67 @@
 </div>
 </body>
 
+<?php
+
+if ($article->pyq_pic == '') {
+    preg_match_all('#<img.*?src="([^"]*)"[^>]*>#i', $article->content, $match);
+    if (count($match[0]) != 0) {
+        $imgUrl = str_replace(' />', '', (str_replace('<img src="', '', $match[0][0])));
+        $imgUrl = str_replace('alt=""', '', $imgUrl);
+        $imgUrl = str_replace('"', '', $imgUrl);
+        $imgUrl = str_replace(' ', '', $imgUrl);
+        $imgUrl = str_replace('<imgsrc=', '', $imgUrl);
+        $imgUrl = "http://weix2.hengdianworld.com" . $imgUrl;
+    } else {
+        $imgUrl = "http://weix2.hengdianworld.com/article/images/pyq_title.jpg";
+    }
+} else {
+    $imgUrl = "http://weix2.hengdianworld.com" . $article->pyq_pic;
+}
+
+$url = \Illuminate\Support\Facades\URL::current() . '?id=' . $id;
+$resp_url = 'http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl=' . $url;
+
+if ($article->pyq_title) {
+    $pyq_title = $article->pyq_title;
+} else {
+    $pyq_title = $article->title;
+}
+?>
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('onMenuShareTimeline',
             'onMenuShareAppMessage',
-            'getLocation'), false) ?>);
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'getLocation',
+            'onMenuShareQZone'), false) ?>);
 
     wx.ready(function () {
 
         wx.onMenuShareAppMessage({
-            title: '秦王宫龙帝惊临智能排队系统', // 分享标题
-            desc: '秦王宫龙帝惊临智能排队系统', // 分享描述
-            link: '秦王宫龙帝惊临智能排队系统', // 分享链接
-            imgUrl: '秦王宫龙帝惊临智能排队系统', // 分享图标
+            title: '<?php echo $pyq_title;?>', // 分享标题
+            desc: '<?php echo $article->description;?>', // 分享描述
+            link: '<?php echo $resp_url;?>', // 分享链接
+            imgUrl: '<?php echo $imgUrl?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                $.get('/count/addrespf/');
+                $.get('/count/addrespf/<?php echo $id;?>/<?php echo $openid;?>');
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
             }
         });
         wx.onMenuShareTimeline({
-            title: '秦王宫龙帝惊临智能排队系统',
-            link: '秦王宫龙帝惊临智能排队系统',
-            imgUrl: '秦王宫龙帝惊临智能排队系统',
+            title: '<?php echo $pyq_title?>',
+            link: '<?php echo $resp_url?>',
+            imgUrl: '<?php echo $imgUrl?>',
             success: function (res) {
 //                alert('已分享');
-                $.get('/count/addresp/');
+                $.get('/count/addresp/<?php echo $id;?>/<?php echo $openid;?>');
             },
             fail: function (res) {
 //                alert(JSON.stringify(res));
@@ -106,4 +149,5 @@
 
 
 </script>
+
 </html>

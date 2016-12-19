@@ -23,7 +23,7 @@ class ZoneController extends Controller
 
     public function ldjl(Request $request)
     {
-        $usage = new Usage();
+ /*       $usage = new Usage();
         $action = $request->input('action');
         $openid = $request->input('wxnumber');
         switch ($action) {
@@ -36,11 +36,28 @@ class ZoneController extends Controller
                 $openid = $usage->authcode($openid, 'ENCODE', 0);
                 return view('subscribe.ldjl', compact('openid'));
                 break;
+        }*/
+        $id = $request->input('id');
+        $id='1358';
+        $wxnumber = $request->input('wxnumber');
+
+        $wxnumber = $this->usage->authcode($wxnumber, 'DECODE', 0);
+        $openid = $request->input('openid');
+
+        if ($wxnumber) {
+            $openid = $wxnumber;
         }
-//        $openid = $usage->authcode($openid, 'ENCODE', 0);
 
+        $article = WechatArticle::find($id);
+        if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
+            abort(404);
+        } else {
 
-//        return view('subscribe.ldjl', ['openid' => $openid]);
+            $this->count->add_article_hits($id);
+            $this->count->insert_hits($id, $openid);
+
+            return view('subscribe.ldjl', compact('article', 'id', 'openid'));
+        }
     }
 
     public function test($openid)
