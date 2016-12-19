@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\WeChat\Tour;
 use App\Http\Requests;
-
+use App\Models\WechatArticle;
 class ZoneController extends Controller
 {
     public $app;
@@ -39,7 +39,7 @@ class ZoneController extends Controller
         }*/
         $usage = new Usage();
         $id = $request->input('id');
-        $id='1153';
+        $id='1345';
         $wxnumber = $request->input('wxnumber');
 
         $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
@@ -52,6 +52,7 @@ class ZoneController extends Controller
         $article = WechatArticle::find($id);
         if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
             abort(404);
+//            return $article;
         } else {
 
             $this->count->add_article_hits($id);
