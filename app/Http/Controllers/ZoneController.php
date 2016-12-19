@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\WeChat\Usage;
+use App\WeChat\Count;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
 use App\WeChat\Tour;
 use App\Http\Requests;
 use App\Models\WechatArticle;
+use Carbon\Carbon;
 class ZoneController extends Controller
 {
     public $app;
@@ -37,26 +39,29 @@ class ZoneController extends Controller
                 return view('subscribe.ldjl', compact('openid'));
                 break;
         }*/
+
         $usage = new Usage();
+        $count=new Count();
         $id = $request->input('id');
-        $id='1345';
+        $id='330';
         $wxnumber = $request->input('wxnumber');
 
         $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
         $openid = $request->input('openid');
-        dd($request->all());
+   
         if ($wxnumber) {
             $openid = $wxnumber;
         }
 
         $article = WechatArticle::find($id);
+
         if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
-            abort(404);
-//            return $article;
+//            abort(404);
+            return $article;
         } else {
 
-            $this->count->add_article_hits($id);
-            $this->count->insert_hits($id, $openid);
+            $count->add_article_hits($id);
+            $count->insert_hits($id, $openid);
 
             return view('subscribe.ldjl', compact('article', 'id', 'openid'));
         }
