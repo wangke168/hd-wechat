@@ -124,10 +124,6 @@ $project_id = "1";
         <div class="info">
             定位中...
         </div>
-        <a class="btn" href="javascript:gpsdw()">
-            <i class="gpsico"></i>
-            定位
-        </a>
     </div>
 </div>
 <div class="overdiv" style="display:none;">
