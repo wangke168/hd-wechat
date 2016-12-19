@@ -48,7 +48,7 @@ class ZoneController extends Controller
 
         $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
         $openid = $request->input('openid');
-   
+
         if ($wxnumber) {
             $openid = $wxnumber;
         }
@@ -63,7 +63,7 @@ class ZoneController extends Controller
             $count->add_article_hits($id);
             $count->insert_hits($id, $openid);
 
-            return view('subscribe.ldjl', compact('article', 'id', 'openid'));
+            return view('subscribe.ldjl', compact('article', 'id', 'openid',$this->js));
         }
     }
 
