@@ -3,15 +3,13 @@
 //require_once("../classes/jssdk.class.php");
 //require_once("../inc/function.php");
 //$fn=$_GET["wxnumber"];
-$fn=$openid;
-if ($fn=="")
-{
-    $show_flag="false";
+$fn = $openid;
+if ($fn == "") {
+    $show_flag = "false";
+} else {
+    $show_flag = "true";
 }
-else{
-    $show_flag="true";
-}
-$project_id="1";
+$project_id = "1";
 //$jssdk=new JSSDK("wx3e632d57ac5dcc68", "5eadb547deeb37ab3fb3f82078bb2663");
 //$signPackage = $jssdk->GetSignPackage();
 ?>
@@ -19,7 +17,7 @@ $project_id="1";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
     <title>{{$openid}}</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
@@ -36,8 +34,8 @@ $project_id="1";
             }
             else {    //不满足取号条件
                 $(".overdiv").show(1)
-                    .find(".closebtn").hide(1)
-                    .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({ "margin-top": "30px" });
+                        .find(".closebtn").hide(1)
+                        .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({"margin-top": "30px"});
             }
         })
 
@@ -96,16 +94,16 @@ $project_id="1";
 
         /*取号*/
         function getqh() {
-            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处")==0) {
+            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") == 0) {
                 $(".overdiv").show(1)
-                    .find(".closebtn").show(1)
-                    .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
+                        .find(".closebtn").show(1)
+                        .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
             } else {
                 $.get('test.php?p_id=<?php echo $project_id?>&fn=<?php echo $fn?>', function (data) {
-                    var content=data;
+                    var content = data;
                     $(".overdiv").show(1)
-                        .find(".closebtn").hide(1)
-                        .nextAll("span").html(content).css({ "margin-top": "30px" });
+                            .find(".closebtn").hide(1)
+                            .nextAll("span").html(content).css({"margin-top": "30px"});
                 });
             }
         }
@@ -121,6 +119,7 @@ $project_id="1";
     <a class="quhaobtn" href="javascript:getqh()">
         点击取号
     </a>
+
     <div class="dwlabel">
         <div class="info">
             定位中...
@@ -143,7 +142,7 @@ $project_id="1";
 </div>
 </body>
 </html>
-<script language="JavaScript" >
+<script language="JavaScript">
     function get_wait() {
         $.get("/zone/subscribe/ldjl/get_subscribe/<?php echo $fn?>", function (data) {
         });
@@ -152,10 +151,66 @@ $project_id="1";
 
 
 <?php
-$pyq_title="秦王宫龙帝惊临智能排队系统";
-$imgUrl="http://weix2.hengdianworld.com/control/editor/attached/image/20160324/20160324130222_32090.jpg";
-$url="http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
+$pyq_title = "秦王宫龙帝惊临智能排队系统";
+$imgUrl = "http://weix2.hengdianworld.com/control/editor/attached/image/20160324/20160324130222_32090.jpg";
+$url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 ?>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    wx.config(<?php echo $js->config(array('onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'getLocation',
+            'onMenuShareQZone'), false) ?>);
+
+    wx.ready(function () {
+
+        wx.onMenuShareAppMessage({
+            title: '<?php echo $pyq_title;?>', // 分享标题
+            desc: '<?php echo $article->description;?>', // 分享描述
+            link: '<?php echo $resp_url;?>', // 分享链接
+            imgUrl: '<?php echo $imgUrl?>', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                $.get('/count/addrespf/<?php echo $id;?>/<?php echo $openid;?>');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareTimeline({
+            title: '<?php echo $pyq_title?>',
+            link: '<?php echo $resp_url?>',
+            imgUrl: '<?php echo $imgUrl?>',
+            success: function (res) {
+//                alert('已分享');
+                $.get('/count/addresp/<?php echo $id;?>/<?php echo $openid;?>');
+            },
+            fail: function (res) {
+//                alert(JSON.stringify(res));
+            }
+
+        });
+        // 7.2 获取当前地理位置
+        wx.getLocation({
+            success: function (res) {
+                alert(JSON.stringify(res));
+            },
+            cancel: function (res) {
+                alert('用户拒绝授权获取地理位置');
+            }
+        });
+
+    });
+
+    wx.error(function (res) {
+        alert(res.errMsg);
+    });
+
+
+</script>

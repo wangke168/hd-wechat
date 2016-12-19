@@ -45,6 +45,7 @@ class AutoSendShowInfo extends Command
         $app=app('wechat');
         $zone=new Tour();
         $row=DB::table('tour_project_info')
+            ->where('is_push','1')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $result) {
