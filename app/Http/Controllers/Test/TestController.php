@@ -36,8 +36,8 @@ class TestController extends Controller
                     foreach ($row1 as $send_openid) {
                         $content = new Text();
                         $content->content = "您好，" . $zone->get_zone_name($result->zone_id,'1') . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-//                        $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
-                        return $content;
+                        $app->staff->message($content)->by('1001@u_hengdian')->to('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->send();
+//                        return $content;
                     }
 
 
@@ -57,8 +57,8 @@ class TestController extends Controller
                             foreach ($row2 as $send_openid) {
                                 $content = new Text();
                                 $content->content = "您好，" . $zone->get_zone_name($result->zone_id,'1') . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-//                                $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
-                                return $content;
+                                $app->staff->message($content)->by('1001@u_hengdian')->to('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->send();
+//                                return $content;
                             }
                         }
                     }
