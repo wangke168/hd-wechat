@@ -29,10 +29,7 @@ $project_id = "1";
 
         //页面加载后即开始第一次定位
         $(function () {
-            if (qhterm) {   //满足取号条件,开始定位
-                gpsdw();
-            }
-            else {    //不满足取号条件
+            if (!qhterm)  {    //不满足取号条件
                 $(".overdiv").show(1)
                         .find(".closebtn").hide(1)
                         .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({"margin-top": "30px"});
@@ -40,7 +37,7 @@ $project_id = "1";
         })
 
         //定位
-        function gpsdw() {
+   /*     function gpsdw() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showposition, showerror, {
                     // 指示浏览器获取高精度的位置，默认为false
@@ -53,27 +50,27 @@ $project_id = "1";
             } else {
                 alert("非常抱歉,您的浏览器不支持定位功能");
             }
-        }
+        }*/
 
         //输出位置坐标
-        function showposition(position) {
+   /*     function showposition(position) {
             $(".info").html("");
             var weidu = position.coords.latitude;//维度
             var jingdu = position.coords.longitude;//经度
             if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
                 $(".info").html("您所在位置:龙帝惊临取号处");
             }
-            /*影视城位置以下可注释*/
+            /!*影视城位置以下可注释*!/
             else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
                 $(".info").html("您所在位置:横店影视城有限公司");
             }
-            /*影视城位置以上可注释*/
+            /!*影视城位置以上可注释*!/
             else {
                 $(".info").html("您不在龙帝惊临取号范围");
             }
-        }
+        }*/
         //位置读取错误时
-        function showerror(error) {
+      /*  function showerror(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
                     alert("您拒绝了定位申请,请重试");
@@ -89,7 +86,7 @@ $project_id = "1";
                     break;
             }
             $(".info").html("出现错误,请按提示解决");
-        }
+        }*/
 
 
         /*取号*/
@@ -124,10 +121,6 @@ $project_id = "1";
         <div class="info">
             定位中...
         </div>
-        <a class="btn" href="javascript:gpsdw()">
-            <i class="gpsico"></i>
-            定位
-        </a>
     </div>
 </div>
 <div class="overdiv" style="display:none;">
@@ -157,56 +150,45 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 ?>
 
 
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('onMenuShareTimeline',
             'onMenuShareAppMessage',
             'onMenuShareQQ',
             'onMenuShareWeibo',
-            'getLocation',
             'onMenuShareQZone'), false) ?>);
 
     wx.ready(function () {
 
         wx.onMenuShareAppMessage({
-            title: '龙帝惊临智能预约系统', // 分享标题
-            desc: '龙帝惊临智能预约系统', // 分享描述
-            link: 'link', // 分享链接
-            imgUrl: 'imgUrl', // 分享图标
+            title: '秦王宫龙帝惊临智能排队系统', // 分享标题
+            desc: '秦王宫龙帝惊临智能排队系统', // 分享描述
+            link: '秦王宫龙帝惊临智能排队系统', // 分享链接
+            imgUrl: '秦王宫龙帝惊临智能排队系统', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                $.get('/count/addrespf/');
+                $.get('/count/addrespf/<?php echo $openid;?>');
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
             }
         });
         wx.onMenuShareTimeline({
-            title: '龙帝惊临智能预约系统',
-            link: '龙帝惊临智能预约系统',
-            imgUrl: 'imgUrl',
+            title: '秦王宫龙帝惊临智能排队系统',
+            link: '秦王宫龙帝惊临智能排队系统',
+            imgUrl: '秦王宫龙帝惊临智能排队系统',
             success: function (res) {
 //                alert('已分享');
-                $.get('/count/addresp/');
+                $.get('/count/addresp/<?php echo $openid;?>');
             },
             fail: function (res) {
 //                alert(JSON.stringify(res));
             }
 
         });
-        // 7.2 获取当前地理位置
-        wx.getLocation({
-            success: function (res) {
-                
-                alert(JSON.stringify(res));
-            },
-            cancel: function (res) {
-                alert('用户拒绝授权获取地理位置');
-            }
-        });
-
     });
 
     wx.error(function (res) {
