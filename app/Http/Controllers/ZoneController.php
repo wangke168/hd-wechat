@@ -39,12 +39,12 @@ class ZoneController extends Controller
         }*/
         $usage = new Usage();
         $id = $request->input('id');
-        $id='1358';
+        $id='1153';
         $wxnumber = $request->input('wxnumber');
 
         $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
         $openid = $request->input('openid');
-
+        dd($request->all());
         if ($wxnumber) {
             $openid = $wxnumber;
         }
