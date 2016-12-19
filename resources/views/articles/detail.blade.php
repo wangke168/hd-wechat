@@ -100,6 +100,7 @@ if ($article->pyq_title) {
             'onMenuShareAppMessage',
             'onMenuShareQQ',
             'onMenuShareWeibo',
+            'getLocation',
             'onMenuShareQZone'), false) ?>);
 
     wx.ready(function () {
@@ -131,6 +132,14 @@ if ($article->pyq_title) {
 //                alert(JSON.stringify(res));
             }
 
+        });
+        wx.getLocation({
+            success: function (res) {
+                alert(JSON.stringify(res));
+            },
+            cancel: function (res) {
+                alert('用户拒绝授权获取地理位置');
+            }
         });
     });
 
