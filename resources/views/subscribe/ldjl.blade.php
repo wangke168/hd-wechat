@@ -14,7 +14,8 @@ $project_id = "1";
 //$signPackage = $jssdk->GetSignPackage();
 ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-hans">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
@@ -134,7 +135,7 @@ $project_id = "1";
     </div>
 </div>
 </body>
-</html>
+
 <script language="JavaScript">
     function get_wait() {
         $.get("/zone/subscribe/ldjl/get_subscribe/<?php echo $fn?>", function (data) {
@@ -197,3 +198,4 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 
 
 </script>
+</html>
