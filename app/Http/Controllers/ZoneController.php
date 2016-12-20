@@ -25,7 +25,7 @@ class ZoneController extends Controller
 
     public function ldjl(Request $request)
     {
- /*       $usage = new Usage();
+        $usage = new Usage();
         $action = $request->input('action');
         $openid = $request->input('wxnumber');
         switch ($action) {
@@ -38,8 +38,8 @@ class ZoneController extends Controller
                 $openid = $usage->authcode($openid, 'ENCODE', 0);
                 return view('subscribe.ldjl', compact('openid'));
                 break;
-        }*/
-        $wechat = app('wechat');
+        }
+  /*      $wechat = app('wechat');
         $js=$wechat->js;
         $usage = new Usage();
         $count=new Count();
@@ -66,6 +66,7 @@ class ZoneController extends Controller
 
             return view('subscribe.ldjl', compact('article', 'id', 'openid','js'));
         }
+  */
     }
 
     public function test($openid)
