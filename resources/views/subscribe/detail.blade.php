@@ -1,3 +1,14 @@
+<?php
+
+$fn = $openid;
+if ($fn == "") {
+    $show_flag = "false";
+} else {
+    $show_flag = "true";
+}
+$project_id = "1";
+
+?>
 <!DOCTYPE html>
 <html lang="zh-hans">
 <head id="Head2">
@@ -21,9 +32,10 @@
     <script type="text/javascript" src="{{asset('js/divheight.js')}}"></script>
 
     <script>
- 
 
-     var qhterm=true;
+        var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
+
+//     var qhterm=true;
         //页面加载后即开始第一次定位
         $(function () {
             if (!qhterm)  {    //不满足取号条件
