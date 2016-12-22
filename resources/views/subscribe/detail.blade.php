@@ -10,7 +10,8 @@
     <meta name="description" content="掌上横店！掌上横店是国家5A级旅游景区横店影视城的移动门户- m.hengdianworld.com"/>
     <meta name="keywords" content="掌上横店,掌上横店影视城,横店影视城手机版网站"/>
     <title>{{$article->title}}</title>
-    <link href="{{asset('css/mbcss.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <style type="text/css">
         img {
             max-width: 100%;
