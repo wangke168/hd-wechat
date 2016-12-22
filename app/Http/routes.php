@@ -104,7 +104,7 @@ Route::get('temp',function(){
 
 
 Route::get('temp1',function(){
-    return Redirect::to('http://w.unclewang.me/article/detail?id=1361');
+    return Redirect::to('http://w.unclewang.me/article/detail?id=1152');
 });
 
 
