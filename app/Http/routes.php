@@ -103,6 +103,10 @@ Route::get('temp',function(){
 });
 
 
+Route::get('temp1',function(){
+    return Redirect::to('http://w.unclewang.me/article/detail?id=1361');
+});
+
 
 /*Route::get('article', function(){
 //    $book = Input::get('openid');
