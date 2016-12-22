@@ -98,6 +98,8 @@ Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
 
 Route::get('/test/test','Test\TestController@test');
 
+Route::get('/test/article/detail', 'Test\TestController@detail_test');
+
 Route::get('temp',function(){
     return Redirect::to('http://w.unclewang.me/zone/subscribe/ldjl?comefrom=1&wxnumber=f764R1Xw49kFEKrCNbiXfw7lYjeHzBlSgjGw98IX8[a]63226WuP4D9pTQ3rGph6j[c]4ccyH1hulpBW&uid=&wpay=1');
 });

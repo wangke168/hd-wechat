@@ -8,7 +8,10 @@ use App\WeChat\Tour;
 use App\WeChat\Usage;
 use EasyWeChat\Message\Text;
 use DB;
+use App\Models\WechatArticle;
+use Illuminate\Http\Request;
 use App\Http\Requests;
+use Carbon\Carbon;
 
 class TestController extends Controller
 {
@@ -68,4 +71,30 @@ class TestController extends Controller
             }
         }
     }
+
+
+     public function detail_test(Request $request)
+     {
+         $id = $request->input('id');
+         $wxnumber = $request->input('wxnumber');
+        $usage=new Usage();
+         $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
+         $openid = $request->input('openid');
+
+         if ($wxnumber) {
+             $openid = $wxnumber;
+         }
+
+         $article = WechatArticle::find($id);
+         if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
+             abort(404);
+         } else {
+
+      /*       $this->count->add_article_hits($id);
+             $this->count->insert_hits($id, $openid);*/
+
+             return view('subscribe.detail', compact('article', 'id', 'openid'));
+         }
+     }
+
 }
