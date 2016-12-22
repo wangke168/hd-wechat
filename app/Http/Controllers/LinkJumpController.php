@@ -13,7 +13,7 @@ class LinkJumpController extends Controller
     public function index($id, $openid)
     {
 
-        /*$count=new Count();
+        $count=new Count();
         $count->add_article_hits($id);
         $count->insert_hits($id,$openid);
 //        $this->addclick($id,$openid);
@@ -21,12 +21,12 @@ class LinkJumpController extends Controller
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $uid = $usage->get_uid($openid);
         $url = $this->get_url($id)->url;
-        if (strstr($url, '?') != '') {
+     /*   if (strstr($url, '?') != '') {
             $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
         } else {
             $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
         }*/
-        return redirect('http://w.unclewang.me/test/article/detail');
+        return redirect($url);
     }
 
     private function addclick($id, $openid)
