@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +27,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74489796">
-              <caret line="106" column="30" selection-start-line="106" selection-start-column="30" selection-end-line="106" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.7899628">
+              <caret line="101" column="69" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -47,7 +47,7 @@
       <file leaf-file-name="jssdk.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.094339">
+            <state vertical-scroll-proportion="-4.716981">
               <caret line="527" column="12" selection-start-line="527" selection-start-column="12" selection-end-line="534" selection-end-column="15" />
               <folding />
             </state>
@@ -69,8 +69,8 @@
       <file leaf-file-name="LinkJumpController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LinkJumpController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.076923">
-              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="30" />
+            <state vertical-scroll-proportion="-18.26923">
+              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -79,8 +79,8 @@
       <file leaf-file-name="ArticlesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.377358">
-              <caret line="102" column="76" selection-start-line="102" selection-start-column="76" selection-end-line="102" selection-end-column="76" />
+            <state vertical-scroll-proportion="-3.8301888">
+              <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="69" />
               <folding>
                 <element signature="e#40#61#0#PHP" expanded="true" />
               </folding>
@@ -103,8 +103,8 @@
       <file leaf-file-name="detail.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.8301888">
-              <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+            <state vertical-scroll-proportion="-0.9433962">
+              <caret line="102" column="26" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -182,12 +182,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/AutoSendShowInfo.php" />
         <option value="$PROJECT_DIR$/resources/views/test/jssdk.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/articles/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ZoneController.php" />
         <option value="$PROJECT_DIR$/resources/views/subscribe/ldjl.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LinkJumpController.php" />
+        <option value="$PROJECT_DIR$/resources/views/articles/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
       </list>
     </option>
@@ -450,46 +450,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hd-wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Console" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hd-wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Console" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -503,7 +463,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../lesson" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="res&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/Response.php&#10;re&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/Response.php&#10;sec&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/SecondSell.php&#10;link&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;li&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;ar&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jump&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;we&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;keymap&#9;ACTION&#9;Help.KeymapReference&#10;rout&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/routes.php&#10;testc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/TestController.php&#10;artic&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jum&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;sendo&#9;null&#9;null&#10;linkju&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;resp&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;env&#9;FILE&#9;file:///var/www/hd-wechat/.env&#10;orderc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/OrderController.php&#10;art&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;updatees&#9;null&#9;null&#10;queue&#9;FILE&#9;file:///var/www/hd-wechat/config/queue.php&#10;GetSignPackage&#9;null&#9;null&#10;app.&#9;FILE&#9;file:///var/www/hd-wechat/config/app.php&#10;queuec&#9;null&#9;null&#10;us&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Usage.php&#10;arti&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;weather&#9;null&#9;null&#10;respo&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;Us&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Usage.php&#10;serve&#9;null&#9;null&#10;user&#9;FILE&#9;file://E:/Project/Laravel5/app/Http/Controllers/UserController.php" />
+    <property name="SearchEverywhereHistoryKey" value="deta&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/resources/views/articles/detail.blade.php&#10;res&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/Response.php&#10;re&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/Response.php&#10;sec&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/SecondSell.php&#10;link&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;li&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;ar&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jump&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;we&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;keymap&#9;ACTION&#9;Help.KeymapReference&#10;rout&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/routes.php&#10;testc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/TestController.php&#10;artic&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jum&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;sendo&#9;null&#9;null&#10;linkju&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;resp&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;env&#9;FILE&#9;file:///var/www/hd-wechat/.env&#10;orderc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/OrderController.php&#10;art&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;updatees&#9;null&#9;null&#10;queue&#9;FILE&#9;file:///var/www/hd-wechat/config/queue.php&#10;GetSignPackage&#9;null&#9;null&#10;app.&#9;FILE&#9;file:///var/www/hd-wechat/config/app.php&#10;queuec&#9;null&#9;null&#10;us&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Usage.php&#10;arti&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;weather&#9;null&#9;null&#10;respo&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;Us&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Usage.php&#10;serve&#9;null&#9;null&#10;user&#9;FILE&#9;file://E:/Project/Laravel5/app/Http/Controllers/UserController.php" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="SearchEverywhereHistory" value="uid&#10;respo&#10;usag&#10;ordercon&#10;authcode&#10;keymap&#10;keymaps&#10;resp" />
@@ -622,7 +582,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3886926" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38849556" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1018,24 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.377358">
-          <caret line="102" column="76" selection-start-line="102" selection-start-column="76" selection-end-line="102" selection-end-column="76" />
-          <folding>
-            <element signature="e#40#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.094339">
-          <caret line="527" column="12" selection-start-line="527" selection-start-column="12" selection-end-line="534" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-27.884615">
@@ -1072,26 +1014,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/test/jssdk.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8301888">
-          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+        <state vertical-scroll-proportion="-4.716981">
+          <caret line="527" column="12" selection-start-line="527" selection-start-column="12" selection-end-line="534" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8301888">
+          <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="69" />
+          <folding>
+            <element signature="e#40#61#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LinkJumpController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.076923">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="30" />
+        <state vertical-scroll-proportion="-18.26923">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9433962">
+          <caret line="102" column="26" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74489796">
-          <caret line="106" column="30" selection-start-line="106" selection-start-column="30" selection-end-line="106" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.7899628">
+          <caret line="101" column="69" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="69" />
           <folding />
         </state>
       </provider>
