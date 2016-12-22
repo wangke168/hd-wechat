@@ -27,8 +27,12 @@ class LinkJumpController extends Controller
              } else {
                  $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
              }
+             return redirect($url);
          }
-        return redirect($url);
+        else{
+            return redirect($url."&wxnumber={$wxnumber}");
+        }
+
     }
 
     private function addclick($id, $openid)
