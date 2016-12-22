@@ -9,7 +9,7 @@
     <meta name="copyright" content="Copyright &copy; 2013 hengdianworld.com Inc. All Rights Reserved."/>
     <meta name="description" content="掌上横店！掌上横店是国家5A级旅游景区横店影视城的移动门户- m.hengdianworld.com"/>
     <meta name="keywords" content="掌上横店,掌上横店影视城,横店影视城手机版网站"/>
-    <title>{{$article->title}}</title>
+    <title>龙帝惊临预约</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <style type="text/css">
@@ -96,6 +96,20 @@
         wx.getLocation({
             success: function (res) {
                 alert(JSON.stringify(res));
+                $(".info").html("");
+                var weidu = res.latitude; //维度
+                var jingdu = res.longitude;//经度
+                if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
+                    $(".info").html("您所在位置:龙帝惊临取号处");
+                }
+                /*影视城位置以下可注释*/
+                else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
+                    $(".info").html("您所在位置:横店影视城有限公司");
+                }
+                /*影视城位置以上可注释*/
+                else {
+                    $(".info").html("您不在龙帝惊临取号范围");
+                }
             },
             cancel: function (res) {
                 alert('用户拒绝授权获取地理位置');
