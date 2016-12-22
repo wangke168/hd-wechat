@@ -133,7 +133,7 @@ $project_id = "1";
         });
         wx.getLocation({
             success: function (res) {
-                alert(JSON.stringify(res));
+//                alert(JSON.stringify(res));
                 $(".info").html("");
                 var weidu = res.latitude; //维度
                 var jingdu = res.longitude;//经度
