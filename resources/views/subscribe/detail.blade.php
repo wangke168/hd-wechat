@@ -65,27 +65,27 @@
     wx.ready(function () {
 
         wx.onMenuShareAppMessage({
-            title: '<?php echo $pyq_title;?>', // 分享标题
-            desc: '<?php echo $article->description;?>', // 分享描述
-            link: '<?php echo $resp_url;?>', // 分享链接
-            imgUrl: '<?php echo $imgUrl?>', // 分享图标
+            title: '', // 分享标题
+            desc: '', // 分享描述
+            link: '', // 分享链接
+            imgUrl: '', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                $.get('/count/addrespf/<?php echo $id;?>/<?php echo $openid;?>');
+                $.get('/count/addrespf/');
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
             }
         });
         wx.onMenuShareTimeline({
-            title: '<?php echo $pyq_title?>',
-            link: '<?php echo $resp_url?>',
-            imgUrl: '<?php echo $imgUrl?>',
+            title: '',
+            link: '',
+            imgUrl: '',
             success: function (res) {
 //                alert('已分享');
-                $.get('/count/addresp/<?php echo $id;?>/<?php echo $openid;?>');
+                $.get('/count/addresp/');
             },
             fail: function (res) {
 //                alert(JSON.stringify(res));
