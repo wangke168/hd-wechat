@@ -29,70 +29,29 @@
 
 </head>
 <body>
+<div id="page">
+    <a class="quhaobtn" href="javascript:getqh()">
+        点击取号
+    </a>
 
-
-<div id="main">
-
-    <div id="header">
-        <!--       <span class="left-head"  onclick="javascript:history.go(-1);"></span>
-               <span class="right-head" onclick="javascript:location.href='http://m.hengdianworld.com';"></span>
-     -->
-
-    </div>
-    <div id="title">
-        {{$article->title}}</div>
-    <div id="titleinfo">
-        横店影视城 {{$article->adddate}}</div>
-    <div id="contents">
-
-        {!!str_replace("/control/editor/attached/image/","http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
-
-        <?php
-        if ($article->show_qr == 1) {
-            echo "<p><img src=\images\market\\" . $article->eventkey . ".jpg width=100%></p>";
-        }
-        ?>
-
-    </div>
-
-    <div id="tempheight" style="clear:both;  "></div>
-    <div id="bottom">
-        <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-            热线电话：<a href="tel:057986547211"> 0579-86547211</a>
+    <div class="dwlabel">
+        <div class="info">
+            定位中...
         </div>
-        <div>©2013-2014 横店影视城 版权所有</div>
     </div>
-
+</div>
+<div class="overdiv" style="display:none;">
+    <div class="tootip">
+        <a class="closebtn" href="javascript:closeoverdiv()">
+            +
+        </a>
+            <span>
+                提示区文字
+            </span>
+    </div>
 </div>
 </body>
 
-<?php
-
-if ($article->pyq_pic == '') {
-    preg_match_all('#<img.*?src="([^"]*)"[^>]*>#i', $article->content, $match);
-    if (count($match[0]) != 0) {
-        $imgUrl = str_replace(' />', '', (str_replace('<img src="', '', $match[0][0])));
-        $imgUrl = str_replace('alt=""', '', $imgUrl);
-        $imgUrl = str_replace('"', '', $imgUrl);
-        $imgUrl = str_replace(' ', '', $imgUrl);
-        $imgUrl = str_replace('<imgsrc=', '', $imgUrl);
-        $imgUrl = "http://weix2.hengdianworld.com" . $imgUrl;
-    } else {
-        $imgUrl = "http://weix2.hengdianworld.com/article/images/pyq_title.jpg";
-    }
-} else {
-    $imgUrl = "http://weix2.hengdianworld.com" . $article->pyq_pic;
-}
-
-$url = \Illuminate\Support\Facades\URL::current() . '?id=' . $id;
-$resp_url = 'http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl=' . $url;
-
-if ($article->pyq_title) {
-    $pyq_title = $article->pyq_title;
-} else {
-    $pyq_title = $article->title;
-}
-?>
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
