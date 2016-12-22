@@ -106,7 +106,7 @@ Route::get('temp',function(){
 
 
 Route::get('temp1',function(){
-    return Redirect::to('http://w.unclewang.me/test/article/detail?id=1152');
+    return Redirect::to('http://w.unclewang.me/test/article/detail?wxnumber=1152');
 });
 
 

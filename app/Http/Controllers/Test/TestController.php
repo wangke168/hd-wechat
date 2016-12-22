@@ -75,7 +75,7 @@ class TestController extends Controller
 
      public function detail_test(Request $request)
      {
-         $id = $request->input('id');
+/*         $id = $request->input('id');
          $wxnumber = $request->input('wxnumber');
         $usage=new Usage();
          $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
@@ -90,11 +90,24 @@ class TestController extends Controller
              abort(404);
          } else {
 
-      /*       $this->count->add_article_hits($id);
-             $this->count->insert_hits($id, $openid);*/
-
              return view('subscribe.detail', compact('article', 'id', 'openid'));
+         }*/
+         $usage = new Usage();
+         $action = $request->input('action');
+         $openid = $request->input('wxnumber');
+         switch ($action) {
+             case 'get_subscribe':
+//                 $project_id = $request->input('project_id');
+                 $project_id='1';
+                 $tour = new Tour();
+                 return $tour->subscribe($openid, $project_id);
+                 break;
+             default:
+                 $openid = $usage->authcode($openid, 'ENCODE', 0);
+                 return view('subscribe.ldjl', compact('openid'));
+                 break;
          }
+
      }
 
 }
