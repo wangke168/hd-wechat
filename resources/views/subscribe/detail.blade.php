@@ -21,7 +21,7 @@
     <script type="text/javascript" src="{{asset('js/divheight.js')}}"></script>
 
     <script>
-     //   var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
+ 
 
      var qhterm=true;
         //页面加载后即开始第一次定位
