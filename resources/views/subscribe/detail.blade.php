@@ -21,11 +21,37 @@
     <script type="text/javascript" src="{{asset('js/divheight.js')}}"></script>
 
     <script>
+     //   var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
+
+     var qhterm=true;
+        //页面加载后即开始第一次定位
         $(function () {
-            var awidth = parseInt($(document).width());//获取屏幕的宽度
-            $("iframe").css({"width": "100%"})  //设置宽度
-                    .height(awidth / 4 * 3);  //设置高度
-        })
+            if (!qhterm)  {    //不满足取号条件
+                $(".overdiv").show(1)
+                        .find(".closebtn").hide(1)
+                        .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({"margin-top": "30px"});
+            }
+        });
+
+        /*取号*/
+        function getqh() {
+            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") == 0) {
+                $(".overdiv").show(1)
+                        .find(".closebtn").show(1)
+                        .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
+            } else {
+                $.get('test.php?p_id=', function (data) {
+                    var content = data;
+                    $(".overdiv").show(1)
+                            .find(".closebtn").hide(1)
+                            .nextAll("span").html(content).css({"margin-top": "30px"});
+                });
+            }
+        }
+        /*关闭按钮*/
+        function closeoverdiv() {
+            $(".overdiv").hide(1);
+        }
     </script>
 
 </head>
