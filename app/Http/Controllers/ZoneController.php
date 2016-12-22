@@ -36,7 +36,7 @@ class ZoneController extends Controller
                 break;
             default:
                 $openid = $usage->authcode($openid, 'ENCODE', 0);
-                return view('subscribe.ldjl', compact('openid'));
+                return view('articles.ldjl', compact('openid'));
                 break;
         }
   /*      $wechat = app('wechat');
