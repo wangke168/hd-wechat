@@ -21,11 +21,11 @@ class LinkJumpController extends Controller
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $uid = $usage->get_uid($openid);
         $url = $this->get_url($id)->url;
-        if (strstr($url, '?') != '') {
-            $url = $url . "&comefrom=1&wxnumber=".$wxnumber."&uid=".$uid."&wpay=1";
+/*        if (strstr($url, '?') != '') {
+            $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
         } else {
-            $url = $url . "?comefrom=1&wxnumber=wxnumber=".$wxnumber."&uid=".$uid."&wpay=1";
-        }
+            $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+        }*/
         return redirect($url);
     }
 
