@@ -1,18 +1,3 @@
-<?php
-
-//require_once("../classes/jssdk.class.php");
-//require_once("../inc/function.php");
-//$fn=$_GET["wxnumber"];
-$fn = $openid;
-if ($fn == "") {
-    $show_flag = "false";
-} else {
-    $show_flag = "true";
-}
-$project_id = "1";
-//$jssdk=new JSSDK("wx3e632d57ac5dcc68", "5eadb547deeb37ab3fb3f82078bb2663");
-//$signPackage = $jssdk->GetSignPackage();
-?>
 
 <!DOCTYPE html>
 <html lang="zh-hans">
@@ -23,19 +8,9 @@ $project_id = "1";
     <title>{{$openid}}</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
+
 
     <script>
-        var qhterm ={{$show_flag}};//是否满足取号条件 false不满足,true满足
-
-        //页面加载后即开始第一次定位
-        $(function () {
-            if (!qhterm)  {    //不满足取号条件
-                $(".overdiv").show(1)
-                        .find(".closebtn").hide(1)
-                        .nextAll("span").html("请扫描龙帝惊临二维码后重新取号").css({"margin-top": "30px"});
-            }
-        });
 
         //定位
    /*     function gpsdw() {
@@ -90,25 +65,6 @@ $project_id = "1";
         }*/
 
 
-        /*取号*/
-        function getqh() {
-            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") == 0) {
-                $(".overdiv").show(1)
-                        .find(".closebtn").show(1)
-                        .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
-            } else {
-                $.get('test.php?p_id=<?php echo $project_id?>&fn=<?php echo $fn?>', function (data) {
-                    var content = data;
-                    $(".overdiv").show(1)
-                            .find(".closebtn").hide(1)
-                            .nextAll("span").html(content).css({"margin-top": "30px"});
-                });
-            }
-        }
-        /*关闭按钮*/
-        function closeoverdiv() {
-            $(".overdiv").hide(1);
-        }
     </script>
 
 </head>
