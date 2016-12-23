@@ -30,7 +30,7 @@ class LinkJumpController extends Controller
              return redirect($url);
          }
         else{
-            return redirect($url."&wxnumber={$openid}");
+            return redirect($url);
         }
 
     }
