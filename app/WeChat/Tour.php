@@ -404,8 +404,8 @@ class Tour
 
                     $str = "<font color='green'>预约成功<br>" . $str . "</font>";
 
-//                    $app = app('wechat');
-//                    $app->staff->message($str1)->by('1001@u_hengdian')->to($openid)->send();
+                    $app = app('wechat');
+                    $app->staff->message($str1)->by('1001@u_hengdian')->to($openid)->send();
 
 
 //                    $response = new responseMsg();
