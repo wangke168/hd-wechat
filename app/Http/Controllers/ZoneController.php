@@ -82,7 +82,7 @@ class ZoneController extends Controller
         $openid=$request->input('openid');
 
         $usage = new Usage();
-        $openid = $usage->authcode($openid, 'ENCODE', 0);
+        $openid = $usage->authcode($openid, 'DECODE', 0);
         $tour = new Tour();
         return $tour->subscribe($openid, $project_id);
 //        return 'sadas';
