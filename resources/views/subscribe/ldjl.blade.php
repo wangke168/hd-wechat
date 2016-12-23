@@ -16,7 +16,7 @@ $project_id = "1";
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
-    <title>{{$openid}}</title>
+    <title>龙帝惊临智能预约系统</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
@@ -40,7 +40,7 @@ $project_id = "1";
             if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") < 0) {
                 $(".overdiv").show(1)
                         .find(".closebtn").hide(1)
-                        .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约。");
+                        .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约。").css({"margin-top": "30px"});
             } else {
                 $.get('/zone/subscribe/get?project_id=<?php echo $project_id?>&fn=<?php echo $fn?>', function (data) {
                     var content = data;
