@@ -271,7 +271,7 @@ class Tour
         DB::table('tour_project_wait_detail')
             ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id' => $hour_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
 
-        return "您的游玩时间段为" . $verification_time . "---16：00。";
+        return "游玩时间为" . $verification_time . "---16：00。";
     }
 
 
