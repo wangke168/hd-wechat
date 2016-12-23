@@ -79,7 +79,7 @@ class ZoneController extends Controller
     public function subscribe(Request $request)
     {
         $project_id=$request->input('project_id');
-        $openid=$request->input('openid');
+        $openid=$request->input('fn');
 
         $usage = new Usage();
         $openid = $usage->authcode($openid, 'DECODE', 0);
