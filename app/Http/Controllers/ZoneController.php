@@ -76,8 +76,13 @@ class ZoneController extends Controller
 
     }
 
-    public function subscribe($project_id, $openid)
+    public function subscribe(Request $request)
     {
+        $project_id=$request->input('project_id');
+        $openid=$request->input('openid');
+
+        $usage = new Usage();
+        $openid = $usage->authcode($openid, 'ENCODE', 0);
         $tour = new Tour();
         return $tour->subscribe($openid, $project_id);
 //        return 'sadas';

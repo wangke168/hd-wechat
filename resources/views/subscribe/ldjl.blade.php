@@ -33,58 +33,6 @@ $project_id = "1";
             }
         });
 
-        //定位
-   /*     function gpsdw() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showposition, showerror, {
-                    // 指示浏览器获取高精度的位置，默认为false
-                    enableHighAccuracy: true,
-                    // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
-                    timeout: 5000,
-                    // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
-                    maximumAge: 3000
-                });
-            } else {
-                alert("非常抱歉,您的浏览器不支持定位功能");
-            }
-        }*/
-
-        //输出位置坐标
-   /*     function showposition(position) {
-            $(".info").html("");
-            var weidu = position.coords.latitude;//维度
-            var jingdu = position.coords.longitude;//经度
-            if (weidu > 29.136 && weidu < 29.140 && jingdu > 120.306 && jingdu < 120.315) {
-                $(".info").html("您所在位置:龙帝惊临取号处");
-            }
-            /!*影视城位置以下可注释*!/
-            else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
-                $(".info").html("您所在位置:横店影视城有限公司");
-            }
-            /!*影视城位置以上可注释*!/
-            else {
-                $(".info").html("您不在龙帝惊临取号范围");
-            }
-        }*/
-        //位置读取错误时
-      /*  function showerror(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("您拒绝了定位申请,请重试");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("无法获取到地理位置");
-                    break;
-                case error.TIMEOUT:
-                    alert("请求超时,请重试");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("出现未知原因");
-                    break;
-            }
-            $(".info").html("出现错误,请按提示解决");
-        }*/
-
 
         /*取号*/
         function getqh() {
@@ -93,7 +41,7 @@ $project_id = "1";
                         .find(".closebtn").show(1)
                         .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
             } else {
-                $.get('test.php?p_id=<?php echo $project_id?>&fn=<?php echo $fn?>', function (data) {
+                $.get('/zone/subscribe/get?project_id=<?php echo $project_id?>&fn=<?php echo $fn?>', function (data) {
                     var content = data;
                     $(".overdiv").show(1)
                             .find(".closebtn").hide(1)
@@ -156,27 +104,27 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
     wx.ready(function () {
 
         wx.onMenuShareAppMessage({
-            title: '龙帝惊临智能预约系统', // 分享标题
-            desc: '龙帝惊临智能预约系统', // 分享描述
-            link: 'link', // 分享链接
-            imgUrl: 'imgUrl', // 分享图标
+            title: '<?php echo $pyq_title ?>', // 分享标题
+            desc: '<?php echo $pyq_title ?>', // 分享描述
+            link: '<?php echo $url ?>', // 分享链接
+            imgUrl: '<?php echo $imgUrl ?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                $.get('/count/addrespf/');
+            //    $.get('/count/addrespf/');
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
             }
         });
         wx.onMenuShareTimeline({
-            title: '龙帝惊临智能预约系统',
-            link: '龙帝惊临智能预约系统',
-            imgUrl: 'imgUrl',
+            title: '<?php echo $pyq_title ?>',
+            link: '<?php echo $url ?>',
+            imgUrl: '<?php echo $imgUrl ?>',
             success: function (res) {
 //                alert('已分享');
-                $.get('/count/addresp/');
+        //        $.get('/count/addresp/');
             },
             fail: function (res) {
 //                alert(JSON.stringify(res));

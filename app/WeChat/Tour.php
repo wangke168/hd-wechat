@@ -260,14 +260,18 @@ class Tour
             }
 
         }
-
-        $verification_time = $this->get_verification_time($hour_id, 8, 5);
+        if (strtotime("now") > strtotime('14:30')) {        //超过下午14:30后,核销时间都是15:30-16:00
+            $verification_time = date('Y-m-d 15:30');
+        } else {
+            $verification_time = $this->get_verification_time($hour_id, 8, 5);
+        }
+//        $verification_time = $this->get_verification_time($hour_id, 8, 5);
 
 
         DB::table('tour_project_wait_detail')
             ->insert(['user_id' => $user_id, 'project_id' => $project_id, 'hour_id' => $hour_id, 'verification_time' => $verification_time, 'wx_openid' => $openid]);
 
-        return "您的游玩时间段为" . $verification_time . "---16：30。";
+        return "您的游玩时间段为" . $verification_time . "---16：00。";
     }
 
 
