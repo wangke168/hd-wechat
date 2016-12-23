@@ -37,7 +37,7 @@ $project_id = "1";
         /*取号*/
         function getqh() {
 //            alert ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") );
-            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") == 0) {
+            if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") < 0) {
                 $(".overdiv").show(1)
                         .find(".closebtn").show(1)
                         .nextAll("span").html("您好，只有在龙帝惊临取号范围才能预约,如果您确认在景区请点击点位按钮重新获取您的位置。");
@@ -100,7 +100,7 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('onMenuShareTimeline',
             'onMenuShareAppMessage',
-            'getLocation'), true) ?>);
+            'getLocation'), false) ?>);
 
     wx.ready(function () {
 
