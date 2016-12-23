@@ -382,7 +382,7 @@ class Tour
         $usage = new Usage();
 //        $openid = $usage->authcode($openid, 'DECODE', 0);
         $type = $this->get_wait_info('1', "3");
-        if ($this->check_get_time('8:30', '15:00')) {
+        if ($this->check_get_time('8:30', '17:00')) {
             if ($this->check_amount($project_id, $type)) //确定当天或当小时预约是否已满
             {
                 if ($type == 1) {
