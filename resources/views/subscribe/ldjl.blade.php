@@ -81,18 +81,13 @@ $project_id = "1";
 </div>
 </body>
 </html>
-<script language="JavaScript">
-    function get_wait() {
-        $.get("/zone/subscribe/ldjl/get_subscribe/<?php echo $fn?>", function (data) {
-        });
-    }
-</script>
+
 
 
 <?php
 $pyq_title = "秦王宫龙帝惊临智能排队系统";
 $imgUrl = "http://weix2.hengdianworld.com/control/editor/attached/image/20160324/20160324130222_32090.jpg";
-$url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
+$url = "http://wechat.hengdianworld.com/zone/subscribe/ldjl?project_id=1";
 ?>
 
 
