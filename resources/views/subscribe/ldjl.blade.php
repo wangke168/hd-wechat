@@ -36,6 +36,7 @@ $project_id = "1";
 
         /*取号*/
         function getqh() {
+            alert ($(".info").text());
             if ($(".info").text().indexOf("您所在位置:龙帝惊临取号处") == 0) {
                 $(".overdiv").show(1)
                         .find(".closebtn").show(1)
