@@ -35,7 +35,9 @@ class ZoneController extends Controller
                 return $tour->subscribe($openid, $project_id);
                 break;
             default:
-                $openid = $usage->authcode($openid, 'ENCODE', 0);
+                if ($openid) {
+                    $openid = $usage->authcode($openid, 'ENCODE', 0);
+                }
                 return view('subscribe.ldjl', compact('openid'));
                 break;
         }
