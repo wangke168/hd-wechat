@@ -30,7 +30,7 @@ class LinkJumpController extends Controller
              return redirect($url);
          }
         else{
-            return redirect($url."&wxnumber=dsfsadfdfgs");
+            return redirect($url."&wxnumber=6cc7EEewMiNo5GsexachYWZWXVPaBjA0dzUhflYTbmK%5Ba%5DcRIE%5Bc%5DqYPSyiJK%5Ba%5DSWGPgjVPcoVCaU41ni");
         }
 
     }
