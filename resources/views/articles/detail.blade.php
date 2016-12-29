@@ -45,7 +45,7 @@
         横店影视城 {{$article->adddate}}</div>
     <div id="contents">
 
-        {!!str_replace("/control/editor/attached/image/","http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
+        {!!str_replace("\"/control/editor/attached/image/","\"http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
 
         <?php
         if ($article->show_qr == 1) {
