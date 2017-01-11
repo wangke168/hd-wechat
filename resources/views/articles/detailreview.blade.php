@@ -69,20 +69,11 @@
 <?php
 
 if ($article->pyq_pic == '') {
-    preg_match_all('#<img.*?src="([^"]*)"[^>]*>#i', $article->content, $match);
-    if (count($match[0]) != 0) {
-        $imgUrl = str_replace(' />', '', (str_replace('<img src="', '', $match[0][0])));
-        $imgUrl = str_replace('alt=""', '', $imgUrl);
-        $imgUrl = str_replace('"', '', $imgUrl);
-        $imgUrl = str_replace(' ', '', $imgUrl);
-        $imgUrl = str_replace('<imgsrc=', '', $imgUrl);
-        $imgUrl = "http://weix2.hengdianworld.com" . $imgUrl;
-    } else {
-        $imgUrl = "http://weix2.hengdianworld.com/article/images/pyq_title.jpg";
-    }
+    $imgUrl = "http://weix2.hengdianworld.com/media/image/pyq_title.jpg";
 } else {
-    $imgUrl = "http://weix2.hengdianworld.com" . $article->pyq_pic;
+    $imgUrl = "http://weix2.hengdianworld.com/" . $article->pyq_pic;
 }
+
 
 $url = 'http://wechat.hengdianworld.com/article/detail?id=' . $id;
 $resp_url = 'http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl=' . $url;

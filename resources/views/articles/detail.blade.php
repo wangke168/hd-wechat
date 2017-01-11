@@ -82,7 +82,7 @@
     } else {
         $imgUrl = "http://weix2.hengdianworld.com/" . $article->pyq_pic;
     }
-  echo $imgUrl;
+
 
 
 
