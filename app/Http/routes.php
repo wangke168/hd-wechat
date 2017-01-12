@@ -32,9 +32,11 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 
 
 //Route::get('/articles', 'ArticlesController@index');
-Route::get('/article', 'ArticlesController@detail');
+//Route::get('/article', 'ArticlesController@detail');
 
 Route::get('/article/detail', 'ArticlesController@detail');
+
+Route::get('/article/webdetail','ArticlesController@webdetail');
 
 //预览
 Route::get('/article/review', 'ArticlesController@detail_review');

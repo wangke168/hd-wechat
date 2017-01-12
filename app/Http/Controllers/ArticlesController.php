@@ -116,4 +116,22 @@ class ArticlesController extends Controller
 
     }
 
+    /**
+     * 官网使用的每日剧组动态和每周剧组动态
+     * @param Request $request
+     */
+    public function webdetail(Request $request)
+    {
+        $type=$request->input('type');
+        if ($type=='day')
+        {
+            $article = WechatArticle::find('37');
+        }
+        elseif($type=='week')
+        {
+            $article = WechatArticle::find('38');
+        }
+        return view('articles.webdetail', compact('article'));
+    }
+
 }
