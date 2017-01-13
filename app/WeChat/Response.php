@@ -343,14 +343,16 @@ class Response
                 }
 
                 /*检查索引图所在服务器并生成链接*/
-                if(starts_with($result->picurl, 'uploads'))
+           /*     if(starts_with($result->picurl, 'uploads'))
                 {
-                    $pic_url='http://control.unclewang.me/'.$result->picurl;
+                    $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
                 }
                 else
                 {
                     $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
-                }
+                }*/
+
+                $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
