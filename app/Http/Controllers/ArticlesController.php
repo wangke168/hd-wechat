@@ -22,7 +22,7 @@ class ArticlesController extends Controller
     public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->js = $this->app->js;
+//        $this->js = $this->app->js;
         $this->count = new Count();
         $this->usage = new Usage();
     }
@@ -112,8 +112,7 @@ class ArticlesController extends Controller
 
         $article = WechatArticle::find($id);
 
-        $js= $this->js;
-        return view('articles.detailreview', compact('article', 'id', 'openid','js'));
+        return view('articles.detailreview', compact('article', 'id', 'openid'));
 
     }
 
