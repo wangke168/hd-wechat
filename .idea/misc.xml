@@ -22,7 +22,6 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectRootManager" version="2" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -42,4 +41,3 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
 </project>
-
