@@ -81,15 +81,14 @@ class TestController extends Controller
     public function qrcreate()
     {
 
-        for ($k='1366'; $k <'1396'; $k++) { 
+      /*  for ($k='1366'; $k <'1396'; $k++) { 
             $i=$k-1365;
-            $qrscene_name='永康酒店';
+            $qrscene_name='永康酒店'.$i;    */
               DB::table('wx_qrscene_info')
-                ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name,
-                    'qrscene_person_name'=>'',
-                    'qrscene_person_phone'=>'','uid'=>'']);
+                ->insert(['classid'=>'1','qrscene_id'=>'1366','qrscene_name'=>'永康酒店1',
+                    'qrscene_person_name'=>'','qrscene_person_phone'=>'','uid'=>'']);
         // return $row;
-        }
+     //   }
    /*     for ($k='1396'; $k <'1416'; $k++) { 
            $i=$k-1395;
             $qrscene_name='金华酒店'.$i;
@@ -105,7 +104,7 @@ class TestController extends Controller
         // return $row;
         }
         */
-        return $k;
+     //   return $k;
        
     }
 
