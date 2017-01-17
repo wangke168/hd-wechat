@@ -101,6 +101,7 @@ class TestController extends Controller
         ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
         // return $row;
         }
+        return $k;
        
     }
 
