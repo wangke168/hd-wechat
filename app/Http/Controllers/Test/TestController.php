@@ -80,6 +80,8 @@ class TestController extends Controller
 
     public function qrcreate()
     {
+
+        return 'sd';
         for ($k='1366'; $k <'1396'; $k++) { 
             $i=$k-1365;
             $qrscene_name='永康酒店'.$i;
