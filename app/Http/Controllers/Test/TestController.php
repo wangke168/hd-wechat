@@ -80,17 +80,15 @@ class TestController extends Controller
 
     public function qrcreate()
     {
-
-      /*  for ($k='1366'; $k <'1396'; $k++) { 
+        for ($k='1370'; $k <'1396'; $k++) { 
             $i=$k-1365;
-            $qrscene_name='永康酒店'.$i;    */
-              DB::table('wx_qrscene_info')
-                ->insert(['classid'=>'1','qrscene_id'=>'1366','qrscene_name'=>'永康酒店1',
-                    'qrscene_person_name'=>'','qrscene_person_phone'=>'','uid'=>'']);
+            $qrscene_name='永康酒店'.$i;
+             $row=DB::table('wx_qrscene_info')
+        ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
         // return $row;
-     //   }
-   /*     for ($k='1396'; $k <'1416'; $k++) { 
-           $i=$k-1395;
+        }
+        for ($k='1396'; $k <'1416'; $k++) { 
+            $i=$k-1395;
             $qrscene_name='金华酒店'.$i;
              $row=DB::table('wx_qrscene_info')
         ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
@@ -103,8 +101,7 @@ class TestController extends Controller
         ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
         // return $row;
         }
-        */
-     //   return $k;
+        return $k;
        
     }
 
