@@ -82,8 +82,9 @@ class TestController extends Controller
     {
         for ($k=1366; $k <$1368 ; $k++) { 
             $qrscene_name='永康酒店'&($k-1365);
-             DB::table('wx_qrscene_info')
+             $row=DB::table('wx_qrscene_info')
         ->insert(['classid'=>'1','qrscene_id'=>$i,'qrscene_name'=>$qrscene_name]);
+        return $row;
         }
        
     }
