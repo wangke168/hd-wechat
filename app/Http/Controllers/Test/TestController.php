@@ -81,7 +81,8 @@ class TestController extends Controller
     public function qrcreate()
     {
         for ($k='1366'; $k <'1368'; $k++) { 
-            $qrscene_name='永康酒店'&($k-1365);
+            $i=$k-1365
+            $qrscene_name='永康酒店'&$i;
              $row=DB::table('wx_qrscene_info')
         ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
         // return $row;
