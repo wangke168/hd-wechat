@@ -14,4 +14,5 @@ class TokenController extends Controller
         $app = app('wechat');
         return $app->access_token->getToken();
     }
+
 }
