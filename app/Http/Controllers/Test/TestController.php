@@ -17,6 +17,10 @@ use Carbon\Carbon;
 class TestController extends Controller
 {
     protected $cache;
+    public function __construct(Cache $cache = null)
+    {
+        $this->cache = $cache;
+    }
     public function test()
     {
 
