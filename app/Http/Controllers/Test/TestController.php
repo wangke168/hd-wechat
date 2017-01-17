@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
-
+use Doctrine\Common\Cache\Cache;
+use Doctrine\Common\Cache\MemcachedCache;
 use App\WeChat\Tour;
 use App\WeChat\Usage;
 use EasyWeChat\Message\Text;
@@ -15,6 +16,7 @@ use Carbon\Carbon;
 
 class TestController extends Controller
 {
+    protected $cache;
     public function test()
     {
 
@@ -75,41 +77,19 @@ class TestController extends Controller
 
      public function detail_test(Request $request)
      {
-/*         $id = $request->input('id');
-         $wxnumber = $request->input('wxnumber');
-        $usage=new Usage();
-         $wxnumber = $usage->authcode($wxnumber, 'DECODE', 0);
-         $openid = $request->input('openid');
 
-         if ($wxnumber) {
-             $openid = $wxnumber;
-         }
 
-         $article = WechatArticle::find($id);
-         if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
-             abort(404);
-         } else {
-
-             return view('subscribe.detail', compact('article', 'id', 'openid'));
-         }*/
-         $usage = new Usage();
-         $action = $request->input('action');
-         $openid = $request->input('wxnumber');
-         switch ($action) {
-             case 'get_subscribe':
-//                 $project_id = $request->input('project_id');
-                 $project_id='1';
-                 $tour = new Tour();
-                 return $tour->subscribe($openid, $project_id);
-                 break;
-             default:
-                 if ($openid) {
-                     $openid = $usage->authcode($openid, 'ENCODE', 0);
-                 }
-                 return view('subscribe.ldjl', compact('openid'));
-                 break;
-         }
 
      }
 
+    public function cache()
+    {
+        $this->getCache()->save('testcach', 'wechat', 6500 - 1500);
+
+    }
+    private function getCache()
+    {
+        return $this->cache ?: $this->cache=new MemcachedCache();
+        // return $this->cache ?: $this->cache = new FilesystemCache(sys_get_temp_dir());
+    }
 }
