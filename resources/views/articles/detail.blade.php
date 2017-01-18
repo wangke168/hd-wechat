@@ -55,7 +55,7 @@
 
     </div>
 
-    <div id="tempheight" style="clear:both;  "></div>
+    <div id="tempheight" style="clear:both;"></div>
     <div id="bottom">
         <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
             热线电话：<a href="tel:057986547211"> 0579-86547211</a>
