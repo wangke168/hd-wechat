@@ -82,7 +82,7 @@ class TestController extends Controller
     {
         $row=DB::table('wx_qrscene_info')
         ->where('id','>', '872')
-        ->get('qrscene_id');
+        ->pluck('qrscene_id');
         return $row;
     /*    for ($k='1370'; $k <'1396'; $k++) { 
             $i=$k-1365;
