@@ -116,7 +116,9 @@ class TestController extends Controller
     public function cache()
     {
 //        $this->getCache()->save('testcach', 'wechat', 6500 - 1500);
-        phpinfo();
+//        phpinfo();
+     $value=\Cache::add('temp','123456','60');
+        return \Cache::get('temp');
     }
     private function getCache()
     {
