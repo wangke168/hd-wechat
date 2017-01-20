@@ -115,10 +115,16 @@ class TestController extends Controller
 
     public function cache()
     {
-//        $this->getCache()->save('testcach', 'wechat', 6500 - 1500);
-//        phpinfo();
+        $memcached = new Memcached();
+        $memcached->addServer('127.0.0.1', 11211);
+
+        $cacheDriver = new MemcachedCache();
+        $cacheDriver->setMemcached($memcached);
+        $cacheDriver->save('cache_id', '123456789');
+
+        return $cacheDriver->get('cache_id');
         //\Cache::add('temp','123456','60');
-        return \Cache::get('temp');
+       // return \Cache::get('temp');
     }
     private function getCache()
     {
