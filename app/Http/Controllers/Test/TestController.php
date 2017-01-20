@@ -115,8 +115,8 @@ class TestController extends Controller
 
     public function cache()
     {
-        $this->getCache()->save('testcach', 'wechat', 6500 - 1500);
-
+//        $this->getCache()->save('testcach', 'wechat', 6500 - 1500);
+        phpinfo();
     }
     private function getCache()
     {
