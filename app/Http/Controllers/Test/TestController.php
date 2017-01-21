@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
 use Doctrine\Common\Cache\Cache;
-use Doctrine\Common\Cache\MemcachedCache;
+use Doctrine\Common\Cache\MemcacheCache;
 use App\WeChat\Tour;
 use App\WeChat\Usage;
 use EasyWeChat\Message\Text;
@@ -117,14 +117,14 @@ class TestController extends Controller
     {
        // $memcache=new \Memcache();
 
-        $memcached = new \Memcached();
-        $memcached->addServer('localhost', 11211);
-        $cacheDriver = new MemcachedCache();
-        $cacheDriver->setMemcached($memcached);
+        $memcache = new \Memcache();
+        $memcache->addServer('localhost', 11211);
+        $cacheDriver = new MemcacheCache();
+        $cacheDriver->setMemcache($memcache);
 //        return $cacheDriver;
 //        $cache=$cacheDriver;
-        $cacheDriver->save('cache_id', '12345678900000',6000);
-        return $cacheDriver->fetch('cache_id');
+        $cacheDriver->save('test_cache', '12345678900000',6000);
+        return $cacheDriver->fetch('test_cache');
 
      //   phpinfo();
     }
