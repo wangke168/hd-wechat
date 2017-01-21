@@ -123,11 +123,11 @@ class TestController extends Controller
         $cacheDriver = new MemcacheCache();
         $cacheDriver->setMemcache($memcache);
         $cacheDriver->save('cache_id', '123456789');
-      //  return $cacheDriver->fetch('cache_id');
+        return $cacheDriver->fetch('cache_id');
      //   return $cacheDriver->get('cache_id');
         //\Cache::add('temp','123456','60');
        // return \Cache::get('temp');
-        return 'asd';
+//        return 'asd';
     }
     private function getCache()
     {
