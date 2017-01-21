@@ -115,7 +115,7 @@ class TestController extends Controller
 
     public function cache()
     {
-        $memcached=new \Memcached();
+//        $memcached=new \Memcached();
 //        $memcached = new Memcached();
 //        $memcached->addServer('localhost', 11211);
 
