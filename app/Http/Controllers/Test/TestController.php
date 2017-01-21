@@ -120,11 +120,11 @@ class TestController extends Controller
         $memcache = new \Memcache();
         $memcache->addServer('localhost', 11211);
         $cacheDriver = new MemcacheCache();
-        $cacheDriver->setMemcache($memcache);
-        return $cacheDriver;
+//        $cacheDriver->setMemcache($memcache);
+//        return $cacheDriver;
 //        $cache=$cacheDriver;
-        /*$cacheDriver->save('cache_id', '123456789');
-        return $cacheDriver->fetch('cache_id');*/
+        /*$cacheDriver->save('cache_id', '123456789');*/
+        return $cacheDriver->fetch('cache_id');
 
      //   phpinfo();
     }

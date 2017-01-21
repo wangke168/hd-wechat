@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/overtrue/wechat/src/Core/AccessToken.php" afterPath="$PROJECT_DIR$/vendor/overtrue/wechat/src/Core/AccessToken.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,7 +57,7 @@
       <file leaf-file-name="AccessToken.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Core/AccessToken.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-30.76923">
+            <state vertical-scroll-proportion="100.0">
               <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="e#430#462#0#PHP" expanded="true" />
@@ -70,8 +69,8 @@
       <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.651487">
-              <caret line="125" column="26" selection-start-line="125" selection-start-column="26" selection-end-line="125" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.6747212">
+              <caret line="126" column="47" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
               <folding>
                 <element signature="e#45#81#0#PHP" expanded="true" />
               </folding>
@@ -905,7 +904,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Core/AccessToken.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.76923">
+        <state vertical-scroll-proportion="100.0">
           <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="e#430#462#0#PHP" expanded="true" />
@@ -915,8 +914,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.651487">
-          <caret line="125" column="26" selection-start-line="125" selection-start-column="26" selection-end-line="125" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.6747212">
+          <caret line="126" column="47" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
           <folding>
             <element signature="e#45#81#0#PHP" expanded="true" />
           </folding>
