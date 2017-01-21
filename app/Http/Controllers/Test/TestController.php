@@ -115,7 +115,7 @@ class TestController extends Controller
 
     public function cache()
     {
-        $memcached=new \Memcached();
+//        $memcached=new \Memcached();
 //        $memcached = new Memcached();
 //        $memcached->addServer('localhost', 11211);
 
@@ -126,7 +126,7 @@ class TestController extends Controller
      //   return $cacheDriver->get('cache_id');
         //\Cache::add('temp','123456','60');
        // return \Cache::get('temp');
-        return 'asd';
+        return asd;
     }
     private function getCache()
     {
