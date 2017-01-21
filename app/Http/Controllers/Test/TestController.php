@@ -124,7 +124,7 @@ class TestController extends Controller
 //        return $cacheDriver;
 //        $cache=$cacheDriver;
         // $cacheDriver->save('test_cache', '12345678900000',6000);
-        return $cacheDriver->fetch('easywechat.common.access_token.wx3e632d57ac5dcc68');
+        return $cacheDriver->fetch('easywechat.common.access_token.wxbbfee89ba53abfaf');
 
      //   phpinfo();
     }
