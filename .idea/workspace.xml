@@ -37,7 +37,7 @@
       <file leaf-file-name="AppServiceProvider.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-25.961538">
               <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding />
             </state>
@@ -57,8 +57,8 @@
       <file leaf-file-name="AccessToken.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Core/AccessToken.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="100.0">
-              <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+            <state vertical-scroll-proportion="-81.73077">
+              <caret line="166" column="49" selection-start-line="166" selection-start-column="49" selection-end-line="166" selection-end-column="49" />
               <folding>
                 <element signature="e#430#462#0#PHP" expanded="true" />
               </folding>
@@ -69,8 +69,8 @@
       <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58178437">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6282528">
+              <caret line="125" column="54" selection-start-line="125" selection-start-column="54" selection-end-line="125" selection-end-column="54" />
               <folding>
                 <element signature="e#45#81#0#PHP" expanded="true" />
               </folding>
@@ -862,14 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_ide_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3413729">
@@ -902,10 +894,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.961538">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Core/AccessToken.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="100.0">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        <state vertical-scroll-proportion="-81.73077">
+          <caret line="166" column="49" selection-start-line="166" selection-start-column="49" selection-end-line="166" selection-end-column="49" />
           <folding>
             <element signature="e#430#462#0#PHP" expanded="true" />
           </folding>
@@ -914,8 +914,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58178437">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6282528">
+          <caret line="125" column="54" selection-start-line="125" selection-start-column="54" selection-end-line="125" selection-end-column="54" />
           <folding>
             <element signature="e#45#81#0#PHP" expanded="true" />
           </folding>
