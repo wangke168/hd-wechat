@@ -125,7 +125,12 @@ class TestController extends Controller
 //        $cache=$cacheDriver;
         // $cacheDriver->save('test_cache', '12345678900000',6000);
    //     return $cacheDriver->fetch('easywechat.common.access_token.wxbbfee89ba53abfaf');
-            return  Carbon::now()->hour;
+            if (Carbon::now()->hour > '18' && Carbon::now()->hour < '7') {
+            $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y&uid=627A7778313233';
+        } else {
+            $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
+        }
+        return redirect($url);
      //   phpinfo();
     }
     private function getCache()
