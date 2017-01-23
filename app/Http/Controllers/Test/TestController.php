@@ -117,15 +117,15 @@ class TestController extends Controller
     {
        // $memcache=new \Memcache();
 
-        $memcache = new \Memcache();
+   /*     $memcache = new \Memcache();
         $memcache->addServer('localhost', 11211);
         $cacheDriver = new MemcacheCache();
-        $cacheDriver->setMemcache($memcache);
+        $cacheDriver->setMemcache($memcache);   */
 //        return $cacheDriver;
 //        $cache=$cacheDriver;
         // $cacheDriver->save('test_cache', '12345678900000',6000);
-        return $cacheDriver->fetch('easywechat.common.access_token.wxbbfee89ba53abfaf');
-
+   //     return $cacheDriver->fetch('easywechat.common.access_token.wxbbfee89ba53abfaf');
+            return  Carbon::now()->hour;
      //   phpinfo();
     }
     private function getCache()
