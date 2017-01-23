@@ -33,8 +33,8 @@ class OrderController extends Controller
     {
         if ($this->check_order($sellid)) {
 //            $this->dispatch(new SendOrderQueue($sellid,$openid));
-            $this->insert_order($openid, $sellid);
             $this->Repost_order($openid, $sellid);
+            $this->insert_order($openid, $sellid);
         }
     }
 
@@ -107,6 +107,8 @@ class OrderController extends Controller
     private function insert_order($openid, $sellid)
     {
         $usage = new Usage();
+        $eventkey='';
+        $focusdate='0000-00-00 00:00:00';
         if ($usage->get_openid_info($openid)) {
             $eventkey = $usage->get_openid_info($openid)->eventkey;
             $focusdate = $usage->get_openid_info($openid)->adddate;
@@ -119,8 +121,7 @@ class OrderController extends Controller
     private function Repost_order($openid, $sellid)
     {
         $second = new SecondSell();
-//        $app = app('wechat');
-//        $notice = $app->notice;
+
         $userId = $openid;
         $url = 'http://weix2.hengdianworld.com/article/articledetail.php?id=44';
         $color = '#FF0000';
@@ -138,8 +139,7 @@ class OrderController extends Controller
         $i = 0;
         if ($ticketcount <> 0) {
             $ticket_id = 1;
-//            for ($j = 0; $j < $ticketcount; $j++) {
-//                $i = $i + 1;
+
             $name = $data['ticketorder'][0]['name'];
             $first = $data['ticketorder'][0]['name'] . "，您好，您已经成功预订门票。\n";
             $sellid = $data['ticketorder'][0]['sellid'];
@@ -150,9 +150,6 @@ class OrderController extends Controller
             $flag = $data['ticketorder'][0]['flag'];
 
             if ($flag !="未支付" || $flag != "已取消") {
-//                break;
-
-
 
                 if ($data['ticketorder'][0]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
                     $ticketorder = "注意：该票种需要身份证检票";
@@ -180,8 +177,7 @@ class OrderController extends Controller
         }
         if ($inclusivecount <> 0) {
             $ticket_id = 2;
-//            for ($j = 0; $j < $inclusivecount; $j++) {
-//                $i = $i + 1;
+
                 $first = $data['inclusiveorder'][0]['name'] . "，您好，您已经成功预订组合套餐。\n";
                 $sellid = $data['inclusiveorder'][0]['sellid'];
                 $name = $data['inclusiveorder'][0]['name'];
@@ -191,8 +187,6 @@ class OrderController extends Controller
                 $flag = $data['inclusiveorder'][0]['flag'];
 
                 if ($flag != "未支付" || $flag != "已取消") {
-//                    break;
-//                }
 
                     $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
@@ -208,13 +202,12 @@ class OrderController extends Controller
                         "remark" => array($remark, "#000000"),
                     );
                     $content = $second->second_info_send('inclusive', $ticket.$hotel,$openid,$sellid);
-//                }
+
             }
         }
         if ($hotelcount <> 0) {
             $ticket_id = 3;
-//            for ($j = 0; $j < $hotelcount; $j++) {
-//                $i = $i + 1;
+
                 $sellid = $data['hotelorder'][0]['sellid'];
                 $name = $data['hotelorder'][0]['name'];
                 $date = $data['hotelorder'][0]['date2'];
@@ -225,8 +218,7 @@ class OrderController extends Controller
                 $flag = $data['hotelorder'][0]['flag'];
 
                 if ($flag != "未支付" || $flag != "已取消") {
-//                    break;
-//                }
+
                 $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
                 $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
 
@@ -253,7 +245,6 @@ class OrderController extends Controller
 
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
 
-//        return $content;
         $this->app->staff->message($content)->to($openid)->send();
 //        $app->staff->message($news)->to($openid)->send();
     }
