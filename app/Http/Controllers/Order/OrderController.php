@@ -33,7 +33,7 @@ class OrderController extends Controller
     {
         if ($this->check_order($sellid)) {
 //            $this->dispatch(new SendOrderQueue($sellid,$openid));
-            
+
             $this->insert_order($openid, $sellid);
             $this->Repost_order($openid, $sellid);
         }
