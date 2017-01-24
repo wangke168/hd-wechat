@@ -122,12 +122,12 @@ class TestController extends Controller
         $cached = $this->getCache()->fetch($cacheKey);
 //        $token = $this->getTokenFromServer();
         if(empty($cached)) {
-            $this->getCache()->save($cacheKey, 'wangke', 1500);
-
+//            $this->getCache()->save($cacheKey, 'wangke', 1500);
+            return 'wu';
         }
 //        return $token['access_token'];
 
-        return $this->getCache()->fetch($cacheKey);
+        return $cached;
 
     }
 
