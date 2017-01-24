@@ -17,17 +17,21 @@ use Carbon\Carbon;
 class TestController extends Controller
 {
     protected $cache;
+    protected $cacheKey;
+    protected $prefix = 'test.access_token.';
+
     public function __construct(Cache $cache = null)
     {
         $this->cache = $cache;
     }
+
     public function test()
     {
 
-        $app=app('wechat');
-        $zone=new Tour();
-        $row=DB::table('tour_project_info')
-            ->orderBy('id','desc')
+        $app = app('wechat');
+        $zone = new Tour();
+        $row = DB::table('tour_project_info')
+            ->orderBy('id', 'desc')
             ->get();
         foreach ($row as $result) {
             $aaa = explode(',', $result->show_time);
@@ -44,7 +48,7 @@ class TestController extends Controller
 
                     foreach ($row1 as $send_openid) {
                         $content = new Text();
-                        $content->content = "您好，" . $zone->get_zone_name($result->zone_id,'1') . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                        $content->content = "您好，" . $zone->get_zone_name($result->zone_id, '1') . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
                         $app->staff->message($content)->by('1001@u_hengdian')->to('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->send();
 //                        return $content;
                     }
@@ -65,7 +69,7 @@ class TestController extends Controller
 
                             foreach ($row2 as $send_openid) {
                                 $content = new Text();
-                                $content->content = "您好，" . $zone->get_zone_name($result->zone_id,'1') . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                                $content->content = "您好，" . $zone->get_zone_name($result->zone_id, '1') . "景区" . $result->show_name . "的演出时间是" . $bbb . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $result->location_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
                                 $app->staff->message($content)->by('1001@u_hengdian')->to('o2e-YuBgnbLLgJGMQykhSg_V3VRI')->send();
 //                                return $content;
                             }
@@ -80,62 +84,70 @@ class TestController extends Controller
 
     public function qrcreate()
     {
-    /*    for ($k='1370'; $k <'1396'; $k++) { 
-            $i=$k-1365;
-            $qrscene_name='永康酒店'.$i;
-             $row=DB::table('wx_qrscene_info')
-        ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
-        // return $row;
-        }
-        for ($k='1396'; $k <'1416'; $k++) { 
-            $i=$k-1395;
-            $qrscene_name='金华酒店'.$i;
-             $row=DB::table('wx_qrscene_info')
-        ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
-        // return $row;
-        }
-        for ($k='1416'; $k <'1431'; $k++) { 
-            $i=$k-1415;
-            $qrscene_name='浦江酒店'.$i;
-             $row=DB::table('wx_qrscene_info')
-        ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
-        // return $row;
-        }
-        return $k;
-        */
-       
+        /*    for ($k='1370'; $k <'1396'; $k++) {
+                $i=$k-1365;
+                $qrscene_name='永康酒店'.$i;
+                 $row=DB::table('wx_qrscene_info')
+            ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
+            // return $row;
+            }
+            for ($k='1396'; $k <'1416'; $k++) {
+                $i=$k-1395;
+                $qrscene_name='金华酒店'.$i;
+                 $row=DB::table('wx_qrscene_info')
+            ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
+            // return $row;
+            }
+            for ($k='1416'; $k <'1431'; $k++) {
+                $i=$k-1415;
+                $qrscene_name='浦江酒店'.$i;
+                 $row=DB::table('wx_qrscene_info')
+            ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
+            // return $row;
+            }
+            return $k;
+            */
+
     }
 
-     public function detail_test(Request $request)
-     {
+    public function detail_test(Request $request)
+    {
 
 
-
-     }
+    }
 
     public function cache()
     {
-       // $memcache=new \Memcache();
+       /* $cacheKey = $this->getCacheKey();
+        $cached = $this->getCache()->fetch($cacheKey);
+//        $token = $this->getTokenFromServer();
+        $this->getCache()->save($cacheKey, 'wangke', 1500);
 
-   /*     $memcache = new \Memcache();
-        $memcache->addServer('localhost', 11211);
-        $cacheDriver = new MemcacheCache();
-        $cacheDriver->setMemcache($memcache);   */
-//        return $cacheDriver;
-//        $cache=$cacheDriver;
-        // $cacheDriver->save('test_cache', '12345678900000',6000);
-   //     return $cacheDriver->fetch('easywechat.common.access_token.wxbbfee89ba53abfaf');
-            if (Carbon::now()->hour > '18' || Carbon::now()->hour < '7') {
-            $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y&uid=627A7778313233';
-        } else {
-            $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
-        }
-        return redirect($url);
-     //   phpinfo();
+//        return $token['access_token'];
+
+        return $this->getCache()->fetch($cacheKey);*/
+        return $this->cache;
+
     }
-    private function getCache()
+
+    public function getCache()
     {
-        return $this->cache ?: $this->cache=new MemcachedCache();
-        // return $this->cache ?: $this->cache = new FilesystemCache(sys_get_temp_dir());
+        if (empty($this->cache)) {
+            $memcached = new \Memcache();
+            $memcached->addServer('localhost', 11211);
+            $this->cache = new MemcacheCache();
+            $this->cache->setMemcache($memcached);
+        }
+        return $this->cache;
+
+    }
+
+    public function getCacheKey()
+    {
+        if (is_null($this->cacheKey)) {
+            return $this->prefix . $this->appId;
+        }
+
+        return $this->cacheKey;
     }
 }
