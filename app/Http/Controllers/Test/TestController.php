@@ -126,6 +126,13 @@ class TestController extends Controller
 //        return $token['access_token'];
 
         return $this->getCache()->fetch($cacheKey);*/
+        if ($this->cache)
+        {
+            return '有';
+        }
+        if (!$this->cache){
+        return '无';
+    }
         return $this->cache;
 
     }
