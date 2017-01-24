@@ -118,7 +118,7 @@ class TestController extends Controller
 
     public function cache()
     {
-        $cacheKey = $this->getCacheKey();
+        /*$cacheKey = $this->getCacheKey();
         $cached = $this->getCache()->fetch($cacheKey);
 //        $token = $this->getTokenFromServer();
         if(empty($cached)) {
@@ -127,7 +127,9 @@ class TestController extends Controller
         }
 //        return $token['access_token'];
 
-        return $cached;
+        return $cached;*/
+        $app = app('wechat');
+        return $app->access_token->getToken_test();
 
     }
 
