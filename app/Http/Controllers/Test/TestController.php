@@ -118,22 +118,16 @@ class TestController extends Controller
 
     public function cache()
     {
-       /* $cacheKey = $this->getCacheKey();
+        $cacheKey = $this->getCacheKey();
         $cached = $this->getCache()->fetch($cacheKey);
 //        $token = $this->getTokenFromServer();
-        $this->getCache()->save($cacheKey, 'wangke', 1500);
+        if(empty($cached)) {
+            $this->getCache()->save($cacheKey, 'wangke', 1500);
 
+        }
 //        return $token['access_token'];
 
-        return $this->getCache()->fetch($cacheKey);*/
-        if ($this->cache)
-        {
-            return '有';
-        }
-        if (empty($this->cache)){
-        return '无';
-    }
-        return $this->cache;
+        return $this->getCache()->fetch($cacheKey);
 
     }
 
@@ -152,7 +146,7 @@ class TestController extends Controller
     public function getCacheKey()
     {
         if (is_null($this->cacheKey)) {
-            return $this->prefix . $this->appId;
+            return $this->prefix;
         }
 
         return $this->cacheKey;
