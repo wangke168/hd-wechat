@@ -130,7 +130,7 @@ class TestController extends Controller
         {
             return '有';
         }
-        if (!$this->cache){
+        if (empty($this->cache)){
         return '无';
     }
         return $this->cache;
