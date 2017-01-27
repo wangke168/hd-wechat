@@ -128,8 +128,9 @@ class TestController extends Controller
 //        return $token['access_token'];
 
         return $cached;*/
-        $app = app('wechat');
-        return $app->access_token->getToken_test();
+         $openid='o2e-YuLg7MRujL9wMA1Zjj26AkV0123';
+        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
+        return $wxnumber;
 
     }
 
