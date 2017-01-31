@@ -334,9 +334,9 @@ class Response
                 if ($url != '') {
                     /*链接跳转的数据统计*/
 //                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
-//                    $url = "http://".$_SERVER['HTTP_HOST']."/jump/{$id}/{$openid}";
+                    $url = "http://".$_SERVER['HTTP_HOST']."/jump/{$id}/{$openid}";
 
-                    if (!strstr($url, 'project_id')) {
+          /*          if (!strstr($url, 'project_id')) {
                         if (strstr($url, '?') != '') {
                             $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                         } else {
@@ -347,7 +347,7 @@ class Response
                         $url=$url . "&wxnumber={$openid}";
 //                        return redirect($url . "&wxnumber={$openid}");
                     }
-
+*/
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                     $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
