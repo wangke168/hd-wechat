@@ -347,7 +347,7 @@ class Response
                         $url=$url . "&wxnumber={$openid}";
 //                        return redirect($url . "&wxnumber={$openid}");
                     }
-
+*/
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                     $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
