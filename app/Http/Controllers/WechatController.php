@@ -54,7 +54,7 @@ class WechatController extends Controller
 
                         //    $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
                             
-                            $response->make_user_tag($openid, $eventkey); //标签管理
+                        //    $response->make_user_tag($openid, $eventkey); //标签管理
                             break;
                         case 'SCAN':
                             #重复关注事件
@@ -71,7 +71,7 @@ class WechatController extends Controller
 
                           //      $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
 
-                                $response->make_user_tag($openid, $eventkey); //标签管理
+                           //     $response->make_user_tag($openid, $eventkey); //标签管理
                             }
                             break;
                         case 'unsubscribe':

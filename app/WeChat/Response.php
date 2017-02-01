@@ -103,7 +103,7 @@ class Response
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         $this->request_news($openid, $eventkey, '2', '', $menuid);
-        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+       // $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
 //        return $content;
     }
 
