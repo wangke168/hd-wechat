@@ -103,7 +103,7 @@ class Response
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         $this->request_news($openid, $eventkey, '2', '', $menuid);
-       // $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+        $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
 //        return $content;
     }
 
@@ -347,7 +347,7 @@ class Response
                         $url=$url . "&wxnumber={$openid}";
 //                        return redirect($url . "&wxnumber={$openid}");
                     }
-*/
+
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
                     $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
