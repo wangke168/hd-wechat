@@ -39,8 +39,8 @@ class Kernel extends ConsoleKernel
             ->dailyAt('2:00');*/
 
         /*演艺秀自动推送*/
-        $schedule->command('AutoSendShowInfo')
-            ->cron('*/20 8-18 * * *');
+    //    $schedule->command('AutoSendShowInfo')
+     //       ->cron('*/20 8-18 * * *');
 
         /*取消电影博物馆的tag*/
         $schedule->command('CancelTag')
