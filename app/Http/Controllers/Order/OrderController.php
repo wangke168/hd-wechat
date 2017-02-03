@@ -124,7 +124,7 @@ class OrderController extends Controller
         $second = new SecondSell();
 
         $userId = $openid;
-        $url = 'http://weix2.hengdianworld.com/article/articledetail.php?id=44';
+        $url = 'http://wechat.hengdianworld.com/article/detail?id=44';
         $color = '#FF0000';
 
         $ticket_id = "";
