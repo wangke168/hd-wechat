@@ -54,7 +54,7 @@ class Update_Openid_Info extends Command
             $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $result->wx_openid;
             $json = $this->http_request_json($url);//这个地方不能用file_get_contents
             $data = json_decode($json, true);
-            
+
 //            $nickname = $data['nickname'];
 //            $sex = $data['sex'];
             $city = $data['city'];
@@ -73,8 +73,8 @@ class Update_Openid_Info extends Command
         }*/
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
-//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('endtime','>=','2016-08-28')
+            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
+            // ->whereDate('endtime','>=','2016-08-28')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo)

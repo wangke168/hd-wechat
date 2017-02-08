@@ -108,8 +108,8 @@ class OrderController extends Controller
     private function insert_order($openid, $sellid)
     {
         $usage = new Usage();
-        $eventkey='';
-        $focusdate='0000-00-00 00:00:00';
+        $eventkey = '';
+        $focusdate = '0000-00-00 00:00:00';
         if ($usage->get_openid_info($openid)) {
             $eventkey = $usage->get_openid_info($openid)->eventkey;
             $focusdate = $usage->get_openid_info($openid)->adddate;
@@ -150,7 +150,7 @@ class OrderController extends Controller
 
             $flag = $data['ticketorder'][0]['flag'];
 
-            if ($flag !="未支付" || $flag != "已取消") {
+            if ($flag != "未支付" || $flag != "已取消") {
 
                 if ($data['ticketorder'][0]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
                     $ticketorder = "注意：该票种需要身份证检票";
@@ -172,53 +172,53 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 
-                $content = $second->second_info_send('ticket', $ticket,$openid,$sellid);
+                $content = $second->second_info_send('ticket', $ticket, $openid, $sellid);
 
             }
         }
         if ($inclusivecount <> 0) {
             $ticket_id = 2;
 
-                $first = $data['inclusiveorder'][0]['name'] . "，您好，您已经成功预订组合套餐。\n";
-                $sellid = $data['inclusiveorder'][0]['sellid'];
-                $name = $data['inclusiveorder'][0]['name'];
-                $date = $data['inclusiveorder'][0]['date2'];
-                $ticket = $data['inclusiveorder'][0]['ticket'];
-                $hotel = $data['inclusiveorder'][0]['hotel'];
-                $flag = $data['inclusiveorder'][0]['flag'];
+            $first = $data['inclusiveorder'][0]['name'] . "，您好，您已经成功预订组合套餐。\n";
+            $sellid = $data['inclusiveorder'][0]['sellid'];
+            $name = $data['inclusiveorder'][0]['name'];
+            $date = $data['inclusiveorder'][0]['date2'];
+            $ticket = $data['inclusiveorder'][0]['ticket'];
+            $hotel = $data['inclusiveorder'][0]['hotel'];
+            $flag = $data['inclusiveorder'][0]['flag'];
 
-                if ($flag != "未支付" || $flag != "已取消") {
+            if ($flag != "未支付" || $flag != "已取消") {
 
-                    $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
+                $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
 
-                    $templateId = env('TEMPLATEID_PACKAGES');
+                $templateId = env('TEMPLATEID_PACKAGES');
 
-                    $data = array(
-                        "first" => array($first, "#000000"),
-                        "keyword1" => array($sellid, "#173177"),
-                        "keyword2" => array($name, "#173177"),
-                        "keyword3" => array($date, "#173177"),
-                        "keyword4" => array($ticket, "#173177"),
-                        "keyword5" => array($hotel, "#173177"),
-                        "remark" => array($remark, "#000000"),
-                    );
-                    $content = $second->second_info_send('inclusive', $ticket.$hotel,$openid,$sellid);
+                $data = array(
+                    "first" => array($first, "#000000"),
+                    "keyword1" => array($sellid, "#173177"),
+                    "keyword2" => array($name, "#173177"),
+                    "keyword3" => array($date, "#173177"),
+                    "keyword4" => array($ticket, "#173177"),
+                    "keyword5" => array($hotel, "#173177"),
+                    "remark" => array($remark, "#000000"),
+                );
+                $content = $second->second_info_send('inclusive', $ticket . $hotel, $openid, $sellid);
 
             }
         }
         if ($hotelcount <> 0) {
             $ticket_id = 3;
 
-                $sellid = $data['hotelorder'][0]['sellid'];
-                $name = $data['hotelorder'][0]['name'];
-                $date = $data['hotelorder'][0]['date2'];
-                $days = $data['hotelorder'][0]['days'];
-                $hotel = $data['hotelorder'][0]['hotel'];
-                $numbers = $data['hotelorder'][0]['numbers'];
-                $roomtype = $data['hotelorder'][0]['roomtype'];
-                $flag = $data['hotelorder'][0]['flag'];
+            $sellid = $data['hotelorder'][0]['sellid'];
+            $name = $data['hotelorder'][0]['name'];
+            $date = $data['hotelorder'][0]['date2'];
+            $days = $data['hotelorder'][0]['days'];
+            $hotel = $data['hotelorder'][0]['hotel'];
+            $numbers = $data['hotelorder'][0]['numbers'];
+            $roomtype = $data['hotelorder'][0]['roomtype'];
+            $flag = $data['hotelorder'][0]['flag'];
 
-                if ($flag != "未支付" || $flag != "已取消") {
+            if ($flag != "未支付" || $flag != "已取消") {
 
                 $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
                 $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
@@ -234,7 +234,7 @@ class OrderController extends Controller
                     "keyword5" => array($numbers, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
-                    $content = $second->second_info_send('hotel', $hotel,$openid,$sellid);
+                $content = $second->second_info_send('hotel', $hotel, $openid, $sellid);
             }
         }
 
