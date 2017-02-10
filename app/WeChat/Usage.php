@@ -53,13 +53,12 @@ class Usage
     {
         $uid = $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
         $endtime = $this->get_openid_info($openid)->endtime;
-     /*   if (!$uid) {
+        if (!$uid) {
             $differs_days = (strtotime("now") - strtotime($endtime)) / 86400;
             if ($differs_days <= 7 && $differs_days > 1) {
                 $uid = "627A7778313233";
             }
         }
-        */
         return $uid;
     }
 
@@ -101,7 +100,7 @@ class Usage
             return false;
         }
     }
-    
+
 
     /**
      * 查询门店对应信息
