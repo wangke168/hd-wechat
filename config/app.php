@@ -160,6 +160,9 @@ return [
 
         Overtrue\LaravelWechat\ServiceProvider::class,
 
+        //出错提示
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+
     ],
 
     /*
@@ -207,6 +210,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Wechat' => Overtrue\LaravelWechat\Facade::class,
+
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
     ],
 
 ];

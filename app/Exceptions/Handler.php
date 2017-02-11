@@ -33,6 +33,11 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        if (str_contains(env('SENTRY_DSN'),'138038')) {
+            if ($this->shouldReport($e)) {
+                app('sentry')->captureException($e);
+            }
+        }
         parent::report($e);
     }
 
