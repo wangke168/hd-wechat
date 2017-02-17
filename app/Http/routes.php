@@ -8,6 +8,7 @@ Route::get('/hd-token','TokenController@token');
 //跳转
 Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 Route::get('/jump/ehengdian','LinkJumpController@jump_dyh');
+Route::get('/jump/jt','LinkJumpController@jump_jt');
 //订单相关
 Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');

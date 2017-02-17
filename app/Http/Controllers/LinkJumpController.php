@@ -64,4 +64,9 @@ class LinkJumpController extends Controller
 
         return redirect($url);
     }
+    public function jump_jt()
+    {
+        $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=ec8ceIgJl9DcyD4ZestC8KhkKL35yRYab0tzWDTmGijts[c]qStiYqVhAoTCC4EtG8rRU';
+        return redirect($url);
+    }
 }

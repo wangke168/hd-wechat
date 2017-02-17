@@ -129,7 +129,7 @@ class TestController extends Controller
 
         return $cached;*/
         $usage=new Usage();
-         $openid='o2e-YuLg7MRujL9wMA1Zjj26AkV0123';
+         $openid='o2e-YuMRhpLZhCm9FUJHc';
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         return $wxnumber;
 
