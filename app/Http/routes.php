@@ -36,7 +36,7 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 //Route::get('/article', 'ArticlesController@detail');
 
 Route::get('/article/detail', 'ArticlesController@detail');
-
+Route::get('/article/test', 'ArticlesController@detail_long');
 Route::get('/article/webdetail','ArticlesController@webdetail');
 
 //预览
@@ -107,11 +107,6 @@ Route::get('temp',function(){
     return Redirect::to('http://w.unclewang.me/zone/subscribe/ldjl?comefrom=1&wxnumber=f764R1Xw49kFEKrCNbiXfw7lYjeHzBlSgjGw98IX8[a]63226WuP4D9pTQ3rGph6j[c]4ccyH1hulpBW&uid=&wpay=1');
 });
 
-
-Route::get('temp1',function(){
-    return Redirect::to('http://w.unclewang.me/test/article/detail?comefrom=1&wxnumber=445544554&uid=&wpay=1');
-  //  return Redirect::to('http://w.unclewang.me/test/article/detail?comefrom=1&wxnumber=445544554&uid=&wpay=1');
-});
 
 
 /*Route::get('article', function(){

@@ -27,6 +27,13 @@ class ArticlesController extends Controller
         $this->usage = new Usage();
     }
 
+    /**
+     * 预订成功后推送相关信息
+     * @param $sellid
+     * @param $openid
+     * @param $info_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function second_article($sellid, $openid, $info_id)
     {
         $usage = new Usage();
@@ -54,6 +61,11 @@ class ArticlesController extends Controller
         return redirect($url);
     }
 
+    /**
+     * 打开二次推送页面
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function second_article_detail(Request $request)
     {
         $id = $request->input('id');
@@ -67,11 +79,16 @@ class ArticlesController extends Controller
     }
 
 
+    /**
+     * 文章列表测试
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $articles = DB::table('wx_article')->where('title', 'like', '门票%')->orderBy('id', 'desc')->skip(0)->take(2)->get();
         return view('articles.index', compact('articles'));
     }
+
 
     public function show($id)
     {
@@ -80,6 +97,11 @@ class ArticlesController extends Controller
         return view('articles.show', compact('article'));
     }
 
+    /**
+     * 显示文章详情
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function detail(Request $request)
     {
         $id = $request->input('id');
@@ -104,6 +126,11 @@ class ArticlesController extends Controller
         }
     }
 
+    /**
+     * 文章预览
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function detail_review(Request $request)
     {
         $id = $request->input('id');
@@ -114,6 +141,11 @@ class ArticlesController extends Controller
 
         return view('articles.detailreview', compact('article', 'id', 'openid'));
 
+    }
+
+    public function detail_long(Request $request)
+    {
+        return view('test.detail_long_test');
     }
 
     /**

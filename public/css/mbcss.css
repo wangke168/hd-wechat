@@ -72,7 +72,7 @@ a:link, a:visited { text-decoration:none;}
 .dateDiv {margin:0 auto;	text-align: center; } 
 #title { margin:10px; font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;  display:block;font-size: 28px;}
 #titleinfo { margin:10px; width:70%; display:block;color:#777777;font-size: 0.8em;text-align:justify;}
-#contents { margin:10px; font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif; line-height:27px;font-size: 18px;}
+#contents { margin:10px; font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif; line-height:28px;font-size: 18px;}
 
 /*手机官网*/
 #title_gw { margin:10px; width:100%; text-align: center; display:block;font-size: 1.4em;font-weight:bold;}
