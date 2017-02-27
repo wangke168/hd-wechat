@@ -166,4 +166,27 @@ class ArticlesController extends Controller
         return view('articles.webdetail', compact('article'));
     }
 
+    public function test(Request $request)
+    {
+        $id = $request->input('id');
+        $wxnumber = $request->input('wxnumber');
+
+        $wxnumber = $this->usage->authcode($wxnumber, 'DECODE', 0);
+        $openid = $request->input('openid');
+
+        if ($wxnumber) {
+            $openid = $wxnumber;
+        }
+
+        $article = WechatArticle::find($id);
+        if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
+            abort(404);
+        } else {
+
+            $this->count->add_article_hits($id);
+            $this->count->insert_hits($id, $openid);
+
+            return view('articles.detail_back', compact('article', 'id', 'openid'));
+        }
+    }
 }

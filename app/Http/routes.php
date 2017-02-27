@@ -35,6 +35,7 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 //Route::get('/articles', 'ArticlesController@index');
 //Route::get('/article', 'ArticlesController@detail');
 
+//文章管理
 Route::get('/article/detail', 'ArticlesController@detail');
 Route::get('/article/test', 'ArticlesController@detail_long');
 Route::get('/article/webdetail','ArticlesController@webdetail');
