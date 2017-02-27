@@ -7,6 +7,7 @@ use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\Cache\MemcacheCache;
 use App\WeChat\Tour;
 use App\WeChat\Usage;
+use EasyWeChat\Foundation\Application;
 use EasyWeChat\Message\Text;
 use DB;
 use App\Models\WechatArticle;
@@ -16,16 +17,22 @@ use Carbon\Carbon;
 
 class TestController extends Controller
 {
-    protected $cache;
-    protected $cacheKey;
-    protected $prefix = 'test.access_token.';
-
-    public function __construct(Cache $cache = null)
+    public $app;
+    public $js;
+    public function __construct(Application $app)
     {
-        $this->cache = $cache;
+        $this->app=$app;
+        $this->js=$this->app->js;
+
     }
 
     public function test()
+    {
+        $ticket=$this->js->ticket();
+        return $ticket;
+    }
+
+    public function test1()
     {
 
         $app = app('wechat');
@@ -135,24 +142,5 @@ class TestController extends Controller
 
     }
 
-    public function getCache()
-    {
-        if (empty($this->cache)) {
-            $memcached = new \Memcache();
-            $memcached->addServer('localhost', 11211);
-            $this->cache = new MemcacheCache();
-            $this->cache->setMemcache($memcached);
-        }
-        return $this->cache;
 
-    }
-
-    public function getCacheKey()
-    {
-        if (is_null($this->cacheKey)) {
-            return $this->prefix;
-        }
-
-        return $this->cacheKey;
-    }
 }
