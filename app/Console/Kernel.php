@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
             ->everyMinute();*/
         /*更新wx_user_info里的信息*/
         $schedule->command('update_openid_info')
-            ->dailyAt('17:00');
+            ->dailyAt('0:30');
 
         /*演艺秀自动推送*/
      //   $schedule->command('AutoSendShowInfo')

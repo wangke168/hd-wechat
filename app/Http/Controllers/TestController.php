@@ -38,7 +38,7 @@ class TestController extends Controller
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
 //            ->whereDate('endtime','>=',date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('endtime','>=','2016-12-16')
+            ->whereDate('endtime','>=','2017-02-24')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo) {
