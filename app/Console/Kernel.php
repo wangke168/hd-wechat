@@ -35,8 +35,8 @@ class Kernel extends ConsoleKernel
 /*        $schedule->command('inspire')
             ->everyMinute();*/
         /*更新wx_user_info里的信息*/
-/*        $schedule->command('update_openid_info')
-            ->dailyAt('2:00');*/
+        $schedule->command('update_openid_info')
+            ->dailyAt('17:00');
 
         /*演艺秀自动推送*/
      //   $schedule->command('AutoSendShowInfo')
