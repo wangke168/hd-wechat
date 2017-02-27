@@ -97,4 +97,51 @@
     }
 ?>
 
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    wx.config(<?php echo $js->config(array('onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'), false) ?>);
+
+    wx.ready(function () {
+
+        wx.onMenuShareAppMessage({
+            title: '<?php echo $pyq_title;?>', // 分享标题
+            desc: '<?php echo $article->description;?>', // 分享描述
+            link: '<?php echo $resp_url;?>', // 分享链接
+            imgUrl: '<?php echo $imgUrl?>', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                $.get('/count/addrespf/<?php echo $id;?>/<?php echo $openid;?>');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareTimeline({
+            title: '<?php echo $pyq_title?>',
+            link: '<?php echo $resp_url?>',
+            imgUrl: '<?php echo $imgUrl?>',
+            success: function (res) {
+//                alert('已分享');
+                $.get('/count/addresp/<?php echo $id;?>/<?php echo $openid;?>');
+            },
+            fail: function (res) {
+//                alert(JSON.stringify(res));
+            }
+
+        });
+    });
+
+    wx.error(function (res) {
+        alert(res.errMsg);
+    });
+
+
+</script>
+
 </html>
