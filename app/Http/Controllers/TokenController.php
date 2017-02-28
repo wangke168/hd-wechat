@@ -35,7 +35,7 @@ class TokenController extends Controller
         $result = file_get_contents($token_url);
 
         $result=json_decode($result,true);
-        return $result;
+        return $result['ticket'];
 
 //        return $ticket;
     }
