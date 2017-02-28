@@ -13,7 +13,6 @@ class TokenController extends Controller
     public function __construct(Application $app)
     {
         $this->app=$app;
-
         $this->js=$this->app->js;
     }
 
@@ -31,7 +30,7 @@ class TokenController extends Controller
     }
     public function getjs()
     {
-        $token_url = "http://wechat-2.unclewang.me/api";
+        $token_url = "http://wechat.hengdianworld.com/api";
         $result = file_get_contents($token_url);
 
         $result=json_decode($result,true);
