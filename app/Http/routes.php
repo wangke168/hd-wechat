@@ -4,7 +4,7 @@
 Route::any('/wechat', 'WechatController@serve');
 //输出token
 Route::get('/hd-token','TokenController@token');
-Route::get('/api/js','TokenController@js');
+Route::get('/api','TokenController@api');
 
 Route::get('/api/getjs','TokenController@getjs');
 

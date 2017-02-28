@@ -31,12 +31,20 @@ class TokenController extends Controller
     }
     public function getjs()
     {
-        $token_url = "http://wechat-2.unclewang.me/api/js";
+        $token_url = "http://wechat-2.unclewang.me/api";
         $result = file_get_contents($token_url);
 
         $result=json_decode($result,true);
-        return $result['ticket'];
-
+        echo $result['ticket'].'<br>';
+        echo $result['token'];
 //        return $ticket;
+    }
+
+    public function api()
+    {
+        $token=$this->app->access_token->getToken();
+        $ticket=$this->js->ticket();
+        $data=['token'=>$token,'ticket'=>$ticket];
+        return response()->json($data);
     }
 }
