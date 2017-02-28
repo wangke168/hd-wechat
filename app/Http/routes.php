@@ -6,6 +6,8 @@ Route::any('/wechat', 'WechatController@serve');
 Route::get('/hd-token','TokenController@token');
 Route::get('/api/js','TokenController@js');
 
+Route::get('/api/getjs','TokenController@js');
+
 //跳转
 Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 Route::get('/jump/ehengdian','LinkJumpController@jump_dyh');
