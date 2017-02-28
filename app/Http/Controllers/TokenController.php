@@ -34,7 +34,7 @@ class TokenController extends Controller
         $token_url = "http://wechat-2.unclewang.me/api/js";
         $result = file_get_contents($token_url);
 
-        $result=json_decode($result);
+        $result=json_decode($result,true);
         return $result;
 
 //        return $ticket;
