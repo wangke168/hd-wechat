@@ -145,7 +145,11 @@ class ArticlesController extends Controller
 
     public function detail_long(Request $request)
     {
-        return view('test.detail_long_test');
+        $rows_zone=DB::table('zone')
+            ->orderBy('priority','asc')
+            ->get();
+//        return $rows_zone;
+        return view('test.detail_long_test',compact('rows_zone'));
     }
 
     /**

@@ -173,13 +173,26 @@ optgroup {
 
 table {
     border-spacing: 0;
-    border-collapse: collapse
+    border-collapse: collapse;
 }
-
+table, td, th{
+    border:1px solid #cccccc;
+}
 td, th {
-    padding: 0
-}
+    padding: 5px;
 
+}
+tr.zone{
+    background-color: #dff0d8 ;
+    height: 30px;
+}
+td.showname{
+    padding-left: 15px;
+    background-color: #d9edf7;
+}
+td.showtime{
+    padding-left: 15px
+}
 @-webkit-keyframes sk-bouncedelay {
     0%, 80%, to {
         -webkit-transform: scale(0);
