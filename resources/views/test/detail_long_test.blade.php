@@ -124,7 +124,7 @@
                     <tbody>
                     <?php
                     $date = Carbon\Carbon::now()->toDateString();
-                            $zone=new \App\WeChat\Zone();
+                    $zone = new \App\WeChat\Zone();
                     foreach ($rows_zone as $row_zone) {
 
                         //获取现在所处时间段
@@ -135,51 +135,51 @@
                                 ->orderBy('show_id', 'asc')
                                 ->get();
                         if ($rows_show) {
-                            echo '<tr class="zone"><td>'.$row_zone->zone_name.'</td></tr>';
+                            echo '<tr class="zone"><td>' . $row_zone->zone_name . '</td></tr>';
 
                             foreach ($rows_show as $row_show) {
 
                                 $show_name = $zone->get_project_info($row_show->show_id)->show_name;
                                 if ($row_show->se_name) {
-                                    $show_name = $show_name . '(' . $row_show->se_name . ')';
+                                    $show_name = $row_show->se_name . '(' . $show_name . ')';
                                 }
-                                echo '<tr><td class="showname">'.$show_name.'</td></tr>';
-                                echo '<tr><td class="showtime">'.$row_show->show_time.'</td></tr>';
+                                echo '<tr><td class="showname">' . $show_name . '</td></tr>';
+                                echo '<tr><td class="showtime">' . $row_show->show_time . '</td></tr>';
 
                                 //获取下一个时间
-                                $row_next=DB::table('zone_show_time')
-                                        ->whereDate('startdate','>',$row_show->enddate)
-                                        ->orderBy('startdate','asc')
-                                        ->first();
-                                if($row_next)
-                                {
+                                /*     $row_next=DB::table('zone_show_time')
+                                              ->whereDate('startdate','>',$row_show->enddate)
+                                              ->orderBy('startdate','asc')
+                                              ->first();
+                                      if($row_next)
+                                      {
 
-//                                   echo date('n月d日',strtotime($row_next->startdate));
-//                                    echo "<br>";
+                                         echo date('n月d日',strtotime($row_next->startdate));
+                                          echo "<br>";
 
-                                }
-
+                                      }
+             */
                             }
                         }
                     }
                     ?>
                     </tbody>
-                    </table>
-<!--
+                </table>
+                <!--
 
-                <p>John Hoke
-                    是耐克全球设计副总裁，他戴上不知为何小了几码的白手套，拿起鲍尔曼的华夫鞋，开始解释耐克的设计纲领。第一句话媒体们绝不陌生，它曾经在耐克各类介绍新产品的场合出现过，还以巨大装饰字样挂在耐克设计部门大楼的一整面墙上：“永远倾听运动员的声音”——每当这句话在一个挤满媒体的房间里响起的时候，就是耐克发布新产品的时刻。这一次的主角，则是墙上的球鞋：Vapormax。</p>
+                                <p>John Hoke
+                                    是耐克全球设计副总裁，他戴上不知为何小了几码的白手套，拿起鲍尔曼的华夫鞋，开始解释耐克的设计纲领。第一句话媒体们绝不陌生，它曾经在耐克各类介绍新产品的场合出现过，还以巨大装饰字样挂在耐克设计部门大楼的一整面墙上：“永远倾听运动员的声音”——每当这句话在一个挤满媒体的房间里响起的时候，就是耐克发布新产品的时刻。这一次的主角，则是墙上的球鞋：Vapormax。</p>
 
-                <div class="com-insert-images">
-                    <figure style="margin: 0px;" class="">
-                        <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
-                             data-src="http://img.qdaily.com/uploads/201702192123400ASFbTGskZPJy7pd.jpeg-w600">
-                        <figcaption class=""><p>John Hoke 展示耐克历史上的气垫研发，这是一双1981年的原型鞋（图片摄影：ULSUM）</p></figcaption>
-                    </figure>
-                </div>
+                                <div class="com-insert-images">
+                                    <figure style="margin: 0px;" class="">
+                                        <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
+                                             data-src="http://img.qdaily.com/uploads/201702192123400ASFbTGskZPJy7pd.jpeg-w600">
+                                        <figcaption class=""><p>John Hoke 展示耐克历史上的气垫研发，这是一双1981年的原型鞋（图片摄影：ULSUM）</p></figcaption>
+                                    </figure>
+                                </div>
 
-                <p>因为鞋底是个“泡泡”，大部分人看到 Vapormax 的第一反应都是：“它不会破吗？”</p>
--->
+                                <p>因为鞋底是个“泡泡”，大部分人看到 Vapormax 的第一反应都是：“它不会破吗？”</p>
+                -->
             </div>
         </div>
     </div>
