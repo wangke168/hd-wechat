@@ -105,11 +105,16 @@
     <div class="com-article-detail short" data-categoryid="4">
         <div class="article-detail-hd">
 
+            <?php
+            $date = Carbon\Carbon::now()->toDateString();
+            $zone = new \App\WeChat\Zone();
+            $zone_name = $zone->get_zone_info($zone_id)->zone_name;
+            ?>
 
             <div class="banner"><img
-                        src="http://img.qdaily.com/article/article_show/20170302075311b5CjIy1lWdAOpMfm.jpg?imageMogr2/auto-orient/thumbnail/!580x344r/gravity/Center/crop/580x344/quality/85/format/jpg/ignore-error/1"
+                        src="/media/images/show-qmsht.jpg"
                         alt=""></div>
-            <h1 class="title">秦王宫2017年演艺秀时间表</h1>
+            <h1 class="title">{!! $zone_name !!}2017年演艺秀时间表</h1>
 
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
@@ -126,9 +131,7 @@
                 <table>
                     <tbody>
                     <?php
-                    $date = Carbon\Carbon::now()->toDateString();
-                    $zone = new \App\WeChat\Zone();
-                    $zone_name = $zone->get_zone_info($zone_id)->zone_name;
+
 
                     //获取现在所处时间段
                     $rows_show = DB::table('zone_show_time')
@@ -171,7 +174,8 @@
                     </tbody>
                 </table>
 
-
+                <p>题图/演艺秀:汴梁一梦</p>
+                <!--
                 <p>伊隆·马斯克的航天公司 SpaceX 公布了一个<a
                             href="http://www.spacex.com/news/2017/02/27/spacex-send-privately-crewed-dragon-spacecraft-beyond-moon-next-year">全新计划</a>，要在
                     2018 年送两位付费乘客去月球轨道兜一兜风。<br></p>
@@ -309,6 +313,7 @@
                                           href="/mobile/downloads/callup/1.html" class="btn">打开好奇心，查看更多内容</a></div>
         </div>
     </div>
+    -->
 </div>
 <script type="text/javascript">resetImgQuantity(), window.onload = function () {
         !function (e, a, n, t, o, c, i) {
