@@ -131,7 +131,6 @@
                         $rows_show = DB::table('zone_show_time')
                                 ->whereDate('startdate', '<=', $date)
                                 ->whereDate('enddate', '>=', $date)
-                                ->max('is_top')
                                 ->where('zone_id', $row_zone->id)
                                 ->orderBy('show_id', 'asc')
                                 ->get();
