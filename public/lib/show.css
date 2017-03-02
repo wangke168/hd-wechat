@@ -850,8 +850,8 @@ button.swiper-pagination-bullet {
     position: relative;
     margin-top: 15px;
     margin-top: .75rem;
-    padding: 25px 0;
-    padding: 1.25rem 0;
+
+    padding: 0.20rem 0;
     color: #9c9c9c;
     text-align: center;
     word-wrap: break-word;
