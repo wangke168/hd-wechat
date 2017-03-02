@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/show.css" afterPath="$PROJECT_DIR$/public/lib/show.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php" afterPath="$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php" afterPath="$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail_long_test.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail_long_test.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.692307">
-              <caret line="170" column="30" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.44341373">
+              <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -59,14 +60,14 @@
       <file leaf-file-name="detail_short_test.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.423077">
-              <caret line="150" column="16" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="62" />
+            <state vertical-scroll-proportion="-32.692307">
+              <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
               <folding>
-                <marker date="1488442358000" expanded="true" signature="8267:17470" placeholder="..." />
-                <marker date="1488442358000" expanded="true" signature="17511:18101" placeholder="..." />
-                <marker date="1488442358000" expanded="true" signature="17560:18093" placeholder="{...}" />
-                <marker date="1488442358000" expanded="true" signature="17602:17907" placeholder="{...}" />
-                <marker date="1488442358000" expanded="true" signature="17672:17759" placeholder="{...}" />
+                <marker date="1488443456000" expanded="true" signature="8265:17468" placeholder="..." />
+                <marker date="1488443456000" expanded="true" signature="17509:18099" placeholder="..." />
+                <marker date="1488443456000" expanded="true" signature="17558:18091" placeholder="{...}" />
+                <marker date="1488443456000" expanded="true" signature="17600:17905" placeholder="{...}" />
+                <marker date="1488443456000" expanded="true" signature="17670:17757" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -102,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="show.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/lib/show.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07136061">
+            <state vertical-scroll-proportion="-4.716981">
               <caret line="853" column="16" selection-start-line="853" selection-start-column="16" selection-end-line="853" selection-end-column="16" />
               <folding />
             </state>
@@ -206,9 +207,9 @@
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/public/lib/common.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
+        <option value="$PROJECT_DIR$/public/lib/show.css" />
         <option value="$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php" />
-        <option value="$PROJECT_DIR$/public/lib/show.css" />
       </list>
     </option>
   </component>
@@ -918,28 +919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.423077">
-          <caret line="150" column="16" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="62" />
-          <folding>
-            <marker date="1488442358000" expanded="true" signature="8267:17470" placeholder="..." />
-            <marker date="1488442358000" expanded="true" signature="17511:18101" placeholder="..." />
-            <marker date="1488442358000" expanded="true" signature="17560:18093" placeholder="{...}" />
-            <marker date="1488442358000" expanded="true" signature="17602:17907" placeholder="{...}" />
-            <marker date="1488442358000" expanded="true" signature="17672:17759" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.692307">
-          <caret line="170" column="30" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/lib/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.490566">
@@ -958,8 +937,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/lib/show.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07136061">
+        <state vertical-scroll-proportion="-4.716981">
           <caret line="853" column="16" selection-start-line="853" selection-start-column="16" selection-end-line="853" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.692307">
+          <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+          <folding>
+            <marker date="1488443456000" expanded="true" signature="8265:17468" placeholder="..." />
+            <marker date="1488443456000" expanded="true" signature="17509:18099" placeholder="..." />
+            <marker date="1488443456000" expanded="true" signature="17558:18091" placeholder="{...}" />
+            <marker date="1488443456000" expanded="true" signature="17600:17905" placeholder="{...}" />
+            <marker date="1488443456000" expanded="true" signature="17670:17757" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44341373">
+          <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
           <folding />
         </state>
       </provider>
