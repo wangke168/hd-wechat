@@ -104,6 +104,7 @@ class ArticlesController extends Controller
      */
     public function detail(Request $request)
     {
+        $type = $request->input('type');
         $id = $request->input('id');
         $wxnumber = $request->input('wxnumber');
 
@@ -114,16 +115,34 @@ class ArticlesController extends Controller
             $openid = $wxnumber;
         }
 
-        $article = WechatArticle::find($id);
-        if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
-            abort(404);
-        } else {
+        switch ($type) {
+            case 'long':
+                $rows_zone = DB::table('zone')
+                    ->orderBy('priority', 'asc')
+                    ->get();
+                return view('articles.detail_show_all', compact('rows_zone','openid'));
+                break;
+            case 'short':
+                $zone_id = $request->input('id');
+                $row_zone = DB::table('zone')
+                    ->where('id', $zone_id)
+                    ->first();
+                return view('test.detail_short_test', compact('row_zone'));
+                break;
+            default:
+                $article = WechatArticle::find($id);
+                if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
+                    abort(404);
+                } else {
 
-                $this->count->add_article_hits($id);
-                $this->count->insert_hits($id, $openid);
+                    $this->count->add_article_hits($id);
+                    $this->count->insert_hits($id, $openid);
 
-            return view('articles.detail', compact('article', 'id', 'openid'));
+                    return view('articles.detail', compact('article', 'id', 'openid'));
+                }
+                break;
         }
+
     }
 
     /**
@@ -145,20 +164,21 @@ class ArticlesController extends Controller
 
     public function detail_long(Request $request)
     {
-        $rows_zone=DB::table('zone')
-            ->orderBy('priority','asc')
+        $rows_zone = DB::table('zone')
+            ->orderBy('priority', 'asc')
             ->get();
 //        return $rows_zone;
-        return view('test.detail_long_test',compact('rows_zone'));
+        return view('test.detail_long_test', compact('rows_zone'));
     }
+
     public function detail_short(Request $request)
     {
-        $zone_id=$request->input('id');
+        $zone_id = $request->input('id');
 
-        $row_zone=DB::table('zone')
-            ->where('id',$zone_id)
+        $row_zone = DB::table('zone')
+            ->where('id', $zone_id)
             ->first();
-        return view('test.detail_short_test',compact('row_zone'));
+        return view('test.detail_short_test', compact('row_zone'));
     }
 
 
@@ -168,13 +188,10 @@ class ArticlesController extends Controller
      */
     public function webdetail(Request $request)
     {
-        $type=$request->input('type');
-        if ($type=='day')
-        {
+        $type = $request->input('type');
+        if ($type == 'day') {
             $article = WechatArticle::find('37');
-        }
-        elseif($type=='week')
-        {
+        } elseif ($type == 'week') {
             $article = WechatArticle::find('38');
         }
         return view('articles.webdetail', compact('article'));

@@ -32,5 +32,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('articles.ldjl', 'App\Http\ViewComposers\ArticleComposer');
         View::composer('subscribe.ldjl', 'App\Http\ViewComposers\ArticleComposer');
         View::composer('subscribe.detail', 'App\Http\ViewComposers\ArticleComposer');
+
+        //长图片
+        View::composer('articles.detail_show_all', 'App\Http\ViewComposers\ArticleComposer');
     }
 }
