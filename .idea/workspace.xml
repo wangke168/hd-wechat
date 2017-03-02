@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/common.css" afterPath="$PROJECT_DIR$/public/lib/common.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php" afterPath="$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -50,10 +49,10 @@
       <file leaf-file-name="detail_long_test.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.767658">
-              <caret line="148" column="41" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.2788104">
+              <caret line="133" column="45" selection-start-line="133" selection-start-column="45" selection-end-line="133" selection-end-column="45" />
               <folding>
-                <marker date="1488358043000" expanded="true" signature="10357:10629" placeholder="..." />
+                <marker date="1488420006000" expanded="true" signature="10405:10677" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -893,10 +892,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.767658">
-          <caret line="148" column="41" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.2788104">
+          <caret line="133" column="45" selection-start-line="133" selection-start-column="45" selection-end-line="133" selection-end-column="45" />
           <folding>
-            <marker date="1488358043000" expanded="true" signature="10357:10629" placeholder="..." />
+            <marker date="1488420006000" expanded="true" signature="10405:10677" placeholder="..." />
           </folding>
         </state>
       </provider>
