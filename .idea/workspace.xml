@@ -47,27 +47,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail_long_test.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail_long_test.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44341373">
-              <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
+            <state vertical-scroll-proportion="-18.384615">
+              <caret line="119" column="44" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail_short_test.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail_short_test.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.692307">
-              <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.8348794">
+              <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
               <folding>
-                <marker date="1488443456000" expanded="true" signature="8265:17468" placeholder="..." />
-                <marker date="1488443456000" expanded="true" signature="17509:18099" placeholder="..." />
-                <marker date="1488443456000" expanded="true" signature="17558:18091" placeholder="{...}" />
-                <marker date="1488443456000" expanded="true" signature="17600:17905" placeholder="{...}" />
-                <marker date="1488443456000" expanded="true" signature="17670:17757" placeholder="{...}" />
+                <marker date="1488443553000" expanded="true" signature="8263:17466" placeholder="..." />
+                <marker date="1488443553000" expanded="true" signature="17507:18097" placeholder="..." />
+                <marker date="1488443553000" expanded="true" signature="17556:18089" placeholder="{...}" />
+                <marker date="1488443553000" expanded="true" signature="17598:17903" placeholder="{...}" />
+                <marker date="1488443553000" expanded="true" signature="17668:17755" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -208,8 +208,8 @@
         <option value="$PROJECT_DIR$/public/lib/common.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" />
         <option value="$PROJECT_DIR$/public/lib/show.css" />
-        <option value="$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php" />
       </list>
     </option>
   </component>
@@ -943,25 +943,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.692307">
-          <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
-          <folding>
-            <marker date="1488443456000" expanded="true" signature="8265:17468" placeholder="..." />
-            <marker date="1488443456000" expanded="true" signature="17509:18099" placeholder="..." />
-            <marker date="1488443456000" expanded="true" signature="17558:18091" placeholder="{...}" />
-            <marker date="1488443456000" expanded="true" signature="17600:17905" placeholder="{...}" />
-            <marker date="1488443456000" expanded="true" signature="17670:17757" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="-18.384615">
+          <caret line="119" column="44" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/test/detail_short_test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44341373">
-          <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
-          <folding />
+        <state vertical-scroll-proportion="0.8348794">
+          <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
+          <folding>
+            <marker date="1488443553000" expanded="true" signature="8263:17466" placeholder="..." />
+            <marker date="1488443553000" expanded="true" signature="17507:18097" placeholder="..." />
+            <marker date="1488443553000" expanded="true" signature="17556:18089" placeholder="{...}" />
+            <marker date="1488443553000" expanded="true" signature="17598:17903" placeholder="{...}" />
+            <marker date="1488443553000" expanded="true" signature="17668:17755" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -117,7 +117,7 @@
 
         </div>
         <div class="article-detail-bd">
-            <div class="excerpt"> 以下为常规时间表，若景区临时有更改，恕不另行通知，请以当日景区公告为准。</div>
+            <div class="excerpt"> 以下为常规时间表，若临时有更改，恕不另行通知，请以当日景区公告为准。</div>
             <div class="detail">
 
                 <table>
