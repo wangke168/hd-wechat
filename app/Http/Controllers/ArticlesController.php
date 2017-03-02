@@ -155,7 +155,10 @@ class ArticlesController extends Controller
     {
         $zone_id=$request->input('id');
 
-        return view('test.detail_short_test',compact('zone_id'));
+        $row_zone=DB::table('zone')
+            ->where('id',$zone_id)
+            ->first();
+        return view('test.detail_short_test',compact('row_zone'));
     }
 
 

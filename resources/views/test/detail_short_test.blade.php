@@ -5,10 +5,8 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>去月球轨道兜兜风，SpaceX 将开启商业月球旅游计划_智能_好奇心日报</title>
+    <title>{!! $row_zone->zone_name !!}2017年演艺秀时间表_横店影视城</title>
     <meta name="keywords" content="商业报道,科技新闻,生活方式,智能,火箭,航天,马斯克,SpaceX">
-    <meta name="description"
-          content="伊隆·马斯克的航天公司 SpaceX 公布了一个全新计划，要在 2018 年送两位付费乘客去月球轨道兜一兜风。SpeceX 在一份公告里面说，这两位要去月球轨道的乘客已经为这趟旅程支付了大笔预付费用，他们会首先进行身体检查和健康测试，...">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {
             var t, i, a, o = 0;
@@ -68,31 +66,7 @@
                 for (e && $ ? (a = $('<div class="wrapper-container"></div>').append(e), t = a.find(d)) : t = document.querySelectorAll(d), o = 0, r = t.length; o < r; o++)c = t[o], l = c.attributes["data-src"].value, l = i(l), c.attributes["data-src"].value = l
             }, window.resetImgQuantity = resetImgQuantity
         }()</script>
-    <script type="text/javascript">!function (e, c, o) {
-            function t() {
-                var e, o = location.pathname, t = location.search, i = location.hash;
-                c.querySelector("html");
-                if (o.indexOf("oscar") == -1 && o.indexOf("subjects") == -1 && !DeviceInfo.isMobile) {
-                    switch (o) {
-                        case"/mobile/homes.html":
-                            e = "/";
-                            break;
-                        case"/mobile/users/center":
-                            e = "#collect" == i ? "/users/center" + i : "/users/center";
-                            break;
-                        case"/mobile/users/edit":
-                            e = "/users/center#account";
-                            break;
-                        default:
-                            e = o.slice("/mobile".length) + t + i
-                    }
-                    "/" != o && e == o || (location.href = s + e)
-                }
-            }
 
-            //    var s = "http://www.qdaily.com";
-            t()
-        }(window, document)</script>
     <link href="{{asset('lib/common.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('lib/show.css')}}" rel="stylesheet" type="text/css"/>
     <meta name="csrf-param" content="authenticity_token"/>
@@ -108,13 +82,13 @@
             <?php
             $date = Carbon\Carbon::now()->toDateString();
             $zone = new \App\WeChat\Zone();
-            $zone_name = $zone->get_zone_info($zone_id)->zone_name;
+      //      $zone_name = $zone->get_zone_info($zone_id)->zone_name;
             ?>
 
             <div class="banner"><img
-                        src="/media/images/show-qmsht.jpg"
+                        src="{!! $row_zone->show_top_pic !!}"
                         alt=""></div>
-            <h1 class="title">{!! $zone_name !!}2017年演艺秀时间表</h1>
+            <h1 class="title">{!! $row_zone->zone_name !!}2017年演艺秀时间表</h1>
 
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
@@ -125,7 +99,7 @@
 
         </div>
         <div class="article-detail-bd">
-            <div class="excerpt"> 本时间表是常规时间表，若景区临时有更改，恕不另行通知，请以当日景区公告为准。</div>
+            <div class="excerpt"> 本时间表为常规时间表，若景区临时有更改，恕不另行通知，请以当日景区公告为准。</div>
             <div class="detail">
 
                 <table>
@@ -137,11 +111,11 @@
                     $rows_show = DB::table('zone_show_time')
                             ->whereDate('startdate', '<=', $date)
                             ->whereDate('enddate', '>=', $date)
-                            ->where('zone_id', $zone_id)
+                            ->where('zone_id', $row_zone->id)
                             ->orderBy('show_id', 'asc')
                             ->get();
                     if ($rows_show) {
-                        echo '<tr class="zone"><td>' . $zone_name . '</td></tr>';
+                     //   echo '<tr class="zone"><td>' . $zone_name . '</td></tr>';
 
                         foreach ($rows_show as $row_show) {
 
@@ -150,7 +124,7 @@
                                 $show_name = $row_show->se_name . '(' . $show_name . ')';
                             }
                             echo '<tr><td class="showname">' . $show_name . '</td></tr>';
-                            echo '<tr><td class="showtime">' . $row_show->show_time . '</td></tr>';
+                            echo '<tr><td class="showtime">' .str_replace(',',' | ', $row_show->show_time) . '</td></tr>';
                             if ($row_show->remark) {
                                 echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
                             }
@@ -174,7 +148,7 @@
                     </tbody>
                 </table>
 
-                <p>题图/演艺秀:汴梁一梦</p>
+                <p>题图/{!! $row_zone->show_top_pic_info !!}</p>
                 <!--
                 <p>伊隆·马斯克的航天公司 SpaceX 公布了一个<a
                             href="http://www.spacex.com/news/2017/02/27/spacex-send-privately-crewed-dragon-spacecraft-beyond-moon-next-year">全新计划</a>，要在

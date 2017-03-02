@@ -860,7 +860,7 @@ button.swiper-pagination-bullet {
     font-size: .8rem
 }
 
-.com-article-detail .article-detail-bd .excerpt:after, .com-article-detail .article-detail-bd .excerpt:before {
+.com-article-detail .article-detail-bd .excerpt:after {
     position: absolute;
     left: 50%;
     margin-left: -60px;

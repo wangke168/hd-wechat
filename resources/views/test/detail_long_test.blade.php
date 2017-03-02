@@ -144,7 +144,7 @@
                                     $show_name = $row_show->se_name . '(' . $show_name . ')';
                                 }
                                 echo '<tr><td class="showname">' . $show_name . '</td></tr>';
-                                echo '<tr><td class="showtime">' . $row_show->show_time . '</td></tr>';
+                                echo '<tr><td class="showtime">' . str_replace(',',' | ', $row_show->show_time) . '</td></tr>';
 
                                 if ($row_show->remark) {
                                     echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
@@ -168,6 +168,7 @@
                     ?>
                     </tbody>
                 </table>
+                <p>题图/演艺秀:秦淮八艳</p>
                 <!--
 
                                 <p>John Hoke
