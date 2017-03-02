@@ -174,10 +174,11 @@ optgroup {
 table {
     border-spacing: 0;
     border-collapse: collapse;
-
+    width: 100%;
+    border:1px solid #cccccc;
 }
 table, td, th{
-    border:1px solid #cccccc;
+
 }
 td, th {
     padding: 5px;
@@ -190,6 +191,7 @@ tr.zone{
 td.showname{
     padding-left: 15px;
     background-color: #d9edf7;
+    border:1px solid #cccccc;
 }
 td.showtime{
     padding-left: 15px

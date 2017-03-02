@@ -146,6 +146,9 @@
                                 echo '<tr><td class="showname">' . $show_name . '</td></tr>';
                                 echo '<tr><td class="showtime">' . $row_show->show_time . '</td></tr>';
 
+                                if ($row_show->remark) {
+                                    echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
+                                }
                                 //获取下一个时间
                                 /*     $row_next=DB::table('zone_show_time')
                                               ->whereDate('startdate','>',$row_show->enddate)

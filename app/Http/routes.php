@@ -41,6 +41,9 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 //文章管理
 Route::get('/article/detail', 'ArticlesController@detail');
 Route::get('/article/test', 'ArticlesController@detail_long');
+
+Route::get('/article/test/short', 'ArticlesController@detail_short');
+
 Route::get('/article/webdetail','ArticlesController@webdetail');
 Route::get('/article/detail_back', 'ArticlesController@test');
 //预览

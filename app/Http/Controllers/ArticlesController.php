@@ -151,6 +151,13 @@ class ArticlesController extends Controller
 //        return $rows_zone;
         return view('test.detail_long_test',compact('rows_zone'));
     }
+    public function detail_short(Request $request)
+    {
+        $zone_id=$request->input('id');
+
+        return view('test.detail_short_test',compact('zone_id'));
+    }
+
 
     /**
      * 官网使用的每日剧组动态和每周剧组动态
