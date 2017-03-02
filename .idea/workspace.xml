@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/show.css" afterPath="$PROJECT_DIR$/public/lib/show.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/articles/detail_show_all.blade.php" afterPath="$PROJECT_DIR$/resources/views/articles/detail_show_all.blade.php" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +50,20 @@
       <file leaf-file-name="detail_show_all.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/articles/detail_show_all.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.153847">
-              <caret line="157" column="29" selection-start-line="157" selection-start-column="29" selection-end-line="157" selection-end-column="29" />
+            <state vertical-scroll-proportion="-34.73077">
+              <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mbcss.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/mbcss.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6037736">
+              <caret line="49" column="53" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -70,8 +82,8 @@
       <file leaf-file-name="detail.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.615385">
-              <caret line="51" column="92" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="92" />
+            <state vertical-scroll-proportion="-13.807693">
+              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -80,8 +92,8 @@
       <file leaf-file-name="show.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/lib/show.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7136061">
-              <caret line="901" column="19" selection-start-line="901" selection-start-column="19" selection-end-line="901" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.85727876">
+              <caret line="2451" column="46" selection-start-line="2451" selection-start-column="46" selection-end-line="2451" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -706,13 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/mbcss.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="133" selection-start-line="74" selection-start-column="133" selection-end-line="74" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/articles/webdetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5334573">
@@ -979,14 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.615385">
-          <caret line="51" column="92" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/test/detail_long_test_back.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="11.923005">
@@ -1003,18 +1000,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/articles/detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.807693">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/mbcss.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6037736">
+          <caret line="49" column="53" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/articles/detail_show_all.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.153847">
-          <caret line="157" column="29" selection-start-line="157" selection-start-column="29" selection-end-line="157" selection-end-column="29" />
-          <folding />
+        <state vertical-scroll-proportion="-34.73077">
+          <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/lib/show.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7136061">
-          <caret line="901" column="19" selection-start-line="901" selection-start-column="19" selection-end-line="901" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.85727876">
+          <caret line="2451" column="46" selection-start-line="2451" selection-start-column="46" selection-end-line="2451" selection-end-column="46" />
           <folding />
         </state>
       </provider>

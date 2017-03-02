@@ -161,8 +161,14 @@
             </div>
         </div>
     </div>
-</div>
 
+</div>
+<div id="bottom">
+    <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
+        热线电话：<a href="tel:057986547211"> 0579-86547211</a>
+    </div>
+    <div>©2013-2017 横店影视城 版权所有</div>
+</div>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="{{asset('lib/js/a1.js')}}"></script>
 <script src="{{asset('lib/js/a2.js')}}"></script>
