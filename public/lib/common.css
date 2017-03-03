@@ -184,9 +184,13 @@ td, th {
     padding: 5px;
     word-wrap:break-word
 }
-tr.zone{
+tr{
+
+}
+td.zone{
     background-color: #dff0d8 ;
     height: 30px;
+    border:1px solid #cccccc;
 }
 td.showname{
     padding-left: 15px;
