@@ -126,7 +126,7 @@
                     ?>
                     </tbody>
                 </table>
-                <p>题图/演艺秀:秦淮八艳</p>
+                <p>题图/秦淮八艳</p>
                 <div class="com-insert-images">
                     <figure style="margin: 0px;" class="">
                         <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
