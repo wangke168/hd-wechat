@@ -110,15 +110,17 @@
                         if ($rows_show) {
                             echo '<tr><td class="zone">' . $row_zone->zone_name . '景区</td></tr>';
                             foreach ($rows_show as $row_show) {
-                                $show_name = $zone->get_project_info($row_show->show_id)->show_name;
-                                if ($row_show->se_name) {
-                                    $show_name = $row_show->se_name . '(' . $show_name . ')';
-                                }
-                                echo '<tr><td class="showname">' . $show_name . '</td></tr>';
-                                echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
+                                if ($zone->get_correct_show($row_show->id, $row_show->show_id, $date)) {
+                                    $show_name = $zone->get_project_info($row_show->show_id)->show_name;
+                                    if ($row_show->se_name) {
+                                        $show_name = $row_show->se_name . '(' . $show_name . ')';
+                                    }
+                                    echo '<tr><td class="showname">' . $show_name . '</td></tr>';
+                                    echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
 
-                                if ($row_show->remark) {
-                                    echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
+                                    if ($row_show->remark) {
+                                        echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
+                                    }
                                 }
                             }
                         }
@@ -127,6 +129,7 @@
                     </tbody>
                 </table>
                 <p>题图/秦淮八艳</p>
+
                 <div class="com-insert-images">
                     <figure style="margin: 0px;" class="">
                         <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
