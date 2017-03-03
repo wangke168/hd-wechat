@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>横店影视城各景区2017年演艺秀时间表</title>
+    <title>横店影视城演艺秀时间表</title>
     <meta name="keywords" content="横店影视城,演艺秀时间表">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {
