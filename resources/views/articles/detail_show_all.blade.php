@@ -108,7 +108,7 @@
                                 ->orderBy('show_id', 'asc')
                                 ->get();
                         if ($rows_show) {
-                            echo '<tr class="zone"><td>' . $row_zone->zone_name . '</td></tr>';
+                            echo '<tr class="zone"><td>' . $row_zone->zone_name . '景区</td></tr>';
                             foreach ($rows_show as $row_show) {
                                 $show_name = $zone->get_project_info($row_show->show_id)->show_name;
                                 if ($row_show->se_name) {
