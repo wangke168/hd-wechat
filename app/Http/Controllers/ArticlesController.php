@@ -127,7 +127,7 @@ class ArticlesController extends Controller
                 $row_zone = DB::table('zone')
                     ->where('id', $zone_id)
                     ->first();
-                return view('test.detail_short_test', compact('row_zone'));
+                return view('articles.detail_show_one', compact('row_zone'));
                 break;
             default:
                 $article = WechatArticle::find($id);

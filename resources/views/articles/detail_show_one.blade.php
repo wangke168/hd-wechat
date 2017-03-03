@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>横店影视城各景区2017年演艺秀时间表</title>
+    <title>{!! $row_zone->zone_name !!}2017年演艺秀时间表_横店影视城</title>
     <meta name="keywords" content="横店影视城,演艺秀时间表">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {
@@ -69,25 +69,33 @@
 
     <link href="{{asset('lib/common.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('lib/show.css')}}" rel="stylesheet" type="text/css"/>
-
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token"
+          content="q+lpL1DPr70x/aquafoz8juXwpvlcM9qAgJ82ntU94/IWIoMJAjK+Gz/+mZUgO8RX8v0X+O3y+/Erfq3WV5ybg=="/>
 </head>
 <body class="mobile articles show">
 
-
 <div class="page-content">
-    <div class="com-article-detail long" data-categoryid="17">
+    <div class="com-article-detail short" data-categoryid="4">
         <div class="article-detail-hd">
-            <div class="category-title">
 
-                <h1 class="title">横店影视城各景区2017年演艺秀时间表</h1></div>
+            <?php
+            $date = Carbon\Carbon::now()->toDateString();
+            $zone = new \App\WeChat\Zone();
+            //      $zone_name = $zone->get_zone_info($zone_id)->zone_name;
+            ?>
+
+            <div class="banner"><img
+                        src="{!! $row_zone->show_top_pic !!}"
+                        alt=""></div>
+            <h1 class="title">{!! $row_zone->zone_name !!}2017年演艺秀时间表</h1>
+
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
                                 src="/media/images/logo.png"
                                 alt=""> </span> <span class="name">横店影视城</span></div>
             </div>
-            <div class="banner"><img class="lazyload"
-                                     data-src="/media/images/show.jpg"
-                                     alt=""></div>
+
 
         </div>
         <div class="article-detail-bd">
@@ -97,48 +105,58 @@
                 <table>
                     <tbody>
                     <?php
-                    $date = Carbon\Carbon::now()->toDateString();
-                    $zone = new \App\WeChat\Zone();
-                    foreach ($rows_zone as $row_zone) {
-                        //获取现在所处时间段
-                        $rows_show = DB::table('zone_show_time')
-                                ->whereDate('startdate', '<=', $date)
-                                ->whereDate('enddate', '>=', $date)
-                                ->where('zone_id', $row_zone->id)
-                                ->orderBy('show_id', 'asc')
-                                ->get();
-                        if ($rows_show) {
-                            echo '<tr class="zone"><td>' . $row_zone->zone_name . '</td></tr>';
-                            foreach ($rows_show as $row_show) {
-                                $show_name = $zone->get_project_info($row_show->show_id)->show_name;
-                                if ($row_show->se_name) {
-                                    $show_name = $row_show->se_name . '(' . $show_name . ')';
-                                }
-                                echo '<tr><td class="showname">' . $show_name . '</td></tr>';
-                                echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
 
-                                if ($row_show->remark) {
-                                    echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
-                                }
+
+                    //获取现在所处时间段
+                    $rows_show = DB::table('zone_show_time')
+                            ->whereDate('startdate', '<=', $date)
+                            ->whereDate('enddate', '>=', $date)
+                            ->where('zone_id', $row_zone->id)
+                            ->orderBy('show_id', 'asc')
+                            ->get();
+                    if ($rows_show) {
+                        //   echo '<tr class="zone"><td>' . $zone_name . '</td></tr>';
+
+                        foreach ($rows_show as $row_show) {
+
+                            $show_name = $zone->get_project_info($row_show->show_id)->show_name;
+                            if ($row_show->se_name) {
+                                $show_name = $row_show->se_name . '(' . $show_name . ')';
                             }
+                            echo '<tr><td class="showname">' . $show_name . '</td></tr>';
+                            echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
+                            if ($row_show->remark) {
+                                echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
+                            }
+                            //获取下一个时间
+                            /*     $row_next=DB::table('zone_show_time')
+                                          ->whereDate('startdate','>',$row_show->enddate)
+                                          ->orderBy('startdate','asc')
+                                          ->first();
+                                  if($row_next)
+                                  {
+
+                                     echo date('n月d日',strtotime($row_next->startdate));
+                                      echo "<br>";
+
+                                  }
+         */
                         }
+
                     }
                     ?>
                     </tbody>
                 </table>
-                <p>题图/演艺秀:秦淮八艳</p>
-                <div class="com-insert-images">
-                    <figure style="margin: 0px;" class="">
-                        <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
-                             data-src="\images\market\all.jpg">
-                    </figure>
-                </div>
+
+                <p>题图/{!! $row_zone->show_top_pic_info !!}</p>
 
             </div>
         </div>
     </div>
 
+
 </div>
+
 <div id="bottom">
     <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
         热线电话：<a href="tel:057986547211"> <span style="color: white"> 0579-86547211</span></a>
@@ -148,6 +166,5 @@
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="{{asset('lib/js/a1.js')}}"></script>
 <script src="{{asset('lib/js/a2.js')}}"></script>
-
 </body>
 </html>
