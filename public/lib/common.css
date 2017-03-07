@@ -188,9 +188,10 @@ tr{
 
 }
 td.zone{
-    background-color: #dff0d8 ;
+    background-color:#364150 ;
     height: 30px;
     border:1px solid #cccccc;
+    color: #ffffff;
 }
 td.showname{
     padding-left: 15px;
@@ -198,7 +199,9 @@ td.showname{
     border:1px solid #cccccc;
 }
 td.showtime{
-    padding-left: 15px
+    padding-left: 15px;
+    background-color: #fafafa;
+    color: #82949a
 }
 @-webkit-keyframes sk-bouncedelay {
     0%, 80%, to {
