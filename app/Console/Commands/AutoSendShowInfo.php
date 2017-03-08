@@ -69,6 +69,7 @@ class AutoSendShowInfo extends Command
                     $row1 = DB::table('wx_user_info')
                         ->where('eventkey', $row_show->eventkey)
                         ->where('scandate', date('Y-m-d'))
+                        ->where('esc','0')
                         ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
                         ->get();
 
@@ -88,6 +89,7 @@ class AutoSendShowInfo extends Command
                             $row2 = DB::table('wx_user_info')
                                 ->where('eventkey', $eventkey)
                                 ->where('scandate', date('Y-m-d'))
+                                ->where('esc','0')
                                 ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
                                 ->get();
 
