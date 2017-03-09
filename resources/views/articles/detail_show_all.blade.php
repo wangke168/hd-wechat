@@ -119,7 +119,7 @@
                                     echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
 
                                     if ($row_show->remark) {
-                                        echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
+                                        echo '<tr><td class="showdate">' . $row_show->remark . '</td></tr>';
                                     }
                                 }
                             }
