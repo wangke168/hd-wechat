@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
 use App\WeChat\Zone;
-use Doctrine\Common\Cache\Cache;
-use Doctrine\Common\Cache\MemcacheCache;
+use Cache;
 use App\WeChat\Tour;
 use App\WeChat\Usage;
 use EasyWeChat\Foundation\Application;
@@ -15,7 +14,6 @@ use App\Models\WechatArticle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
-
 class TestController extends Controller
 {
     public $app;
@@ -30,6 +28,9 @@ class TestController extends Controller
 
     public function test()
     {
+
+        return date('n月d日',strtotime('2012-11-12'));
+
         $app=app('wechat');
         $zone = new Zone();
         $date = Carbon::now()->toDateString();
@@ -152,58 +153,73 @@ class TestController extends Controller
         }
     }
 
-    public function qrcreate()
-    {
-        /*    for ($k='1370'; $k <'1396'; $k++) {
-                $i=$k-1365;
-                $qrscene_name='永康酒店'.$i;
-                 $row=DB::table('wx_qrscene_info')
-            ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
-            // return $row;
-            }
-            for ($k='1396'; $k <'1416'; $k++) {
-                $i=$k-1395;
-                $qrscene_name='金华酒店'.$i;
-                 $row=DB::table('wx_qrscene_info')
-            ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
-            // return $row;
-            }
-            for ($k='1416'; $k <'1431'; $k++) {
-                $i=$k-1415;
-                $qrscene_name='浦江酒店'.$i;
-                 $row=DB::table('wx_qrscene_info')
-            ->insert(['classid'=>'1','qrscene_id'=>$k,'qrscene_name'=>$qrscene_name]);
-            // return $row;
-            }
-            return $k;
-            */
-
-    }
-
-    public function detail_test(Request $request)
+    public function cache(Request $request)
     {
 
-
-    }
-
-    public function cache()
-    {
-        /*$cacheKey = $this->getCacheKey();
-        $cached = $this->getCache()->fetch($cacheKey);
-//        $token = $this->getTokenFromServer();
-        if(empty($cached)) {
-//            $this->getCache()->save($cacheKey, 'wangke', 1500);
-            return 'wu';
+        if (Cache::has('temp')) {
+//            return Cache::get('temp');
+        } else {
+            Cache::put('temp', 'cachekey', 60);
         }
-//        return $token['access_token'];
+//        return Cache::get('temp');
 
-        return $cached;*/
-        $usage = new Usage();
-        $openid = 'o2e-YuMRhpLZhCm9FUJHc';
-        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        return $wxnumber;
+
+        $row = WechatArticle::where('classid', '15')
+            ->usagePublished('all')
+            ->skip(0)->take(8)->get();
+
+        if ($row) {
+            $content = array();
+            foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
+                /*如果只直接跳转链接页面时，判断是否已经带参数*/
+                if ($url != '') {
+                    /*链接跳转的数据统计*/
+//                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
+                    // $url = "http://".$_SERVER['HTTP_HOST']."/jump/{$id}/{$openid}";
+
+                    /*          if (!strstr($url, 'project_id')) {
+                                  if (strstr($url, '?') != '') {
+                                      $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                                  } else {
+                                      $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                                  }
+
+                              } else {
+                                  $url=$url . "&wxnumber={$openid}";
+          //                        return redirect($url . "&wxnumber={$openid}");
+                              }
+          */
+                } else {
+//                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                    //   $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
+
+                }
+
+                /*检查索引图所在服务器并生成链接*/
+                /*     if(starts_with($result->picurl, 'uploads'))
+                     {
+                         $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
+                     }
+                     else
+                     {
+                         $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
+                     }*/
+
+                $pic_url = 'http://weix2.hengdianworld.com/' . $result->picurl;
+
+                /*索引图检查结束*/
+                $new = new News();
+                $new->title = $result->title;
+                $new->description = $result->description;
+                $new->url = $url;
+//                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                $new->image = $pic_url;
+                $content[] = $new;
+            }
+
+        }
 
     }
-
-
 }

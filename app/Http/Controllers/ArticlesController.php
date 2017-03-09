@@ -122,6 +122,9 @@ class ArticlesController extends Controller
                     ->get();
                 return view('articles.detail_show_all', compact('rows_zone','openid'));
                 break;
+            case 'detail':
+                return view('articles.detail_show_all_detail');
+                break;
             case 'short':
                 $zone_id = $request->input('id');
                 $row_zone = DB::table('zone')

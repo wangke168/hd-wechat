@@ -201,7 +201,14 @@ td.showname{
 td.showtime{
     padding-left: 15px;
     background-color: #fafafa;
-    color: #82949a
+    color: #82949a;
+    border-top: 1px solid #cccccc;
+}
+td.showdate{
+    padding-left: 15px;
+    background-color: #fafafa;
+    color: #82949a;
+
 }
 @-webkit-keyframes sk-bouncedelay {
     0%, 80%, to {
