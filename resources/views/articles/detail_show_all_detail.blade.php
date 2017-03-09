@@ -121,18 +121,18 @@
                             $show_temp_remark='';
                             foreach ($rows_show as $row_show) {
                                 //            if ($zone->get_correct_show($row_show->id, $row_show->show_id, $date)) {
+                                if ($show_temp_remark&&$row_show->remark<>$show_temp_remark) {
+                                    echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                                }
                                 $show_name = $zone->get_project_info($row_show->show_id)->show_name;
                                 if ($show_name <> $show_temp_name) {
                                     echo '<tr><td class="showname">' . $show_name . '</td></tr>';
                                 }
                                 echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
                                 echo '<tr><td class="showdate">' . date('n月d日',strtotime($row_show->startdate)) . '-' . date('n月d日',strtotime($row_show->enddate)) . '</td></tr>';
-                                if ($row_show->remark<>$show_temp_remark) {
-                                    echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
-                                }
+
                                 $show_temp_name = $show_name;
                                 $show_temp_remark=$row_show->remark;
-                                //       }date('n月d日',strtotime('2012-11-12'))
                             }
                         }
                     }
