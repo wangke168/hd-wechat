@@ -121,10 +121,11 @@
                             $show_temp_remark='';
                             foreach ($rows_show as $row_show) {
                                 //            if ($zone->get_correct_show($row_show->id, $row_show->show_id, $date)) {
+                                $show_name = $zone->get_project_info($row_show->show_id)->show_name;
                                 if (($show_name <> $show_temp_name)&&($row_show->remark<>$show_temp_remark)) {
                                     echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
                                 }
-                                $show_name = $zone->get_project_info($row_show->show_id)->show_name;
+
                                 if ($show_name <> $show_temp_name) {
                                     echo '<tr><td class="showname">' . $show_name . '</td></tr>';
                                 }
