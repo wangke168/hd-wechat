@@ -130,12 +130,16 @@
 
                                     if ($show_temp_remark) {
                                         if ($show_name <> $show_temp_name) {
-
-                                            echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                                            if ($row_show->remark <> $show_temp_remark) {
+                                            echo '<tr><td class="showdate">' . $show_temp_remark . '</td></tr>';
+                                                }
+                                            else{
+                                                echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                                            }
                                         }
                                         else{
                                             if ($row_show->remark <> $show_temp_remark) {
-                                                echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                                                echo '<tr><td class="showdate">' . $show_temp_remark . '</td></tr>';
                                             }
                                     }
                                 }
