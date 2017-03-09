@@ -107,6 +107,7 @@
                             ->orderBy('priority', 'asc')
                             ->get();
 
+                    $show_temp_remark = '';
                     foreach ($rows_zone as $row_zone) {
                         //获取现在所处时间段
                         $rows_show = DB::table('zone_show_time')
@@ -116,24 +117,38 @@
                                 ->orderBy('show_id', 'asc')
                                 ->get();
                         if ($rows_show) {
+
+                            if ($show_temp_remark) {
+                                echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                            }
+
                             echo '<tr><td class="zone">' . $row_zone->zone_name . '景区</td></tr>';
-                            $show_temp_name='';
-                            $show_temp_remark='';
+                            $show_temp_name = '';
+                            $show_temp_remark = '';
                             foreach ($rows_show as $row_show) {
-                                //            if ($zone->get_correct_show($row_show->id, $row_show->show_id, $date)) {
                                 $show_name = $zone->get_project_info($row_show->show_id)->show_name;
-                                if (($show_name <> $show_temp_name)&&($row_show->remark<>$show_temp_remark)) {
-                                    echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+
+                                    if ($show_temp_remark) {
+                                        if ($show_name <> $show_temp_name) {
+
+                                            echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                                        }
+                                        else{
+                                            if ($row_show->remark <> $show_temp_remark) {
+                                                echo '<tr><td class="showtime">' . $show_temp_remark . '</td></tr>';
+                                            }
+                                    }
                                 }
 
                                 if ($show_name <> $show_temp_name) {
                                     echo '<tr><td class="showname">' . $show_name . '</td></tr>';
                                 }
                                 echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
-                                echo '<tr><td class="showdate">' . date('n月d日',strtotime($row_show->startdate)) . '-' . date('n月d日',strtotime($row_show->enddate)) . '</td></tr>';
+                                echo '<tr><td class="showdate">' . date('n月d日', strtotime($row_show->startdate)) . '-' . date('n月d日', strtotime($row_show->enddate)) . '</td></tr>';
 
                                 $show_temp_name = $show_name;
-                                $show_temp_remark=$row_show->remark;
+                                $show_temp_remark = $row_show->remark;
+
                             }
                         }
                     }
