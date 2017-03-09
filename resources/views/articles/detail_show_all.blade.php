@@ -128,7 +128,7 @@
                     ?>
                     </tbody>
                 </table>
-                <p>以上信息根据您的访问时间自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>
+                <p>以上信息根据您的访问日期自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>
                 <p>题图/秦淮八艳</p>
 
                 <div class="com-insert-images">
