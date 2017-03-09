@@ -89,12 +89,12 @@
       <file leaf-file-name="detail_show_all_detail.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/articles/detail_show_all_detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17395529">
-              <caret line="123" column="55" selection-start-line="123" selection-start-column="55" selection-end-line="123" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.29543245">
+              <caret line="123" column="107" selection-start-line="123" selection-start-column="107" selection-end-line="123" selection-end-column="107" />
               <folding>
-                <marker date="1489027566000" expanded="true" signature="8353:8401" placeholder="..." />
-                <marker date="1489027566000" expanded="true" signature="8371:8382" placeholder="..." />
-                <marker date="1489027566000" expanded="true" signature="8511:8523" placeholder="..." />
+                <marker date="1489027839000" expanded="true" signature="8369:8417" placeholder="..." />
+                <marker date="1489027839000" expanded="true" signature="8387:8398" placeholder="..." />
+                <marker date="1489027839000" expanded="true" signature="8527:8539" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -1199,12 +1199,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/articles/detail_show_all_detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17395529">
-          <caret line="123" column="55" selection-start-line="123" selection-start-column="55" selection-end-line="123" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.29543245">
+          <caret line="123" column="107" selection-start-line="123" selection-start-column="107" selection-end-line="123" selection-end-column="107" />
           <folding>
-            <marker date="1489027566000" expanded="true" signature="8353:8401" placeholder="..." />
-            <marker date="1489027566000" expanded="true" signature="8371:8382" placeholder="..." />
-            <marker date="1489027566000" expanded="true" signature="8511:8523" placeholder="..." />
+            <marker date="1489027839000" expanded="true" signature="8369:8417" placeholder="..." />
+            <marker date="1489027839000" expanded="true" signature="8387:8398" placeholder="..." />
+            <marker date="1489027839000" expanded="true" signature="8527:8539" placeholder="..." />
           </folding>
         </state>
       </provider>
