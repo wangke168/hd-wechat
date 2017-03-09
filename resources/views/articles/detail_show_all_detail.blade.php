@@ -127,7 +127,7 @@
                                 }
                                 echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
                                 echo '<tr><td class="showdate">' . date('n月d日',strtotime($row_show->startdate)) . '-' . date('n月d日',strtotime($row_show->enddate)) . '</td></tr>';
-                                if ($row_show->remark) {
+                                if ($row_show->remark<>$show_temp_remark) {
                                     echo '<tr><td class="showtime">' . $row_show->remark . '</td></tr>';
                                 }
                                 $show_temp_name = $show_name;
