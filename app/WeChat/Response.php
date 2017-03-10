@@ -38,21 +38,16 @@ class Response
                $this->openid = $userService->get($message->FromUserName)->openid;*/
     }
 
-    /*    protected $usage;
-        public function __construct(usage $usage)
-        {
-            $this->usage=$usage;
-        }*/
+
     public function news($message, $keyword)
     {
 
-//        $app = app('wechat');
-
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
+        $content = new Text();
         switch ($keyword) {
             case "a":
-                $content = new Text();
+//                $content = new Text();
                 if ($this->usage->get_openid_info($openid)->eventkey) {
                     $content->content = $this->usage->get_openid_info($openid)->eventkey;
                 } else {
@@ -61,7 +56,7 @@ class Response
 //                $content->content = $app->access_token->getToken();
                 break;
             case "预约":
-                $content = new Text();
+//                $content = new Text();
                 $content->content = $this->query_wite_info($openid);
                 break;
             case 's':
@@ -72,22 +67,29 @@ class Response
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
                 $this->app->staff->message([$content])->to($openid)->send();
                 break;
-            case 'd':
-                $content = new Text();
-                $info = $this->usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
-                $content->content = $info->eventkey;
-                break;
             case 'hx':
-                $content = new Text();
+//                $content = new Text();
                 $tour = new Tour();
                 $content->content = $tour->verification_subscribe($openid, '1');
                 break;
             case '天气':
-                $content = new Text();
+//                $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($openid, $keyword);
+                if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
+                {
+                    $this->server->setMessageHandler(function($message) {
+                        $transfer = new \EasyWeChat\Message\Transfer();
+
+                        $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
+
+                        return $transfer;
+                    });
+                }
+                else {
+                    $this->request_keyword($openid, $keyword);
+                }
                 break;
         }
         return $content;
@@ -142,7 +144,7 @@ class Response
         }
         if (!$flag) //如果该二维码没有对应的关注推送信息
         {
-            if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
+            /*if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
             {
                 $this->server->setMessageHandler(function($message) {
                     $transfer = new \EasyWeChat\Message\Transfer();
@@ -152,11 +154,11 @@ class Response
                     return $transfer;
                 });
             }
-            else {
+            else {*/
                 $content = new Text();
                 $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
                 $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
-            }
+//            }
         }
 
 
