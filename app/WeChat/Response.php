@@ -44,10 +44,10 @@ class Response
 
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
-        $content = new Text();
+//        $content = new Text();
         switch ($keyword) {
             case "a":
-//                $content = new Text();
+                $content = new Text();
                 if ($this->usage->get_openid_info($openid)->eventkey) {
                     $content->content = $this->usage->get_openid_info($openid)->eventkey;
                 } else {
@@ -56,7 +56,7 @@ class Response
 //                $content->content = $app->access_token->getToken();
                 break;
             case "预约":
-//                $content = new Text();
+                $content = new Text();
                 $content->content = $this->query_wite_info($openid);
                 break;
             case 's':
@@ -68,12 +68,12 @@ class Response
                 $this->app->staff->message([$content])->to($openid)->send();
                 break;
             case 'hx':
-//                $content = new Text();
+                $content = new Text();
                 $tour = new Tour();
                 $content->content = $tour->verification_subscribe($openid, '1');
                 break;
             case '天气':
-//                $content = new Text();
+                $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
             default:
@@ -88,7 +88,7 @@ class Response
                     });
                 }
                 else {*/
-                    $content->content = $this->request_keyword($openid, $keyword);
+                    $this->request_keyword($openid, $keyword);
 //                }
                 break;
         }
