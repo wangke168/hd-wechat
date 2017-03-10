@@ -71,7 +71,7 @@ class Response
                     $this->server->setMessageHandler(function ($message) {
                         $transfer = new \EasyWeChat\Message\Transfer();
 
-                        $transfer->to('kf2004@u_hengdian');// 或者 $transfer->to($account);
+                        $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
 
                         return $transfer;
                     });
