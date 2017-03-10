@@ -64,15 +64,7 @@ class Response
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
-            case 'ccc':
-                // 转发收到的消息给客服
-                $this->app->server->setMessageHandler(function ($message) {
-                    return new \EasyWeChat\Message\Transfer();
-                });
-                $result = $this->app->server->serve();
-                echo $result;
-                exit();
-                break;
+
             default:
                 $content = $this->request_keyword($openid, $keyword);
                 break;

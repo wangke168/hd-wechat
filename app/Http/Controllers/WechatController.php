@@ -21,7 +21,7 @@ class WechatController extends Controller
         $wechat = app('wechat');
         $userService = $wechat->user;
 
-        $wechat->server->setMessageHandler(function ($message) use ($userService) {
+        $wechat->server->setMessageHandler(function ($message) use ($userService,$wechat) {
             $openid = $userService->get($message->FromUserName)->openid;
             $response = new Response();
             switch ($message->MsgType) {
@@ -99,6 +99,14 @@ class WechatController extends Controller
                         case 'wxh':
                             $content = $userService->get($message->FromUserName)->openid;
                             return $content;
+                            break;
+                        case 'ccc':
+                            // 转发收到的消息给客服
+                            $wechat->server->setMessageHandler(function ($message) {
+                                return new \EasyWeChat\Message\Transfer();
+                            });
+                            $result = $wechat->server->serve();
+                            echo $result;
                             break;
                         default:
                             $content = ($response->news($message, $message->Content));
