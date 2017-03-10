@@ -74,6 +74,7 @@ class Response
                     });
                     $result = $this->app->server->serve();
                     echo $result;
+                    exit();
                 } else {
                     $content = $this->request_keyword($openid, $keyword);
                 }
