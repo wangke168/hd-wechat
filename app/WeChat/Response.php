@@ -29,6 +29,7 @@ class Response
     public $usage;
     public $openid;
     public $server;
+
     public function __construct($message)
     {
         $this->app = app('wechat');
@@ -87,7 +88,17 @@ class Response
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                $content = $this->request_keyword($openid, $keyword);
+                if ($openid == 'o2e-YuBgnbLLgJGMQykhSg_V3VRI') {
+                    $this->server->setMessageHandler(function ($message) {
+                        $transfer = new \EasyWeChat\Message\Transfer();
+
+                        $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
+
+                        return $transfer;
+                    });
+                } else {
+                    $content = $this->request_keyword($openid, $keyword);
+                }
                 break;
         }
         return $content;
@@ -153,9 +164,9 @@ class Response
                 });
             }
             else {*/
-                $content = new Text();
-                $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
-                $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            $content = new Text();
+            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
 //            }
         }
 
@@ -346,37 +357,37 @@ class Response
                 if ($url != '') {
                     /*链接跳转的数据统计*/
 //                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
-                    $url = "http://".$_SERVER['HTTP_HOST']."/jump/{$id}/{$openid}";
+                    $url = "http://" . $_SERVER['HTTP_HOST'] . "/jump/{$id}/{$openid}";
 
-          /*          if (!strstr($url, 'project_id')) {
-                        if (strstr($url, '?') != '') {
-                            $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-                        } else {
-                            $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-                        }
-             
-                    } else {
-                        $url=$url . "&wxnumber={$openid}";
-//                        return redirect($url . "&wxnumber={$openid}");
-                    }
-*/
+                    /*          if (!strstr($url, 'project_id')) {
+                                  if (strstr($url, '?') != '') {
+                                      $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                                  } else {
+                                      $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                                  }
+
+                              } else {
+                                  $url=$url . "&wxnumber={$openid}";
+          //                        return redirect($url . "&wxnumber={$openid}");
+                              }
+          */
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                    $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
+                    $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
 
                 }
 
                 /*检查索引图所在服务器并生成链接*/
-           /*     if(starts_with($result->picurl, 'uploads'))
-                {
-                    $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
-                }
-                else
-                {
-                    $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
-                }*/
+                /*     if(starts_with($result->picurl, 'uploads'))
+                     {
+                         $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
+                     }
+                     else
+                     {
+                         $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
+                     }*/
 
-                $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
+                $pic_url = 'http://weix2.hengdianworld.com/' . $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
@@ -384,7 +395,7 @@ class Response
                 $new->description = $result->description;
                 $new->url = $url;
 //                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
-                $new->image=$pic_url;
+                $new->image = $pic_url;
                 $content[] = $new;
             }
             $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
@@ -740,7 +751,7 @@ class Response
             $eventkey = 'all';
         }
         $eventkey = $this->usage->CheckEventkey($eventkey);
-        $eventkey_temp = array("85", "86", "87", "88","89","90","91","145");          //景区和测试市场的eventkey
+        $eventkey_temp = array("85", "86", "87", "88", "89", "90", "91", "145");          //景区和测试市场的eventkey
         if (in_array($eventkey, $eventkey_temp)) {
             $row = WechatArticle::focusPublished_temp($eventkey)
                 ->skip(0)->take(8)->get();
@@ -753,11 +764,11 @@ class Response
                     if ($url != '') {
                         /*链接跳转的数据统计*/
 //                        $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
-                        $url = "http://".$_SERVER['HTTP_HOST']."/jump/{$id}/{$openid}";
+                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/jump/{$id}/{$openid}";
 
                     } else {
 //                        $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                        $url = "http://".$_SERVER['HTTP_HOST']."/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
+                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
 
                     }
                     $new = new News();
