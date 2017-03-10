@@ -66,11 +66,11 @@ class Response
                 break;
             case 'ccc':
                 // 转发收到的消息给客服
-
-                $transfer = new \EasyWeChat\Message\Transfer();
+                return new \EasyWeChat\Message\Transfer();
+                /*$transfer = new \EasyWeChat\Message\Transfer();
                 $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
 
-                return $transfer;
+                return $transfer;*/
                 break;
             default:
                 $content = $this->request_keyword($openid, $keyword);
