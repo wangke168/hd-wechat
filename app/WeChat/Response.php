@@ -68,7 +68,7 @@ class Response
             default:
 
                 if ($openid == 'o2e-YuBgnbLLgJGMQykhSg_V3VRI') {
-                    $this->server->setMessageHandler(function ($message) {
+                    $this->server->setMessageHandler(function () use ($message) {
                         $transfer = new \EasyWeChat\Message\Transfer();
 
                         $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
