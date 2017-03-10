@@ -69,10 +69,10 @@ class Response
 
                 if ($openid == 'o2e-YuBgnbLLgJGMQykhSg_V3VRI') {
                     // 转发收到的消息给客服
-                    $this->server->setMessageHandler(function($message) {
+                    $this->app->server->setMessageHandler(function($message) {
                         return new \EasyWeChat\Message\Transfer();
                     });
-                    $result = $this->server->serve();
+                    $result = $this->app->server->serve();
                     echo $result;
                 } else {
                     $content = $this->request_keyword($openid, $keyword);
