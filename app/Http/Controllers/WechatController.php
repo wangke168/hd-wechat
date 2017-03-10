@@ -104,7 +104,7 @@ class WechatController extends Controller
                             // 转发收到的消息给客服
 
                             $transfer = new \EasyWeChat\Message\Transfer();
-                            $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
+                            $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
 
                             return $transfer;
                             break;
