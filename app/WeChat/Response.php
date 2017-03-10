@@ -38,13 +38,18 @@ class Response
                $this->openid = $userService->get($message->FromUserName)->openid;*/
     }
 
-
+    /*    protected $usage;
+        public function __construct(usage $usage)
+        {
+            $this->usage=$usage;
+        }*/
     public function news($message, $keyword)
     {
 
+//        $app = app('wechat');
+
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
-//        $content = new Text();
         switch ($keyword) {
             case "a":
                 $content = new Text();
@@ -67,6 +72,11 @@ class Response
                 $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
                 $this->app->staff->message([$content])->to($openid)->send();
                 break;
+            case 'd':
+                $content = new Text();
+                $info = $this->usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
+                $content->content = $info->eventkey;
+                break;
             case 'hx':
                 $content = new Text();
                 $tour = new Tour();
@@ -77,19 +87,7 @@ class Response
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                /*if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
-                {
-                    $this->server->setMessageHandler(function($message) {
-                        $transfer = new \EasyWeChat\Message\Transfer();
-
-                        $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
-
-                        return $transfer;
-                    });
-                }
-                else {*/
-                    $this->request_keyword($openid, $keyword);
-//                }
+                $content = $this->request_keyword($openid, $keyword);
                 break;
         }
         return $content;
