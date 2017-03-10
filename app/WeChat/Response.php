@@ -30,9 +30,9 @@ class Response
     public $openid;
     public $server;
 
-    public function __construct($message)
+    public function __construct(Application $app)
     {
-        $this->app = app('wechat');
+        $this->app = $app;
         $this->server = $this->app->server;
         $this->usage = new Usage();
     }
