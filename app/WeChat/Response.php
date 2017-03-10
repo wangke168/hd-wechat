@@ -11,7 +11,6 @@ use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
 use Carbon\Carbon;
-use EasyWeChat\Message\Transfer;
 use EasyWeChat\Message\Voice;
 use Illuminate\Database\Eloquent\Model;
 use EasyWeChat\Foundation\Application;
@@ -31,9 +30,9 @@ class Response
     public $openid;
     public $server;
 
-    public function __construct(Application $app)
+    public function __construct($message)
     {
-        $this->app = $app;
+        $this->app = app('wechat');
         $this->server = $this->app->server;
         $this->usage = new Usage();
     }
@@ -70,9 +69,7 @@ class Response
 
                 if ($openid == 'o2e-YuBgnbLLgJGMQykhSg_V3VRI') {
                     $this->server->setMessageHandler(function ($message) {
-                        $transfer = new Transfer();
-                        
-
+                        $transfer = new \EasyWeChat\Message\Transfer();
 
                         $transfer->to('kf2004@u_hengdian');// 或者 $transfer->to($account);
 
