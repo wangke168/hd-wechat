@@ -35,19 +35,11 @@ class Response
         $this->app = app('wechat');
         $this->server = $this->app->server;
         $this->usage = new Usage();
-        /*       $userService = $this->app->user;
-               $this->openid = $userService->get($message->FromUserName)->openid;*/
     }
 
-    /*    protected $usage;
-        public function __construct(usage $usage)
-        {
-            $this->usage=$usage;
-        }*/
+
     public function news($message, $keyword)
     {
-
-//        $app = app('wechat');
 
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
@@ -59,7 +51,6 @@ class Response
                 } else {
                     $content->content = '无eventkey';
                 }
-//                $content->content = $app->access_token->getToken();
                 break;
             case "预约":
                 $content = new Text();
@@ -97,7 +88,7 @@ class Response
                         return $transfer;
                     });
                 } else {
-                    $content = $this->request_keyword($openid, $keyword);
+                    $this->request_keyword($openid, $keyword);
                 }
                 break;
         }
