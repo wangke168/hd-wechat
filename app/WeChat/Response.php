@@ -88,7 +88,7 @@ class Response
                     });
                 }
                 else {
-                    $this->request_keyword($openid, $keyword);
+                    $content->content = $this->request_keyword($openid, $keyword);
                 }
                 break;
         }
