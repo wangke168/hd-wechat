@@ -13,7 +13,6 @@ use App\Models\WechatVoice;
 use Carbon\Carbon;
 use EasyWeChat\Message\Voice;
 use Illuminate\Database\Eloquent\Model;
-use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
@@ -65,19 +64,17 @@ class Response
                 $content = new Text();
                 $content->content = $this->get_weather_info();
                 break;
+            case 'ccc':
+                // 转发收到的消息给客服
+                $this->app->server->setMessageHandler(function ($message) {
+                    return new \EasyWeChat\Message\Transfer();
+                });
+                $result = $this->app->server->serve();
+                echo $result;
+                exit();
+                break;
             default:
-
-                if ($openid == 'o2e-YuBgnbLLgJGMQykhSg_V3VRI') {
-                    // 转发收到的消息给客服
-                    $this->app->server->setMessageHandler(function($message) {
-                        return new \EasyWeChat\Message\Transfer();
-                    });
-                    $result = $this->app->server->serve();
-                    echo $result;
-                    exit();
-                } else {
-                    $content = $this->request_keyword($openid, $keyword);
-                }
+                $content = $this->request_keyword($openid, $keyword);
                 break;
         }
         return $content;
