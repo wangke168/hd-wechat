@@ -69,14 +69,12 @@ class Response
             default:
 
                 if ($openid == 'o2e-YuBgnbLLgJGMQykhSg_V3VRI') {
-
-                    $this->server->setMessageHandler(function() use($message) {
-                        $account='kf2004@u_hengdian';
+                    $this->server->setMessageHandler(function ($message) {
                         $transfer = new Transfer();
-//                        $transfer->to();
+                        
 
 
-                        $transfer->to($account);// 或者 $transfer->to($account);
+                        $transfer->to('kf2004@u_hengdian');// 或者 $transfer->to($account);
 
                         return $transfer;
                     });
