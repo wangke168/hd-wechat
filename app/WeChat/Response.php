@@ -77,7 +77,7 @@ class Response
                 $content->content = $this->get_weather_info();
                 break;
             default:
-                if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
+                /*if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
                 {
                     $this->server->setMessageHandler(function($message) {
                         $transfer = new \EasyWeChat\Message\Transfer();
@@ -87,9 +87,9 @@ class Response
                         return $transfer;
                     });
                 }
-                else {
-                    $content->content = $this->request_keyword($openid, $keyword);
-                }
+                else {*/
+                    $this->request_keyword($openid, $keyword);
+//                }
                 break;
         }
         return $content;
