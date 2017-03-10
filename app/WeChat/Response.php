@@ -56,19 +56,6 @@ class Response
                 $content = new Text();
                 $content->content = $this->query_wite_info($openid);
                 break;
-            case 's':
-                $content = new News();
-                $content->title = "laravel-wechat";
-                $content->description = "测试";
-                $content->url = "http://blog.unclewang.me/zone/subscribe/ldjl/asdass/";
-                $content->image = "http://www.hengdianworld.com/images/JQ/scenic_dy.png";
-                $this->app->staff->message([$content])->to($openid)->send();
-                break;
-            case 'd':
-                $content = new Text();
-                $info = $this->usage->get_openid_info('o2e-YuBgnbLLgJGMQykhSg_V3VRI');
-                $content->content = $info->eventkey;
-                break;
             case 'hx':
                 $content = new Text();
                 $tour = new Tour();
@@ -88,7 +75,7 @@ class Response
                         return $transfer;
                     });
                 } else {
-                    $this->request_keyword($openid, $keyword);
+                    $content = $this->request_keyword($openid, $keyword);
                 }
                 break;
         }
