@@ -73,6 +73,7 @@ class Response
                 return $transfer;*/
                 break;
             default:
+                $this->get_keyword_requset($keyword,$openid);
                 $content = $this->request_keyword($openid, $keyword);
                 break;
         }
@@ -244,6 +245,9 @@ class Response
     private function check_keyword_message($eventkey, $type, $keyword)
     {
 //        $db = new DB();
+
+
+
         $keyword = $this->check_keywowrd($keyword);
         $flag = false;
         switch ($type) {
@@ -257,6 +261,7 @@ class Response
                 }
                 break;
             case "txt":
+
                 $row_txt = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->first();
@@ -480,7 +485,7 @@ class Response
     }
 
     /**
-     * 获取天气资讯
+     * 获取天气情况
      * @return string
      */
     private function get_weather_info()
@@ -499,6 +504,19 @@ class Response
         $contentStr = $contentStr . "气温：" . $data['results'][0]['weather_data'][2]['temperature'] . "\n\n";
         $contentStr = $contentStr . "如受恶劣天气影响，部分景区节目、游乐设施可能推迟或暂停开放，具体以景区公示为准。\n";
         return $contentStr;
+    }
+
+
+    private function get_keyword_requset($keyword,$openid)
+    {
+        if (strstr($keyword,'天气'))
+        {
+
+            $content = new Text();
+            $content->content = $this->get_weather_info();
+            return $content;
+        }
+
     }
 
     public function scopePublished($query)
