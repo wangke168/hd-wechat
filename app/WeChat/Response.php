@@ -71,9 +71,9 @@ class Response
                 $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
 
                 return $transfer;*/
-
+                $show_place_url='http://www.baidu.com';
                 $content = new Text();
-                $content->content = "您好，如果您不知道剧场位置，<a href=www.baidu.com>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                $content->content = "您好，如果您不知道剧场位置，<a href=".$show_place_url.">点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
 
 
 
