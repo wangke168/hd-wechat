@@ -66,11 +66,18 @@ class Response
                 break;
             case 'ccc':
                 // 转发收到的消息给客服
-                return new \EasyWeChat\Message\Transfer();
+               // return new \EasyWeChat\Message\Transfer();
                 /*$transfer = new \EasyWeChat\Message\Transfer();
                 $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
 
                 return $transfer;*/
+
+                $content = new Text();
+                $content->content = "您好，如果您不知道剧场位置，<a href=www.baidu.com>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+
+
+
+
                 break;
             default:
                 $content = $this->request_keyword($openid, $keyword);
