@@ -73,8 +73,9 @@ class Response
                 return $transfer;*/
                 break;
             default:
-                $this->get_keyword_requset($keyword,$openid);
-                $content = $this->request_keyword($openid, $keyword);
+                $content = new Text();
+                $content->content=$this->get_keyword_requset($keyword,$openid);
+//                $content = $this->request_keyword($openid, $keyword);
                 break;
         }
         return $content;
@@ -512,10 +513,15 @@ class Response
         if (strstr($keyword,'天气'))
         {
 
-            $content = new Text();
-            $content->content = $this->get_weather_info();
-            return $content;
+//            $content = new Text();
+            $content = $this->get_weather_info();
+//            return $content;
         }
+        else
+        {
+            $content = $this->request_keyword($openid, $keyword);
+        }
+        return $content;
 
     }
 
