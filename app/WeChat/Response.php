@@ -73,8 +73,8 @@ class Response
                 return $transfer;*/
                 break;
             default:
-                $content = new Text();
-                $content->content=$this->get_keyword_requset($keyword,$openid);
+
+                $content=$this->get_keyword_requset($keyword,$openid);
 //                $content = $this->request_keyword($openid, $keyword);
                 break;
         }
@@ -513,8 +513,8 @@ class Response
         if (strstr($keyword,'天气'))
         {
 
-//            $content = new Text();
-            $content = $this->get_weather_info();
+            $content = new Text();
+            $content->content = $this->get_weather_info();
 //            return $content;
         }
         else
