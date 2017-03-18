@@ -42,42 +42,36 @@ class Response
 
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
-        switch ($keyword) {
-            case "a":
-                $content = new Text();
-                if ($this->usage->get_openid_info($openid)->eventkey) {
-                    $content->content = $this->usage->get_openid_info($openid)->eventkey;
-                } else {
-                    $content->content = '无eventkey';
-                }
-                break;
-            case "预约":
-                $content = new Text();
-                $content->content = $this->query_wite_info($openid);
-                break;
-            case 'hx':
-                $content = new Text();
-                $tour = new Tour();
-                $content->content = $tour->verification_subscribe($openid, '1');
-                break;
-            case '天气':
-                $content = new Text();
-                $content->content = $this->get_weather_info();
-                break;
-            case 'ccc':
-                // 转发收到的消息给客服
-                return new \EasyWeChat\Message\Transfer();
-                /*$transfer = new \EasyWeChat\Message\Transfer();
-                $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
+//        switch ($keyword) {
 
-                return $transfer;*/
-                break;
-            default:
+        if ($keyword == 'a') {
+            $content = new Text();
+            if ($this->usage->get_openid_info($openid)->eventkey) {
+                $content->content = $this->usage->get_openid_info($openid)->eventkey;
+            } else {
+                $content->content = '无eventkey';
+            }
+        } elseif ($keyword == '预约') {
+            $content = new Text();
+            $content->content = $this->query_wite_info($openid);
+        } elseif ($keyword == 'hx') {
+            $content = new Text();
+            $tour = new Tour();
+            $content->content = $tour->verification_subscribe($openid, '1');
+        } elseif (strstr($keyword, '天气')) {
+            $content = new Text();
+            $content->content = $this->get_weather_info();
+        } elseif ($keyword == 'ccc') {
+            // 转发收到的消息给客服
+            return new \EasyWeChat\Message\Transfer();
+            /*$transfer = new \EasyWeChat\Message\Transfer();
+            $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
 
-                $content=$this->get_keyword_requset($keyword,$openid);
-//                $content = $this->request_keyword($openid, $keyword);
-                break;
+            return $transfer;*/
+        } else {
+            $content = $this->request_keyword($openid, $keyword);
         }
+
         return $content;
     }
 
@@ -246,9 +240,6 @@ class Response
     private function check_keyword_message($eventkey, $type, $keyword)
     {
 //        $db = new DB();
-
-
-
         $keyword = $this->check_keywowrd($keyword);
         $flag = false;
         switch ($type) {
@@ -262,7 +253,6 @@ class Response
                 }
                 break;
             case "txt":
-
                 $row_txt = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->first();
@@ -507,23 +497,6 @@ class Response
         return $contentStr;
     }
 
-
-    private function get_keyword_requset($keyword,$openid)
-    {
-        if (strstr($keyword,'天气'))
-        {
-
-            $content = new Text();
-            $content->content = $this->get_weather_info();
-//            return $content;
-        }
-        else
-        {
-            $content = $this->request_keyword($openid, $keyword);
-        }
-        return $content;
-
-    }
 
     public function scopePublished($query)
     {
