@@ -19,7 +19,7 @@ class SecondSell
 
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        // $content='';
+         $content='';
         /* $rows = DB::table('wx_article_se')
              ->where('online', '1')
              ->where('target', '1')
