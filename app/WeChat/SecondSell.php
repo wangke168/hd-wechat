@@ -18,7 +18,7 @@ class SecondSell
     {
 
         $usage = new Usage();
-        $openid = $usage->authcode($openid, 'ENCODE', 0);
+        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
 
        /* $rows = DB::table('wx_article_se')
             ->where('online', '1')
@@ -55,14 +55,14 @@ class SecondSell
                     $news = new News();
                     $news->title = $row->title;
                     $news->description = $row->description;
-
+                    $pic_url = 'http://weix2.hengdianworld.com/' . $row->pic_url;
                     if ($row->url) {
                         $url = $row->url;
                     } else {
-                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?action=se&id=" . $row->id . "&wxnumber=" . $openid;
+                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?action=se&id=" . $row->id . "&wxnumber=" . $wxnumber;
                     }
                     $news->url = $url;
-                    $news->image = $row->pic_url;
+                    $news->image = $pic_url;
                     $content[] = $news;
                     $info_ids[] = $row->id;
                 }
