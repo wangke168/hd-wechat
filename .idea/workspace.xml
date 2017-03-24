@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/WeChat/SecondSell.php" afterPath="$PROJECT_DIR$/app/WeChat/SecondSell.php" />
     </list>
     <ignored path="laravel5.iws" />
@@ -70,8 +69,8 @@
       <file leaf-file-name="SecondSell.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/SecondSell.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7865275">
-              <caret line="173" column="24" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.7628083">
+              <caret line="173" column="23" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
               <folding>
                 <element signature="e#112#119#0#PHP" expanded="true" />
               </folding>
@@ -993,8 +992,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/SecondSell.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7865275">
-          <caret line="173" column="24" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.7628083">
+          <caret line="173" column="23" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
           <folding>
             <element signature="e#112#119#0#PHP" expanded="true" />
           </folding>
