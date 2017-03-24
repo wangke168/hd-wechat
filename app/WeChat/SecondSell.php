@@ -49,7 +49,7 @@ class SecondSell
                     ->where('online', '1')
                     ->where('target', '1')
                     ->orWhere('target', '2')
-                    ->orderBy('sequence', 'asc')
+                    ->orderBy('priority', 'asc')
                     ->get();
                 foreach ($rows as $row) {
                     $news = new News();
