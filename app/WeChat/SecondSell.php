@@ -14,31 +14,80 @@ use EasyWeChat\Message\News;
 class SecondSell
 {
 
-    public function second_info_send($type, $order_info,$openid,$sellid)
+    public function second_info_send($type, $order_info, $openid, $sellid)
     {
 
-        $usage=new Usage();
-        $openid_article=$usage->authcode($openid,'ENCODE',0);
-        $url='http://'.$_SERVER['SERVER_NAME'].'/secondarticle/'.$sellid.'/'.$openid_article.'/';
-//        $sendid=[];
+        $usage = new Usage();
+        $openid = $usage->authcode($openid, 'ENCODE', 0);
 
         $rows = DB::table('se_info_detail')
             ->where('online', '1')
-            ->where('is_all', '1')
-            ->orderBy('sequence', 'asc')
+            ->where('target', '1')
+            ->whereDate('startdate', '<=', date('Y-m-d'))
+            ->whereDate('enddate', '>=', date('Y-m-d'))
+            ->orderBy('priority', 'asc')
             ->get();
         foreach ($rows as $row) {
             $news = new News();
             $news->title = $row->title;
             $news->description = $row->description;
-//            $news->url = $row->article_url;
-            $news->url=$url.$row->id;
+
+            if ($row->url) {
+                $url = $row->url;
+            } else {
+                $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?action=se&id=" . $row->id . "&wxnumber=" . $openid;
+            }
+            $news->url = $url;
             $news->image = $row->pic_url;
             $content[] = $news;
-            $info_ids[]=$row->id;
+            $info_ids[] = $row->id;
         }
 
         switch ($type) {
+            case 'ticket':
+                $rows = DB::table('se_info_detail')
+                    ->where('online', '1')
+                    ->where('target', '1')
+                    ->orWhere('target', '2')
+                    ->orderBy('sequence', 'asc')
+                    ->get();
+                foreach ($rows as $row) {
+                    $news = new News();
+                    $news->title = $row->title;
+                    $news->description = $row->description;
+
+                    if ($row->url) {
+                        $url = $row->url;
+                    } else {
+                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?action=se&id=" . $row->id . "&wxnumber=" . $openid;
+                    }
+                    $news->url = $url;
+                    $news->image = $row->pic_url;
+                    $content[] = $news;
+                    $info_ids[] = $row->id;
+                }
+                break;
+        }
+
+        //     $url='http://'.$_SERVER['SERVER_NAME'].'/secondarticle/'.$sellid.'/'.$openid_article.'/';
+
+        /*        $rows = DB::table('se_info_detail')
+                    ->where('online', '1')
+                    ->where('is_all', '1')
+                    ->orderBy('sequence', 'asc')
+                    ->get();
+                foreach ($rows as $row) {
+                    $news = new News();
+                    $news->title = $row->title;
+                    $news->description = $row->description;
+        //            $news->url = $row->article_url;
+                    $news->url=$url.$row->id;
+                    $news->image = $row->pic_url;
+                    $content[] = $news;
+                    $info_ids[]=$row->id;
+                }*/
+
+       /* switch ($type) {
             case 'ticket':
                 $rows = DB::table('se_info_detail')
                     ->where('online', '1')
@@ -52,10 +101,10 @@ class SecondSell
                             $news->title = $row->title;
                             $news->description = $row->description;
 //                            $news->url = $row->article_url;
-                            $news->url=$url.$row->id;
+                            $news->url = $url . $row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $info_ids[]=$row->id;
+                            $info_ids[] = $row->id;
                         }
                     }
                 }
@@ -73,10 +122,10 @@ class SecondSell
                             $news->title = $row->title;
                             $news->description = $row->description;
 //                            $news->url = $row->article_url;
-                            $news->url=$url.$row->id;
+                            $news->url = $url . $row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $info_ids[]=$row->id;
+                            $info_ids[] = $row->id;
                         }
                     }
                     if ($row->hotel) {
@@ -85,10 +134,10 @@ class SecondSell
                             $news->title = $row->title;
                             $news->description = $row->description;
 //                            $news->url = $row->article_url;
-                            $news->url=$url.$row->id;
+                            $news->url = $url . $row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $info_ids[]=$row->id;
+                            $info_ids[] = $row->id;
                         }
                     }
                 }
@@ -108,19 +157,18 @@ class SecondSell
                             $news->title = $row->title;
                             $news->description = $row->description;
 //                            $news->url = $row->article_url;
-                            $news->url=$url.$row->id;
+                            $news->url = $url . $row->id;
                             $news->image = $row->pic_url;
                             $content[] = $news;
-                            $info_ids[]=$row->id;
+                            $info_ids[] = $row->id;
                         }
                     }
                 break;
-        }
+        }*/
 
-        foreach ($info_ids as $info_id)
-        {
+        foreach ($info_ids as $info_id) {
             DB::table('se_info_send')
-                ->insert(['wx_openid'=>$openid,'sellid'=>$sellid,'info_id'=>$info_id]);
+                ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'info_id' => $info_id]);
         }
 
         return $content;
