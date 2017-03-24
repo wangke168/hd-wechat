@@ -20,7 +20,7 @@ class SecondSell
         $usage = new Usage();
         $openid = $usage->authcode($openid, 'ENCODE', 0);
 
-        $rows = DB::table('se_info_detail')
+       /* $rows = DB::table('wx_article_se')
             ->where('online', '1')
             ->where('target', '1')
             ->whereDate('startdate', '<=', date('Y-m-d'))
@@ -41,11 +41,11 @@ class SecondSell
             $news->image = $row->pic_url;
             $content[] = $news;
             $info_ids[] = $row->id;
-        }
+        }*/
 
         switch ($type) {
             case 'ticket':
-                $rows = DB::table('se_info_detail')
+                $rows = DB::table('wx_article_se')
                     ->where('online', '1')
                     ->where('target', '1')
                     ->orWhere('target', '2')
