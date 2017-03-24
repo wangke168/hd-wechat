@@ -19,7 +19,7 @@ class SecondSell
 
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-
+        $content='';
        /* $rows = DB::table('wx_article_se')
             ->where('online', '1')
             ->where('target', '1')
@@ -165,13 +165,13 @@ class SecondSell
                 break;
         }*/
 
-        foreach ($info_ids as $info_id) {
-            DB::table('se_info_send')
-                ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'info_id' => $info_id]);
+        if($info_ids) {
+            foreach ($info_ids as $info_id) {
+                DB::table('se_info_send')
+                    ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'info_id' => $info_id]);
+            }
         }
-
         return $content;
-
     }
 
 }
