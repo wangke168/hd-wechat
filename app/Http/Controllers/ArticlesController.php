@@ -47,18 +47,18 @@ class ArticlesController extends Controller
             ->update(['is_read' => 1, 'readtime' => Carbon::now()]);
 
         //增加阅读数
-        DB::table('se_info_detail')
+        DB::table('wx_article_se')
             ->where('id', $info_id)
             ->increment('hits');
 
         //找出对应url并跳转
-        $row = DB::table('se_info_detail')
+     /*   $row = DB::table('wx_article_se')
             ->where('id', $info_id)
             ->first();
 
         $this->count->insert_hits('1285', $openid);
         $url = 'http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl=' . $row->article_url;
-        return redirect($url);
+        return redirect($url);*/
     }
 
     /**
@@ -120,7 +120,7 @@ class ArticlesController extends Controller
                 $rows_zone = DB::table('zone')
                     ->orderBy('priority', 'asc')
                     ->get();
-                return view('articles.detail_show_all', compact('rows_zone','openid'));
+                return view('articles.detail_show_all', compact('rows_zone', 'openid'));
                 break;
             case 'detail':
                 return view('articles.detail_show_all_detail');
@@ -132,15 +132,21 @@ class ArticlesController extends Controller
                     ->first();
                 return view('articles.detail_show_one', compact('row_zone'));
                 break;
+            case 'se':                //二次推送
+                $sellid=$request->input('sellid');
+                $article = DB::table('wx_article_se')
+                    ->find($id);
+                $this->count->add_article_se_hits($id);
+                $this->count->update_article_se_read($sellid,$openid,$id);
+                return view('articles.detail', compact('article', 'id', 'openid'));
+                break;
             default:
                 $article = WechatArticle::find($id);
                 if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
                     abort(404);
                 } else {
-
                     $this->count->add_article_hits($id);
                     $this->count->insert_hits($id, $openid);
-
                     return view('articles.detail', compact('article', 'id', 'openid'));
                 }
                 break;

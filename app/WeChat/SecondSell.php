@@ -59,7 +59,7 @@ class SecondSell
                     if ($row->url) {
                         $url = $row->url;
                     } else {
-                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?action=se&id=" . $row->id . "&wxnumber=" . $wxnumber;
+                        $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?type=se&sellid=".$sellid."&id=" . $row->id . "&wxnumber=" . $wxnumber;
                     }
                     $news->url = $url;
                     $news->image = $pic_url;

@@ -86,4 +86,26 @@ class Count
             ->increment('resp_f');
     }
 
+    /**
+     * 增加二次推送阅读数
+     * @param $id
+     */
+    public function add_article_se_hits($id)
+    {
+        DB::table('wx_article_se')
+            ->where('id', $id)
+            ->increment('hits');
+    }
+
+    public function update_article_se_read($sellid,$openid,$info_id)
+    {
+        DB::table('se_info_send')
+            ->where('sellid', $sellid)
+            ->where('wx_openid', $openid)
+            ->where('info_id', $info_id)
+            ->update(['is_read' => 1, 'readtime' => Carbon::now()]);
+
+    }
+
+
 }

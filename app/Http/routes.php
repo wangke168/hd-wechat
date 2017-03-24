@@ -40,9 +40,9 @@ Route::get('/count/{type}/{id}/{openid?}','CountController@CountArticle');
 
 //文章管理
 Route::get('/article/detail', 'ArticlesController@detail');
-Route::get('/article/test', 'ArticlesController@detail_long');
+//Route::get('/article/test', 'ArticlesController@detail_long');
 
-Route::get('/article/test/short', 'ArticlesController@detail_short');
+//Route::get('/article/test/short', 'ArticlesController@detail_short');
 
 Route::get('/article/webdetail','ArticlesController@webdetail');
 Route::get('/article/detail_back', 'ArticlesController@test');
@@ -50,17 +50,9 @@ Route::get('/article/detail_back', 'ArticlesController@test');
 Route::get('/article/review', 'ArticlesController@detail_review');
 
 //预约系统
-/*
-Route::get('/zone/subscribe/ldjl/{openid}','ZoneController@ldjl');
-Route::get('/zone/subscribe/ldjl/get_subscribe/{project_id}/{openid}','ZoneController@subscribe');
-Route::get('/zone/ldjl/{openid}','ZoneController@test');
-*/
+
 Route::get('/zone/subscribe/ldjl','ZoneController@ldjl');
 Route::get('/zone/subscribe/get','ZoneController@subscribe');
-
-/*Route::get('/info', 'ArticlesController@info');
-Route::get('/queue','ArticlesController@queue');
-Route::get('/info/{sellid}/{openid?}', 'ArticlesController@info');*/
 
 
 //菜单及自定义菜单
