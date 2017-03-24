@@ -19,7 +19,8 @@ class SecondSell
 
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-         $content='';
+        $content = '';
+        $info_ids = '';
         /* $rows = DB::table('wx_article_se')
              ->where('online', '1')
              ->where('target', '1')
@@ -48,6 +49,8 @@ class SecondSell
                 $rows = DB::table('wx_article_se')
                     ->where('online', '1')
                     ->whereIn('target', [1, 2])
+                    ->whereDate('startdate', '<=', date('Y-m-d'))
+                    ->whereDate('enddate', '>=', date('Y-m-d'))
                     ->orderBy('priority', 'asc')
                     ->get();
                 if ($rows) {
@@ -67,6 +70,7 @@ class SecondSell
                         $info_ids[] = $row->id;
                     }
                 }
+
                 break;
         }
 
