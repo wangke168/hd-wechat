@@ -47,8 +47,7 @@ class SecondSell
             case 'ticket':
                 $rows = DB::table('wx_article_se')
                     ->where('online', '1')
-                    ->where('target', '1')
-                    ->orWhere('target', '2')
+                    ->whereIn('target', [1,2])
                     ->orderBy('priority', 'asc')
                     ->get();
                 foreach ($rows as $row) {
