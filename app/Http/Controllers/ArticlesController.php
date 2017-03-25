@@ -28,40 +28,6 @@ class ArticlesController extends Controller
     }
 
     /**
-     * 预订成功后推送相关信息
-     * @param $sellid
-     * @param $openid
-     * @param $info_id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function second_article($sellid, $openid, $info_id)
-    {
-        $usage = new Usage();
-        $openid = $usage->authcode($openid, 'DECODE', 0);
-
-        //设置se_info_send阅读
-        DB::table('se_info_send')
-            ->where('sellid', $sellid)
-            ->where('wx_openid', $openid)
-            ->where('info_id', $info_id)
-            ->update(['is_read' => 1, 'readtime' => Carbon::now()]);
-
-        //增加阅读数
-        DB::table('wx_article_se')
-            ->where('id', $info_id)
-            ->increment('hits');
-
-        //找出对应url并跳转
-     /*   $row = DB::table('wx_article_se')
-            ->where('id', $info_id)
-            ->first();
-
-        $this->count->insert_hits('1285', $openid);
-        $url = 'http://e.hengdianworld.com/WeixinOpenId.aspx?nexturl=' . $row->article_url;
-        return redirect($url);*/
-    }
-
-    /**
      * 打开二次推送页面
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -133,11 +99,10 @@ class ArticlesController extends Controller
                 return view('articles.detail_show_one', compact('row_zone'));
                 break;
             case 'se':                //二次推送
-                $sellid=$request->input('sellid');
-                $article = DB::table('wx_article_se')
-                    ->find($id);
+                $sellid = $request->input('sellid');
+                $article = DB::table('wx_article_se')->find($id);
                 $this->count->add_article_se_hits($id);
-                $this->count->update_article_se_read($sellid,$openid,$id);
+                $this->count->update_article_se_read($sellid, $openid, $id);
                 return view('articles.detail', compact('article', 'id', 'openid'));
                 break;
             default:
@@ -161,35 +126,21 @@ class ArticlesController extends Controller
      */
     public function detail_review(Request $request)
     {
+        $type=$request->input('type');
         $id = $request->input('id');
 
         $openid = $request->input('openid');
 
-        $article = WechatArticle::find($id);
-
+        switch ($type){
+            case 'article_se':
+                $article=DB::table('wx_article_se')->find($id);
+                break;
+            default:
+                $article = WechatArticle::find($id);
+                break;
+        }
         return view('articles.detailreview', compact('article', 'id', 'openid'));
-
     }
-
-    public function detail_long(Request $request)
-    {
-        $rows_zone = DB::table('zone')
-            ->orderBy('priority', 'asc')
-            ->get();
-//        return $rows_zone;
-        return view('test.detail_long_test', compact('rows_zone'));
-    }
-
-    public function detail_short(Request $request)
-    {
-        $zone_id = $request->input('id');
-
-        $row_zone = DB::table('zone')
-            ->where('id', $zone_id)
-            ->first();
-        return view('test.detail_short_test', compact('row_zone'));
-    }
-
 
     /**
      * 官网使用的每日剧组动态和每周剧组动态
