@@ -52,6 +52,10 @@ class LinkJumpController extends Controller
         return $row;
     }
 
+    /**
+     * 订阅号跳转
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function jump_dyh()
     {
         if (Carbon::now()->hour > '18' || Carbon::now()->hour < '7') {
@@ -64,9 +68,24 @@ class LinkJumpController extends Controller
 
         return redirect($url);
     }
+
+    /**
+     * 集团公众号跳转
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function jump_jt()
     {
         $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=ec8ceIgJl9DcyD4ZestC8KhkKL35yRYab0tzWDTmGijts[c]qStiYqVhAoTCC4EtG8rRU';
         return redirect($url);
+    }
+
+    public function jump_mobile(Request $request)
+    {
+        $wxnumber=$request->input('wxnumber');
+        $usage = new Usage();
+        $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
+
+        return redirect("http://m.hengdianworld.com/wxnumber=".$wxnumber."&uid=655F74657374");
+
     }
 }

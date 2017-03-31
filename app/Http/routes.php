@@ -12,6 +12,9 @@ Route::get('/api/getjs','TokenController@getjs');
 Route::get('/jump/{id}/{openid}','LinkJumpController@index');
 Route::get('/jump/ehengdian','LinkJumpController@jump_dyh');
 Route::get('/jump/jt','LinkJumpController@jump_jt');
+//菜单跳转手机官网
+Route::get('/jump/mobile','LinkJumpController@jump_mobile');
+
 //订单相关
 Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
 Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');
@@ -53,6 +56,12 @@ Route::get('/article/review', 'ArticlesController@detail_review');
 
 Route::get('/zone/subscribe/ldjl','ZoneController@ldjl');
 Route::get('/zone/subscribe/get','ZoneController@subscribe');
+
+
+//菜单跳转手机官网
+
+
+
 
 
 //菜单及自定义菜单
