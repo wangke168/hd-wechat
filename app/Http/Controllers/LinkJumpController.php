@@ -85,7 +85,7 @@ class LinkJumpController extends Controller
         $usage = new Usage();
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
 
-        return redirect("http://m.hengdianworld.com/wxnumber=".$wxnumber."&uid=655F74657374");
+        return redirect("http://m.hengdianworld.com?wxnumber=".$wxnumber."&uid=655F74657374");
 
     }
 }
