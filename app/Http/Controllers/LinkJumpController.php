@@ -82,10 +82,12 @@ class LinkJumpController extends Controller
     public function jump_mobile(Request $request)
     {
         $wxnumber=$request->input('wxnumber');
+        
         $usage = new Usage();
+        $uid = $usage->get_uid($wxnumber);
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
 
-        return redirect("http://m.hengdianworld.com?wxnumber=".$wxnumber."&uid=655F74657374");
+        return redirect("http://m.hengdianworld.com?wxnumber=".$wxnumber."&uid=".$uid);
 
     }
 }
