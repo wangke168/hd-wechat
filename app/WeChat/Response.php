@@ -693,7 +693,7 @@ class Response
             $project_name = $tour->get_project_name($project_id);
             $zone_name = $tour->get_zone_name($project_id, "2");
             $datetime = date('Y-m-d');
-            $starttime = date("H:i", strtotime($result->addtime) + 3600);
+            $starttime = date("H:i", strtotime($result->verification_time));
 //                $endtime = date("H:i", strtotime($result->addtime) + 7200);
             if ($result->used == 0) {
                 $used = "未使用";
