@@ -700,7 +700,7 @@ class Response
             } else {
                 $used = "已使用";
             }
-            $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16：00\n状态：" . $used;
+            $str = "您预约了" . $datetime . $zone_name . "景区" . $project_name . "项目;\n预约时间：" . $starttime . "---16:00\n状态：" . $used;
 
             $content = $str;
         }
