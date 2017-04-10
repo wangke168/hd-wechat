@@ -28,12 +28,14 @@ class Response
     public $usage;
     public $openid;
     public $server;
+    public $staff;
 
     public function __construct()
     {
         $this->app = app('wechat');
         $this->server = $this->app->server;
         $this->usage = new Usage();
+        $this->staff = $this->app->staff;
     }
 
 
@@ -63,7 +65,15 @@ class Response
             $content->content = $this->get_weather_info();
         } elseif ($keyword == 'ccc') {
             // 转发收到的消息给客服
-            return new \EasyWeChat\Message\Transfer();
+            $online_staff= $this->staff->onlines();
+            if(empty($online_staff['kf_online_list'])){
+                $content = new Text();
+                $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
+//                $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            }
+            else {
+                return new \EasyWeChat\Message\Transfer();
+            }
             /*$transfer = new \EasyWeChat\Message\Transfer();
             $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
 
