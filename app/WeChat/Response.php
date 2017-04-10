@@ -69,7 +69,7 @@ class Response
             $online_staff= $this->staff->onlines();
             if(empty($online_staff['kf_online_list'])){
                 $content = new Text();
-                $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
+                $content->content = "如果您是要取消您的订单，请致电0579-86547211。";
             }
             else {
                 return new \EasyWeChat\Message\Transfer();
