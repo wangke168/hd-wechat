@@ -68,8 +68,7 @@ class Response
             // 转发收到的消息给客服
             $online_staff= $this->staff->onlines();
             if(empty($online_staff['kf_online_list'])){
-                $content = new Text();
-                $content->content = "如果您是要取消您的订单，请致电0579-86547211。";
+                $content = $this->request_keyword($openid, $keyword);
             }
             else {
                 return new \EasyWeChat\Message\Transfer();
