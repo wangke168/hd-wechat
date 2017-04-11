@@ -54,6 +54,11 @@ class Response
                 $content->content = '无eventkey';
             }
         }
+        elseif($keyword == 'wxh')
+        {
+            $content = new Text();
+            $content->content  = $openid;
+        }
         elseif ($keyword == '预约') {
             $content = new Text();
             $content->content = $this->query_wite_info($openid);
