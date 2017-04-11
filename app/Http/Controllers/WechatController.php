@@ -91,29 +91,8 @@ class WechatController extends Controller
                     DB::table('wx_recevice_txt')
                         ->insert(['wx_openid'=>$openid,'content'=>$message->Content]);
                     $content = ($response->news($message, $message->Content));
-                    return $content;
+//                    return $content;
 
-                   /* switch ($message->Content) {
-                        case 's':
-                            $response->news($message, "s");
-                            break;
-                        case 'wxh':
-                            $content = $userService->get($message->FromUserName)->openid;
-                            return $content;
-                            break;
-                        case 'ccc':
-                            // 转发收到的消息给客服
-
-                            $transfer = new \EasyWeChat\Message\Transfer();
-                            $transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
-
-                            return $transfer;
-                            break;
-                        default:
-                            $content = ($response->news($message, $message->Content));
-                            return $content;
-                            break;
-                    }*/
                     break;
                 case 'image':
 

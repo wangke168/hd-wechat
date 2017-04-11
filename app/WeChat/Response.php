@@ -44,7 +44,6 @@ class Response
 
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
-//        switch ($keyword) {
 
         if ($keyword == 'a') {
             $content = new Text();
