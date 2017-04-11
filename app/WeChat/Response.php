@@ -52,13 +52,10 @@ class Response
             } else {
                 $content->content = '无eventkey';
             }
-        }
-        elseif($keyword == 'wxh')
-        {
+        } elseif ($keyword == 'wxh') {
             $content = new Text();
-            $content->content  = $openid;
-        }
-        elseif ($keyword == '预约') {
+            $content->content = $openid;
+        } elseif ($keyword == '预约') {
             $content = new Text();
             $content->content = $this->query_wite_info($openid);
         } elseif ($keyword == 'hx') {
@@ -68,13 +65,12 @@ class Response
         } elseif (strstr($keyword, '天气')) {
             $content = new Text();
             $content->content = $this->get_weather_info();
-        } elseif (str_contains($keyword, '取消')||str_contains($keyword, '退款')||str_contains($keyword, '退订')||str_contains($keyword, '退订')||str_contains($keyword, '订单')){
+        } elseif (str_contains($keyword, '取消') || str_contains($keyword, '退款') || str_contains($keyword, '退订') || str_contains($keyword, '订单')) {
             // 转发收到的消息给客服
-            $online_staff= $this->staff->onlines();
-            if(empty($online_staff['kf_online_list'])){
+            $online_staff = $this->staff->onlines();
+            if (empty($online_staff['kf_online_list'])) {
                 $content = $this->request_keyword($openid, $keyword);
-            }
-            else {
+            } else {
                 return new \EasyWeChat\Message\Transfer();
             }
             /*$transfer = new \EasyWeChat\Message\Transfer();
@@ -311,7 +307,7 @@ class Response
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
-        $uid = $this->usage->get_uid($openid);
+//        $uid = $this->usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }

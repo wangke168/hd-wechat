@@ -36,7 +36,6 @@ class WechatController extends Controller
                                     return $content;
                                 default:
                                     $response->click_request($openid, $message->EventKey);
-//                                    return $content;
                                     break;
                             }
                             break;
@@ -52,8 +51,8 @@ class WechatController extends Controller
                             $response->insert_subscribe($openid, $eventkey, 'subscribe'); //更新openid信息
                             $response->request_focus($openid, $eventkey); //推送关注信息
 
-                        //    $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
-                            
+                            //    $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
+
                             $response->make_user_tag($openid, $eventkey); //标签管理
                             break;
                         case 'SCAN':
@@ -69,7 +68,7 @@ class WechatController extends Controller
                                 $response->insert_subscribe($openid, $eventkey, 'scan'); //更新openid信息
                                 $response->request_focus($openid, $eventkey); //推送关注信息
 
-                          //      $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
+                                //      $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
 
                                 $response->make_user_tag($openid, $eventkey); //标签管理
                             }
@@ -89,7 +88,7 @@ class WechatController extends Controller
                 case 'text':
                     //把内容加入wx_recevice_txt
                     DB::table('wx_recevice_txt')
-                        ->insert(['wx_openid'=>$openid,'content'=>$message->Content]);
+                        ->insert(['wx_openid' => $openid, 'content' => $message->Content]);
                     $content = ($response->news($message, $message->Content));
                     return $content;
 
