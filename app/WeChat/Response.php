@@ -337,7 +337,7 @@ class Response
                 if ($url != '') {
                     /*链接跳转的数据统计*/
 //                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
-                    $url = "http://" . $_SERVER['HTTP_HOST'] . "/jump/{$id}/{$openid}";
+                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/jump/{$id}/{$openid}";
 
                     /*          if (!strstr($url, 'project_id')) {
                                   if (strstr($url, '?') != '') {
@@ -353,7 +353,7 @@ class Response
           */
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                    $url = "http://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
+                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
 
                 }
 
@@ -367,7 +367,7 @@ class Response
                          $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
                      }*/
 
-                $pic_url = 'http://weix2.hengdianworld.com/' . $result->picurl;
+                $pic_url = 'https://weix2.hengdianworld.com/' . $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
