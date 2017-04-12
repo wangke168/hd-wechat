@@ -36,7 +36,58 @@ class OrderController extends Controller
 
             $this->insert_order($openid, $sellid);
             $this->Repost_order($openid, $sellid);
+
+            $this->check_qy($sellid, $openid);
+
         }
+    }
+
+    private function check_qy($sellid,$openid=null)
+    {
+        if($openid)
+        {
+            $usage=new Usage();
+            $uid = $usage->get_uid($openid);
+            @$eventkey = '';
+            if ($usage->get_openid_info($openid)) {
+                $eventkey = $usage->get_openid_info($openid)->eventkey;     //获取客人所属市场
+            }
+            if($eventkey){
+                $row=DB::table('qyh_user_info')
+                    ->where('eventkey',$eventkey)
+                    ->first();
+                if ($row){
+                    $this->post_tglm($sellid,$row->userid,$uid);
+                }
+
+            }
+        }
+    }
+
+
+    private function post_tglm($sellid,$useid,$uid)
+    {
+        //初始化
+        $curl = curl_init();
+        //设置抓取的url
+        curl_setopt($curl, CURLOPT_URL, 'https://weix.hengdianworld.com/sendmessage/tglm');
+        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        //设置获取的信息以文件流的形式返回，而不是直接输出。
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //设置post方式提交
+        curl_setopt($curl, CURLOPT_POST, 1);
+        //设置post数据
+        $post_data = array(
+            "sellid" => $sellid,
+            "userid" => $useid,
+            "uid"=>$uid
+        );
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+        //执行命令
+        $data = curl_exec($curl);
+        //关闭URL请求
+        curl_close($curl);
     }
 
     public function confrim($sellid, $openid = null)
