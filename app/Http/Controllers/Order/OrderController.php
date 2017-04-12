@@ -37,7 +37,7 @@ class OrderController extends Controller
             $this->insert_order($openid, $sellid);
             $this->Repost_order($openid, $sellid);
 
-            $this->check_qy($sellid, $openid);
+//            $this->check_qy($sellid, $openid);
 
         }
     }
