@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php" />
-    </list>
+    <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="" />
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -79,8 +77,8 @@
       <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8788159">
-              <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.20814061">
+              <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -678,7 +676,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23216188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1092,8 +1090,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8788159">
-          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.20814061">
+          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
           <folding />
         </state>
       </provider>
