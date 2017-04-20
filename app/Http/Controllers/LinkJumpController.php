@@ -58,14 +58,7 @@ class LinkJumpController extends Controller
      */
     public function jump_dyh()
     {
-        if (Carbon::now()->hour > '18' || Carbon::now()->hour < '7') {
-            $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y&uid=627A7778313233';
-        } else {
-            $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
-        }
-
-        // $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
-
+        $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
         return redirect($url);
     }
 
@@ -81,11 +74,11 @@ class LinkJumpController extends Controller
 
     public function jump_mobile(Request $request)
     {
-        $wxnumber=$request->input('wxnumber');
+        $wxnumber = $request->input('wxnumber');
         $usage = new Usage();
         $uid = $usage->get_uid($wxnumber);
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
-        return redirect("http://m.hengdianworld.com?wxnumber=".$wxnumber."&uid=".$uid);
+        return redirect("http://m.hengdianworld.com?wxnumber=" . $wxnumber . "&uid=" . $uid);
 
     }
 }
