@@ -26,6 +26,11 @@ class TestController extends Controller
 
     }
 
+    public function temp()
+    {
+        echo "sada";
+    }
+
     public function test()
     {
 
