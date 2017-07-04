@@ -31,72 +31,27 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name"       => "活动专区",
-                "sub_button" => [
-                    [
-                        "type" => "click",
-                        "name" => "最新活动",
-                        "key"  => "2"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "横店攻略",
-                        "key"  => "19"
-                    ],
-                ],
+                "type" => "click",
+                "name" => "今日歌曲",
+                "key"  => "V1001_TODAY_MUSIC"
             ],
             [
-                "name"       => "我要预订",
+                "name"       => "菜单",
                 "sub_button" => [
                     [
-                        "type" => "click",
-                        "name" => "门票预订",
-                        "key"  => "7"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "特惠(门票+住宿)",
-                        "key"  => "8"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "酒店预订",
-                        "key"  => "9"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "火车跟团",
-                        "key"  => "20"
+                        "type" => "view",
+                        "name" => "搜索",
+                        "url"  => "http://www.soso.com/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "订单查询",
-                        "key"  => "http://e.hengdianworld.com/yd_search.aspx"
-                    ],
-                ],
-            ],
-            [
-                "name"       => "更多服务",
-                "sub_button" => [
-                    [
-                        "type" => "click",
-                        "name" => "客服电话",
-                        "key"  => "13"
+                        "name" => "视频",
+                        "url"  => "http://v.qq.com/"
                     ],
                     [
                         "type" => "click",
-                        "name" => "景区节目时间表",
-                        "key"  => "14"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "剧组拍摄动态",
-                        "key"  => "15"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "交通速查/叫出租/导航",
-                        "key"  => "16"
+                        "name" => "赞一下我们",
+                        "key" => "V1001_GOOD"
                     ],
                 ],
             ],
