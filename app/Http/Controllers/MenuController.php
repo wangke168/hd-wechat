@@ -102,16 +102,17 @@ class MenuController extends Controller
             ],
         ];
 
-        $matchRule = [
+      /*  $matchRule = [
             "tag_id"             => "173",
             "sex"                  => "",
             "country"              => "",
             "province"             => "",
             "city"                 => "",
             "client_platform_type" => ""
-        ];
+        ];*/
 
-        $this->menu->add($buttons, $matchRule);
+//        $this->menu->add($buttons, $matchRule);
+        $this->menu->add($buttons);
 
     }
 }
