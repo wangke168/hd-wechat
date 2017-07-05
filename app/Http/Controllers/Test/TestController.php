@@ -18,18 +18,20 @@ class TestController extends Controller
 {
     public $app;
     public $js;
+    public $usage;
 
     public function __construct(Application $app)
     {
         $this->app = $app;
+        $this->usage=$this->app->usage;
         $this->js = $this->app->js;
 
     }
 
     public function temp()
     {
-        DB::table('wx_user_add')
-            ->insert(['wx_openid' => "sadas", 'eventkey' => ""]);
+        $openid="adasdas";
+        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
     }
 
     public function test()
