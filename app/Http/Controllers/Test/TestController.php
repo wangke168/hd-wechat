@@ -23,7 +23,7 @@ class TestController extends Controller
     public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->usage=$this->app->usage;
+        $this->usage=new Usage();
         $this->js = $this->app->js;
 
     }
