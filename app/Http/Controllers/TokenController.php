@@ -19,6 +19,15 @@ class TokenController extends Controller
     //
     public function token()
     {
+/*        $url = 'https://wechat.hdymxy.com/hd-token';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result=(curl_exec($ch));
+        return $result;*/
         return $this->app->access_token->getToken();
     }
     public function js()

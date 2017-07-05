@@ -64,14 +64,9 @@ class MenuController extends Controller
                         "key"  => "9"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "火车跟团",
-                        "key"  => "20"
-                    ],
-                    [
                         "type" => "view",
                         "name" => "订单查询",
-                        "key"  => "http://e.hengdianworld.com/yd_search.aspx"
+                        "url"  => "http://e.hengdianworld.com/yd_search.aspx"
                     ],
                 ],
             ],
