@@ -7,6 +7,7 @@
  */
 namespace App\WeChat;
 
+use Carbon\Carbon;
 use EasyWeChat\Foundation\Application;
 use DB;
 use EasyWeChat\Message\News;
@@ -24,6 +25,15 @@ class Usage
      */
     public function get_openid_info($openid=null)
     {
+        $row = DB::table('wx_user_info')
+            ->where('wx_openid', $openid)
+            ->first();
+        if ($row)
+        {
+            DB::table('wx_user_info')
+                ->insert(['wx_openid' => $openid, 'eventkey' => '', 'tag_id' => '', 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
+
+        }
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
             ->first();
