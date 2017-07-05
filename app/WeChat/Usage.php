@@ -28,10 +28,11 @@ class Usage
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
             ->first();
-        if ($row)
+        if (!$row)
         {
-            DB::table('wx_user_add')
-                ->insert(['wx_openid' => $openid, 'eventkey' => ""]);
+            DB::table('wx_user_info')
+                ->insert(['wx_openid' => $openid, 'eventkey' => '', 'tag_id' => '', 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
+
         }
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
