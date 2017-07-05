@@ -28,13 +28,8 @@ class TestController extends Controller
 
     public function temp()
     {
-        $rows_show = DB::table('zone_show_info')
-            ->where('is_push', '1')
-            ->orderBy('id', 'desc')
-            ->get();
-        foreach ($rows_show as $row_show) {
-        echo ($row_show->id);
-        }
+        DB::table('wx_user_add')
+            ->insert(['wx_openid' => "sadas", 'eventkey' => ""]);
     }
 
     public function test()
