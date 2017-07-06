@@ -31,47 +31,47 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name"       => "活动专区",
+                "name"       => "圆明新园",
                 "sub_button" => [
                     [
-                        "type" => "click",
-                        "name" => "最新活动",
-                        "key"  => "2"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "横店攻略",
-                        "key"  => "19"
-                    ],
-                ],
-            ],
-            [
-                "name"       => "我要预订",
-                "sub_button" => [
-                    [
-                        "type" => "click",
-                        "name" => "门票预订",
-                        "key"  => "7"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "特惠(门票+住宿)",
-                        "key"  => "8"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "酒店预订",
-                        "key"  => "9"
+                        "type" => "view",
+                        "name" => "优惠购票",
+                        "url"  => "http://e-test.hdyuanmingxinyuan.com/mobile/epay.aspx"
                     ],
                     [
                         "type" => "view",
-                        "name" => "订单查询",
-                        "url"  => "http://e.hengdianworld.com/yd_search.aspx"
+                        "name" => "景区简介",
+                        "url"  => "http://www.hdymxy.com/attraction.html"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "地图导览",
+                        "url"  => "http://nwx.weijingtong.com/share/96783471470812882316?url=/map?id=206"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "语音导览",
+                        "url"  => "http://nwx.weijingtong.com/share/85374461470812912720?url=/scenery?clientId=348"
                     ],
                 ],
             ],
             [
-                "name"       => "更多服务",
+                "name"       => "有趣有料",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "游玩看攻略",
+                        "url"  => "http://nwx.weijingtong.com/share/14087801470812978302?url=/corpus?id=360"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "活动新资讯",
+                        "url"  => "http://nwx.weijingtong.com/corpus/361"
+                    ],
+                ],
+            ],
+            [
+                "name"       => "游园指南",
                 "sub_button" => [
                     [
                         "type" => "click",
@@ -79,19 +79,19 @@ class MenuController extends Controller
                         "key"  => "13"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "景区节目时间表",
-                        "key"  => "14"
+                        "type" => "view",
+                        "name" => "百事通",
+                        "url"  => "http://nwx.weijingtong.com/share/78026951470813508244?url=/corpus?id=358"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "剧组拍摄动态",
-                        "key"  => "15"
+                        "type" => "view",
+                        "name" => "http://nwx.weijingtong.com/share/96640011470813520230?url=/corpus?id=359",
+                        "url"  => "15"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "交通速查/叫出租/导航",
-                        "key"  => "16"
+                        "type" => "view",
+                        "name" => "天气预报",
+                        "url"  => "http://nwx.weijingtong.com/share/54800031470813531244?url=/weather?clientId=348"
                     ],
                 ],
             ],
