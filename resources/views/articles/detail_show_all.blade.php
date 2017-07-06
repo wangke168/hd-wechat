@@ -6,7 +6,7 @@
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <title>横店影视城演艺秀时间表</title>
-    <meta name="keywords" content="横店影视城,演艺秀时间表">
+    <meta name="keywords" content="横店圆明新园,演艺秀时间表">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {
             var t, i, a, o = 0;
@@ -79,11 +79,11 @@
         <div class="article-detail-hd">
             <div class="category-title">
 
-                <h1 class="title">横店影视城各景区2017年演艺秀时间表</h1></div>
+                <h1 class="title">横店圆明新园2017年演艺秀时间表</h1></div>
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
                                 src="/media/images/logo.png"
-                                alt=""> </span> <span class="name">横店影视城</span></div>
+                                alt=""> </span> <span class="name">横店圆明新园</span></div>
             </div>
             <div class="banner"><img class="lazyload"
                                      data-src="/media/images/show.jpg"
@@ -128,8 +128,8 @@
                     ?>
                     </tbody>
                 </table>
-                <p>以上信息根据您的访问日期自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>
-                <p>题图/秦淮八艳</p>
+             <!--   <p>以上信息根据您的访问日期自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>-->
+                <p>题图/火烧圆明园</p>
 
                 <div class="com-insert-images">
                     <figure style="margin: 0px;" class="">
