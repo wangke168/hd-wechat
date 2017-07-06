@@ -131,12 +131,12 @@
              <!--   <p>以上信息根据您的访问日期自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>-->
                 <p>题图/火烧圆明园</p>
 
-                <div class="com-insert-images">
+              <!--  <div class="com-insert-images">
                     <figure style="margin: 0px;" class="">
                         <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
                              data-src="\images\market\all.jpg">
                     </figure>
-                </div>
+                </div>-->
 
             </div>
         </div>
@@ -145,9 +145,9 @@
 </div>
 <div id="bottom">
     <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-        热线电话：<a href="tel:057986547211"> <span style="color: white"> 0579-86547211</span></a>
+        热线电话：<a href="tel:057989600300"> <span style="color: white"> 0579-89600300</span></a>
     </div>
-    <div>©2013-2017 横店影视城 版权所有</div>
+    <div>©2013-2017 横店圆明新园 版权所有</div>
 </div>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="{{asset('lib/js/a1.js')}}"></script>
