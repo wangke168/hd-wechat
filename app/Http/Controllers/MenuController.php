@@ -85,8 +85,8 @@ class MenuController extends Controller
                     ],
                     [
                         "type" => "view",
-                        "name" => "http://nwx.weijingtong.com/share/96640011470813520230?url=/corpus?id=359",
-                        "url"  => "15"
+                        "name" => "吃住无忧",
+                        "url"  => "http://nwx.weijingtong.com/share/96640011470813520230?url=/corpus?id=359"
                     ],
                     [
                         "type" => "view",
