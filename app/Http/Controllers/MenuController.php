@@ -61,7 +61,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "游玩看攻略",
-                        "url"  => "http://nwx.weijingtong.com/share/14087801470812978302?url=/corpus?id=360"
+                        "url"  => "http://nwx.weijingtong.com/corpus/360"
                     ],
                     [
                         "type" => "view",
@@ -81,12 +81,12 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "百事通",
-                        "url"  => "http://nwx.weijingtong.com/share/78026951470813508244?url=/corpus?id=358"
+                        "url"  => "http://nwx.weijingtong.com/corpus/358"
                     ],
                     [
                         "type" => "view",
                         "name" => "吃住无忧",
-                        "url"  => "http://nwx.weijingtong.com/share/96640011470813520230?url=/corpus?id=359"
+                        "url"  => "http://nwx.weijingtong.com/corpus/359"
                     ],
                     [
                         "type" => "view",
