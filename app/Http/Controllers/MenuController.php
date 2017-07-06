@@ -46,7 +46,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "地图导览",
-                        "url"  => "http://nwx.weijingtong.com/share/96783471470812882316?url=/map?id=206"
+                        "url"  => "http://nwx.weijingtong.com/map/206"
                     ],
                     [
                         "type" => "view",
