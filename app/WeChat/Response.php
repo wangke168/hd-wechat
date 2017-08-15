@@ -367,7 +367,7 @@ class Response
                          $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
                      }*/
 
-                $pic_url = "https://" . $_SERVER['HTTP_HOST'] . "/" . $result->picurl;
+                $pic_url = "https://wx-control.hdymxy.com/" . $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
