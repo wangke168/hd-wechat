@@ -31,47 +31,42 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name"       => "圆明新园",
+                "name"       => "景区资讯",
                 "sub_button" => [
                     [
-                        "type" => "view",
-                        "name" => "优惠购票",
-                        "url"  => "http://e-test.hdyuanmingxinyuan.com/mobile/epay.aspx"
+                        "type" => "click",
+                        "name" => "最新活动",
+                        "key"  => "2"
                     ],
                     [
-                        "type" => "view",
+                        "type" => "click",
                         "name" => "景区简介",
-                        "url"  => "http://www.hdymxy.com/attraction.html"
+                        "key"  => "3"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "地图导览",
-                        "url"  => "http://nwx.weijingtong.com/map/206"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "语音导览",
-                        "url"  => "http://nwx.weijingtong.com/share/85374461470812912720?url=/scenery?clientId=348"
+                        "type" => "click",
+                        "name" => "演艺秀",
+                        "key"  => "4"
                     ],
                 ],
             ],
             [
-                "name"       => "有趣有料",
+                "name"       => "我要预订",
                 "sub_button" => [
                     [
-                        "type" => "view",
-                        "name" => "游玩看攻略",
-                        "url"  => "http://nwx.weijingtong.com/corpus/360"
+                        "type" => "click",
+                        "name" => "门票预订",
+                        "key"  => "7"
                     ],
                     [
                         "type" => "view",
-                        "name" => "活动新资讯",
-                        "url"  => "http://nwx.weijingtong.com/corpus/361"
+                        "name" => "订单查询",
+                        "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
                     ],
                 ],
             ],
             [
-                "name"       => "游园指南",
+                "name"       => "游玩攻略",
                 "sub_button" => [
                     [
                         "type" => "click",
@@ -79,19 +74,24 @@ class MenuController extends Controller
                         "key"  => "13"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "百事通",
-                        "url"  => "http://nwx.weijingtong.com/corpus/358"
+                        "type" => "click",
+                        "name" => "节目时间表",
+                        "key"  => "14"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "交通速查",
+                        "key"  => "16"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "行程推荐",
+                        "url"  => "22"
                     ],
                     [
                         "type" => "view",
-                        "name" => "吃住无忧",
-                        "url"  => "http://nwx.weijingtong.com/corpus/359"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "天气预报",
-                        "url"  => "http://nwx.weijingtong.com/share/54800031470813531244?url=/weather?clientId=348"
+                        "name" => "常见问题",
+                        "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
                     ],
                 ],
             ],
