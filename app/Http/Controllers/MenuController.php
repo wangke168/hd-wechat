@@ -86,7 +86,7 @@ class MenuController extends Controller
                     [
                         "type" => "click",
                         "name" => "行程推荐",
-                        "url"  => "22"
+                        "key"  => "22"
                     ],
                     [
                         "type" => "view",
