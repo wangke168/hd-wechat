@@ -20,7 +20,8 @@ class LinkJumpController extends Controller
 //        $this->addclick($id,$openid);
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
+//        $uid = $usage->get_uid($openid);
+        $uid='';
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
