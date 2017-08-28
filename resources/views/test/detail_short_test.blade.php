@@ -93,7 +93,7 @@
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
                                 src="/media/images/logo.png"
-                                alt=""> </span> <span class="name">横店影视城</span></div>
+                                alt=""> </span> <span class="name">横店圆明新园</span></div>
             </div>
 
 

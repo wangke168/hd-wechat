@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>横店影视城2017年演艺秀时间表_横店影视城</title>
-    <meta name="keywords" content="横店影视城,演艺秀时间表">
+    <title>横店圆明新园2017年演艺秀时间表_横店圆明新园</title>
+    <meta name="keywords" content="横店圆明新园,演艺秀时间表">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {
             var t, i, a, o = 0;
@@ -88,7 +88,7 @@
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
                                 src="/media/images/logo.png"
-                                alt=""> </span> <span class="name">横店影视城</span></div>
+                                alt=""> </span> <span class="name">横店圆明新园</span></div>
             </div>
 
 
@@ -171,9 +171,9 @@
 
 <div id="bottom">
     <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-        热线电话：<a href="tel:057986547211"> <span style="color: white"> 0579-86547211</span></a>
+        热线电话：<a href="tel:057989600055"> <span style="color: white"> 0579-89600055</span></a>
     </div>
-    <div>©2013-2017 横店影视城 版权所有</div>
+    <div>©2013-2017 横店圆明新园 版权所有</div>
 </div>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="{{asset('lib/js/a1.js')}}"></script>

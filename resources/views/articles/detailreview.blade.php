@@ -42,7 +42,7 @@
     <div id="title">
         {{$article->title}}</div>
     <div id="titleinfo">
-        横店影视城 {{$article->adddate}}</div>
+        横店圆明新园 {{$article->adddate}}</div>
     <div id="contents">
 
         {!!str_replace("\"/control/editor/attached/image/","\"http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
@@ -58,9 +58,9 @@
   <!--  <div id="tempheight" style="clear:both;"></div>-->
     <div id="bottom">
         <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-            热线电话：<a href="tel:057986547211"> 0579-86547211</a>
+            热线电话：<a href="tel:057989600055"> 0579-89600055</a>
         </div>
-        <div>©2013-2017 横店影视城 版权所有</div>
+        <div>©2013-2017 横店圆明新园 版权所有</div>
     </div>
 
 </div>

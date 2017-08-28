@@ -105,11 +105,11 @@
         <div class="article-detail-hd">
             <div class="category-title">
 
-                <h1 class="title">横店影视城各景区2017年演艺秀时间表</h1></div>
+                <h1 class="title">横店圆明新园各景区2017年演艺秀时间表</h1></div>
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
                                 src="/media/images/logo.png"
-                                alt=""> </span> <span class="name">横店影视城</span></div>
+                                alt=""> </span> <span class="name">横店圆明新园</span></div>
             </div>
             <div class="banner"><img class="lazyload"
                                      data-src="/media/images/show.jpg"
