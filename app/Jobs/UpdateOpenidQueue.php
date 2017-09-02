@@ -43,13 +43,13 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
         $province = $data['province'];
         $country = $data['country'];
         $subscribe_time = $data['subscribe_time'];
-        $unionid = $data['unionid'];
+//        $unionid = $data['unionid'];
 
         DB::table('wx_user_info')
             ->where('id', $this->OpenidInfo->id)
             ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
-        DB::table('wx_user_unionid')
-            ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => $unionid]);
+/*        DB::table('wx_user_unionid')
+            ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
 //            Log::info('it is openid='.$this->OpenidInfo);
     }
 
