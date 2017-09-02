@@ -30,8 +30,47 @@ class TestController extends Controller
 
     public function temp()
     {
-        $openid="adasdas";
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+
+
+        $app = app('wechat');
+        $userService = $app->user;
+        $users = $userService->lists($nextOpenId = null);
+
+        foreach($users->data['openid'] as $openid)
+        {
+            $row = DB::table('wx_user_info')
+                ->where('wx_openid', $openid)
+                ->first();
+            if (!$row) {
+                DB::table('wx_user_info')
+                    ->insert(['wx_openid' => $openid, 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
+            } 
+        }
+
+     /*   $token = $app->access_token->getToken();
+        $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=oZ9oauHfytaN2Skjyf2NXKE2Tew8";
+        $json = $this->http_request_json($url);//这个地方不能用file_get_contents
+        $data = json_decode($json, true);
+
+
+//            $nickname = $data['nickname'];
+//            $sex = $data['sex'];
+        $city = $data['city'];
+        $province = $data['province'];
+        $country = $data['country'];
+        $subscribe_time = $data['subscribe_time'];
+        return $city;*/
+        }
+    private function http_request_json($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
     }
 
     public function test()
