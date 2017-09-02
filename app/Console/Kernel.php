@@ -32,8 +32,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-                $schedule->command('inspire')
-                    ->everyMinute();
+     //           $schedule->command('inspire')
+       //             ->everyMinute();
         /*更新wx_user_info里的信息*/
     //    $schedule->command('update_openid_info')
     //        ->dailyAt('0:30');
@@ -52,7 +52,7 @@ class Kernel extends ConsoleKernel
 
         /*更新wx_user_info里的信息*/
         $schedule->command('UpdateOpenidInfo')
-            ->everyMinute();
+            ->dailyAt('10:55');
 
         /*更新wx_click_hits中的eventkey*/
      //   $schedule->command('UpdateClickInfo')
