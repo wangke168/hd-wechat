@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-//        \App\Console\Commands\Inspire::class,
+        \App\Console\Commands\Inspire::class,
 //        Commands\Update_Openid_Info::class,
         Commands\AutoSendShowInfo::class,
         Commands\CancelTag::class,
@@ -32,8 +32,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        /*        $schedule->command('inspire')
-                    ->everyMinute();*/
+                $schedule->command('inspire')
+                    ->everyMinute();
         /*更新wx_user_info里的信息*/
     //    $schedule->command('update_openid_info')
     //        ->dailyAt('0:30');
