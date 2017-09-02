@@ -34,17 +34,18 @@ class TestController extends Controller
 
         $app = app('wechat');
         $userService = $app->user;
-        $users = $userService->lists($nextOpenId = null);
+        $users = $userService->lists($nextOpenId = 'oZ9oauPvTKq3Hi4V2nd6wEs0vrYc');
 
         foreach($users->data['openid'] as $openid)
         {
+
             $row = DB::table('wx_user_info')
                 ->where('wx_openid', $openid)
                 ->first();
             if (!$row) {
                 DB::table('wx_user_info')
                     ->insert(['wx_openid' => $openid, 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
-            } 
+            }
         }
 
      /*   $token = $app->access_token->getToken();
