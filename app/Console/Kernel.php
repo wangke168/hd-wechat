@@ -35,32 +35,32 @@ class Kernel extends ConsoleKernel
         /*        $schedule->command('inspire')
                     ->everyMinute();*/
         /*更新wx_user_info里的信息*/
-        $schedule->command('update_openid_info')
-            ->dailyAt('0:30');
+    //    $schedule->command('update_openid_info')
+    //        ->dailyAt('0:30');
 
         /*演艺秀自动推送*/
-        $schedule->command('AutoSendShowInfo')
-            ->cron('10,40 8-18 * * *');
+    //    $schedule->command('AutoSendShowInfo')
+    //        ->cron('10,40 8-18 * * *');
 
         /*取消电影博物馆的tag*/
-        $schedule->command('CancelTag')
-            ->daily();
+    //    $schedule->command('CancelTag')
+     //       ->daily();
 
         /*龙帝惊临预约提醒*/
-        $schedule->command('AutoRemindLdjl')
-            ->cron('*/20 9-16 * * *');
+    //    $schedule->command('AutoRemindLdjl')
+     //       ->cron('*/20 9-16 * * *');
 
         /*更新wx_user_info里的信息*/
         $schedule->command('UpdateOpenidInfo')
-            ->dailyAt('1:00');
+            ->everyMinute();
 
         /*更新wx_click_hits中的eventkey*/
-        $schedule->command('UpdateClickInfo')
-            ->dailyAt('1:30');
+     //   $schedule->command('UpdateClickInfo')
+     //       ->dailyAt('1:30');
 
         /*更新wx_user_esc*/
-        $schedule->command('UpdateEscInfo')
-            ->dailyAt('2:00');
+    //    $schedule->command('UpdateEscInfo')
+     //       ->dailyAt('2:00');
 
 
     }
