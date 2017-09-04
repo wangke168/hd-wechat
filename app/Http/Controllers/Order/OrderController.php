@@ -172,7 +172,7 @@ class OrderController extends Controller
 
     private function Repost_order($openid, $sellid)
     {
-        $second = new SecondSell();
+//        $second = new SecondSell();
 
         $userId = $openid;
         $url = 'http://wechat.hengdianworld.com/article/detail?id=44';
@@ -225,7 +225,7 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 
-                $content = $second->second_info_send('ticket', $ticket, $openid, $sellid);
+//                $content = $second->second_info_send('ticket', $ticket, $openid, $sellid);
 
             }
         }
@@ -255,7 +255,7 @@ class OrderController extends Controller
                     "keyword5" => array($hotel, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
-                $content = $second->second_info_send('inclusive', $ticket . $hotel, $openid, $sellid);
+//                $content = $second->second_info_send('inclusive', $ticket . $hotel, $openid, $sellid);
 
             }
         }
@@ -287,7 +287,7 @@ class OrderController extends Controller
                     "keyword5" => array($numbers, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
-                $content = $second->second_info_send('hotel', $hotel, $openid, $sellid);
+//                $content = $second->second_info_send('hotel', $hotel, $openid, $sellid);
             }
         }
 
@@ -298,9 +298,9 @@ class OrderController extends Controller
                 'hotel' => $hotel]);
 
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
-        if($content) {
+      /*  if($content) {
             $this->app->staff->message($content)->to($openid)->send();
-        }
+        }*/
 //        $app->staff->message($news)->to($openid)->send();
     }
 }
