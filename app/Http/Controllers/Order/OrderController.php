@@ -175,7 +175,7 @@ class OrderController extends Controller
 //        $second = new SecondSell();
 
         $userId = $openid;
-        $url = 'http://wechat.hengdianworld.com/article/detail?id=44';
+        $url = 'https://wechat.ydymxy.com/article/detail?id=1482';
         $color = '#FF0000';
 
         $ticket_id = "";
@@ -297,6 +297,7 @@ class OrderController extends Controller
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
                 'hotel' => $hotel]);
 
+//        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
       /*  if($content) {
             $this->app->staff->message($content)->to($openid)->send();
