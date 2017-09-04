@@ -37,7 +37,7 @@ class OrderController extends Controller
             $this->insert_order($openid, $sellid);
             $this->Repost_order($openid, $sellid);
 
-            $this->check_qy($sellid, $openid);
+//            $this->check_qy($sellid, $openid);
 
         }
     }
@@ -181,7 +181,8 @@ class OrderController extends Controller
         $ticket_id = "";
         $hotel = "";
         $ticket = "";
-        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
+//        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
+        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
         $ticketcount = count($data['ticketorder']);
