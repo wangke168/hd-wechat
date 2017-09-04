@@ -18,7 +18,7 @@ class Order
      */
     public function get_order_detail($sellid)
     {
-        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
+        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
         $ticketcount = count($data['ticketorder']);
