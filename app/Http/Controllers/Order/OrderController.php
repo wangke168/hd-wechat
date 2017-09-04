@@ -181,7 +181,7 @@ class OrderController extends Controller
         $ticket_id = "";
         $hotel = "";
         $ticket = "";
-        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
+        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
         $ticketcount = count($data['ticketorder']);
