@@ -82,6 +82,16 @@ class ArticlesController extends Controller
         }
 
         switch ($type) {
+            case 'hs_show':
+                $article = WechatArticle::find('1479');
+                if (!$article || $article->online == '0' || $article->enddate < Carbon::now()) {
+                    abort(404);
+                } else {
+                    $this->count->add_article_hits($id);
+                    $this->count->insert_hits($id, $openid);
+                    return view('articles.detail_hs_show', compact('article', '1479', 'openid'));
+                }
+                break;
             case 'long':
                 $rows_zone = DB::table('zone')
                     ->orderBy('priority', 'asc')
