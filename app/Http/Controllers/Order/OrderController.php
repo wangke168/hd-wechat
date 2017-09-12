@@ -211,7 +211,7 @@ class OrderController extends Controller
                     $ticketorder = $data['ticketorder'][0]['code'];
                 }
 
-                $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
+                $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
 
                 $templateId = env('TEMPLATEID_TICKET');
 
@@ -242,7 +242,7 @@ class OrderController extends Controller
 
             if ($flag != "未支付" || $flag != "已取消") {
 
-                $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009999141。";
+                $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电0579-89600055。";
 
                 $templateId = env('TEMPLATEID_PACKAGES');
 
@@ -274,7 +274,7 @@ class OrderController extends Controller
             if ($flag != "未支付" || $flag != "已取消") {
 
                 $first = "        " . $name . "，您好，您已经成功预订" . $hotel . "，酒店所有工作人员静候您的光临。\n";
-                $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电4009999141。";
+                $remark = "\n        预达日凭身份证到酒店前台办理入住办手续。\n如有疑问，请致电0579-89600055。";
 
                 $templateId = env('TEMPLATEID_HOTEL');
 
