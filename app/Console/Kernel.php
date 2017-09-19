@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
 
         /*取消tag*/
         $schedule->command('CancelTag')
-            ->daily();
+            ->dailyAt('11:30');
 
         /*龙帝惊临预约提醒*/
     //    $schedule->command('AutoRemindLdjl')
@@ -52,7 +52,7 @@ class Kernel extends ConsoleKernel
 
         /*更新wx_user_info里的信息*/
         $schedule->command('UpdateOpenidInfo')
-            ->dailyAt('11:00');
+            ->dailyAt('11:20');
 
         /*更新wx_click_hits中的eventkey*/
      //   $schedule->command('UpdateClickInfo')
