@@ -55,7 +55,7 @@ class MenuController extends Controller
                     [
                         "type" => "click",
                         "name" => "门票预订",
-                        "key"  => "7"
+                        "key"  => "97"
                     ],
                     [
                         "type" => "view",
@@ -96,17 +96,17 @@ class MenuController extends Controller
             ],
         ];
 
-        /*  $matchRule = [
-              "tag_id"             => "173",
+          $matchRule = [
+              "tag_id"             => "100",
               "sex"                  => "",
               "country"              => "",
               "province"             => "",
               "city"                 => "",
               "client_platform_type" => ""
-          ];*/
+          ];
 
-//        $this->menu->add($buttons, $matchRule);
-        $this->menu->add($buttons);
+        $this->menu->add($buttons, $matchRule);
+//        $this->menu->add($buttons);
 
     }
     public function add_temp()
