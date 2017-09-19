@@ -65,6 +65,7 @@ Route::get('/zone/subscribe/get','ZoneController@subscribe');
 
 
 //菜单及自定义菜单
+Route::get('/menu','MenuController@menu');
 Route::get('/menu/add','MenuController@add');
 Route::get('/menu/index','MenuController@index');
 /*{
