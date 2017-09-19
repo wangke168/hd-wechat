@@ -44,17 +44,31 @@ class CancelTag extends Command
         $openIds=$openids['openid'];
         $tag->batchUntagUsers($openIds, $tagId);*/
 
-        $tagId = '171';
+        $tagId1 = '100';
         $app = app('wechat');
         $tag = $app->user_tag;
-        $openids = $tag->usersOfTag($tagId, $nextOpenId = '')->data;
-        $openIds=$openids['openid'];
+        $openids1 = $tag->usersOfTag($tagId1, $nextOpenId = '')->data;
+        $openIds1=$openids1['openid'];
 
-        if (count($openIds)>0) {
-            for ($i = 0; $i <= count($openIds); $i = $i + 40) {
-                $openid = (array_slice($openIds, $i, $i + 39));
-                $tag->batchUntagUsers($openid, $tagId);
+        if (count($openIds1)>0) {
+            for ($i = 0; $i <= count($openIds1); $i = $i + 40) {
+                $openid1 = (array_slice($openIds1, $i, $i + 39));
+                $tag->batchUntagUsers($openid1, $tagId1);
             }
         }
+
+        $tagId2 = '101';
+    /*    $app = app('wechat');
+        $tag = $app->user_tag;*/
+        $openids2 = $tag->usersOfTag($tagId2, $nextOpenId = '')->data;
+        $openIds2=$openids2['openid'];
+
+        if (count($openIds2)>0) {
+            for ($i = 0; $i <= count($openIds2); $i = $i + 40) {
+                $openid2 = (array_slice($openIds2, $i, $i + 39));
+                $tag->batchUntagUsers($openid2, $tagId2);
+            }
+        }
+
     }
 }

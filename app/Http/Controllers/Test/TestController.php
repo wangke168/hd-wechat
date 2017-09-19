@@ -32,35 +32,45 @@ class TestController extends Controller
     {
 
 
+        $tagId1 = '100';
         $app = app('wechat');
-        $userService = $app->user;
-        $users = $userService->lists($nextOpenId = 'oZ9oauPvTKq3Hi4V2nd6wEs0vrYc');
+        $tag = $app->user_tag;
+        $openids1 = $tag->usersOfTag($tagId1, $nextOpenId = '')->data;
+        $openIds1=$openids1['openid'];
 
-        foreach($users->data['openid'] as $openid)
-        {
-
-            $row = DB::table('wx_user_info')
-                ->where('wx_openid', $openid)
-                ->first();
-            if (!$row) {
-                DB::table('wx_user_info')
-                    ->insert(['wx_openid' => $openid, 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
+        if (count($openIds1)>0) {
+            for ($i = 0; $i <= count($openIds1); $i = $i + 40) {
+                $openid1 = (array_slice($openIds1, $i, $i + 39));
+                $tag->batchUntagUsers($openid1, $tagId1);
             }
         }
 
-     /*   $token = $app->access_token->getToken();
-        $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=oZ9oauHfytaN2Skjyf2NXKE2Tew8";
-        $json = $this->http_request_json($url);//这个地方不能用file_get_contents
-        $data = json_decode($json, true);
+        $tagId2 = '101';
+        /*    $app = app('wechat');
+            $tag = $app->user_tag;*/
+        $openids2 = $tag->usersOfTag($tagId2, $nextOpenId = '')->data;
+        $openIds2=$openids2['openid'];
+
+        if (count($openIds2)>0) {
+            for ($i = 0; $i <= count($openIds2); $i = $i + 40) {
+                $openid2 = (array_slice($openIds2, $i, $i + 39));
+                $tag->batchUntagUsers($openid2, $tagId2);
+            }
+        }
+
+        /*   $token = $app->access_token->getToken();
+           $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=oZ9oauHfytaN2Skjyf2NXKE2Tew8";
+           $json = $this->http_request_json($url);//这个地方不能用file_get_contents
+           $data = json_decode($json, true);
 
 
-//            $nickname = $data['nickname'];
-//            $sex = $data['sex'];
-        $city = $data['city'];
-        $province = $data['province'];
-        $country = $data['country'];
-        $subscribe_time = $data['subscribe_time'];
-        return $city;*/
+   //            $nickname = $data['nickname'];
+   //            $sex = $data['sex'];
+           $city = $data['city'];
+           $province = $data['province'];
+           $country = $data['country'];
+           $subscribe_time = $data['subscribe_time'];
+           return $city;*/
         }
     private function http_request_json($url)
     {
