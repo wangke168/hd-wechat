@@ -36,6 +36,7 @@ class TestController extends Controller
         $app = app('wechat');
         $tag = $app->user_tag;
         $openids1 = $tag->usersOfTag($tagId1, $nextOpenId = '')->data;
+        return $openids1;
         $openIds1=$openids1['openid'];
 
         if (count($openIds1)>0) {
