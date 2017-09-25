@@ -37,20 +37,22 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
         $json = $this->http_request_json($url);//这个地方不能用file_get_contents
         $data = json_decode($json, true);
 
+        if ($data['nickname']) {
 //            $nickname = $data['nickname'];
 //            $sex = $data['sex'];
-        $city = $data['city'];
-        $province = $data['province'];
-        $country = $data['country'];
-        $subscribe_time = $data['subscribe_time'];
+            $city = $data['city'];
+            $province = $data['province'];
+            $country = $data['country'];
+            $subscribe_time = $data['subscribe_time'];
 //        $unionid = $data['unionid'];
 
-        DB::table('wx_user_info')
-            ->where('id', $this->OpenidInfo->id)
-            ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
-/*        DB::table('wx_user_unionid')
-            ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
+            DB::table('wx_user_info')
+                ->where('id', $this->OpenidInfo->id)
+                ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
+            /*        DB::table('wx_user_unionid')
+                        ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
 //            Log::info('it is openid='.$this->OpenidInfo);
+        }
     }
 
     //因为url是https 所有请求不能用file_get_contents,用curl请求json 数据

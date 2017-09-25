@@ -43,8 +43,8 @@ class UpdateOpenidInfo extends Command
         
         $row = DB::table('wx_user_info')
             ->where('esc', '0')
-//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
-            ->whereDate('endtime','>=','2019-09-19')
+            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
+//            ->whereDate('endtime','>=','2019-09-19')
             ->orderBy('id','desc')
             ->get();
         foreach ($row as $OpenidInfo)
