@@ -37,7 +37,7 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
         $json = $this->http_request_json($url);//这个地方不能用file_get_contents
         $data = json_decode($json, true);
 
-        if ($data['subscribe_time']) {
+//        if ($data['subscribe_time']) {
 //            $nickname = $data['nickname'];
 //            $sex = $data['sex'];
             $city = $data['city'];
@@ -52,7 +52,7 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
             /*        DB::table('wx_user_unionid')
                         ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
 //            Log::info('it is openid='.$this->OpenidInfo);
-        }
+//        }
     }
 
     //因为url是https 所有请求不能用file_get_contents,用curl请求json 数据
