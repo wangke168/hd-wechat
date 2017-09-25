@@ -37,7 +37,7 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
         $json = $this->http_request_json($url);//这个地方不能用file_get_contents
         $data = json_decode($json, true);
 
-        if ($data['nickname']) {
+        if ($data['subscribe_time']) {
 //            $nickname = $data['nickname'];
 //            $sex = $data['sex'];
             $city = $data['city'];
