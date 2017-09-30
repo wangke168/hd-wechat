@@ -63,7 +63,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "景区简介",
-                        "url" => "http://www.hdymxy.com/mobile"
+                        "url" => "http://www.hdyuanmingxinyuan.com/mobile"
                     ],
                     [
                         "type" => "view",
@@ -82,13 +82,13 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "click",
-                        "name" => "门票预订s",
+                        "name" => "门票预订",
                         "key" => "7"
                     ],
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "http://ydpt.hdymxy.com/yd_search.aspx"
+                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
                     ],
                 ],
             ],
