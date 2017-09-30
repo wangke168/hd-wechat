@@ -148,7 +148,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "景区简介",
-                        "url" => "http://www.hdymxy.com/mobile"
+                        "url" => "http://www.hdyuanmingxinyuan.com/mobile"
                     ],
                     [
                         "type" => "view",
@@ -173,7 +173,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "http://ydpt.hdymxy.com/yd_search.aspx"
+                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
                     ],
                 ],
             ],
@@ -258,7 +258,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "http://ydpt.hdymxy.com/yd_search.aspx"
+                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
                     ],
                 ],
             ],
@@ -288,7 +288,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "常见问题",
-                        "url" => "http://ydpt.hdymxy.com/yd_search.aspx"
+                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
                     ],
                 ],
             ],
