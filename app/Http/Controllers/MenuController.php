@@ -167,7 +167,7 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "click",
-                        "name" => "门票预订",
+                        "name" => "门票购买",
                         "key" => "97"
                     ],
                     [
