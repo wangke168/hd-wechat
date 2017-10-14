@@ -100,26 +100,34 @@
                     $date = Carbon\Carbon::now()->toDateString();
                     $zone = new \App\WeChat\Zone();
                     foreach ($rows_zone as $row_zone) {
-                        //获取现在所处时间段
-                        $rows_show = DB::table('zone_show_time')
-                                ->whereDate('startdate', '<=', $date)
-                                ->whereDate('enddate', '>=', $date)
-                                ->where('zone_id', $row_zone->id)
-                                ->orderBy('show_id', 'asc')
-                                ->get();
-                        if ($rows_show) {
-                            echo '<tr><td class="zone">' . $row_zone->zone_name . '景区</td></tr>';
-                            foreach ($rows_show as $row_show) {
-                                if ($zone->get_correct_show($row_show->id, $row_show->show_id, $date)) {
-                                    $show_name = $zone->get_project_info($row_show->show_id)->show_name;
-                                    if ($row_show->se_name) {
-                                        $show_name = $row_show->se_name . '(' . $show_name . ')';
-                                    }
-                                    echo '<tr><td class="showname">' . $show_name . '</td></tr>';
-                                    echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
+                        echo '<tr><td class="zone">' . $row_zone->zone_name . '景区</td></tr>';
 
-                                    if ($row_show->remark) {
-                                        echo '<tr><td class="showdate">' . $row_show->remark . '</td></tr>';
+                        $shows = DB::table('zone_show_info')
+                                ->where('zone_id', $row_zone->id)
+                                ->orderBy('priority', 'asc')
+                                ->get();
+                        foreach ($shows as $show) {
+                            //获取现在所处时间段
+                            $rows_show = DB::table('zone_show_time')
+                                    ->whereDate('startdate', '<=', $date)
+                                    ->whereDate('enddate', '>=', $date)
+                                    ->where('zone_id', $row_zone->id)
+                                    ->where('show_id', $show->id)
+                                    ->get();
+                            if ($rows_show) {
+
+                                foreach ($rows_show as $row_show) {
+                                    if ($zone->get_correct_show($row_show->id, $row_show->show_id, $date)) {
+                                        $show_name = $zone->get_project_info($row_show->show_id)->show_name;
+                                        if ($row_show->se_name) {
+                                            $show_name = $row_show->se_name . '(' . $show_name . ')';
+                                        }
+                                        echo '<tr><td class="showname">' . $show_name . '</td></tr>';
+                                        echo '<tr><td class="showtime">' . str_replace(',', ' | ', $row_show->show_time) . '</td></tr>';
+
+                                        if ($row_show->remark) {
+                                            echo '<tr><td class="showdate">' . $row_show->remark . '</td></tr>';
+                                        }
                                     }
                                 }
                             }
@@ -128,15 +136,15 @@
                     ?>
                     </tbody>
                 </table>
-             <!--   <p>以上信息根据您的访问日期自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>-->
+                <!--   <p>以上信息根据您的访问日期自动呈现,若需要全年各时段详细节目时间表,请<a href="/article/detail?type=detail">点击查看</a></p>-->
                 <p>题图/火烧圆明园</p>
 
-              <!--  <div class="com-insert-images">
-                    <figure style="margin: 0px;" class="">
-                        <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
-                             data-src="\images\market\all.jpg">
-                    </figure>
-                </div>-->
+                <!--  <div class="com-insert-images">
+                      <figure style="margin: 0px;" class="">
+                          <img alt="" data-ratio="0.562450" data-format="jpeg" class="lazyload"
+                               data-src="\images\market\all.jpg">
+                      </figure>
+                  </div>-->
 
             </div>
         </div>
