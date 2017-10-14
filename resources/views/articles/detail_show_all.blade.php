@@ -100,12 +100,14 @@
                     $date = Carbon\Carbon::now()->toDateString();
                     $zone = new \App\WeChat\Zone();
                     foreach ($rows_zone as $row_zone) {
-                        echo '<tr><td class="zone">' . $row_zone->zone_name . '景区</td></tr>';
+
 
                         $shows = DB::table('zone_show_info')
                                 ->where('zone_id', $row_zone->id)
                                 ->orderBy('priority', 'asc')
                                 ->get();
+                        if($shows){
+                            echo '<tr><td class="zone">' . $row_zone->zone_name . '景区</td></tr>';
                         foreach ($shows as $show) {
                             //获取现在所处时间段
                             $rows_show = DB::table('zone_show_time')
@@ -130,6 +132,7 @@
                                         }
                                     }
                                 }
+                            }
                             }
                         }
                     }
