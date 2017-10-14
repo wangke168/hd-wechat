@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>横店圆明新园十一黄金周演艺时间表</title>
+    <title>横店圆明新园演艺时间表</title>
     <meta name="keywords" content="横店圆明新园,演艺秀时间表">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {
@@ -79,7 +79,7 @@
         <div class="article-detail-hd">
             <div class="category-title">
 
-                <h1 class="title">横店圆明新园十一黄金周演艺时间表</h1></div>
+                <h1 class="title">横店圆明新园演艺时间表</h1></div>
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
                                 src="/media/images/logo.png"
