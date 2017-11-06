@@ -105,21 +105,21 @@ class MenuController extends Controller
                         "name" => "节目时间表",
                         "key" => "14"
                     ],
-                    /*        [
-                                "type" => "click",
-                                "name" => "交通速查",
-                                "key"  => "16"
-                            ],
-                            [
-                                "type" => "click",
-                                "name" => "行程推荐",
-                                "key"  => "22"
-                            ],
-                            [
-                                "type" => "view",
-                                "name" => "常见问题",
-                                "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
-                            ],*/
+                    [
+                        "type" => "view",
+                        "name" => "交通速查",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/article/detail?id=1492"
+                    ],
+                    /*      [
+                              "type" => "click",
+                              "name" => "行程推荐",
+                              "key"  => "22"
+                          ],
+                          [
+                              "type" => "view",
+                              "name" => "常见问题",
+                              "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
+                          ],*/
                 ],
             ],
         ];
