@@ -63,7 +63,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "景区简介",
-                        "url" => "http://www.hdyuanmingxinyuan.com/mobile"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/info_jq_detail"
                     ],
                     [
                         "type" => "view",
