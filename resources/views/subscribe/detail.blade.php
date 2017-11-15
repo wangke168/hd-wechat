@@ -18,8 +18,8 @@ $project_id = "1";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="MobileOptimized" content="320"/>
     <meta name="copyright" content="Copyright &copy; 2013 hengdianworld.com Inc. All Rights Reserved."/>
-    <meta name="description" content="掌上横店！掌上横店是国家5A级旅游景区横店影视城的移动门户- m.hengdianworld.com"/>
-    <meta name="keywords" content="掌上横店,掌上横店影视城,横店影视城手机版网站"/>
+    <meta name="description" content="掌上横店！掌上横店是横店圆明新园的移动门户- m.hengdianworld.com"/>
+    <meta name="keywords" content="掌上横店,掌上横店圆明新园,横店圆明新园手机版网站"/>
     <title>龙帝惊临预约</title>
     <link href="{{asset('css/index.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -142,7 +142,7 @@ $project_id = "1";
                 }
                 /*影视城位置以下可注释*/
                 else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
-                    $(".info").html("您所在位置:横店影视城有限公司");
+                    $(".info").html("您所在位置:横店圆明新园有限公司");
                 }
                 /*影视城位置以上可注释*/
                 else {

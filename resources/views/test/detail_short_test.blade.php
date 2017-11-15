@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>{!! $row_zone->zone_name !!}2017年演艺秀时间表_横店影视城</title>
+    <title>{!! $row_zone->zone_name !!}2017年演艺秀时间表_横店圆明新园</title>
     <meta name="keywords" content="商业报道,科技新闻,生活方式,智能,火箭,航天,马斯克,SpaceX">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <script type="text/javascript">function resetImgHeight(A, e) {

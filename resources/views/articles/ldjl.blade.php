@@ -63,7 +63,7 @@ $project_id = "1";
             }
             /!*影视城位置以下可注释*!/
             else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
-                $(".info").html("您所在位置:横店影视城有限公司");
+                $(".info").html("您所在位置:横店圆明新园有限公司");
             }
             /!*影视城位置以上可注释*!/
             else {
@@ -204,7 +204,7 @@ $url = "http://weix2.hengdianworld.com/server/wechat/zone/index.php?p_id=1";
                 }
                 /*影视城位置以下可注释*/
                 else if (weidu > 29.154 && weidu < 29.1549 && jingdu > 120.312 && jingdu < 120.320) {
-                    $(".info").html("您所在位置:横店影视城有限公司");
+                    $(".info").html("您所在位置:横店圆明新园有限公司");
                 }
                 /*影视城位置以上可注释*/
                 else {

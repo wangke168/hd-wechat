@@ -59,7 +59,7 @@ class LinkJumpController extends Controller
      */
     public function jump_dyh()
     {
-        $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
+        $url = 'http://m.hdyuanmingxinyuan.com/default.aspx?wxnumber=1e23iMtHGSQCf4yLlXXSGEiQWM2W3[c]gqlPVSTzZzW1KIG5[a]y';
         return redirect($url);
     }
 
@@ -69,7 +69,7 @@ class LinkJumpController extends Controller
      */
     public function jump_jt()
     {
-        $url = 'http://m.hengdianworld.com/default.aspx?wxnumber=ec8ceIgJl9DcyD4ZestC8KhkKL35yRYab0tzWDTmGijts[c]qStiYqVhAoTCC4EtG8rRU';
+        $url = 'http://m.hdyuanmingxinyuan.com/default.aspx?wxnumber=ec8ceIgJl9DcyD4ZestC8KhkKL35yRYab0tzWDTmGijts[c]qStiYqVhAoTCC4EtG8rRU';
         return redirect($url);
     }
 
@@ -79,7 +79,7 @@ class LinkJumpController extends Controller
         $usage = new Usage();
         $uid = $usage->get_uid($wxnumber);
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
-        return redirect("http://m.hengdianworld.com?wxnumber=" . $wxnumber . "&uid=" . $uid);
+        return redirect("http://m.hdyuanmingxinyuan.com?wxnumber=" . $wxnumber . "&uid=" . $uid);
 
     }
 }

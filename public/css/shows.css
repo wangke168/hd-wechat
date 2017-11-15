@@ -1,0 +1,17 @@
+﻿  body {margin:0; padding:0;font-family:"微软雅黑","Microsoft YaHei",hei; font-size:0.26rem; }
+  a{ text-decoration:none;}
+  a:link, a:visited { text-decoration:none;}
+   #ztitle {margin:10px 0 0 10px;font-size:24px;}
+  #shows{margin:0 10px; }
+  #shows li  { border-bottom:1px #cccccc solid; border-left:1px #cccccc solid; border-right:1px #cccccc solid;  }
+  .line {height:0.6rem; background:url(../images/crew.png) no-repeat; background-size:7rem; background-position:0 0; padding-left:24px; display:block;   margin-top:4px; font-size:0.32rem;  }
+  .shows_zone {height:0.65rem;line-height:0.6rem; padding:0 0 0 10px; background-color:#364150; color:#fff;   text-align:center; font-size:0.32rem;}
+  .shows_name{height:0.65rem;line-height:0.6rem; padding:0 0 0 10px;background-color:#d9edf7;  color:#3d3d3d;font-size:0.28rem;}
+  /*.shows_time {height:0.65rem;line-height:0.6rem;  padding:0 0 0 10px;   color:#6f7a7e; font-size:0.28rem; min-height:auto;}*/
+  .shows_time {min-height:0.65rem;line-height:0.6rem; padding:0 0 0 10px; min-width:40px;color:#6f7a7e;}
+  .colorm {color:#fe5a44; font-weight:bold;  }
+  .allyear{ display:inline-block; border:1px solid #fe5a44;   border-radius:5px;  font-size:0.20rem;  float:right;  padding:4px;  margin-right:10px; color:#333;}
+ 
+
+
+

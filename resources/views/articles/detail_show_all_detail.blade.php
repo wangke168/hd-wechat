@@ -83,7 +83,7 @@
             <div class="banner"><img
                         src="/media/images/show-all-detail.jpg"
                         alt=""></div>
-            <h1 class="title">横店影视城2017年演艺秀时间表</h1>
+            <h1 class="title">横店圆明新园2017年演艺秀时间表</h1>
 
             <div class="author-date clearfix">
                 <div class="author clearfix"><span class="avatar x25 circle"><img
