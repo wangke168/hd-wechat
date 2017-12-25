@@ -35,7 +35,7 @@ class OrderController extends Controller
 //            $this->dispatch(new SendOrderQueue($sellid,$openid));
 
             $this->insert_order($openid, $sellid);
-            $this->Repost_order($openid, $sellid);
+            $this->PostOrderInfo($openid, $sellid);
 
 //            $this->check_qy($sellid, $openid);
 
@@ -170,7 +170,7 @@ class OrderController extends Controller
 
     }
 
-    private function Repost_order($openid, $sellid)
+    private function PostOrderInfo($openid, $sellid)
     {
 //        $second = new SecondSell();
 
@@ -182,7 +182,10 @@ class OrderController extends Controller
         $hotel = "";
         $ticket = "";
 //        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
-        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
+        $url=env('ORDER_URL','');
+        $url=$url."searchorder_json.aspx?sellid=" . $sellid;
+        $json = file_get_contents($url);
+//        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
 //        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
@@ -205,13 +208,15 @@ class OrderController extends Controller
 
             if ($flag != "未支付" || $flag != "已取消") {
 
-                if ($data['ticketorder'][0]['ticket'] == '三大点+梦幻谷' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
-                    $ticketorder = "注意：该票种需要身份证检票";
+                if ($data['ticketorder'][0]['ticket'] == '2018年8点年卡票' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
+                    $ticketorder = "注意：年卡预订成功三天后开始生效";
+                    $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电0579-89600055。";
                 } else {
                     $ticketorder = $data['ticketorder'][0]['code'];
+                    $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
                 }
 
-                $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
+
 
                 $templateId = env('TEMPLATEID_TICKET');
 
