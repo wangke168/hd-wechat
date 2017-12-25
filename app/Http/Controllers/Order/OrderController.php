@@ -182,10 +182,10 @@ class OrderController extends Controller
         $hotel = "";
         $ticket = "";
 //        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
-        $url=env('ORDER_URL','');
+      /*  $url=env('ORDER_URL','');
         $url=$url."searchorder_json.aspx?sellid=" . $sellid;
-        $json = file_get_contents($url);
-//        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
+        $json = file_get_contents($url);*/
+        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
 //        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
