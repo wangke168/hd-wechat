@@ -86,6 +86,11 @@ class MenuController extends Controller
                         "key" => "7"
                     ],
                     [
+                        "type" => "click",
+                        "name" => "年卡办理",
+                        "key" => "23"
+                    ],
+                    [
                         "type" => "view",
                         "name" => "订单查询",
                         "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
