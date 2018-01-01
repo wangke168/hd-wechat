@@ -18,7 +18,9 @@ class Order
      */
     public function get_order_detail($sellid)
     {
-        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
+        $url=env('ORDER_URL','');
+        $json = file_get_contents($url."searchorder_json.aspx?sellid=" . $sellid);
+//        $json = file_get_contents("http://10.0.61.201/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
         $ticketcount = count($data['ticketorder']);
