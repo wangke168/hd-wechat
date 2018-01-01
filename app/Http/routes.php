@@ -17,7 +17,7 @@ Route::get('/jump/mobile','LinkJumpController@jump_mobile');
 
 //订单相关
 Route::get('/ordersend/{sellid}/{openid}','Order\OrderController@send');
-Route::get('/orderconfrim/{sellid}/{openid?}','Order\OrderController@confrim');
+Route::get('/orderconfrim/{sellid}/{openid}','Order\OrderController@confrim');
 
 //二次营销
 Route::get('/secondarticle/{sellid}/{openid}/{info_id}','ArticlesController@second_article');
