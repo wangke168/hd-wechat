@@ -52,7 +52,7 @@ class Usage
             ->first();
         if (!$row)
         {
-            $row= null;
+            $row= array();
         }
         return $row;
     }

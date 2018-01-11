@@ -48,18 +48,10 @@ class TestController extends Controller
             ->first();
         if (!$row)
         {
-           $row= null;
+           $row= array();
         }
 
-        try{
-            $uid=$row->uid;
-        }
-        catch (customException $e)
-        {
-            //display custom message
-            $uid='';
-        }
-        return $uid;
+        return $row->uid;
         }
     private function get_url($id)
     {
