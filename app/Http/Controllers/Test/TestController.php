@@ -36,9 +36,9 @@ class TestController extends Controller
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $uid = $usage->get_uid($openid);
-        $url = $this->get_url('1447')->url;
-        $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-        return $url;
+        /*$url = $this->get_url('1447')->url;
+        $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";*/
+        return $uid;
         }
     private function get_url($id)
     {
