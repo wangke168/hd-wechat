@@ -51,7 +51,15 @@ class TestController extends Controller
            $row= null;
         }
 
-        return $row->uid;
+        try{
+            $uid=$row->uid;
+        }
+        catch (customException $e)
+        {
+            //display custom message
+            $uid='';
+        }
+        return $uid;
         }
     private function get_url($id)
     {
