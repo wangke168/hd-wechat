@@ -35,10 +35,16 @@ class TestController extends Controller
         $openid='oZ9oauN--CwmBsrBbyAh3xhhcS20';
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
+//        $uid = $usage->get_uid($openid);
         /*$url = $this->get_url('1447')->url;
         $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";*/
-        return $uid;
+
+        $row = DB::table('wx_user_info')
+            ->where('wx_openid', $openid)
+            ->first();
+        return $row->eventkey;
+
+//        return $wxnumber;
         }
     private function get_url($id)
     {
