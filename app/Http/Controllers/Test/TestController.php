@@ -46,12 +46,9 @@ class TestController extends Controller
         $row = DB::table('wx_qrscene_info')
             ->where('qrscene_id', $eventkey)
             ->first();
-        if (!$row)
-        {
-           $row= array();
-        }
 
-        return $row->uid;
+
+        var_dump($row);
         }
     private function get_url($id)
     {

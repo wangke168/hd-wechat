@@ -50,10 +50,6 @@ class Usage
         $row = DB::table('wx_qrscene_info')
             ->where('qrscene_id', $eventkey)
             ->first();
-        if (!$row)
-        {
-            $row= array();
-        }
         return $row;
     }
 
