@@ -42,9 +42,12 @@ class TestController extends Controller
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
             ->first();
-        return $row->eventkey;
+        $eventkey= $row->eventkey;
+        $row = DB::table('wx_qrscene_info')
+            ->where('qrscene_id', $eventkey)
+            ->first();
 
-//        return $wxnumber;
+        return $row->uid;
         }
     private function get_url($id)
     {
