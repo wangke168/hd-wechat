@@ -28,51 +28,25 @@ class TestController extends Controller
 
     }
 
+
     public function temp()
     {
 
-
-        $tagId1 = '100';
-        $app = app('wechat');
-        $tag = $app->user_tag;
-        $openids1 = $tag->usersOfTag($tagId1, $nextOpenId = '')->data;
-        return $openids1;
-        $openIds1=$openids1['openid'];
-
-        if (count($openIds1)>0) {
-            for ($i = 0; $i <= count($openIds1); $i = $i + 40) {
-                $openid1 = (array_slice($openIds1, $i, $i + 39));
-                $tag->batchUntagUsers($openid1, $tagId1);
-            }
+        $openid='oZ9oauN--CwmBsrBbyAh3xhhcS20';
+        $usage = new Usage();
+        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
+        $uid = $usage->get_uid($openid);
+        $url = $this->get_url('1447')->url;
+        $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+        return $url;
         }
-
-        $tagId2 = '101';
-        /*    $app = app('wechat');
-            $tag = $app->user_tag;*/
-        $openids2 = $tag->usersOfTag($tagId2, $nextOpenId = '')->data;
-        $openIds2=$openids2['openid'];
-
-        if (count($openIds2)>0) {
-            for ($i = 0; $i <= count($openIds2); $i = $i + 40) {
-                $openid2 = (array_slice($openIds2, $i, $i + 39));
-                $tag->batchUntagUsers($openid2, $tagId2);
-            }
-        }
-
-        /*   $token = $app->access_token->getToken();
-           $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=oZ9oauHfytaN2Skjyf2NXKE2Tew8";
-           $json = $this->http_request_json($url);//这个地方不能用file_get_contents
-           $data = json_decode($json, true);
-
-
-   //            $nickname = $data['nickname'];
-   //            $sex = $data['sex'];
-           $city = $data['city'];
-           $province = $data['province'];
-           $country = $data['country'];
-           $subscribe_time = $data['subscribe_time'];
-           return $city;*/
-        }
+    private function get_url($id)
+    {
+        $row = DB::table('wx_article')
+            ->where('id', $id)
+            ->first();
+        return $row;
+    }
     private function http_request_json($url)
     {
         $ch = curl_init();
