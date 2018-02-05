@@ -7,6 +7,7 @@ use App\Jobs\ConfrimOrderQueue;
 use App\Jobs\SendOrderQueue;
 use App\WeChat\SecondSell;
 use App\WeChat\Usage;
+use Carbon\Carbon;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
@@ -42,22 +43,21 @@ class OrderController extends Controller
         }
     }
 
-    private function check_qy($sellid,$openid=null)
+    private function check_qy($sellid, $openid = null)
     {
-        if($openid)
-        {
-            $usage=new Usage();
+        if ($openid) {
+            $usage = new Usage();
             $uid = $usage->get_uid($openid);
             @$eventkey = '';
             if ($usage->get_openid_info($openid)) {
                 $eventkey = $usage->get_openid_info($openid)->eventkey;     //获取客人所属市场
             }
-            if($eventkey){
-                $row=DB::table('qyh_user_info')
-                    ->where('eventkey',$eventkey)
+            if ($eventkey) {
+                $row = DB::table('qyh_user_info')
+                    ->where('eventkey', $eventkey)
                     ->first();
-                if ($row){
-                    $this->post_tglm($sellid,$row->userid,$uid);
+                if ($row) {
+                    $this->post_tglm($sellid, $row->userid, $uid);
                 }
 
             }
@@ -65,7 +65,7 @@ class OrderController extends Controller
     }
 
 
-    private function post_tglm($sellid,$useid,$uid)
+    private function post_tglm($sellid, $useid, $uid)
     {
         //初始化
         $curl = curl_init();
@@ -81,7 +81,7 @@ class OrderController extends Controller
         $post_data = array(
             "sellid" => $sellid,
             "userid" => $useid,
-            "uid"=>$uid
+            "uid" => $uid
         );
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
         //执行命令
@@ -110,13 +110,13 @@ class OrderController extends Controller
             $phone = $order->get_order_detail($sellid)['phone'];          //获取客人电话
             $arrive_date = $order->get_order_detail($sellid)['date'];     //获取客人预达日期
             $adddate = $order->get_order_detail($sellid)['addtime'];     //获取客人预订时间
-            $numbers=$order->get_order_detail($sellid)['numbers'];
+            $numbers = $order->get_order_detail($sellid)['numbers'];
             // $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
 
             DB::table('wx_order_confirm')
                 ->insert(['wx_openid' => $openId, 'sellid' => $sellid, 'order_name' => $name, 'tel' => $phone,
                     'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'adddate' => $adddate,
-                    'focusdate' => $focusdate,'numbers'=>$numbers]);
+                    'focusdate' => $focusdate, 'numbers' => $numbers]);
         }
     }
 
@@ -183,9 +183,9 @@ class OrderController extends Controller
         $ticket_id = "";
         $hotel = "";
         $ticket = "";
-        $url=env('ORDER_URL','');
+        $url = env('ORDER_URL', '');
 //        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
-        $json = file_get_contents($url."searchorder_json.aspx?sellid=" . $sellid);
+        $json = file_get_contents($url . "searchorder_json.aspx?sellid=" . $sellid);
 //        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
 
@@ -215,7 +215,6 @@ class OrderController extends Controller
                     $ticketorder = $data['ticketorder'][0]['code'];
                     $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
                 }
-
 
 
                 $templateId = env('TEMPLATEID_TICKET');
@@ -296,17 +295,22 @@ class OrderController extends Controller
             }
         }
 
+        $usage = new Usage();
+        $eventkey = '';
 
+        if ($usage->get_openid_info($openid)) {
+            $eventkey = $usage->get_openid_info($openid)->eventkey;
+        }
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
-                'hotel' => $hotel]);
+                'hotel' => $hotel, 'numbers' => $numbers, 'adddate' => Carbon::today()]);
 
 //        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
-      /*  if($content) {
-            $this->app->staff->message($content)->to($openid)->send();
-        }*/
+        /*  if($content) {
+              $this->app->staff->message($content)->to($openid)->send();
+          }*/
 //        $app->staff->message($news)->to($openid)->send();
     }
 }
