@@ -110,11 +110,13 @@ class OrderController extends Controller
             $phone = $order->get_order_detail($sellid)['phone'];          //获取客人电话
             $arrive_date = $order->get_order_detail($sellid)['date'];     //获取客人预达日期
             $adddate = $order->get_order_detail($sellid)['addtime'];     //获取客人预订时间
+            $numbers=$order->get_order_detail($sellid)['numbers'];
             // $city = $usage->MobileQueryAttribution($phone)->city;               //根据手机号获取归属地
 
             DB::table('wx_order_confirm')
                 ->insert(['wx_openid' => $openId, 'sellid' => $sellid, 'order_name' => $name, 'tel' => $phone,
-                    'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'adddate' => $adddate, 'focusdate' => $focusdate]);
+                    'arrive_date' => $arrive_date, 'eventkey' => $eventkey, 'adddate' => $adddate,
+                    'focusdate' => $focusdate,'numbers'=>$numbers]);
         }
     }
 
