@@ -304,7 +304,7 @@ class OrderController extends Controller
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
-                'hotel' => $hotel, 'numbers' => $numbers, 'adddate' => Carbon::today()]);
+                'hotel' => $hotel, 'eventkey'=>$eventkey,'numbers' => $numbers, 'adddate' => Carbon::today()]);
 
 //        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
