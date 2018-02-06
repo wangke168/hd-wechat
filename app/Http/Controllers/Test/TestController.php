@@ -32,23 +32,18 @@ class TestController extends Controller
     public function temp()
     {
 
-        $openid='oZ9oauN--CwmBsrBbyAh3xhhcS20';
+        $openid='oZ9oauJ2qN9_BrfO9tggWRgpBpAU';
         $usage = new Usage();
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
 //        $uid = $usage->get_uid($openid);
         /*$url = $this->get_url('1447')->url;
         $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";*/
 
-        $row = DB::table('wx_user_info')
-            ->where('wx_openid', $openid)
-            ->first();
-        $eventkey= $row->eventkey;
-        $row = DB::table('wx_qrscene_info')
-            ->where('qrscene_id', $eventkey)
-            ->first();
 
 
-        var_dump($row);
+
+        var_dump($eventkey);
         }
     private function get_url($id)
     {

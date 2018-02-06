@@ -175,7 +175,12 @@ class OrderController extends Controller
     private function PostOrderInfo($openid, $sellid)
     {
 //        $second = new SecondSell();
+        $usage = new Usage();
+        $eventkey = '';
 
+        if ($usage->get_openid_info($openid)) {
+            $eventkey = $usage->get_openid_info($openid)->eventkey;
+        }
         $userId = $openid;
         $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1482';
         $color = '#FF0000';
@@ -295,12 +300,7 @@ class OrderController extends Controller
             }
         }
 
-        $usage = new Usage();
-        $eventkey = '';
 
-        if ($usage->get_openid_info($openid)) {
-            $eventkey = $usage->get_openid_info($openid)->eventkey;
-        }
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
