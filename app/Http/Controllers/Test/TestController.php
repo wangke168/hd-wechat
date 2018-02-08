@@ -32,19 +32,53 @@ class TestController extends Controller
     public function temp()
     {
 
-        $openid='oZ9oauJ2qN9_BrfO9tggWRgpBpAU';
+        $rows=DB::table('wx_order_detail')
+            ->whereBetween('id',[440,804])
+            ->get();
+
         $usage = new Usage();
-        $eventkey = $usage->get_openid_info($openid)->eventkey;
-        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-//        $uid = $usage->get_uid($openid);
-        /*$url = $this->get_url('1447')->url;
-        $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";*/
+        $eventkey = '';
 
+        foreach ($rows as $result) {
+            if ($usage->get_openid_info($result->wx_openid)) {
+                $eventkey = $usage->get_openid_info($result->wx_openid)->eventkey;
+            }
+            $userId = $result->wx_openid;
+            $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1482';
+            $color = '#FF0000';
 
+            $ticket_id = "";
+            $hotel = "";
+            $ticket = "";
+            $url = env('ORDER_URL', '');
+            $json = file_get_contents($url . "searchorder_json.aspx?sellid=" . $result->sellid);
+            $data = json_decode($json, true);
 
+            $ticketcount = count($data['ticketorder']);
+            $inclusivecount = count($data['inclusiveorder']);
+            $hotelcount = count($data['hotelorder']);
 
-        var_dump($eventkey);
+            $i = 0;
+            if ($ticketcount <> 0) {
+                $ticket_id = 1;
+
+                $name = $data['ticketorder'][0]['name'];
+                $sellid = $data['ticketorder'][0]['sellid'];
+                $date = $data['ticketorder'][0]['date2'];
+                $ticket = $data['ticketorder'][0]['ticket'];
+                $numbers = $data['ticketorder'][0]['numbers'];
+                $adddate = $data['ticketorder'][0]['date1'];
+                $flag = $data['ticketorder'][0]['flag'];
+            }
+
+            DB::table('wx_order_detail')
+                ->where('id', $result->id)
+                ->update(['sellid' => $sellid, 'k_name' => $name,
+                    'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
+                     'eventkey' => $eventkey, 'numbers' => $numbers, 'adddate' => $adddate]);
         }
+
+    }
     private function get_url($id)
     {
         $row = DB::table('wx_article')
