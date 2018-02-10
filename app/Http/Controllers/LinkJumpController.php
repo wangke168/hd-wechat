@@ -28,7 +28,7 @@ class LinkJumpController extends Controller
             if (strstr($url, '?') != '') {
                 if($id==1493){
                     $eventkey = $usage->get_openid_info($openid)->eventkey;
-                    if ($eventkey=='1027')
+                    if ($this->CheckCardBan($eventkey))
                     {
                         $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1495';
                     }
@@ -44,6 +44,21 @@ class LinkJumpController extends Controller
             return redirect($url);
         } else {
             return redirect($url . "&wxnumber={$openid}");
+        }
+
+    }
+
+    private function CheckCardBan($eventkey)
+    {
+        $row=DB::table('wx_card_ban')
+            ->where('id',1)
+            ->first();
+
+        $tmparray = explode($eventkey,$row->eventkey);
+        if(count($tmparray)>1){
+            return true;
+        } else{
+            return false;
         }
 
     }
