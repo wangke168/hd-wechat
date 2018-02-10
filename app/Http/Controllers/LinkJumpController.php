@@ -31,7 +31,7 @@ class LinkJumpController extends Controller
                     if ($eventkey=='1027')
                     {
                         $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1495';
-                    }*/
+                    }
 
                 }
                 else{
