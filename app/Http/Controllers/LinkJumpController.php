@@ -21,11 +21,22 @@ class LinkJumpController extends Controller
         $usage = new Usage();
         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $uid = $usage->get_uid($openid);
+
 //        $uid='';
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
-                $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                if($id==1493){
+                    $eventkey = $usage->get_openid_info($openid)->eventkey;
+                    if ($eventkey==1027)
+                    {
+                        $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1495';
+                    }
+                }
+                else{
+                    $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                }
+
             } else {
                 $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
             }

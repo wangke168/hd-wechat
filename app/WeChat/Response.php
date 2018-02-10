@@ -313,7 +313,7 @@ class Response
         }
         switch ($type) {
             case 1:
-                $row = WechatArticle::focusPublished($eventkey)
+                $row = WechatArticle::focusPulblished($eventkey)
                     ->skip(0)->take(8)->get();
                 break;
             case 2:
