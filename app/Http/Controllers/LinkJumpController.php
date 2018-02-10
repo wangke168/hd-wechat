@@ -28,7 +28,7 @@ class LinkJumpController extends Controller
             if (strstr($url, '?') != '') {
                 if($id==1493){
                     $eventkey = $usage->get_openid_info($openid)->eventkey;
-                    if ($eventkey==1027)
+                    if (strstr('1027,1025',$eventkey)!=='')
                     {
                         $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1495';
                     }
