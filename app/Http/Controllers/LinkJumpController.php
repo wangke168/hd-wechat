@@ -32,6 +32,10 @@ class LinkJumpController extends Controller
                     {
                         $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1495';
                     }
+                    else
+                    {
+                        $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                    }
 
                 }
                 else{
