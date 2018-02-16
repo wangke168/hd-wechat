@@ -59,7 +59,7 @@ class LinkJumpController extends Controller
 
         if ($eventkey=='')
         {
-            return true;
+            return false;
         }
         else {
             $tmparray = explode($eventkey, $row->eventkey);
