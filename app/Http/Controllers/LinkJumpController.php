@@ -36,7 +36,6 @@ class LinkJumpController extends Controller
                     {
                         $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     }
-
                 }
                 else{
                     $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
@@ -58,11 +57,17 @@ class LinkJumpController extends Controller
             ->where('id',1)
             ->first();
 
-        $tmparray = explode($eventkey,$row->eventkey);
-        if(count($tmparray)>1){
+        if ($eventkey=='')
+        {
             return true;
-        } else{
-            return false;
+        }
+        else {
+            $tmparray = explode($eventkey, $row->eventkey);
+            if (count($tmparray) > 1) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
     }
