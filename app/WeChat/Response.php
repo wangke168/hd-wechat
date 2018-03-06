@@ -303,6 +303,8 @@ class Response
      * @param $keyword      关键字
      * @param $menuid       菜单ID
      */
+
+//$this->request_news($openid, 'all', '1', '', '');
     public function request_news($openid, $eventkey, $type, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
@@ -313,7 +315,7 @@ class Response
         }
         switch ($type) {
             case 1:
-                $row = WechatArticle::focusPulblished($eventkey)
+                $row = WechatArticle::focusPublished($eventkey)
                     ->skip(0)->take(8)->get();
                 break;
             case 2:
