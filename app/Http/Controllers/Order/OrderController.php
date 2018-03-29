@@ -213,7 +213,7 @@ class OrderController extends Controller
 
             if ($flag != "未支付" || $flag != "已取消") {
 
-                if ($data['ticketorder'][0]['ticket'] == '2018年8点年卡票' || $data['ticketorder'][0]['ticket'] == '网络联票+梦幻谷') {
+                if ($data['ticketorder'][0]['ticket'] == '2018年8点年卡票' || $data['ticketorder'][0]['ticket'] == '2018年两馆年卡票' || $data['ticketorder'][0]['ticket'] == '2018年秋冬苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年春苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年夏苑年卡票') {
                     $ticketorder = "注意：年卡预订成功三天后开始生效";
                     $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电0579-89600055。";
                 } else {
@@ -265,12 +265,10 @@ class OrderController extends Controller
                     "remark" => array($remark, "#000000"),
                 );
 //                $content = $second->second_info_send('inclusive', $ticket . $hotel, $openid, $sellid);
-
             }
         }
         if ($hotelcount <> 0) {
             $ticket_id = 3;
-
             $sellid = $data['hotelorder'][0]['sellid'];
             $name = $data['hotelorder'][0]['name'];
             $date = $data['hotelorder'][0]['date2'];
@@ -304,7 +302,7 @@ class OrderController extends Controller
         DB::table('wx_order_detail')
             ->insert(['sellid' => $sellid, 'wx_openid' => $openid, 'k_name' => $name,
                 'arrivedate' => $date, 'ticket_id' => $ticket_id, 'ticket' => $ticket,
-                'hotel' => $hotel, 'eventkey'=>$eventkey,'numbers' => $numbers, 'adddate' => Carbon::today()]);
+                'hotel' => $hotel, 'eventkey' => $eventkey, 'numbers' => $numbers, 'adddate' => Carbon::today()]);
 
 //        $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
         $this->notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
