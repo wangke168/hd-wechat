@@ -369,7 +369,7 @@ class Response
                          $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
                      }*/
 
-                $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $result->picurl;
+                $pic_url = "https://test.hdymxy.com/" . $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
