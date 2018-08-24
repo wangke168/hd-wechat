@@ -25,6 +25,10 @@
             $("iframe").css({"width": "100%"})  //设置宽度
                     .height(awidth / 4 * 3);  //设置高度
         })
+
+        $.post('http://summer.kfc.com.cn/service-chickentaco/chickentaco/getGameReward', {token: JSON.parse(JSON.parse(localStorage.getItem('userInfo')).v).uuid
+            , count: 41})
+
     </script>
 
 </head>
