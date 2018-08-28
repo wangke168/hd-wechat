@@ -14,7 +14,6 @@ use App\Models\WechatArticle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
-use App\Jobs\UpdateOpenidQueue;
 class TestController extends Controller
 {
     public $app;
@@ -37,9 +36,31 @@ class TestController extends Controller
 //            ->whereDate('endtime','>=','2019-09-19')
             ->orderBy('id','desc')
             ->get();
+
         foreach ($row as $OpenidInfo)
         {
-            dispatch(new UpdateOpenidQueue($OpenidInfo));
+            $app = app('wechat');
+            $token = $app->access_token->getToken();
+            $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $OpenidInfo->wx_openid;
+            $json = $this->http_request_json($url);//这个地方不能用file_get_contents
+            $data = json_decode($json, true);
+
+//        if ($data['subscribe_time']) {
+//            $nickname = $data['nickname'];
+//            $sex = $data['sex'];
+            $city = $data['city'];
+            $province = $data['province'];
+            $country = $data['country'];
+            $subscribe_time = $data['subscribe_time'];
+//        $unionid = $data['unionid'];
+
+            DB::table('wx_user_info')
+                ->where('id', $OpenidInfo->id)
+                ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
+            /*        DB::table('wx_user_unionid')
+                        ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
+//            Log::info('it is openid='.$this->OpenidInfo);
+//        }
         }
     }
 

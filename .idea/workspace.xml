@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateOpenidQueue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateOpenidQueue.php" afterDir="false" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +37,8 @@
       <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+            <state relative-caret-position="1184">
+              <caret line="63" column="9" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="63" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -554,12 +552,12 @@
       <workItem from="1533011533963" duration="2183000" />
       <workItem from="1533191487742" duration="12809000" />
       <workItem from="1535093997497" duration="3670000" />
-      <workItem from="1535443995732" duration="1602000" />
+      <workItem from="1535443995732" duration="1684000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316679000" />
+    <option name="totallyTimeSpent" value="316761000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -964,8 +962,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        <state relative-caret-position="1184">
+          <caret line="63" column="9" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="63" selection-end-column="9" />
         </state>
       </provider>
     </entry>
