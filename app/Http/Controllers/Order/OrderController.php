@@ -215,12 +215,12 @@ class OrderController extends Controller
 
                 if ($data['ticketorder'][0]['ticket'] == '2018年8点年卡票' || $data['ticketorder'][0]['ticket'] == '2018年两馆年卡票' || $data['ticketorder'][0]['ticket'] == '2018年秋冬苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年春苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年夏苑年卡票') {
                     $ticketorder = "注意：年卡预订成功三天后开始生效";
-//                    $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电0579-89600055。";
-                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
+                    $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电0579-89600055。";
+//                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
                 } else {
                     $ticketorder = $data['ticketorder'][0]['code'];
-//                    $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
-                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
+                    $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
+//                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
                 }
 
 

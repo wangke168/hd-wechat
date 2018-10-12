@@ -100,11 +100,11 @@ class MenuController extends Controller
             [
                 "name" => "游园指南",
                 "sub_button" => [
-                   /* [
+                    [
                         "type" => "click",
                         "name" => "客服电话",
                         "key" => "13"
-                    ],*/
+                    ],
                     [
                         "type" => "click",
                         "name" => "节目时间表",
