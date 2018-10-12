@@ -62,6 +62,11 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
+                        "name" => "旗袍峰会",
+                        "url" => "https://vzan.com/live/tvchat-864411?shareuid=34914495&v=636748155489056261"
+                    ],
+                    [
+                        "type" => "view",
                         "name" => "景区简介",
                         "url" => "https://wechat.hdyuanmingxinyuan.com/info_jq_detail"
                     ],
