@@ -60,11 +60,11 @@ class MenuController extends Controller
             [
                 "name" => "圆明新园",
                 "sub_button" => [
-                    [
+                    /*[
                         "type" => "view",
                         "name" => "旗袍峰会",
                         "url" => "https://vzan.com/live/tvchat-864411?shareuid=34914495&v=636748155489056261"
-                    ],
+                    ],*/
                     [
                         "type" => "view",
                         "name" => "景区简介",
