@@ -14,6 +14,7 @@ use App\Models\WechatArticle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
+
 class TestController extends Controller
 {
     public $app;
@@ -30,38 +31,10 @@ class TestController extends Controller
 
     public function test()
     {
-        $row = DB::table('wx_user_info')
-            ->where('esc', '0')
-            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
-//            ->whereDate('endtime','>=','2019-09-19')
-            ->orderBy('id','desc')
-            ->get();
-
-        foreach ($row as $OpenidInfo)
-        {
-            $app = app('wechat');
-            $token = $app->access_token->getToken();
-            $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $OpenidInfo->wx_openid;
-            $json = $this->http_request_json($url);//这个地方不能用file_get_contents
-            $data = json_decode($json, true);
-
-//        if ($data['subscribe_time']) {
-//            $nickname = $data['nickname'];
-//            $sex = $data['sex'];
-            $city = $data['city'];
-            $province = $data['province'];
-            $country = $data['country'];
-            $subscribe_time = $data['subscribe_time'];
-//        $unionid = $data['unionid'];
-
-            DB::table('wx_user_info')
-                ->where('id', $OpenidInfo->id)
-                ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
-            /*        DB::table('wx_user_unionid')
-                        ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
-//            Log::info('it is openid='.$this->OpenidInfo);
-//        }
-        }
+        $row = WechatArticle::where('classid', '23')
+            ->usagePublished('all')
+            ->skip(0)->take(8)->get();
+        var_dump($row);
     }
 
 
