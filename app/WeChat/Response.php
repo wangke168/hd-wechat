@@ -93,8 +93,9 @@ class Response
     public function click_request($openid, $menuid)
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $this->request_news($openid, $eventkey, '2', '', $menuid);
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
+        $this->request_news($openid, $eventkey, '2', '', $menuid);
+
 //        return $content;
     }
 
@@ -380,7 +381,8 @@ class Response
                 $new->image = $pic_url;
                 $content[] = $new;
             }
-            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+//            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            return [$content];
         }
 
     }
