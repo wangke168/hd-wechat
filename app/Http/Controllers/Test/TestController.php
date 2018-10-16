@@ -14,7 +14,7 @@ use App\Models\WechatArticle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
-
+use EasyWeChat\Message\News;
 class TestController extends Controller
 {
     public $app;
@@ -34,7 +34,31 @@ class TestController extends Controller
         $row = WechatArticle::where('classid', '23')
             ->usagePublished('all')
             ->skip(0)->take(8)->get();
-        var_dump($row);
+        $content = array();
+        foreach ($row as $result) {
+            $url = $result->url;
+            $id = $result->id;
+            /*如果只直接跳转链接页面时，判断是否已经带参数*/
+            if ($url != '') {
+                $url = "https://" . $_SERVER['HTTP_HOST'] . "/jump/{$id}/";
+
+            } else {
+                $url = "https://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=";
+
+            }
+
+            $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $result->picurl;
+
+            /*索引图检查结束*/
+            $new = new News();
+            $new->title = $result->title;
+            $new->description = $result->description;
+            $new->url = $url;
+//                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+            $new->image = $pic_url;
+            $content[] = $new;
+        }
+        var_dump($content);
     }
 
 
