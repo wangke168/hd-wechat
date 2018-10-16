@@ -316,12 +316,12 @@ class Response
         switch ($type) {
             case 1:
                 $row = WechatArticle::focusPublished($eventkey)
-                    ->skip(0)->take(1)->get();
+                    ->first();
                 break;
             case 2:
                 $row = WechatArticle::where('classid', $menuid)
                     ->usagePublished($eventkey)
-                    ->skip(0)->take(1)->get();
+                    ->first();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
