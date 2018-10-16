@@ -327,7 +327,7 @@ class Response
                 $keyword = $this->check_keywowrd($keyword);
                 $row = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
-                    ->skip(0)->take(1)->get();
+                    ->first();
                 break;
         }
         if ($row) {
