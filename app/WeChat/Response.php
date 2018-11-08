@@ -380,7 +380,7 @@ class Response
                 $new->image = $pic_url;
                 $content[] = $new;
             }
-            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($new)->by('1001@u_hengdian')->to($openid)->send();
         }
 
     }
