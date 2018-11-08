@@ -316,25 +316,25 @@ class Response
         switch ($type) {
             case 1:
                 $row = WechatArticle::focusPublished($eventkey)
-                    ->first();
+                    ->skip(0)->take(8)->get();
                 break;
             case 2:
                 $row = WechatArticle::where('classid', $menuid)
                     ->usagePublished($eventkey)
-                    ->first();
+                    ->skip(0)->take(8)->get();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
                 $row = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
-                    ->first();
+                    ->skip(0)->take(8)->get();
                 break;
         }
         if ($row) {
-//            $content = array();
-//            foreach ($row as $result) {
-                $url = $row->url;
-                $id = $row->id;
+            $content = array();
+            foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
                 /*如果只直接跳转链接页面时，判断是否已经带参数*/
                 if ($url != '') {
                     /*链接跳转的数据统计*/
@@ -369,17 +369,17 @@ class Response
                          $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
                      }*/
 
-                $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $row->picurl;
+                $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
-                $new->title = $row->title;
-                $new->description = $row->description;
+                $new->title = $result->title;
+                $new->description = $result->description;
                 $new->url = $url;
 //                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
                 $new->image = $pic_url;
-//                $content[] = $new;
-//            }
+                $content[] = $new;
+            }
             $this->app->staff->message($new)->by('1001@u_hengdian')->to($openid)->send();
         }
 
