@@ -90,11 +90,11 @@ class MenuController extends Controller
                         "name" => "门票预订",
                         "key" => "7"
                     ],
-                    [
+/*                    [
                         "type" => "click",
                         "name" => "年卡办理",
                         "key" => "23"
-                    ],
+                    ],*/
                     [
                         "type" => "view",
                         "name" => "订单查询",
