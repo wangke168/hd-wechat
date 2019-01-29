@@ -88,12 +88,12 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "门票预订",
-                        "key" => "http://e.hengdianworld.com/mobile/epay.aspx?uid=68647975616E6D696E6778696E7975"
+                        "url" => "http://e.hengdianworld.com/mobile/epay.aspx?uid=68647975616E6D696E6778696E7975"
                     ],
                     [
                         "type" => "view",
                         "name" => "祈福门票",
-                        "key" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=564&uid=68647975616E6D696E6778696E7975"
+                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=564&uid=68647975616E6D696E6778696E7975"
                     ],
                     [
                         "type" => "view",
