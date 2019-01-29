@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WeChat/Response.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" afterDir="false" />
     </list>
     <ignored path="laravel5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+            <state relative-caret-position="15328">
+              <caret line="496" column="19" selection-start-line="496" selection-start-column="8" selection-end-line="496" selection-end-column="19" />
               <folding>
                 <element signature="e#110#137#0#PHP" expanded="true" />
               </folding>
@@ -38,11 +38,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
+      <file leaf-file-name="UpdateOpenidInfo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Console/Commands/UpdateOpenidInfo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="34" column="81" selection-start-line="34" selection-start-column="81" selection-end-line="34" selection-end-column="81" />
+            <state relative-caret-position="832">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MenuController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="627">
+              <caret line="95" column="122" selection-start-line="95" selection-start-column="122" selection-end-line="95" selection-end-column="122" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Kernel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1728">
+              <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateOpenidQueue.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Jobs/UpdateOpenidQueue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="768">
+              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1472">
+              <caret line="58" column="30" selection-start-line="36" selection-start-column="9" selection-end-line="58" selection-end-column="30" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3264">
+              <caret line="102" column="46" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env.example" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env.example">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -58,7 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>detail_show</find>
       <find>detail</find>
       <find>jump</find>
       <find>关注</find>
@@ -80,7 +141,6 @@
       <find>404</find>
       <find>order</find>
       <find>send</find>
-      <find>test</find>
       <find>菜单</find>
       <find>1</find>
       <find>fir</find>
@@ -88,6 +148,8 @@
       <find>first</find>
       <find>staff-&gt;message</find>
       <find>0579</find>
+      <find>test</find>
+      <find>天气</find>
     </findStrings>
     <replaceStrings>
       <replace>横店圆明新园</replace>
@@ -155,14 +217,14 @@
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
         <option value="$PROJECT_DIR$/app/Jobs/UpdateOpenidQueue.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" />
         <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/articles/detail_show_all.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/articles/detail_show_all_detail.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/articles/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Response.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" />
       </list>
     </option>
   </component>
@@ -335,14 +397,18 @@
               <item name="laravel5" type="b2602c69:ProjectViewProjectNode" />
               <item name="hd-wechat" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Jobs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="laravel5" type="b2602c69:ProjectViewProjectNode" />
               <item name="hd-wechat" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="WeChat" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="laravel5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hd-wechat" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -354,7 +420,7 @@
   <component name="PropertiesComponent">
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="SearchEverywhereHistory" value="uid&#10;respo&#10;usag&#10;ordercon&#10;authcode&#10;keymap&#10;keymaps&#10;resp" />
-    <property name="SearchEverywhereHistoryKey" value="menu&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;me&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;res&#9;FILE&#9;file://D:/Code/hd-wechat/app/WeChat/Response.php&#10;link&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;jump&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;count&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/CountController.php&#10;or&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;rou&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/routes.php&#10;men&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;tour&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Tour.php&#10;m&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;order&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;rout&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/routes.php&#10;re&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Response.php&#10;test&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Test/TestController.php&#10;token&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;arti&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Acc&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;A&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;Ar&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ju&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;rev&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/resources/views/articles/detailreview.blade.php&#10;JS&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;TokenC&#9;null&#9;null&#10;Js&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;Articl&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ac&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;zo&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ZoneController.php&#10;WEC&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;han&#9;null&#9;null&#10;app&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/config/app.php&#10;ju&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;deta&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/resources/views/articles/detail.blade.php&#10;sec&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/SecondSell.php&#10;li&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;ar&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;we&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;keymap&#9;ACTION&#9;Help.KeymapReference&#10;testc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/TestController.php&#10;artic&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jum&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;sendo&#9;null&#9;null&#10;linkju&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;resp&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;env&#9;FILE&#9;file:///var/www/hd-wechat/.env&#10;orderc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/OrderController.php&#10;art&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;updatees&#9;null&#9;null&#10;queue&#9;FILE&#9;file:///var/www/hd-wechat/config/queue.php&#10;GetSignPackage&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="menu&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;rou&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/routes.php&#10;me&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;res&#9;FILE&#9;file://D:/Code/hd-wechat/app/WeChat/Response.php&#10;link&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;jump&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;count&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/CountController.php&#10;or&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;men&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;tour&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Tour.php&#10;m&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;order&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;rout&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/routes.php&#10;re&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Response.php&#10;test&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Test/TestController.php&#10;token&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;arti&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Acc&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;A&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;Ar&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ju&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;rev&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/resources/views/articles/detailreview.blade.php&#10;JS&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;TokenC&#9;null&#9;null&#10;Js&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;Articl&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ac&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;zo&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ZoneController.php&#10;WEC&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;han&#9;null&#9;null&#10;app&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/config/app.php&#10;ju&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;deta&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/resources/views/articles/detail.blade.php&#10;sec&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/SecondSell.php&#10;li&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;ar&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;we&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;keymap&#9;ACTION&#9;Help.KeymapReference&#10;testc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/TestController.php&#10;artic&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jum&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;sendo&#9;null&#9;null&#10;linkju&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;resp&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;env&#9;FILE&#9;file:///var/www/hd-wechat/.env&#10;orderc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/OrderController.php&#10;art&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;updatees&#9;null&#9;null&#10;queue&#9;FILE&#9;file:///var/www/hd-wechat/config/queue.php&#10;GetSignPackage&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../hd" />
@@ -499,11 +565,15 @@
       <workItem from="1546235199465" duration="12000" />
       <workItem from="1546237431162" duration="8000" />
       <workItem from="1546237570073" duration="916000" />
+      <workItem from="1547019934218" duration="1275000" />
+      <workItem from="1547021543694" duration="1233000" />
+      <workItem from="1547276142794" duration="2315000" />
+      <workItem from="1548748131013" duration="93000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335955000" />
+    <option name="totallyTimeSpent" value="340871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -542,26 +612,26 @@
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info id="npm" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Changes" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19479166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="DB Browser" order="2" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="15" weight="0.32920355" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.38420585" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32920355" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Changes" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.38420585" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32997763" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Application Servers" order="10" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32997763" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.329859" />
     </layout-to-restore>
   </component>
@@ -589,20 +659,6 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/jq_info_detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="36" column="92" selection-start-line="36" selection-start-column="92" selection-end-line="36" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jobs/SendOrderQueue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1728">
@@ -657,9 +713,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/overtrue/wechat/src/Message/Text.php">
@@ -783,27 +836,6 @@
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/AutoSendShowInfo.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jobs/UpdateOpenidQueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/UpdateOpenidInfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1536">
-          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2016">
@@ -811,27 +843,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3264">
-          <caret line="102" column="23" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="e#45#81#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -846,13 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9600">
           <caret line="311" column="26" selection-start-line="311" selection-start-column="26" selection-end-line="311" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MenuController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="947">
-          <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -897,6 +905,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WechatController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -904,13 +919,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3264">
+          <caret line="102" column="46" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Test/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1472">
+          <caret line="58" column="30" selection-start-line="36" selection-start-column="9" selection-end-line="58" selection-end-column="30" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+        <state relative-caret-position="15328">
+          <caret line="496" column="19" selection-start-line="496" selection-start-column="8" selection-end-line="496" selection-end-column="19" />
           <folding>
             <element signature="e#110#137#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/Update_Openid_Info.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1728">
+          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jobs/UpdateOpenidQueue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/UpdateOpenidInfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MenuController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="95" column="122" selection-start-line="95" selection-start-column="122" selection-end-line="95" selection-end-column="122" />
         </state>
       </provider>
     </entry>

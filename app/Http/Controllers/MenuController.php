@@ -86,19 +86,19 @@ class MenuController extends Controller
                 "name" => "我要预订",
                 "sub_button" => [
                     [
-                        "type" => "click",
+                        "type" => "view",
                         "name" => "门票预订",
-                        "key" => "7"
+                        "key" => "http://e.hengdianworld.com/mobile/epay.aspx?uid=68647975616E6D696E6778696E7975"
                     ],
-/*                    [
-                        "type" => "click",
-                        "name" => "年卡办理",
-                        "key" => "23"
-                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "祈福门票",
+                        "key" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=564&uid=68647975616E6D696E6778696E7975"
+                    ],
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
+                        "url" => "http://e.hengdianworld.com/yd_search.aspx"
                     ],
                 ],
             ],
