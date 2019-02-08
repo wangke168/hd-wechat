@@ -88,7 +88,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "横店影视城门票",
-                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=555&uid=68647975616E6D696E6778696E7975"
+                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=569&uid=68647975616E6D696E6778696E7975"
                     ],
                     [
                         "type" => "view",
