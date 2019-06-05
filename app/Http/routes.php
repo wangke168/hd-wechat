@@ -26,7 +26,7 @@ Route::get('/searticledetail','ArticlesController@second_article_detail');
 
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 Route::get('/info_jq_detail', 'IndexController@JQ');
 Route::get('/info_detail', 'IndexController@InfoDetail');
