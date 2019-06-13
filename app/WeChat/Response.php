@@ -18,6 +18,8 @@ use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\Image;
 use App\Models\WechatArticle;
+
+
 use App\Http\Requests;
 use Crypt;
 
@@ -93,7 +95,16 @@ class Response
     public function click_request($openid, $menuid)
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        $this->request_news($openid, $eventkey, '2', '', $menuid);
+        if ($menuid==1)
+        {
+//            $message  = new Image(['media_id' => 'QQE-CzQ2CBuTXOaRorptMGUNWZkqZMo52cEpDcjOKNs']);
+            $image = new Image();
+            $image->media_id = 'QQE-CzQ2CBuTXOaRorptMGUNWZkqZMo52cEpDcjOKNs';
+            $this->app->staff->message($image )->by('1001@u_hengdian')->to($openid)->send();
+        }
+        else{
+            $this->request_news($openid, $eventkey, '2', '', $menuid);
+        }
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
 //        return $content;
     }
