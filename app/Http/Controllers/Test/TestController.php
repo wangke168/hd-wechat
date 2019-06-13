@@ -29,6 +29,33 @@ class TestController extends Controller
 
     }
 
+
+    public function tag(Request $request)
+    {
+        $type=$request->input('type');
+        switch ($type){
+            case 'tag_list':
+                return $this->app->user_tag->lists();
+                break;
+            case 'tag_add':
+                return $this->app->user_tag->create('测试');
+                break;
+            case 'get':
+                return $this->app->user_tag->usersOfTag('1000', $nextOpenId = '');
+                break;
+            case 'add':
+                $openIds = ['o5--l1Pl9YZWPj9n342XbdpJdG8w'];
+                return $this->app->user_tag->batchTagUsers($openIds, '1000');
+                break;
+            case 'del':
+                $openIds = ['o5--l1Pl9YZWPj9n342XbdpJdG8w'];
+                return $this->app->user_tag->batchUntagUsers($openIds, '1000');
+                break;
+            default:
+                return 'sadasd';
+                break;
+        }
+    }
     public function test()
     {
         $row = WechatArticle::where('classid', '23')
