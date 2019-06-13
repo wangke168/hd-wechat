@@ -51,7 +51,7 @@ class TestController extends Controller
                 break;
             case 'add':
                 $openid = ['o5--l1DMR3h9WS2dm9wa1LES6CoE'];
-                $response->make_user_tag( $openid,$eventkey); //标签管理
+                $response->make_user_tag($openid,$eventkey); //标签管理
 //                return $this->app->user_tag->batchTagUsers($openIds, '100');
                 break;
             case 'del':
