@@ -77,6 +77,8 @@ class TestController extends Controller
 
     public function request_focus()
     {
+        return WechatArticle::focusPublished('1000')->first();
+
         $openid='o5--l1DMR3h9WS2dm9wa1LES6CoE';
         $eventkey='1000';
         if (!$eventkey or $eventkey == "") {
