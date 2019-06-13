@@ -40,6 +40,9 @@ class TestController extends Controller
             case 'tag_add':
                 return $this->app->user_tag->create('测试');
                 break;
+            case 'tag_modify':
+                return $this->app->user_tag->update('100','啦啦操');
+                break;
             case 'get':
                 return $this->app->user_tag->usersOfTag('1000', $nextOpenId = '');
                 break;
