@@ -73,6 +73,73 @@ class TestController extends Controller
                 break;
         }
     }
+
+
+    public function request_focus($openid, $eventkey)
+    {
+        $openid='o5--l1DMR3h9WS2dm9wa1LES6CoE';
+        $eventkey='1000';
+        if (!$eventkey or $eventkey == "") {
+            $eventkey = "all";
+        }
+        $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
+        //检查该二维码下关注回复中是否有图文消息
+        if ($this->check_eventkey_message($eventkey, "news", "1")) {
+            $flag = true;
+//            $this->request_news($openid, $eventkey, '1', '', '');
+//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
+        }
+        var_dump($flag);
+    }
+    /**
+     * 检查关注是否有对应二维码的消息回复（图文、语音、文字、图片）
+     * @param $eventkey
+     * @param $type ：   news:图文    txt:文字      voice:语音     image:图片
+     * @param $focus :   1:关注    0：不关注
+     * @return boolkey
+     */
+    private function check_eventkey_message($eventkey, $type, $focus)
+    {
+//        $db = new DB();
+        $flag = false;
+        switch ($type) {
+            case "news":
+                $row_news = WechatArticle::focusPublished($eventkey)->first();
+
+                if ($row_news) {
+                    $flag = true;
+                }
+                break;
+            case "txt":
+                $row_txt = WechatTxt::focusPublished($eventkey)->first();
+
+                if ($row_txt) {
+                    $flag = true;
+                }
+                break;
+            case "voice":
+                $row_voice = WechatVoice::focusPublished($eventkey)->first();
+
+                if ($row_voice) {
+                    $flag = true;
+                }
+                break;
+            case "image":
+                $row_images = WechatImage:: focusPublished($eventkey)->first();
+
+                if ($row_images) {
+                    $flag = true;
+                }
+                break;
+            default:
+                break;
+
+        }
+        return $flag;
+    }
+
+
+
     public function test()
     {
         $row = WechatArticle::where('classid', '23')
