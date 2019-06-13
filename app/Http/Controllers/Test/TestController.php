@@ -75,7 +75,7 @@ class TestController extends Controller
     }
 
 
-    public function request_focus($openid, $eventkey)
+    public function request_focus()
     {
         $openid='o5--l1DMR3h9WS2dm9wa1LES6CoE';
         $eventkey='1000';
