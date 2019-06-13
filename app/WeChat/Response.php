@@ -20,7 +20,6 @@ use EasyWeChat\Message\Image;
 use App\Models\WechatArticle;
 use App\Http\Requests;
 use Crypt;
-use EasyWeChat\Foundation\Application;
 
 class Response
 {
@@ -31,9 +30,9 @@ class Response
     public $server;
     public $staff;
 
-    public function __construct(Application $app)
+    public function __construct()
     {
-        $this->app = $app;
+        $this->app = app('wechat');
         $this->server = $this->app->server;
         $this->usage = new Usage();
         $this->staff = $this->app->staff;
