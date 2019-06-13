@@ -56,7 +56,7 @@ class TestController extends Controller
                 break;
             case 'add':
 //                $response->make_user_tag($openid,$eventkey); //标签管理
-          
+
 
                 if ($this->usage->query_tag_id($eventkey)) { //获取eventkey对应的tag
                     $this->app->user_tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey)); //增加标签
