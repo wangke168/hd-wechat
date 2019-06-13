@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
 use EasyWeChat\Message\News;
+use App\WeChat\Response;
 class TestController extends Controller
 {
     public $app;
@@ -32,7 +33,9 @@ class TestController extends Controller
 
     public function tag(Request $request)
     {
+        $response = new Response();
         $type=$request->input('type');
+        $eventkey='1000';
         switch ($type){
             case 'tag_list':
                 return $this->app->user_tag->lists();
@@ -47,8 +50,9 @@ class TestController extends Controller
                 return $this->app->user_tag->usersOfTag('100', $nextOpenId = '');
                 break;
             case 'add':
-                $openIds = ['o5--l1Pl9YZWPj9n342XbdpJdG8w'];
-                return $this->app->user_tag->batchTagUsers($openIds, '100');
+                $openid = 'o5--l1Pl9YZWPj9n342XbdpJdG8w';
+                $response->make_user_tag([$openid], $eventkey); //标签管理
+//                return $this->app->user_tag->batchTagUsers($openIds, '100');
                 break;
             case 'del':
                 $openIds = ['o5--l1Pl9YZWPj9n342XbdpJdG8w'];
