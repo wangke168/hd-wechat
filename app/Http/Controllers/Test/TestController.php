@@ -56,13 +56,13 @@ class TestController extends Controller
                 break;
             case 'add':
 //                $response->make_user_tag($openid,$eventkey); //标签管理
-                 $response->make_user_tag($openid, $eventkey);
+                 $response->make_user_tag([$openid], $eventkey);
 //                return $this->app->user_tag->batchTagUsers([$openid], '100'); //增加标签
 //                return $this->app->user_tag->batchTagUsers([$openid], '100');
                 break;
             case 'del':
                 $openIds = ['o5--l1Pl9YZWPj9n342XbdpJdG8w'];
-                return $this->app->user_tag->batchUntagUsers($openid, '100');
+                return $this->app->user_tag->batchUntagUsers([$openid], '100');
                 break;
             default:
                 return 'sadasd';
