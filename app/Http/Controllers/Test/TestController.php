@@ -36,6 +36,7 @@ class TestController extends Controller
 
         $type=$request->input('type');
         $eventkey='1000';
+        $openid = 'o5--l1DMR3h9WS2dm9wa1LES6CoE';
         switch ($type){
             case 'tag_list':
                 return $this->app->user_tag->lists();
@@ -49,10 +50,12 @@ class TestController extends Controller
             case 'get':
                 return $this->app->user_tag->usersOfTag('100', $nextOpenId = '');
                 break;
+            case 'get_openid':
+                return $this->app->user_tag->userTags($openid);
+                break;
             case 'add':
-                $openid = ['o5--l1DMR3h9WS2dm9wa1LES6CoE'];
 //                $response->make_user_tag($openid,$eventkey); //标签管理
-                return $this->app->user_tag->batchTagUsers($openid, '100');
+                return $this->app->user_tag->batchTagUsers([$openid], '100');
                 break;
             case 'del':
                 $openIds = ['o5--l1Pl9YZWPj9n342XbdpJdG8w'];
