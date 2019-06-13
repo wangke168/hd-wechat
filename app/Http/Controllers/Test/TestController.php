@@ -34,6 +34,7 @@ class TestController extends Controller
     public function tag(Request $request)
     {
 
+        $response=new Response();
         $type=$request->input('type');
         $eventkey='1000';
         $openid = 'o5--l1DMR3h9WS2dm9wa1LES6CoE';
@@ -55,7 +56,8 @@ class TestController extends Controller
                 break;
             case 'add':
 //                $response->make_user_tag($openid,$eventkey); //标签管理
-                return $this->app->user_tag->batchTagUsers([$openid], '100'); //增加标签
+                return $response->make_user_tag($openid, $eventkey);
+//                return $this->app->user_tag->batchTagUsers([$openid], '100'); //增加标签
 //                return $this->app->user_tag->batchTagUsers([$openid], '100');
                 break;
             case 'del':
