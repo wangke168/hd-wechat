@@ -31,11 +31,11 @@ class TestController extends Controller
     }
 
 
-    public function uploadimg()
+    public function broadcast()
     {
-        $material = $this->app->material;
-        $result = $material->uploadImage("/mydata/www/hd-wechat/public/images/0.jpg");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
-        var_dump($result);
+        $groupId='100';
+        $broadcast = $this->app->broadcast;
+        $broadcast->sendText('hello world', $groupId);
     }
 
 
