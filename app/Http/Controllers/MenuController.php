@@ -173,22 +173,22 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name" => "活动相关",
+                "name" => "游玩攻略",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "景区简介",
-                        "url" => "http://www.hdyuanmingxinyuan.com/mobile"
+                        "name" => "攻略一",
+                        "url" => "https://hdwechat.hengdianworld.com/article/articledetail?id=2761"
                     ],
                     [
                         "type" => "view",
-                        "name" => "地图导览",
-                        "url" => "http://nwx.weijingtong.net/map/206"
+                        "name" => "攻略二",
+                        "url" => "https://hdwechat.hengdianworld.com/article/articledetail?id=2760"
                     ],
                     [
                         "type" => "view",
-                        "name" => "游玩攻略",
-                        "url" => "http://nwx.weijingtong.net/corpus/360"
+                        "name" => "节目时间表",
+                        "url" => "https://hdwechat.hengdianworld.com/zoneshow/showtodaydetail"
                     ],
                 ],
             ],
@@ -196,18 +196,23 @@ class MenuController extends Controller
                 "name" => "门票预定",
                 "sub_button" => [
                     [
-                        "type" => "click",
-                        "name" => "门票购买",
-                        "key" => "97"
+                        "type" => "view",
+                        "name" => "领队门票",
+                        "key" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
                     ],
                     [
                         "type" => "view",
-                        "name" => "订单查询",
-                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
+                        "name" => "成人运动员",
+                        "key" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=620"
                     ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "订单查询",
+//                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
+//                    ],
                 ],
             ],
-            [
+          /*  [
                 "name" => "游园指南",
                 "sub_button" => [
                     [
@@ -220,7 +225,7 @@ class MenuController extends Controller
                         "name" => "节目时间表",
                         "key" => "14"
                     ],
-                    /*        [
+                            [
                                 "type" => "click",
                                 "name" => "交通速查",
                                 "key"  => "16"
@@ -234,9 +239,9 @@ class MenuController extends Controller
                                 "type" => "view",
                                 "name" => "常见问题",
                                 "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
-                            ],*/
+                            ],
                 ],
-            ],
+            ],*/
         ];
 
         $matchRule = [
