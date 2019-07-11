@@ -110,7 +110,8 @@ Route::get('/test/updateclickinfo','TestController@update_click_info');
 Route::get('/test/ordersend/{id}/{openid?}','TestController@order_send');
 Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
 
-Route::get('/test/test','Test\TestController@broadcast');
+Route::get('/test/broadcast','Test\TestController@broadcast');
+Route::get('/test/tag','Test\TestController@tag');
 
 Route::get('/test/article/detail', 'Test\TestController@detail_test');
 
