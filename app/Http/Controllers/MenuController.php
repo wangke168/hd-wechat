@@ -202,7 +202,7 @@ class MenuController extends Controller
                     ],
                     [
                         "type" => "view",
-                        "name" => "成人运动员",
+                        "name" => "运动员",
                         "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
                     ],
 //                    [
