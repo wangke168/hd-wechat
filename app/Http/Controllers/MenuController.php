@@ -193,6 +193,11 @@ class MenuController extends Controller
                 ],
             ],
             [
+                "type" => "view",
+                "name" => "门票预定",
+                "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
+            ],
+ /*           [
                 "name" => "门票预定",
                 "sub_button" => [
                     [
@@ -202,16 +207,12 @@ class MenuController extends Controller
                     ],
                     [
                         "type" => "view",
-                        "name" => "运动员",
+                        "name" => "门票预订",
                         "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
                     ],
-//                    [
-//                        "type" => "view",
-//                        "name" => "订单查询",
-//                        "url" => "http://ydpt.hdyuanmingxinyuan.com/yd_search.aspx"
-//                    ],
+
                 ],
-            ],
+            ],*/
           /*  [
                 "name" => "游园指南",
                 "sub_button" => [
