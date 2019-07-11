@@ -171,7 +171,7 @@ class MenuController extends Controller
 
     private function add_other($tagid)
     {
-        $buttons = [
+        /*$buttons = [
             [
                 "name" => "游玩攻略",
                 "sub_button" => [
@@ -196,53 +196,14 @@ class MenuController extends Controller
                 "type" => "view",
                 "name" => "门票预定",
                 "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
-            ],
- /*           [
+            ],*/
+        $buttons = [
+            [
+                "type" => "view",
                 "name" => "门票预定",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "领队门票",
-                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=620"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "门票预订",
-                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
-                    ],
+                "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=626?uid=68756977755F73736878"
+            ],
 
-                ],
-            ],*/
-          /*  [
-                "name" => "游园指南",
-                "sub_button" => [
-                    [
-                        "type" => "click",
-                        "name" => "客服电话",
-                        "key" => "13"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "节目时间表",
-                        "key" => "14"
-                    ],
-                            [
-                                "type" => "click",
-                                "name" => "交通速查",
-                                "key"  => "16"
-                            ],
-                            [
-                                "type" => "click",
-                                "name" => "行程推荐",
-                                "key"  => "22"
-                            ],
-                            [
-                                "type" => "view",
-                                "name" => "常见问题",
-                                "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
-                            ],
-                ],
-            ],*/
         ];
 
         $matchRule = [

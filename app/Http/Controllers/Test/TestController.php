@@ -219,4 +219,11 @@ class TestController extends Controller
         }
 
     }
+
+    /**
+     * 生成带参二维码
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
 }
