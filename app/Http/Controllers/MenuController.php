@@ -171,7 +171,7 @@ class MenuController extends Controller
 
     private function add_other($tagid)
     {
-        /*$buttons = [
+        $buttons = [
             [
                 "name" => "游玩攻略",
                 "sub_button" => [
@@ -193,16 +193,27 @@ class MenuController extends Controller
                 ],
             ],
             [
-                "type" => "view",
                 "name" => "门票预定",
-                "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623"
-            ],*/
-        $buttons = [
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "预定入口",
+                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623&uid=74656D705F313233"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "常见问题",
+                        "url" => "https://hdwechat.hengdianworld.com/article/articledetail?id=2784"
+                    ],
+                ],
+            ],
+           /*
             [
                 "type" => "view",
                 "name" => "门票预定",
-                "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=626&uid=68756977755F73736878"
-            ],
+                "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623&uid=74656D705F313233"
+            ],*/
+
 
         ];
 
