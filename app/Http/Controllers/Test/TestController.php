@@ -28,7 +28,7 @@ class TestController extends Controller
         $this->app = $app;
         $this->usage=new Usage();
         $this->js = $this->app->js;
-        $material = $app->material;
+        $this->material = $app->material;
     }
 
 
