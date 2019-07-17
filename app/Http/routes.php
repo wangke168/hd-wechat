@@ -112,6 +112,7 @@ Route::get('/test/orderconfrim/{id}/{openid?}','TestController@order_confrim');
 
 Route::get('/test/broadcast','Test\TestController@broadcast');
 Route::get('/test/tag','Test\TestController@tag');
+Route::get('/test/material','Test\TestController@material');
 
 Route::get('/test/article/detail', 'Test\TestController@detail_test');
 

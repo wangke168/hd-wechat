@@ -21,14 +21,23 @@ class TestController extends Controller
     public $app;
     public $js;
     public $usage;
+    public $material;
 
     public function __construct(Application $app)
     {
         $this->app = $app;
         $this->usage=new Usage();
         $this->js = $this->app->js;
-
+        $material = $app->material;
     }
+
+
+    public function material()
+    {
+        $lists = $this->material->lists('news', 0, 10);
+        return $lists;
+    }
+
 
 
     public function broadcast()
