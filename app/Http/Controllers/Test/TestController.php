@@ -43,8 +43,9 @@ class TestController extends Controller
     public function broadcast()
     {
         $groupId='100';
+        $media_id= "QQE-CzQ2CBuTXOaRorptMGlotyAW58T4yI3XU10mS-s";
         $broadcast = $this->app->broadcast;
-        $broadcast->sendText('hello world', $groupId);
+        $broadcast->sendNews($media_id, $groupId);
     }
 
 
