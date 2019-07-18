@@ -602,7 +602,7 @@ class Response
         /*先删除原有tag*/
 
         $tag = $this->app->user_tag;
-        /*$userTags = $tag->userTags($openid);
+        $userTags = $tag->userTags($openid);
 
         if ($userTags->tagid_list) {
             foreach ($userTags as $userTag) {
@@ -610,7 +610,7 @@ class Response
                     $tag->batchUntagUsers([$openid], $value); //删除原有标签
                 }
             }
-        }*/
+        }
         if ($this->usage->query_tag_id($eventkey)) { //获取eventkey对应的tag
             $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey)); //增加标签
         }
