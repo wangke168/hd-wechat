@@ -198,7 +198,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "预定入口",
-                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=623&uid=74656D705F313233"
+                        "url" => "https://job.hdymxy.com/meeting/lala"
                     ],
                     [
                         "type" => "view",
