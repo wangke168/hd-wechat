@@ -211,7 +211,7 @@ class MenuController extends Controller
             [
                 "type" => "view",
                 "name" => "相关预定",
-                "url"  => "	https://job.hdymxy.com/redirect?type=activity&id=491"
+                "url"  => "https://job.hdymxy.com/redirect?type=activity&id=491"
             ],
 
 
