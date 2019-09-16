@@ -210,8 +210,8 @@ class MenuController extends Controller
 
             [
                 "type" => "view",
-                "name" => "门票预定",
-                "url"  => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=629&uid=68756977755F6C616E646169"
+                "name" => "相关预定",
+                "url"  => "	https://job.hdymxy.com/redirect?type=activity&id=491"
             ],
 
 
