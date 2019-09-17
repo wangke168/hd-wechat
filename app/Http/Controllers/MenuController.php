@@ -172,26 +172,26 @@ class MenuController extends Controller
     private function add_other($tagid)
     {
         $buttons = [
-            /*[
-                "name" => "游玩攻略",
+            [
+                "name" => "住宿预订",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "攻略一",
-                        "url" => "https://hdwechat.hengdianworld.com/article/articledetail?id=2761"
+                        "name" => "10月17号（一晚）",
+                        "url" => "https://job.hdymxy.com/redirect?type=activity&id=492"
                     ],
                     [
                         "type" => "view",
-                        "name" => "攻略二",
-                        "url" => "https://hdwechat.hengdianworld.com/article/articledetail?id=2760"
+                        "name" => "10月18号（一晚）",
+                        "url" => "https://job.hdymxy.com/redirect?type=activity&id=493"
                     ],
                     [
                         "type" => "view",
-                        "name" => "节目时间表",
-                        "url" => "https://hdwechat.hengdianworld.com/zoneshow/showtodaydetail"
+                        "name" => "两晚连住",
+                        "url" => "https://job.hdymxy.com/redirect?type=activity&id=494"
                     ],
                 ],
-            ],*/
+            ],
      /*       [
                 "name" => "门票预定",
                 "sub_button" => [
