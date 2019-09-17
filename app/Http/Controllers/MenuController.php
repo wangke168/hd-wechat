@@ -173,7 +173,7 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name" => "住宿预订（米友圈）",
+                "name" => "住宿预订",
                 "sub_button" => [
                     [
                         "type" => "view",
