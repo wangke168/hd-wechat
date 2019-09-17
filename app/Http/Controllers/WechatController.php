@@ -32,7 +32,7 @@ class WechatController extends Controller
                             switch ($message->EventKey) {
                                 case "100":
                                     $content = new Text();
-                                    $content->content = "官方客服电话" . "\n" . "4009-0579-77";
+                                    $content->content = "官方客服电话" . "\n" . "4009057977";
                                     return $content;
                                 default:
                                     $response->click_request($openid, $message->EventKey);
