@@ -32,9 +32,9 @@ class TestController extends Controller
     }
 
 
-    public function material()
+    public function material($type)
     {
-        $lists = $this->material->lists('news', 0, 10);
+        $lists = $this->material->lists($type, 0, 10);
         return $lists;
     }
 
