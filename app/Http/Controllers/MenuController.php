@@ -173,7 +173,7 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name" => "住宿预订",
+                "name" => "住宿预订（米友圈）",
                 "sub_button" => [
                     [
                         "type" => "view",
@@ -208,11 +208,11 @@ class MenuController extends Controller
                 ],
             ],*/
 
-            [
+          /*  [
                 "type" => "view",
                 "name" => "米友圈特惠",
                 "url"  => "https://job.hdymxy.com/redirect?type=activity&id=491"
-            ],
+            ],*/
 
 
         ];
