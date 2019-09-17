@@ -32,8 +32,9 @@ class TestController extends Controller
     }
 
 
-    public function material($type)
+    public function material(Request $request)
     {
+        $type=$request->input('type');
         $lists = $this->material->lists($type, 0, 10);
         return $lists;
     }
