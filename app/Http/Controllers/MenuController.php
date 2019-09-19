@@ -185,11 +185,11 @@ class MenuController extends Controller
                         "name" => "10月18号（一晚）",
                         "url" => "https://job.hdymxy.com/redirect?type=activity&id=493"
                     ],
-                    [
+               /*     [
                         "type" => "view",
                         "name" => "两晚连住",
                         "url" => "https://job.hdymxy.com/redirect?type=activity&id=494"
-                    ],
+                    ],*/
                     [
                         "type" => "click",
                         "name" => "客服电话",
