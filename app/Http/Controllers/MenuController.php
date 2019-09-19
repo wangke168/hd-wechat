@@ -216,7 +216,7 @@ class MenuController extends Controller
             [
                 "type" => "click",
                 "name" => "门票预订",
-                "url"  => "200"
+                "key"  => "200"
             ],
 
 
