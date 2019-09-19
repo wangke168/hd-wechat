@@ -213,11 +213,11 @@ class MenuController extends Controller
                 ],
             ],*/
 
-          /*  [
-                "type" => "view",
-                "name" => "米友圈特惠",
-                "url"  => "https://job.hdymxy.com/redirect?type=activity&id=491"
-            ],*/
+            [
+                "type" => "click",
+                "name" => "门票预订",
+                "url"  => "200"
+            ],
 
 
         ];

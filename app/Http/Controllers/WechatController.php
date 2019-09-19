@@ -34,6 +34,10 @@ class WechatController extends Controller
                                     $content = new Text();
                                     $content->content = "官方客服电话" . "\n" . "4009057977";
                                     return $content;
+                                case "200":
+                                    $content = new Text();
+                                    $content->content = "米友圈专享特惠横店影视城门票将于后续上线，敬请期待。";
+                                    return $content;
                                 default:
                                     $response->click_request($openid, $message->EventKey);
                                     break;
