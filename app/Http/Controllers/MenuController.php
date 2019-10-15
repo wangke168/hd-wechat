@@ -214,9 +214,9 @@ class MenuController extends Controller
             ],*/
 
             [
-                "type" => "click",
+                "type" => "view",
                 "name" => "门票预订",
-                "key"  => "200"
+                "key"  => "https://job.hdymxy.com/meeting/myq"
             ],
 
 
