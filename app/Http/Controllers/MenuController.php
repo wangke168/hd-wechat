@@ -216,7 +216,7 @@ class MenuController extends Controller
             [
                 "type" => "view",
                 "name" => "门票预订",
-                "key"  => "https://job.hdymxy.com/meeting/myq"
+                "url"  => "https://job.hdymxy.com/meeting/myq"
             ],
 
 
