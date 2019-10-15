@@ -43,10 +43,12 @@ class TestController extends Controller
 
     public function broadcast()
     {
-        $groupId='100';
-        $media_id= "QQE-CzQ2CBuTXOaRorptMGlotyAW58T4yI3XU10mS-s";
+        $groupId='102';
+//        $media_id= "QQE-CzQ2CBuTXOaRorptMGlotyAW58T4yI3XU10mS-s";
+        $text="各位参加米友圈粉丝节的朋友，优惠门票现已开放预定，预定时需填写本人身份证，游玩凭身份证检票入园。若提示身份证号码不能预定，请及时致电13905893038联系解决。";
         $broadcast = $this->app->broadcast;
-        $broadcast->sendNews($media_id, $groupId);
+//        $broadcast->sendNews($media_id, $groupId);
+        $broadcast->sendText($text, $groupId);
     }
 
 
