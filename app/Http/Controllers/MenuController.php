@@ -197,27 +197,27 @@ class MenuController extends Controller
                     ],
                 ],
             ],
-     /*       [
+            [
                 "name" => "门票预定",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "预定入口",
-                        "url" => "http://e.hengdianworld.com/yd_mp_activity.aspx?id=629&uid=68756977755F6C616E646169"
+                        "name" => "米友圈特惠",
+                        "url" => "http://z.hengdianworld.com/myq1/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "常见问题",
-                        "url" => "https://hdwechat.hengdianworld.com/article/articledetail?id=2784"
+                        "name" => "更多优惠门票",
+                        "url" => "http://z.hengdianworld.com/myq2/"
                     ],
                 ],
-            ],*/
+            ],
 
-            [
+       /*     [
                 "type" => "view",
                 "name" => "门票预订",
                 "url"  => "https://job.hdymxy.com/meeting/myq"
-            ],
+            ],*/
 
 
         ];
