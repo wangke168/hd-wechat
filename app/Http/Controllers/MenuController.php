@@ -173,31 +173,6 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name" => "住宿预订",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "10月17号（一晚）",
-                        "url" => "https://job.hdymxy.com/redirect?type=activity&id=492"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "10月18号（一晚）",
-                        "url" => "https://job.hdymxy.com/redirect?type=activity&id=493"
-                    ],
-               /*     [
-                        "type" => "view",
-                        "name" => "两晚连住",
-                        "url" => "https://job.hdymxy.com/redirect?type=activity&id=494"
-                    ],*/
-                    [
-                        "type" => "click",
-                        "name" => "客服电话",
-                        "key" => "100"
-                    ],
-                ],
-            ],
-            [
                 "name" => "门票预定",
                 "sub_button" => [
                     [
@@ -209,6 +184,11 @@ class MenuController extends Controller
                         "type" => "view",
                         "name" => "更多优惠门票",
                         "url" => "http://z.hengdianworld.com/myq2/"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "客服电话",
+                        "key" => "100"
                     ],
                 ],
             ],
