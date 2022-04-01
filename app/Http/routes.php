@@ -1,6 +1,8 @@
 <?php
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::any('/wechat', 'WechatController@serve');
 //输出token
 Route::get('/hd-token','TokenController@token');
