@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Hello World';
 });
 Route::any('/wechat', 'WechatController@serve');
 //输出token
@@ -27,9 +27,9 @@ Route::get('/secondarticle/{sellid}/{openid}/{info_id}','ArticlesController@seco
 Route::get('/searticledetail','ArticlesController@second_article_detail');
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 Route::get('/info_jq_detail', 'IndexController@JQ');
 Route::get('/info_detail', 'IndexController@InfoDetail');
 Route::get('/about', function () {
