@@ -37,13 +37,13 @@ class TestController extends Controller
 
     public  function temp()
     {
-        $keyword="开门";
+        $keyword="企微";
         $eventkey="1017";
-        if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
-            $flag = true;
-            return $flag;
-//            $this->request_txt($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
-        }
+        $row=WechatImage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+            ->usagePublished($eventkey)
+            ->orderBy('id', 'desc')
+            ->get();
+        return $row;
     }
 
 

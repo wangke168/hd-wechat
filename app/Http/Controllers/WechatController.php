@@ -46,12 +46,12 @@ class WechatController extends Controller
                         case 'subscribe':
                             #关注事件
                             $eventkey = $message->EventKey;
-                            if (substr($eventkey, 0, 7) == 'qrscene') {
+                            /*if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
 //                                $eventkey = "";
                                 $eventkey = $response->check_openid_wificonnected($openid);
-                            }
+                            }*/
                             $response->insert_subscribe($openid, $eventkey, 'subscribe'); //更新openid信息
                             $response->request_focus($openid, $eventkey); //推送关注信息
 
