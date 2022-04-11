@@ -35,9 +35,15 @@ class TestController extends Controller
     public function material(Request $request)
     {
         $type=$request->input('type');
-        $lists = $this->material->lists($type, 0, 10);
-        return $lists;
+//        $upload=$request->input('')
+        if ($type=="upload"){
+            $result = $this->material->uploadImage("/var/www/hd-wechat/public/images/qiwei.png");  // 请使用绝对路径写法！除非你正确的理解了相对路径（好多人是没理解对的）！
+            var_dump($result);
+        }
+//        $lists = $this->material->lists($type, 0, 10);
+//        return $lists;
     }
+
 
 
 

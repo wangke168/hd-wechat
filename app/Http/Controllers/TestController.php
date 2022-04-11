@@ -11,6 +11,9 @@ use App\WeChat\Tour;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\WechatImage;
+use App\Models\WechatTxt;
+use App\Models\WechatVoice;
 use App\Http\Requests;
 
 class TestController extends Controller
@@ -30,6 +33,22 @@ class TestController extends Controller
         $this->openid_2='opUv9v977Njll_YHpZYMymxI_aPE';
         $this->openid_2_2='7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ';
     }
+
+
+    public  function temp()
+    {
+        $keyword="开门";
+        $eventkey="1017";
+        if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
+            $flag = true;
+            return $flag;
+//            $this->request_txt($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
+        }
+    }
+
+
+
+
 
 
     //更新wx_user_info的信息

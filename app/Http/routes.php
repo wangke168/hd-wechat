@@ -3,6 +3,12 @@
 Route::get('/', function () {
     return 'Hello World';
 });
+
+/**测试**/
+Route::get('/temp1','TestController@temp');
+/**/
+
+
 Route::any('/wechat', 'WechatController@serve');
 //输出token
 Route::get('/hd-token','TokenController@token');
