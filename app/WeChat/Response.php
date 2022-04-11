@@ -319,7 +319,7 @@ class Response
     public function request_news($openid, $eventkey, $type, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
-        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
+//        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
 //        $uid = $this->usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
@@ -366,7 +366,7 @@ class Response
           */
                 } else {
 //                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
-                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
+                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $openid;
 
                 }
 
