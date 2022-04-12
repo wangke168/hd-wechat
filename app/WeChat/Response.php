@@ -347,7 +347,6 @@ class Response
         }
         if ($row) {
             $content = array();
-            $new = new News();
             foreach ($row as $result) {
                 $url = $result->url;
                 $id = $result->id;
@@ -388,7 +387,7 @@ class Response
                 $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $result->picurl;
 
                 /*索引图检查结束*/
-
+                $new = new News();
                 $new->title = $result->title;
                 $new->description = $result->description;
                 $new->url = $url;
@@ -396,7 +395,7 @@ class Response
                 $new->image = $pic_url;
                 $content[] = $new;
             }
-            $this->app->staff->message($new)->by('1001@u_hengdian')->to($openid)->send();
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
 
     }

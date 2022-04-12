@@ -42,11 +42,89 @@ class TestController extends Controller
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
-        return $row = WechatArticle::focusPublished($eventkey)
-            ->skip(0)->take(8)->get();
+        return $this->request_news($openid, $eventkey, '1', '', '');
     }
 
+    private function request_news($openid, $eventkey, $type, $keyword, $menuid)
+    {
+//        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
+        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
+//        $uid = $this->usage->get_uid($openid);
+        if (!$eventkey) {
+            $eventkey = 'all';
+        }
+        switch ($type) {
+            case 1:
+                $row = WechatArticle::focusPublished($eventkey)
+                    ->skip(0)->take(8)->get();
+                break;
+            case 2:
+                $row = WechatArticle::where('classid', $menuid)
+                    ->usagePublished($eventkey)
+                    ->skip(0)->take(8)->get();
+                break;
+            case 3:
+                $keyword = $this->check_keywowrd($keyword);
+                $row = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
+                    ->skip(0)->take(8)->get();
+                break;
+        }
+        if ($row) {
+            $content = array();
+            foreach ($row as $result) {
+                $url = $result->url;
+                $id = $result->id;
+                /*如果只直接跳转链接页面时，判断是否已经带参数*/
+                if ($url != '') {
+                    /*链接跳转的数据统计*/
+//                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
+                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/jump/{$id}/{$openid}";
 
+                    /*          if (!strstr($url, 'project_id')) {
+                                  if (strstr($url, '?') != '') {
+                                      $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                                  } else {
+                                      $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+                                  }
+
+                              } else {
+                                  $url=$url . "&wxnumber={$openid}";
+          //                        return redirect($url . "&wxnumber={$openid}");
+                              }
+          */
+                } else {
+//                    $url = "http://weix2.hengdianworld.com/article/articledetail.php?id=" . $id . "&wxnumber=" . $wxnumber;
+                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/article/detail?id=" . $id . "&wxnumber=" . $wxnumber;
+
+                }
+
+                /*检查索引图所在服务器并生成链接*/
+                /*     if(starts_with($result->picurl, 'uploads'))
+                     {
+                         $pic_url='http://weix2.hengdianworld.com/'.$result->picurl;
+                     }
+                     else
+                     {
+                         $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
+                     }*/
+
+                $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $result->picurl;
+
+                /*索引图检查结束*/
+                $new = new News();
+                $new->title = $result->title;
+                $new->description = $result->description;
+                $new->url = $url;
+//                $new->image = "http://weix2.hengdianworld.com/" . $result->picurl;
+                $new->image = $pic_url;
+                $content[] = $new;
+            }
+            return $content;
+//            $this->app->staff->message($new)->by('1001@u_hengdian')->to($openid)->send();
+        }
+
+    }
 
 
 
