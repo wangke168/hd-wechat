@@ -15,7 +15,8 @@ use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
 use App\Http\Requests;
-
+use App\Models\WechatArticle;
+use App\WeChat\Response;
 class TestController extends Controller
 {
     public $app;
@@ -37,13 +38,11 @@ class TestController extends Controller
 
     public  function temp()
     {
+        $response = new Response();
+        $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
-        $row=WechatImage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
-            ->usagePublished($eventkey)
-            ->orderBy('id', 'desc')
-            ->get();
-        return $row;
+        $response->request_focus($openid, $eventkey);
     }
 
 
