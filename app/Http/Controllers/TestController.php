@@ -42,7 +42,7 @@ class TestController extends Controller
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
-        $response->insert_subscribe($openid, $eventkey, 'scan');
+        return WechatArticle::focusPublished($eventkey)->first();
     }
 
 
