@@ -217,6 +217,7 @@ class Response
     {
         $content = new Text();
         $content->content = $eventkey;
+        $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
 //        $db = new DB();
         $flag = false;
