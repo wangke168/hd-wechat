@@ -347,6 +347,7 @@ class Response
         }
         if ($row) {
             $content = array();
+            $new = new News();
             foreach ($row as $result) {
                 $url = $result->url;
                 $id = $result->id;
@@ -387,7 +388,7 @@ class Response
                 $pic_url = "https://wx-control.hdyuanmingxinyuan.com/" . $result->picurl;
 
                 /*索引图检查结束*/
-                $new = new News();
+
                 $new->title = $result->title;
                 $new->description = $result->description;
                 $new->url = $url;
