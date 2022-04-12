@@ -71,7 +71,7 @@ class WechatController extends Controller
                             } else {
                                 $response->insert_subscribe($openid, $eventkey, 'scan'); //更新openid信息
                                 $content = new Text();
-                                $content->content = "dadsa";
+                                $content->content = $eventkey;
                                 return $content;
                                 $response->request_focus($openid, $eventkey); //推送关注信息
 
