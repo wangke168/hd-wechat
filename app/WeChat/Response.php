@@ -215,16 +215,16 @@ class Response
      */
     private function check_eventkey_message($eventkey, $type, $focus)
     {
-        $content = new Text();
-        $content->content = $eventkey;
-        $openid='owKxH66HrTEWOkIWmbORCnClalAg';
-        $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+
 //        $db = new DB();
         $flag = false;
         switch ($type) {
             case "news":
                 $row_news = WechatArticle::focusPublished($eventkey)->first();
-
+                $content = new Text();
+                $content->content = $eventkey;
+                $openid='owKxH66HrTEWOkIWmbORCnClalAg';
+                $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
                 if ($row_news) {
                     $flag = true;
                 }
