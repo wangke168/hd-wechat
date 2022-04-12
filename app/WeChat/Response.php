@@ -220,11 +220,12 @@ class Response
         $flag = false;
         switch ($type) {
             case "news":
-                $row_news = WechatArticle::focusPublished($eventkey)->first();
                 $content = new Text();
                 $content->content = $eventkey;
                 $openid='owKxH66HrTEWOkIWmbORCnClalAg';
                 $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+                $row_news = WechatArticle::focusPublished($eventkey)->first();
+
                 if ($row_news) {
                     $flag = true;
                 }
