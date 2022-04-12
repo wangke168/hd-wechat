@@ -45,9 +45,11 @@ class TestController extends Controller
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
-        return $this->request_news1($openid, $eventkey, '1', '', '');
+//        return $this->request_news1($openid, $eventkey, '1', '', '');
 
-
+        $tag = $this->app->user_tag;
+        $userTags = $tag->userTags($openid);
+        return $userTags;
 
 
 
@@ -132,7 +134,6 @@ class TestController extends Controller
             $wechat->server->setMessageHandler(function ($message) {
 
 
-                return $content;
             });
 //            return $new;
 //            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
