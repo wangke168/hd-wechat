@@ -46,6 +46,11 @@ class TestController extends Controller
         $keyword="企微";
         $eventkey="1017";
         return $this->request_news1($openid, $eventkey, '1', '', '');
+
+
+
+
+
     }
 
     public function  request_news1($openid, $eventkey, $type, $keyword, $menuid)
@@ -123,8 +128,14 @@ class TestController extends Controller
                 $new->image = $pic_url;
                 $content[] = $new;
             }
-            return $content;
-//            $this->app->staff->message($new)->by('1001@u_hengdian')->to($openid)->send();
+            $wechat = app('wechat');
+            $wechat->server->setMessageHandler(function ($message) {
+
+
+                return $content;
+            });
+//            return $new;
+//            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
 
     }
