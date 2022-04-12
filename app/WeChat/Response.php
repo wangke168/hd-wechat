@@ -173,7 +173,6 @@ class Response
     public function request_focus($openid, $eventkey)
     {
 
-
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
         }

@@ -42,7 +42,8 @@ class TestController extends Controller
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
-        return WechatArticle::focusPublished($eventkey)->first();
+        return $row = WechatArticle::focusPublished($eventkey)
+            ->skip(0)->take(8)->get();
     }
 
 

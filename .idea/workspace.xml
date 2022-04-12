@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/WechatArticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/WechatArticle.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/WeChat/Response.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" afterDir="false" />
     </list>
@@ -38,8 +40,8 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="265" column="5" lean-forward="true" selection-start-line="265" selection-start-column="5" selection-end-line="265" selection-end-column="5" />
+            <state relative-caret-position="520">
+              <caret line="332" column="16" selection-start-line="332" selection-start-column="16" selection-end-line="333" selection-end-column="46" />
               <folding>
                 <element signature="e#110#137#0#PHP" expanded="true" />
               </folding>
@@ -47,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="47" />
+            <state relative-caret-position="768">
+              <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
               <folding>
                 <element signature="e#40#71#0#PHP" expanded="true" />
               </folding>
@@ -59,20 +61,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatArticle.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WechatArticle.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/WechatArticle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+            <state relative-caret-position="629">
+              <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatImage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/WechatImage.php">
+      <file leaf-file-name="Builder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/nikic/php-parser/lib/PhpParser/Builder.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Builder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            <state relative-caret-position="725">
+              <caret line="1191" lean-forward="true" selection-start-line="1191" selection-end-line="1191" />
             </state>
           </provider>
         </entry>
@@ -82,15 +89,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="305">
               <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
             </state>
           </provider>
         </entry>
@@ -166,9 +164,9 @@
       <find>$wxnumber</find>
       <find>authcode</find>
       <find>material</find>
-      <find>request_news</find>
       <find>check_eventkey_message</find>
       <find>Published</find>
+      <find>request_news</find>
     </findStrings>
     <replaceStrings>
       <replace>横店圆明新园</replace>
@@ -193,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/articles/datail_show_one.blade.php" />
         <option value="$PROJECT_DIR$/app/WeChat/Zone.php" />
         <option value="$PROJECT_DIR$/public/lib/common.css" />
         <option value="$PROJECT_DIR$/app/Console/Commands/AutoSendShowInfo.php" />
@@ -241,9 +238,10 @@
         <option value="$PROJECT_DIR$/app/WeChat/api.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WechatController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
-        <option value="$PROJECT_DIR$/app/WeChat/Response.php" />
         <option value="$PROJECT_DIR$/app/Models/WechatArticle.php" />
+        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php" />
+        <option value="$PROJECT_DIR$/app/WeChat/Response.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
       </list>
     </option>
   </component>
@@ -472,7 +470,7 @@
   <component name="PropertiesComponent">
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="SearchEverywhereHistory" value="uid&#10;respo&#10;usag&#10;ordercon&#10;authcode&#10;keymap&#10;keymaps&#10;resp" />
-    <property name="SearchEverywhereHistoryKey" value="curl&#9;null&#9;null&#10;respo&#9;FILE&#9;file://D:/Code/hd-wechat/app/WeChat/Response.php&#10;LinkJump&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;menu&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;rou&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/routes.php&#10;me&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;res&#9;FILE&#9;file://D:/Code/hd-wechat/app/WeChat/Response.php&#10;link&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;jump&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;count&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/CountController.php&#10;or&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;men&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;tour&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Tour.php&#10;m&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;order&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;rout&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/routes.php&#10;re&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Response.php&#10;test&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Test/TestController.php&#10;token&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;arti&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Acc&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;A&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;Ar&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ju&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;rev&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/resources/views/articles/detailreview.blade.php&#10;JS&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;TokenC&#9;null&#9;null&#10;Js&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;Articl&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ac&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;zo&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ZoneController.php&#10;WEC&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;han&#9;null&#9;null&#10;app&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/config/app.php&#10;ju&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;deta&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/resources/views/articles/detail.blade.php&#10;sec&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/SecondSell.php&#10;li&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;ar&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;we&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;keymap&#9;ACTION&#9;Help.KeymapReference&#10;testc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/TestController.php&#10;artic&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jum&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;sendo&#9;null&#9;null&#10;linkju&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;resp&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;env&#9;FILE&#9;file:///var/www/hd-wechat/.env&#10;orderc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/OrderController.php&#10;art&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php" />
+    <property name="SearchEverywhereHistoryKey" value="builder.php&#9;FILE&#9;file://D:/Code/hd-wechat/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php&#10;builder.&#9;FILE&#9;file://D:/Code/hd-wechat/vendor/nikic/php-parser/lib/PhpParser/Builder.php&#10;curl&#9;null&#9;null&#10;respo&#9;FILE&#9;file://D:/Code/hd-wechat/app/WeChat/Response.php&#10;LinkJump&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;menu&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;rou&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/routes.php&#10;me&#9;FILE&#9;file://D:/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;res&#9;FILE&#9;file://D:/Code/hd-wechat/app/WeChat/Response.php&#10;link&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;jump&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;count&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/CountController.php&#10;or&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;men&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;tour&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Tour.php&#10;m&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/MenuController.php&#10;order&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Order/OrderController.php&#10;rout&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/routes.php&#10;re&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/WeChat/Response.php&#10;test&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/Test/TestController.php&#10;token&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;arti&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Acc&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;A&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;Ar&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ju&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;rev&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/resources/views/articles/detailreview.blade.php&#10;JS&#9;FILE&#9;file:///Volumes/Result/Code/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;TokenC&#9;null&#9;null&#10;Js&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Js/Js.php&#10;Articl&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;Ac&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/vendor/overtrue/wechat/src/Core/AccessToken.php&#10;zo&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ZoneController.php&#10;WEC&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;han&#9;null&#9;null&#10;app&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/config/app.php&#10;ju&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;deta&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/resources/views/articles/detail.blade.php&#10;sec&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/WeChat/SecondSell.php&#10;li&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;ar&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;we&#9;FILE&#9;file:///Volumes/Result/Project/hd-wechat/app/Http/Controllers/WechatController.php&#10;keymap&#9;ACTION&#9;Help.KeymapReference&#10;testc&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/TestController.php&#10;artic&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/ArticlesController.php&#10;jum&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;sendo&#9;null&#9;null&#10;linkju&#9;FILE&#9;file:///var/www/hd-wechat/app/Http/Controllers/LinkJumpController.php&#10;resp&#9;FILE&#9;file:///var/www/hd-wechat/app/WeChat/Response.php&#10;env&#9;FILE&#9;file:///var/www/hd-wechat/.env" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../hd" />
@@ -654,12 +652,12 @@
       <workItem from="1571124529927" duration="4309000" />
       <workItem from="1571412877585" duration="60000" />
       <workItem from="1648782613826" duration="2286000" />
-      <workItem from="1649473032161" duration="18477000" />
+      <workItem from="1649473032161" duration="21273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431122000" />
+    <option name="totallyTimeSpent" value="433918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -712,20 +710,6 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/articles/detailreview.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Order/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9600">
@@ -1016,30 +1000,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/nikic/php-parser/lib/PhpParser/Builder.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="47" />
-          <folding>
-            <element signature="e#40#71#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="725">
+          <caret line="1191" lean-forward="true" selection-start-line="1191" selection-end-line="1191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/WechatArticle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="265" column="5" lean-forward="true" selection-start-line="265" selection-start-column="5" selection-end-line="265" selection-end-column="5" />
+        <state relative-caret-position="520">
+          <caret line="332" column="16" selection-start-line="332" selection-start-column="16" selection-end-line="333" selection-end-column="46" />
           <folding>
             <element signature="e#110#137#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/WechatArticle.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        <state relative-caret-position="768">
+          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+          <folding>
+            <element signature="e#40#71#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
