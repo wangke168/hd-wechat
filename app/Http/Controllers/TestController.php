@@ -11,6 +11,9 @@ use App\WeChat\Tour;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
+use EasyWeChat\Message\News;
+use EasyWeChat\Message\Text;
+use EasyWeChat\Message\Image;
 use App\Models\WechatImage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
@@ -42,13 +45,13 @@ class TestController extends Controller
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
-        return $this->request_news($openid, $eventkey, '1', '', '');
+        return $this->request_news1($openid, $eventkey, '1', '', '');
     }
 
-    private function request_news($openid, $eventkey, $type, $keyword, $menuid)
+    public function  request_news1($openid, $eventkey, $type, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
-        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
+//        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
 //        $uid = $this->usage->get_uid($openid);
         if (!$eventkey) {
             $eventkey = 'all';
