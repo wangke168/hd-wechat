@@ -28,7 +28,7 @@ class WechatArticle extends Model
 
     public function scopeFocusPublished($query, $eventkey)
     {
-        $eventkey=$this->CheckEventkey($eventkey);
+//        $eventkey=$this->CheckEventkey($eventkey);
         $query->whereRaw('FIND_IN_SET("' . $eventkey . '", eventkey)')
             ->where('msgtype', 'news')
             ->where('focus', '1')
