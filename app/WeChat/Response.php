@@ -172,6 +172,9 @@ class Response
      */
     public function request_focus($openid, $eventkey)
     {
+        $content = new Text();
+        $content->content = $eventkey;
+        $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
 
         if (!$eventkey or $eventkey == "") {
             $eventkey = "all";
@@ -179,9 +182,7 @@ class Response
         $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
-            $content = new Text();
-            $content->content = $eventkey;
-            return $content;
+
             $flag = true;
             $this->request_news($openid, $eventkey, '1', '', '');
 //            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
