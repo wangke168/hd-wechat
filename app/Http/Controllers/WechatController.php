@@ -46,15 +46,13 @@ class WechatController extends Controller
                         case 'subscribe':
                             #关注事件
                             $eventkey = $message->EventKey;
-                            $content = new Text();
-                            $content->content = $eventkey;
-                            return $content;
-                            /*if (substr($eventkey, 0, 7) == 'qrscene') {
+
+                            if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
-//                                $eventkey = "";
-                                $eventkey = $response->check_openid_wificonnected($openid);
-                            }*/
+                                $eventkey = "";
+//                                $eventkey = $response->check_openid_wificonnected($openid);
+                            }
                             $response->insert_subscribe($openid, $eventkey, 'subscribe'); //更新openid信息
                             $response->make_user_tag($openid, $eventkey); //标签管理
                             $response->request_focus($openid, $eventkey); //推送关注信息
@@ -66,10 +64,7 @@ class WechatController extends Controller
                         case 'SCAN':
                             #重复关注事件
                             $eventkey = $message->EventKey;
-                            $eventkey = $message->EventKey;
-                            $content = new Text();
-                            $content->content = $eventkey;
-                            return $content;
+
                             if ($eventkey == "1336") {
                                 $tour = new Tour();
                                 $content = new Text();
