@@ -46,6 +46,9 @@ class WechatController extends Controller
                         case 'subscribe':
                             #关注事件
                             $eventkey = $message->EventKey;
+                            $content = new Text();
+                            $content->content = $eventkey;
+                            return $content;
                             /*if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
