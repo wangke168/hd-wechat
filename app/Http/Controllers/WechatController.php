@@ -66,6 +66,10 @@ class WechatController extends Controller
                         case 'SCAN':
                             #重复关注事件
                             $eventkey = $message->EventKey;
+                            $eventkey = $message->EventKey;
+                            $content = new Text();
+                            $content->content = $eventkey;
+                            return $content;
                             if ($eventkey == "1336") {
                                 $tour = new Tour();
                                 $content = new Text();
