@@ -48,6 +48,7 @@ class TestController extends Controller
 //        return $this->request_news1($openid, $eventkey, '1', '', '');
 
         $tag = $this->app->user_tag;
+//        return $tag->create('测试标签');
         $userTags = $tag->userTags($openid);
         return $userTags;
 

@@ -173,18 +173,14 @@ class MenuController extends Controller
     {
         $buttons = [
             [
-                "name" => "门票预定",
+                "name" => "梦外滩",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "米友圈特惠",
-                        "url" => "http://z.hengdianworld.com/myq1/"
+                        "name" => "二销系统",
+                        "url" => "http://m.hengdianworld.com"
                     ],
-                    [
-                        "type" => "view",
-                        "name" => "更多优惠门票",
-                        "url" => "http://z.hengdianworld.com/myq2/"
-                    ],
+
                     [
                         "type" => "click",
                         "name" => "客服电话",
