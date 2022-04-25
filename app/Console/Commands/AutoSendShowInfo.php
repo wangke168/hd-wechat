@@ -70,7 +70,7 @@ class AutoSendShowInfo extends Command
                         ->where('eventkey', $row_show->eventkey)
                         ->where('scandate', date('Y-m-d'))
                         ->where('esc','0')
-                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
+//                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
                         ->get();
 
                     foreach ($row1 as $send_openid) {

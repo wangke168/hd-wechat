@@ -20,6 +20,9 @@ use App\Models\WechatVoice;
 use App\Http\Requests;
 use App\Models\WechatArticle;
 use App\WeChat\Response;
+use App\WeChat\Zone;
+use Carbon\Carbon;
+use App\WeChat\Usage;
 class TestController extends Controller
 {
     public $app;
@@ -41,23 +44,160 @@ class TestController extends Controller
 
     public  function temp()
     {
-        $response = new Response();
+        /*$response = new Response();
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
-        $eventkey="1017";
+        $eventkey="1017";*/
 
 //        return $this->request_news1($openid, $eventkey, '1', '', '');
 
-        $tag = $this->app->user_tag;
-//        return $tag->create('测试标签');
+    /*    $tag = $this->app->user_tag;
+
         $userTags = $tag->userTags($openid);
-        return $userTags;
+        return $userTags;*/
 
-//        $response->insert_subscribe($openid, '1041', 'subscribe');
+        $app = app('wechat');
+        $zone = new Zone();
+        $date = Carbon::now()->toDateString();
+        $rows_show = DB::table('zone_show_info')
+            ->where('is_push', '1')
+            ->orderBy('id', 'desc')
+            ->get();
+//        return $rows_show;
+        foreach ($rows_show as $row_show) {
+            $row_show_time = DB::table('zone_show_time')
+                ->whereDate('startdate', '<=', $date)
+                ->whereDate('enddate', '>=', $date)
+                ->where('show_id', $row_show->id)
+                ->orderBy('is_top', 'desc')
+                ->first();
+//            var_dump($row_show_time);
+            $show_time = explode(',', $row_show_time->show_time);
+            $prevtime = date('Y-m-d');
+//            echo strtotime($prevtime)."<br>";
+//            echo UNIX_TIMESTAMP("2022-04-25 14:02:15");
+            foreach ($show_time as $show_time_detail) {
+                $temptime = (strtotime($show_time_detail) - strtotime("now")) / 60;
+//                echo  $temptime."<br>";
+                if ($temptime < 30 && $temptime > 0) {
+//                    echo  $temptime."<br>";
+                    $row1 = DB::table('wx_user_info')
+                        ->where('eventkey', $row_show->eventkey)
+                        ->where('scandate', date('Y-m-d'))
+                        ->where('esc','0')
+//                        ->where('scandate',date('Y-m-d'))
+//                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
+                        ->get();
+                    return ($row1);
+                    foreach ($row1 as $send_openid) {
+                        $content = new Text();
+                        echo $send_openid->wx_openid;
+                        echo  "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                        $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+//                        var_dump($content);
+                        $this->app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
+//                        $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+                    }
+                    /*检查景区eventkey下有没有其他二维码，例：龙帝惊临项目在秦王宫里，因此龙帝惊临和秦王宫的二维码是从属关系，扫龙帝惊临的二维码也能收到秦王宫的节目提醒*/
+//                    $qrscene_id=$this->get_eventkey_info($result['eventkey']);
+                    $Usage = new Usage();
+                    $qrscene_id = $Usage->get_eventkey_son_info($row_show->eventkey);
+                    if ($qrscene_id) {
+                        foreach ($qrscene_id as $key => $eventkey) {
 
+                            $row2 = DB::table('wx_user_info')
+                                ->where('eventkey', $eventkey)
+                                ->where('scandate', date('Y-m-d'))
+                                ->where('esc','0')
+                                ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
+                                ->get();
 
+                            foreach ($row2 as $send_openid) {
+                                $content = new Text();
+
+                                $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                                $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
+                            }
+                        }
+                    }
+                }
+            /*    else{
+                    echo "sdas";
+                }*/
+                $prevtime = $show_time_detail;
+            }
+
+        }
 
     }
+
+    private function autosendshowinfo()
+    {
+        $app = app('wechat');
+        $zone = new Zone();
+        $date = Carbon::now()->toDateString();
+        $rows_show = DB::table('zone_show_info')
+            ->where('is_push', '1')
+            ->orderBy('id', 'desc')
+            ->get();
+        foreach ($rows_show as $row_show) {
+            $row_show_time = DB::table('zone_show_time')
+                ->whereDate('startdate', '<=', $date)
+                ->whereDate('enddate', '>=', $date)
+                ->where('show_id', $row_show->id)
+                ->orderBy('is_top', 'desc')
+                ->first();
+
+            $show_time = explode(',', $row_show_time->show_time);
+            $prevtime = date('Y-m-d');
+            foreach ($show_time as $show_time_detail) {
+                $temptime = (strtotime($show_time_detail) - strtotime("now")) / 60;
+
+                if ($temptime < 30 && $temptime > 0) {
+
+                    $row1 = DB::table('wx_user_info')
+                        ->where('eventkey', $row_show->eventkey)
+                        ->where('scandate', date('Y-m-d'))
+                        ->where('esc','0')
+                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
+                        ->get();
+                    return $row1;
+                    foreach ($row1 as $send_openid) {
+                        $content = new Text();
+                        $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                        $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
+
+                    }
+                    /*检查景区eventkey下有没有其他二维码，例：龙帝惊临项目在秦王宫里，因此龙帝惊临和秦王宫的二维码是从属关系，扫龙帝惊临的二维码也能收到秦王宫的节目提醒*/
+//                    $qrscene_id=$this->get_eventkey_info($result['eventkey']);
+                    $Usage = new Usage();
+                    $qrscene_id = $Usage->get_eventkey_son_info($row_show->eventkey);
+                    if ($qrscene_id) {
+                        foreach ($qrscene_id as $key => $eventkey) {
+
+                            $row2 = DB::table('wx_user_info')
+                                ->where('eventkey', $eventkey)
+                                ->where('scandate', date('Y-m-d'))
+                                ->where('esc','0')
+                                ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
+                                ->get();
+
+                            foreach ($row2 as $send_openid) {
+                                $content = new Text();
+                                $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
+                                $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
+                            }
+                        }
+                    }
+                }
+                $prevtime = $show_time_detail;
+            }
+
+        }
+    }
+
+
+
 
     public function  request_news1($openid, $eventkey, $type, $keyword, $menuid)
     {
