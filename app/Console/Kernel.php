@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
 
         /*演艺秀自动推送*/
         $schedule->command('AutoSendShowInfo')
-            ->cron('5,10 8-18 * * *');
+            ->cron('10,40 8-18 * * *');
 
         /*取消tag*/
         /*$schedule->command('CancelTag')
