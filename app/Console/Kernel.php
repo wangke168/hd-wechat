@@ -32,11 +32,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-     //           $schedule->command('inspire')
-       //             ->everyMinute();
+        $schedule->command('inspire')
+            ->everyMinute();
         /*更新wx_user_info里的信息*/
-    //    $schedule->command('update_openid_info')
-    //        ->dailyAt('0:30');
+        //    $schedule->command('update_openid_info')
+        //        ->dailyAt('0:30');
 
         /*演艺秀自动推送*/
         $schedule->command('AutoSendShowInfo')
@@ -47,22 +47,22 @@ class Kernel extends ConsoleKernel
             ->dailyAt('11:30');*/
 
         /*龙帝惊临预约提醒*/
-    //    $schedule->command('AutoRemindLdjl')
-     //       ->cron('*/20 9-16 * * *');
+        //    $schedule->command('AutoRemindLdjl')
+        //       ->cron('*/20 9-16 * * *');
 
         /*更新wx_user_info里的信息*/
-    //    $schedule->command('UpdateOpenidInfo')
-    //        ->dailyAt('9:50');
-       /* $schedule->command('UpdateOpenidInfo')
-            ->everyMinute();*/
+        //    $schedule->command('UpdateOpenidInfo')
+        //        ->dailyAt('9:50');
+        /* $schedule->command('UpdateOpenidInfo')
+             ->everyMinute();*/
 
         /*更新wx_click_hits中的eventkey*/
-     //   $schedule->command('UpdateClickInfo')
-     //       ->dailyAt('1:30');
+        //   $schedule->command('UpdateClickInfo')
+        //       ->dailyAt('1:30');
 
         /*更新wx_user_esc*/
-    //    $schedule->command('UpdateEscInfo')
-     //       ->dailyAt('2:00');
+        //    $schedule->command('UpdateEscInfo')
+        //       ->dailyAt('2:00');
 
 
     }
