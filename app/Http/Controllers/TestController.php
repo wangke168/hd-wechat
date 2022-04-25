@@ -74,8 +74,7 @@ class TestController extends Controller
 //            var_dump($row_show_time);
             $show_time = explode(',', $row_show_time->show_time);
             $prevtime = date('Y-m-d');
-//            echo strtotime($prevtime)."<br>";
-//            echo UNIX_TIMESTAMP("2022-04-25 14:02:15");
+
             foreach ($show_time as $show_time_detail) {
                 $temptime = (strtotime($show_time_detail) - strtotime("now")) / 60;
 //                echo  $temptime."<br>";
