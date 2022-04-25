@@ -45,14 +45,15 @@ class TestController extends Controller
         $openid='owKxH66HrTEWOkIWmbORCnClalAg';
         $keyword="企微";
         $eventkey="1017";
+
 //        return $this->request_news1($openid, $eventkey, '1', '', '');
 
-        /*$tag = $this->app->user_tag;
+        $tag = $this->app->user_tag;
 //        return $tag->create('测试标签');
         $userTags = $tag->userTags($openid);
-        return $userTags;*/
+        return $userTags;
 
-        $response->insert_subscribe($openid, '1041', 'subscribe');
+//        $response->insert_subscribe($openid, '1041', 'subscribe');
 
 
 

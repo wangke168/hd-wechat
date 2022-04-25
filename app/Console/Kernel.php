@@ -39,12 +39,12 @@ class Kernel extends ConsoleKernel
     //        ->dailyAt('0:30');
 
         /*演艺秀自动推送*/
-    //    $schedule->command('AutoSendShowInfo')
-    //        ->cron('10,40 8-18 * * *');
+        $schedule->command('AutoSendShowInfo')
+            ->cron('10,40 8-18 * * *');
 
         /*取消tag*/
-        $schedule->command('CancelTag')
-            ->dailyAt('11:30');
+        /*$schedule->command('CancelTag')
+            ->dailyAt('11:30');*/
 
         /*龙帝惊临预约提醒*/
     //    $schedule->command('AutoRemindLdjl')
@@ -53,8 +53,8 @@ class Kernel extends ConsoleKernel
         /*更新wx_user_info里的信息*/
     //    $schedule->command('UpdateOpenidInfo')
     //        ->dailyAt('9:50');
-        $schedule->command('UpdateOpenidInfo')
-            ->everyMinute();
+       /* $schedule->command('UpdateOpenidInfo')
+            ->everyMinute();*/
 
         /*更新wx_click_hits中的eventkey*/
      //   $schedule->command('UpdateClickInfo')

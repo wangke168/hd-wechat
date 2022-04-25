@@ -26,7 +26,7 @@ class LinkJumpController extends Controller
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
-                if($id==1493){
+               /* if($id==1493){
                     $eventkey = $usage->get_openid_info($openid)->eventkey;
                     if ($this->CheckCardBan($eventkey))
                     {
@@ -37,9 +37,9 @@ class LinkJumpController extends Controller
                         $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
                     }
                 }
-                else{
+                else{*/
                     $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-                }
+//                }
 
             } else {
                 $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
