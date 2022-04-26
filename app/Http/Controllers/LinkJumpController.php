@@ -19,10 +19,10 @@ class LinkJumpController extends Controller
         $get_openid_url="https://wechat.hdyuanmingxinyuan.com/jump?id=".$id;
         $openid=new OpenID();
         $wxnumber=$openid->GetOpenid($get_openid_url);
-//        return $wxnumber;
+        return $wxnumber;
 
         $usage = new Usage();
-        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
+//        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
 //        return $wxnumber;
         $count = new Count();
         $count->add_article_hits($id);
