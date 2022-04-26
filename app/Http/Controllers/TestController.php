@@ -49,7 +49,7 @@ class TestController extends Controller
         $jump_url=env('JUMP_URL','');
         $get_openid_url=$jump_url."?id=".$id;
         $openid=new OpenID();
-        $wxnumber=$openid->GetOpenid("htts://wechat.hdyuanmingxinyuan.com/temp1");
+        $wxnumber=$openid->GetOpenid("https://wechat.hdyuanmingxinyuan.com/temp1");
         return $wxnumber;
 
     }
