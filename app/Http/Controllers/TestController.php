@@ -43,13 +43,13 @@ class TestController extends Controller
     }
 
 
-    public  function temp()
+    public  function temp(Request $request)
     {
-        $id="1479";
+        $id=$request->input("id");
         $jump_url=env('JUMP_URL','');
-        $get_openid_url=$jump_url."?id=".$id;
+        $get_openid_url="https://wechat.hdyuanmingxinyuan.com/temp1?id=".$id;
         $openid=new OpenID();
-        $wxnumber=$openid->GetOpenid("https://wechat.hdyuanmingxinyuan.com/temp1");
+        $wxnumber=$openid->GetOpenid($get_openid_url);
         return $wxnumber;
 
     }
