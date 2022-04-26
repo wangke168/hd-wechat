@@ -63,52 +63,57 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "游玩攻略",
-                        "url" => "https://mp.weixin.qq.com/s/uYGh32ht_Tz0XkIRbwJoug"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
                     ],
                     [
                         "type" => "view",
                         "name" => "剧组动态",
-                        "url" => "https://mp.weixin.qq.com/s/blcC9BMEDviELXFoonYxdg"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "节目时间",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
                     ],
                     [
                         "type" => "view",
                         "name" => "交通攻略",
-                        "url" => "https://mp.weixin.qq.com/s/vyKJt8EtOa0lAbvHDFgjug"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1514"
                     ],
                     [
                         "type" => "view",
                         "name" => "常见问题",
-                        "url" => "https://mp.weixin.qq.com/s/GljFzb8Ygib_Dq0DdEI7Tw"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "成功案例",
-                        "url" => "https://mp.weixin.qq.com/s/d48y9Gso3MuaZqcUZsC6Rw"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1515"
                     ],
                 ],
             ],
             [
-                "name" => "购票攻略",
+                "name" => "购票预定",
                 "sub_button" => [
                     [
-                        "type" => "view",
+                        "type" => "click",
                         "name" => "门票预定",
-                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
+                        "key" => "7"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "套餐预定",
-                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
+                        "type" => "click",
+                        "name" => "门票+住宿预定",
+                        "key" => "8"
                     ],
                     [
-                        "type" => "view",
+                        "type" => "click",
                         "name" => "酒店预定",
-                        "url" => "https://mp.weixin.qq.com/s/AQKGow97mWlyZC2h41y4Og"
+                        "key" => "9"
                     ],
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "https://mp.weixin.qq.com/s/PNxklfedA_iSHwIqFrkzyA"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1516"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "专属客服",
+                        "key" => "11"
                     ],
 
                 ],
@@ -118,23 +123,28 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "储值卡",
-                        "url" => "http://m.hengdianworld.com/info_jq.aspx"
+                        "name" => "全城送福●免费抽奖",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1517"
                     ],
                     [
                         "type" => "view",
-                        "name" => "演艺秀简介",
-                        "url" => "http://m.hengdianworld.com/info_yyx.aspx"
+                        "name" => "升级年卡",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1518"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "购年卡立减50",
+                        "key" => "15"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "超值年卡/季卡",
+                        "key" => "16"
                     ],
                     [
                         "type" => "view",
-                        "name" => "尊享卡",
-                        "url" => "https://mp.weixin.qq.com/s/kpUcrdVdAfOdsnZE_bJBSA"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "横店疗休养",
-                        "url" => "https://mp.weixin.qq.com/s/UOVSMJNaVxTBrDt984vHPw"
+                        "name" => "门票加购80元起",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1519"
                     ],
                     /*      [
                               "type" => "click",

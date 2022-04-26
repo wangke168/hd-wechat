@@ -4,6 +4,7 @@
  * User: thinpig
  * Date: 2022/4/26
  * Time: 10:30
+ * 作用：通过H5获取用户的openid
  */
 
 namespace app\WeChat;

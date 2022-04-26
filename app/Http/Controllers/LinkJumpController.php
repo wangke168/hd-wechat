@@ -17,22 +17,21 @@ class LinkJumpController extends Controller
         $id=$request->input("id");
         $jump_url=env('JUMP_URL','');
         $get_openid_url=$jump_url."?id=".$id;
+
+        /**通过H5获取用户OpenID**/
         $openid=new OpenID();
         $wxnumber=$openid->GetOpenid($get_openid_url);
-//        return $wxnumber;
+        /**------------------**/
 
-
+        /**计数**/
         $count = new Count();
         $count->add_article_hits($id);
         $count->insert_hits($id, $wxnumber);
 //        $this->addclick($id,$openid);
-
-//        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $usage = new Usage();
         $uid = $usage->get_uid($wxnumber);
-
         $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
-//        return $wxnumber;
+
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
