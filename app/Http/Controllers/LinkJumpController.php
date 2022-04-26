@@ -16,9 +16,10 @@ class LinkJumpController extends Controller
     {
         $id=$request->input("id");
         $jump_url=env('JUMP_URL','');
-        $get_openid_url="https://wechat.hdyuanmingxinyuan.com/jump?id=1479";
+        $get_openid_url="https://wechat.hdyuanmingxinyuan.com/jump?id=".$id;
         $openid=new OpenID();
         $wxnumber=$openid->GetOpenid($get_openid_url);
+        return $wxnumber;
 
         $usage = new Usage();
         $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
