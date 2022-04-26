@@ -47,7 +47,7 @@ class TestController extends Controller
 
         return $this->GetOpenid();
     }
-    public function temp2()
+    public function temp2($url)
     {
         $code = $_GET['code'];
         $openid = $this->getOpenidFromMp($code);
@@ -66,7 +66,7 @@ class TestController extends Controller
             //触发微信返回code码
             //$scheme = $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://';
             //$baseUrl = urlencode($scheme . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $_SERVER['QUERY_STRING']);
-            $baseUrl = urlencode("https://wechat.hdyuanmingxinyuan.com/temp2");
+            $baseUrl = urlencode("https://wechat.hdyuanmingxinyuan.com/temp");
             $url = $this->__CreateOauthUrlForCode($baseUrl);
             Header("Location: $url");
             exit();
