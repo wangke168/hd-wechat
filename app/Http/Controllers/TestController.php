@@ -45,23 +45,13 @@ class TestController extends Controller
 
     public  function temp($id)
     {
+        $id="1479";
+        $jump_url=env('JUMP_URL','');
+        $get_openid_url=$jump_url."?id=".$id;
         $openid=new OpenID();
-        $url="http://sanke.hengdianworld.com/sanke_yd_index.aspx?uid=786363797879";
-        $wxnumber=$openid->GetOpenid("https://wechat.hdyuanmingxinyuan.com/temp1");
-//        $url = $this->get_url($id)->url;
-        if (!strstr($url, 'project_id')) {
-            if (strstr($url, '?') != '') {
+        $wxnumber=$openid->GetOpenid($get_openid_url);
+        return $wxnumber;
 
-                $url = $url . "&comefrom=1&wxnumber={$wxnumber}&wpay=1";
-
-
-            } else {
-                $url = $url . "?comefrom=1&wxnumber={$wxnumber}&wpay=1";
-            }
-            return redirect($url);
-        } else {
-            return redirect($url . "&wxnumber={$openid}");
-        }
     }
 
 
