@@ -144,6 +144,22 @@ class TestController extends Controller
         $buff = trim($buff, "&");
         return $buff;
     }
+    public static function curlGet($url = '', $options = array())
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        if (!empty($options)) {
+            curl_setopt_array($ch, $options);
+        }
+        //https请求 不验证证书和host
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return $data;
+    }
+
 
     public function  request_news1($openid, $eventkey, $type, $keyword, $menuid)
     {
