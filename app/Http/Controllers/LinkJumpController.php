@@ -16,21 +16,23 @@ class LinkJumpController extends Controller
     {
         $id=$request->input("id");
         $jump_url=env('JUMP_URL','');
-        $get_openid_url="https://wechat.hdyuanmingxinyuan.com/jump?id=".$id;
+        $get_openid_url=$jump_url."?id=".$id;
         $openid=new OpenID();
         $wxnumber=$openid->GetOpenid($get_openid_url);
 //        return $wxnumber;
 
-        $usage = new Usage();
-        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
-        return $wxnumber;
+
         $count = new Count();
         $count->add_article_hits($id);
         $count->insert_hits($id, $openid);
 //        $this->addclick($id,$openid);
 
 //        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
+        $usage = new Usage();
+        $uid = $usage->get_uid($wxnumber);
+
+        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
+//        return $wxnumber;
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
