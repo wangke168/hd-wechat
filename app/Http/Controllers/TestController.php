@@ -57,7 +57,7 @@ class TestController extends Controller
     public function GetOpenid()
     {
         //通过code获得openid
-/*        if (!isset($_GET['code'])) {
+        if (!isset($_GET['code'])) {
             //触发微信返回code码
             //$scheme = $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://';
             //$baseUrl = urlencode($scheme . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $_SERVER['QUERY_STRING']);
@@ -65,12 +65,12 @@ class TestController extends Controller
             $url = $this->__CreateOauthUrlForCode($baseUrl);
             Header("Location: $url");
             exit();
-        } else {*/
+        } else {
             //获取code码，以获取openid
             $code = $_GET['code'];
             $openid = $this->getOpenidFromMp($code);
             return $openid;
-//        }
+        }
     }
     /**
      * 通过code从工作平台获取openid机器access_token
