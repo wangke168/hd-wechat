@@ -49,7 +49,7 @@ class TestController extends Controller
         $jump_url=env('JUMP_URL','');
         $get_openid_url=$jump_url."?id=".$id;
         $openid=new OpenID();
-        $wxnumber=$openid->GetOpenid($get_openid_url);
+        $wxnumber=$openid->GetOpenid("htts://wechat.hdyuanmingxinyuan.com/temp1");
         return $wxnumber;
 
     }
@@ -57,7 +57,7 @@ class TestController extends Controller
 
     public function  request_news1($openid, $eventkey, $type, $keyword, $menuid)
     {
-//        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
+        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
 //        $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
 //        $uid = $this->usage->get_uid($openid);
         if (!$eventkey) {
