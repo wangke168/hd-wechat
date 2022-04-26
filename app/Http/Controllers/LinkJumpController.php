@@ -14,13 +14,14 @@ class LinkJumpController extends Controller
 {
     public function index($id)
     {
-        $getopenidurl="https://wechat.hdyuanmingxinyuan.com/".$id;
+        $jump_url=env('JUMP_URL','');
+        $get_openid_url=$jump_url.$id;
         $openid=new OpenID();
-        $wxnumber=$openid->GetOpenid($getopenidurl);
+        $wxnumber=$openid->GetOpenid($get_openid_url);
 
         $usage = new Usage();
         $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
-        return $wxnumber;
+//        return $wxnumber;
         $count = new Count();
         $count->add_article_hits($id);
         $count->insert_hits($id, $openid);
