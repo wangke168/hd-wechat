@@ -47,7 +47,12 @@ class TestController extends Controller
 
         return $this->GetOpenid();
     }
-
+    public function temp2()
+    {
+        $code = $_GET['code'];
+        $openid = $this->getOpenidFromMp($code);
+        return $openid;
+    }
     /**
      * 通过跳转获取用户的openid，跳转流程如下：
      * 1、设置自己需要调回的url及其其他参数，跳转到微信服务器https://open.weixin.qq.com/connect/oauth2/authorize
@@ -61,7 +66,7 @@ class TestController extends Controller
             //触发微信返回code码
             //$scheme = $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://';
             //$baseUrl = urlencode($scheme . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $_SERVER['QUERY_STRING']);
-            $baseUrl = urlencode("http://sanke.hengdianworld.com/sanke_yd_index.aspx?uid=786363797879");
+            $baseUrl = urlencode("https://wechat.hdyuanmingxinyuan.com/temp2");
             $url = $this->__CreateOauthUrlForCode($baseUrl);
             Header("Location: $url");
             exit();
