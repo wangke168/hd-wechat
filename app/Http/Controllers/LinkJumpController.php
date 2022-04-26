@@ -12,8 +12,9 @@ use App\WeChat\OpenID;
 
 class LinkJumpController extends Controller
 {
-    public function index($id)
+    public function index(Request $request)
     {
+        $id=$request->input("id");
         $jump_url=env('JUMP_URL','');
         $get_openid_url=$jump_url.$id;
         $openid=new OpenID();
