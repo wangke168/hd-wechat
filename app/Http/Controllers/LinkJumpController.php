@@ -8,39 +8,28 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use App\WeChat\OpenID;
 
 class LinkJumpController extends Controller
 {
-    public function index($id, $openid)
+    public function index($id)
     {
-
+        $getopenidurl="https://wechat.hdyuanmingxinyuan.com/".$id;
+        $openid=new OpenID();
+        $wxnumber=$openid->GetOpenid($getopenidurl);
+        $usage = new Usage();
+        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
         $count = new Count();
         $count->add_article_hits($id);
         $count->insert_hits($id, $openid);
 //        $this->addclick($id,$openid);
-        $usage = new Usage();
-        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
 
-//        $uid='';
+//        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
+        $uid = $usage->get_uid($openid);
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
-               /* if($id==1493){
-                    $eventkey = $usage->get_openid_info($openid)->eventkey;
-                    if ($this->CheckCardBan($eventkey))
-                    {
-                        $url = 'https://wechat.hdyuanmingxinyuan.com/article/detail?id=1495';
-                    }
-                    else
-                    {
-                        $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-                    }
-                }
-                else{*/
                     $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-//                }
-
             } else {
                 $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
             }
@@ -48,8 +37,29 @@ class LinkJumpController extends Controller
         } else {
             return redirect($url . "&wxnumber={$openid}");
         }
-
     }
+
+   /* public function index($id, $openid)
+    {
+        $count = new Count();
+        $count->add_article_hits($id);
+        $count->insert_hits($id, $openid);
+//        $this->addclick($id,$openid);
+        $usage = new Usage();
+        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
+        $uid = $usage->get_uid($openid);
+        $url = $this->get_url($id)->url;
+        if (!strstr($url, 'project_id')) {
+            if (strstr($url, '?') != '') {
+                $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+            } else {
+                $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+            }
+            return redirect($url);
+        } else {
+            return redirect($url . "&wxnumber={$openid}");
+        }
+    }*/
 
     private function CheckCardBan($eventkey)
     {

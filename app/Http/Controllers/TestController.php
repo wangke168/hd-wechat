@@ -43,7 +43,7 @@ class TestController extends Controller
     }
 
 
-    public  function temp()
+    public  function temp($id)
     {
         $openid=new OpenID();
         $url="http://sanke.hengdianworld.com/sanke_yd_index.aspx?uid=786363797879";

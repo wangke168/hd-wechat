@@ -18,7 +18,8 @@ Route::get('/api','TokenController@api');
 Route::get('/api/getjs','TokenController@getjs');
 
 //跳转
-Route::get('/jump/{id}/{openid}','LinkJumpController@index');
+//Route::get('/jump/{id}/{openid}','LinkJumpController@index');
+Route::get('/jump/{id}','LinkJumpController@index');
 Route::get('/jump/ehengdian','LinkJumpController@jump_dyh');
 Route::get('/jump/jt','LinkJumpController@jump_jt');
 //菜单跳转手机官网
