@@ -49,6 +49,7 @@ class TestController extends Controller
         echo $openid;
         $url="http://sanke.hengdianworld.com/sanke_yd_index.aspx?uid=786363797879&wxnumber=".$openid;
         echo $url;
+        return redirect()->away($url);
         Header("Location: $url");
     }
     public function temp2($url)
