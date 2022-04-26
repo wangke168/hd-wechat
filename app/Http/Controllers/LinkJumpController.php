@@ -29,7 +29,7 @@ class LinkJumpController extends Controller
 
 //        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
         $usage = new Usage();
-        $uid = $usage->get_uid($wxnumber);
+//        $uid = $usage->get_uid($wxnumber);
 
         $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
 //        return $wxnumber;
