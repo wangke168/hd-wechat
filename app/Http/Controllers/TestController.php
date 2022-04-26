@@ -66,7 +66,7 @@ class TestController extends Controller
             //触发微信返回code码
             //$scheme = $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://';
             //$baseUrl = urlencode($scheme . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $_SERVER['QUERY_STRING']);
-            $baseUrl = urlencode("https://wechat.hdyuanmingxinyuan.com/temp");
+            $baseUrl = urlencode("https://wechat.hdyuanmingxinyuan.com/temp1");
             $url = $this->__CreateOauthUrlForCode($baseUrl);
             Header("Location: $url");
             exit();
