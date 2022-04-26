@@ -43,7 +43,7 @@ class TestController extends Controller
     }
 
 
-    public  function temp($id)
+    public  function temp()
     {
         $id="1479";
         $jump_url=env('JUMP_URL','');
