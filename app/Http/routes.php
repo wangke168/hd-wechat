@@ -6,6 +6,7 @@ Route::get('/', function () {
 
 /**测试**/
 Route::get('/temp1','TestController@temp');
+Route::get('/temp2','TestController@temp2');
 /**/
 
 
