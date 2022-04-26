@@ -48,6 +48,7 @@ class TestController extends Controller
         $id=$request->input("id");
         $jump_url=env('JUMP_URL','');
         $get_openid_url=$jump_url."?id=".$id;
+        return $get_openid_url;
         $openid=new OpenID();
         $wxnumber=$openid->GetOpenid($get_openid_url);
         return $wxnumber;
