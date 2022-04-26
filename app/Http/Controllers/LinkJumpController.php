@@ -22,8 +22,8 @@ class LinkJumpController extends Controller
 //        return $wxnumber;
 
         $usage = new Usage();
-//        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
-//        return $wxnumber;
+        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
+        return $wxnumber;
         $count = new Count();
         $count->add_article_hits($id);
         $count->insert_hits($id, $openid);
