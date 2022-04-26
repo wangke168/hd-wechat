@@ -44,159 +44,101 @@ class TestController extends Controller
 
     public  function temp()
     {
-        /*$response = new Response();
-        $openid='owKxH66HrTEWOkIWmbORCnClalAg';
-        $keyword="企微";
-        $eventkey="1017";*/
 
-//        return $this->request_news1($openid, $eventkey, '1', '', '');
-
-    /*    $tag = $this->app->user_tag;
-
-        $userTags = $tag->userTags($openid);
-        return $userTags;*/
-
-        $app = app('wechat');
-        $zone = new Zone();
-        $date = Carbon::now()->toDateString();
-        $rows_show = DB::table('zone_show_info')
-            ->where('is_push', '1')
-            ->orderBy('id', 'desc')
-            ->get();
-//        return $rows_show;
-        foreach ($rows_show as $row_show) {
-            $row_show_time = DB::table('zone_show_time')
-                ->whereDate('startdate', '<=', $date)
-                ->whereDate('enddate', '>=', $date)
-                ->where('show_id', $row_show->id)
-                ->orderBy('is_top', 'desc')
-                ->first();
-//            var_dump($row_show_time);
-            $show_time = explode(',', $row_show_time->show_time);
-            $prevtime = date('Y-m-d');
-
-            foreach ($show_time as $show_time_detail) {
-                $temptime = (strtotime($show_time_detail) - strtotime("now")) / 60;
-//                echo  $temptime."<br>";
-                if ($temptime < 30 && $temptime > 0) {
-//                    echo  $temptime."<br>";
-                    $row1 = DB::table('wx_user_info')
-                        ->where('eventkey', $row_show->eventkey)
-                        ->where('scandate', date('Y-m-d'))
-                        ->where('esc','0')
-//                        ->where('scandate',date('Y-m-d'))
-//                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
-                        ->get();
-                    return ($row1);
-                    foreach ($row1 as $send_openid) {
-                        $content = new Text();
-                        echo $send_openid->wx_openid;
-                        echo  "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-                        $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-//                        var_dump($content);
-                        $this->app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
-//                        $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
-                    }
-                    /*检查景区eventkey下有没有其他二维码，例：龙帝惊临项目在秦王宫里，因此龙帝惊临和秦王宫的二维码是从属关系，扫龙帝惊临的二维码也能收到秦王宫的节目提醒*/
-//                    $qrscene_id=$this->get_eventkey_info($result['eventkey']);
-                    $Usage = new Usage();
-                    $qrscene_id = $Usage->get_eventkey_son_info($row_show->eventkey);
-                    if ($qrscene_id) {
-                        foreach ($qrscene_id as $key => $eventkey) {
-
-                            $row2 = DB::table('wx_user_info')
-                                ->where('eventkey', $eventkey)
-                                ->where('scandate', date('Y-m-d'))
-                                ->where('esc','0')
-                                ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
-                                ->get();
-
-                            foreach ($row2 as $send_openid) {
-                                $content = new Text();
-
-                                $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-                                $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
-                            }
-                        }
-                    }
-                }
-            /*    else{
-                    echo "sdas";
-                }*/
-                $prevtime = $show_time_detail;
-            }
-
-        }
-
+        return $this->GetOpenid();
     }
 
-    private function autosendshowinfo()
+    /**
+     * 通过跳转获取用户的openid，跳转流程如下：
+     * 1、设置自己需要调回的url及其其他参数，跳转到微信服务器https://open.weixin.qq.com/connect/oauth2/authorize
+     * 2、微信服务处理完成之后会跳转回用户redirect_uri地址，此时会带上一些参数，如：code
+     * @return 用户的openid
+     */
+    public function GetOpenid()
     {
-        $app = app('wechat');
-        $zone = new Zone();
-        $date = Carbon::now()->toDateString();
-        $rows_show = DB::table('zone_show_info')
-            ->where('is_push', '1')
-            ->orderBy('id', 'desc')
-            ->get();
-        foreach ($rows_show as $row_show) {
-            $row_show_time = DB::table('zone_show_time')
-                ->whereDate('startdate', '<=', $date)
-                ->whereDate('enddate', '>=', $date)
-                ->where('show_id', $row_show->id)
-                ->orderBy('is_top', 'desc')
-                ->first();
-
-            $show_time = explode(',', $row_show_time->show_time);
-            $prevtime = date('Y-m-d');
-            foreach ($show_time as $show_time_detail) {
-                $temptime = (strtotime($show_time_detail) - strtotime("now")) / 60;
-
-                if ($temptime < 30 && $temptime > 0) {
-
-                    $row1 = DB::table('wx_user_info')
-                        ->where('eventkey', $row_show->eventkey)
-                        ->where('scandate', date('Y-m-d'))
-                        ->where('esc','0')
-                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
-                        ->get();
-                    return $row1;
-                    foreach ($row1 as $send_openid) {
-                        $content = new Text();
-                        $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-                        $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
-
-                    }
-                    /*检查景区eventkey下有没有其他二维码，例：龙帝惊临项目在秦王宫里，因此龙帝惊临和秦王宫的二维码是从属关系，扫龙帝惊临的二维码也能收到秦王宫的节目提醒*/
-//                    $qrscene_id=$this->get_eventkey_info($result['eventkey']);
-                    $Usage = new Usage();
-                    $qrscene_id = $Usage->get_eventkey_son_info($row_show->eventkey);
-                    if ($qrscene_id) {
-                        foreach ($qrscene_id as $key => $eventkey) {
-
-                            $row2 = DB::table('wx_user_info')
-                                ->where('eventkey', $eventkey)
-                                ->where('scandate', date('Y-m-d'))
-                                ->where('esc','0')
-                                ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
-                                ->get();
-
-                            foreach ($row2 as $send_openid) {
-                                $content = new Text();
-                                $content->content = "您好，" . $zone->get_zone_info($row_show->zone_id)->zone_name . "景区" . $row_show->show_name . "的演出时间是" . $show_time_detail . "。还没到剧场的话要抓紧了哦。\n如果您不知道剧场位置，<a href='" . $row_show->show_place_url . "'>点我</a>\n微信演出时间有时无法及时更新，以景区公示为准。";
-                                $app->staff->message($content)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
-                            }
-                        }
-                    }
-                }
-                $prevtime = $show_time_detail;
-            }
-
+        //通过code获得openid
+        if (!isset($_GET['code'])) {
+            //触发微信返回code码
+            //$scheme = $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://';
+            //$baseUrl = urlencode($scheme . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $_SERVER['QUERY_STRING']);
+            $baseUrl = urlencode("http://sanke.hengdianworld.com/sanke_yd_index.aspx?uid=786363797879");
+            $url = $this->__CreateOauthUrlForCode($baseUrl);
+            Header("Location: $url");
+            exit();
+        } else {
+            //获取code码，以获取openid
+            $code = $_GET['code'];
+            $openid = $this->getOpenidFromMp($code);
+            return $openid;
+        }
+    }
+    /**
+     * 通过code从工作平台获取openid机器access_token
+     * @param string $code 微信跳转回来带上的code
+     * @return openid
+     */
+    public function GetOpenidFromMp($code)
+    {
+        try {
+            $url = $this->__CreateOauthUrlForOpenid($code);
+            $res = self::curlGet($url);
+            //取出openid
+            $data = json_decode($res, true);
+            $this->data = $data;
+            if (session('openid'))
+                return;
+            $openid = $data['openid'];
+            return $openid;
+        } catch (\Exception $e) {
+            echo $e;
         }
     }
 
+    /**
+     * 构造获取open和access_toke的url地址
+     * @param string $code，微信跳转带回的code
+     * @return 请求的url
+     */
+    private function __CreateOauthUrlForOpenid($code)
+    {
+        $urlObj["appid"] = env('WECHAT_APPID','');
+        $urlObj["secret"] = env('WECHAT_SECRET','');
+        $urlObj["code"] = $code;
+        $urlObj["grant_type"] = "authorization_code";
+        $bizString = $this->ToUrlParams($urlObj);
+        return "https://api.weixin.qq.com/sns/oauth2/access_token?" . $bizString;
+    }
 
+    /**
+     * 构造获取code的url连接
+     * @param string $redirectUrl 微信服务器回跳的url，需要url编码
+     * @return 返回构造好的url
+     */
+    private function __CreateOauthUrlForCode($redirectUrl)
+    {
+        $urlObj["appid"] = env('WECHAT_APPID','');
+        $urlObj["redirect_uri"] = "$redirectUrl";
+        $urlObj["response_type"] = "code";
+        $urlObj["scope"] = "snsapi_base";
+        $urlObj["state"] = "STATE" . "#wechat_redirect";
+        $bizString = $this->ToUrlParams($urlObj);
+        return "https://open.weixin.qq.com/connect/oauth2/authorize?" . $bizString;
+    }
 
+    /**
+     * 拼接签名字符串
+     * @param array $urlObj
+     * @return 返回已经拼接好的字符串
+     */
+    private function ToUrlParams($urlObj)
+    {
+        $buff = "";
+        foreach ($urlObj as $k => $v) {
+            if ($k != "sign") $buff .= $k . "=" . $v . "&";
+        }
+        $buff = trim($buff, "&");
+        return $buff;
+    }
 
     public function  request_news1($openid, $eventkey, $type, $keyword, $menuid)
     {

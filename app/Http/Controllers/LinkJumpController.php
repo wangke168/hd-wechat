@@ -118,4 +118,8 @@ class LinkJumpController extends Controller
         return redirect("http://m.hdyuanmingxinyuan.com?wxnumber=" . $wxnumber . "&uid=" . $uid);
 
     }
+
+
+
+
 }
