@@ -45,7 +45,9 @@ class TestController extends Controller
     public  function temp()
     {
 
-        return $this->GetOpenid();
+        $openid= $this->GetOpenid();
+        $url="http://sanke.hengdianworld.com/sanke_yd_index.aspx?uid=786363797879&wxnumber=".$openid;
+        Header("Location: $url");
     }
     public function temp2($url)
     {
