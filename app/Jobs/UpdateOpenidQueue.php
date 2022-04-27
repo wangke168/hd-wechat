@@ -40,17 +40,20 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
 //        if ($data['subscribe_time']) {
 //            $nickname = $data['nickname'];
 //            $sex = $data['sex'];
-            $city = $data['city'];
-            $province = $data['province'];
-            $country = $data['country'];
-            $subscribe_time = $data['subscribe_time'];
-//        $unionid = $data['unionid'];
+        /*$city = $data['city'];
+        $province = $data['province'];
+        $country = $data['country'];*/
+        $subscribe_time = $data['subscribe_time'];
+        $unionid = $data['unionid'];
+        $subscribe_scene = $data["subscribe_scene"];
+        $qr_scene = $data["qr_scene"];
+        $qr_scene_str = $data["qr_scene_str"];
 
-            DB::table('wx_user_info')
-                ->where('id', $this->OpenidInfo->id)
-                ->update(['city' => $city, 'province' => $province, 'country' => $country, 'subscribe_time' => $subscribe_time]);
-            /*        DB::table('wx_user_unionid')
-                        ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
+        DB::table('wx_user_info_copy')
+            ->where('id', $this->OpenidInfo->id)
+            ->update(['subscribe_time' => $subscribe_time,'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene,'qr_scene_str' => $qr_scene_str]);
+        /*        DB::table('wx_user_unionid')
+                    ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
 //            Log::info('it is openid='.$this->OpenidInfo);
 //        }
     }

@@ -91,19 +91,19 @@ class MenuController extends Controller
                 "name" => "购票预定",
                 "sub_button" => [
                     [
-                        "type" => "click",
+                        "type" => "view",
                         "name" => "门票预定",
-                        "key" => "7"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1520"
                     ],
                     [
-                        "type" => "click",
+                        "type" => "view",
                         "name" => "门票+住宿预定",
-                        "key" => "8"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1521"
                     ],
                     [
-                        "type" => "click",
+                        "type" => "view",
                         "name" => "酒店预定",
-                        "key" => "9"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1522"
                     ],
                     [
                         "type" => "view",
@@ -132,14 +132,14 @@ class MenuController extends Controller
                         "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1518"
                     ],
                     [
-                        "type" => "click",
+                        "type" => "view",
                         "name" => "购年卡立减50",
-                        "key" => "15"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1525"
                     ],
                     [
-                        "type" => "click",
+                        "type" => "view",
                         "name" => "超值年卡/季卡",
-                        "key" => "16"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1537"
                     ],
                     [
                         "type" => "view",
@@ -235,28 +235,41 @@ class MenuController extends Controller
                 ],
             ],
             [
-                "name" => "梦外滩",
+                "name" => "酒店中心",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "储值卡",
+                        "name" => "酒店介绍",
                         "url" => "http://m.hengdianworld.com/info_jq.aspx"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "二销系统",
-                        "url" => "http://m.hengdianworld.com/info_yyx.aspx"
+                        "type" => "miniprogram",
+                        "name" => "餐饮特惠",
+                        "url" => "http://m.hengdianworld.com/info_yyx.aspx",
+                        "appid"=>"wxec43a205882c487f",
+                        "pagepath"=>"/pages/mall/typeIndex?typeId=534a321e12754c9385d0c912a319982"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "尊享卡",
-                        "url" => "https://mp.weixin.qq.com/s/kpUcrdVdAfOdsnZE_bJBSA"
+                        "type" => "miniprogram",
+                        "name" => "客房预定",
+                        "url" => "http://wx3e632d57ac5dcc68.wx.gcihotel.net/wechat/?/=#/bookSearch",
+                        "appid"=>"wx4ab38795d8f78b40",
+                        "pagepath"=>"/pages/order/bookSearch"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "横店疗休养",
-                        "url" => "https://mp.weixin.qq.com/s/UOVSMJNaVxTBrDt984vHPw"
+                        "type" => "miniprogram",
+                        "name" => "特惠商城",
+                        "url" => "https://wx3e632d57ac5dcc68.wx.gcihotel.net/mall2/?/=#/",
+                        "appid"=>"wxec43a205882c487f",
+                        "pagepath"=>"/pages/mall/index"
                     ],
+                    [
+                        "type" => "miniprogram",
+                        "name" => "会员中心",
+                        "url" => "http://wx3e632d57ac5dcc68.wx.gcihotel.net/wechat/?/#/memberCenter",
+                        "appid"=>"wx4ab38795d8f78b40",
+                        "pagepath"=>"/pages/member/memberCenter"
+                ],
                     /*      [
                               "type" => "click",
                               "name" => "行程推荐",

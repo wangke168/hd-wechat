@@ -71,9 +71,9 @@ class Update_Openid_Info extends Command
 //            Log::info($result->wx_openid);
 
         }*/
-        $row = DB::table('wx_user_info')
-            ->where('esc', '0')
-            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
+        $row = DB::table('wx_user_info_copy')
+//            ->where('esc', '0')
+//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
     //         ->whereDate('endtime','>=','2017-02-24')
             ->orderBy('id','desc')
             ->get();

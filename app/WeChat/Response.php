@@ -179,7 +179,6 @@ class Response
         $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
         if ($this->check_eventkey_message($eventkey, "news", "1")) {
-
             $flag = true;
             $this->request_news($openid, $eventkey, '1', '', '');
 //            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
@@ -199,7 +198,28 @@ class Response
 
         if (!$flag) //如果该二维码没有对应的关注推送信息
         {
-            $this->request_news($openid, 'all', '1', '', '');
+//            $this->request_news($openid, 'all', '1', '', '');
+
+            if ($this->check_eventkey_message('all', "news", "1")) {
+//                $flag = true;
+                $this->request_news($openid, 'all', '1', '', '');
+//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
+            }
+            if ($this->check_eventkey_message('all', "voice", "1")) {
+//                $flag = true;
+                $this->request_voice($openid, '1', 'all', '');
+            }
+            if ($this->check_eventkey_message('all', "txt", "1")) {
+//                $flag = true;
+                $this->request_txt($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
+            }
+            if ($this->check_eventkey_message('all', "image", "1")) {
+//                $flag = true;
+                $this->request_image($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
+            }
+
+
+
 //            $this->app->staff->message($content_news)->to($openid)->send();
         }
 //        return $content;
