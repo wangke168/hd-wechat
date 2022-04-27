@@ -325,7 +325,7 @@ class Response
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
         $uid = $this->usage->get_uid($openid);
-        $pic_url=env('PIC_URL','');
+
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -385,7 +385,7 @@ class Response
                          $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
                      }*/
 
-                $pic_url = $pic_url. $result->picurl;
+                $pic_url = env('PIC_URL',''). $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
