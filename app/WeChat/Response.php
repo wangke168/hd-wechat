@@ -117,46 +117,46 @@ class Response
      */
     public function request_keyword($openid, $eventkey, $keyword)
     {
-//        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         if (!$eventkey) {
             $eventkey = 'all';
         }
-        $this->request_special_keyword($openid, $keyword);  //明确是否有特殊关键字回复
-        $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
-        //检查该关键字回复中是否有图文消息
+        if (!$this->request_special_keyword($openid, $keyword)) { //明确是否有特殊关键字回复
+            $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
+            //检查该关键字回复中是否有图文消息
 
-        if ($this->check_keyword_message($eventkey, "news", $keyword)) {
-            $flag = true;
-            $this->request_news($openid, $eventkey, '3', $keyword, '');
-        }
-        if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
-            $flag = true;
-            $this->request_voice($openid, '2', $eventkey, $keyword);
-        }
-        if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
-            $flag = true;
-            $this->request_txt($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
-        }
-        if ($this->check_keyword_message($eventkey, "image", $keyword)) {
-            $flag = true;
-            $this->request_image($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
-        }
-        if (!$flag) //如果该二维码没有对应的关注推送信息
-        {
-            /*if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
-            {
-                $this->server->setMessageHandler(function($message) {
-                    $transfer = new \EasyWeChat\Message\Transfer();
-
-                    $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
-
-                    return $transfer;
-                });
+            if ($this->check_keyword_message($eventkey, "news", $keyword)) {
+                $flag = true;
+                $this->request_news($openid, $eventkey, '3', $keyword, '');
             }
-            else {}*/
-            $content = new Text();
-            $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
-            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
+                $flag = true;
+                $this->request_voice($openid, '2', $eventkey, $keyword);
+            }
+            if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
+                $flag = true;
+                $this->request_txt($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
+            }
+            if ($this->check_keyword_message($eventkey, "image", $keyword)) {
+                $flag = true;
+                $this->request_image($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
+            }
+            if (!$flag) //如果该二维码没有对应的关注推送信息
+            {
+                /*if($openid=='o2e-YuBgnbLLgJGMQykhSg_V3VRI')
+                {
+                    $this->server->setMessageHandler(function($message) {
+                        $transfer = new \EasyWeChat\Message\Transfer();
+
+                        $transfer->account('kf2004@u_hengdian');// 或者 $transfer->to($account);
+
+                        return $transfer;
+                    });
+                }
+                else {}*/
+                $content = new Text();
+                $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
+                $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+            }
         }
 
     }
@@ -175,7 +175,22 @@ class Response
         } elseif ($keyword == 'wxh') {
             $content->content = $openid;
             $flag = true;
-        } /*elseif ($keyword == '预约') {
+        }
+        elseif ($keyword == 'tag') {
+            $tag = $this->app->user_tag;
+            $userTags = $tag->userTags($openid);
+            if ($userTags->tagid_list) {            //遍历该openid的tag
+                foreach ($userTags as $userTag) {
+                    foreach ($userTag as $value) {
+                        $usertag=$value.",";
+                    }
+                }
+                $content->content =$usertag;
+                $flag = true;
+            }
+        }
+
+        /*elseif ($keyword == '预约') {
             $content = new Text();
             $content->content = $this->query_wite_info($openid);
         } elseif ($keyword == 'hx') {
@@ -203,7 +218,7 @@ class Response
         if ($flag) {
             $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
         }
-//        return $content;
+        return $flag;
     }
 
     /**
