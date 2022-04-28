@@ -115,20 +115,19 @@ class Response
      * @param $keyword
      * @return array|Text
      */
-    private function request_keyword($openid, $keyword)
+    public function request_keyword($openid, $eventkey, $keyword)
     {
-        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
+//        $eventkey = $this->usage->get_openid_info($openid)->eventkey;
         if (!$eventkey) {
             $eventkey = 'all';
         }
-//        $content = $this->request_news($openid, $eventkey, '3', $keyword, '');
-
+        $this->request_special_keyword($openid, $keyword);  //明确是否有特殊关键字回复
         $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该关键字回复中是否有图文消息
+
         if ($this->check_keyword_message($eventkey, "news", $keyword)) {
             $flag = true;
             $this->request_news($openid, $eventkey, '3', $keyword, '');
-//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
         }
         if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
             $flag = true;
@@ -154,14 +153,56 @@ class Response
                     return $transfer;
                 });
             }
-            else {*/
+            else {}*/
             $content = new Text();
             $content->content = "嘟......您的留言已经进入自动留声机，小横横回来后会努力回复你的~\n您也可以拨打0579-86547211立刻接通小横横。";
             $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
-//            }
         }
 
+    }
 
+    private function request_special_keyword($openid, $keyword)
+    {
+        $content = new Text();
+        $flag = false;
+        if ($keyword == 'a') {
+            if ($this->usage->get_openid_info($openid)->eventkey) {
+                $content->content = $this->usage->get_openid_info($openid)->eventkey;
+            } else {
+                $content->content = '无eventkey';
+            }
+            $flag = true;
+        } elseif ($keyword == 'wxh') {
+            $content->content = $openid;
+            $flag = true;
+        } /*elseif ($keyword == '预约') {
+            $content = new Text();
+            $content->content = $this->query_wite_info($openid);
+        } elseif ($keyword == 'hx') {
+            $content = new Text();
+            $tour = new Tour();
+            $content->content = $tour->verification_subscribe($openid, '1');
+        } elseif (strstr($keyword, '天气')) {
+            $content = new Text();
+            $content->content = $this->get_weather_info();
+        } elseif (str_contains($keyword, '取消') || str_contains($keyword, '退款') || str_contains($keyword, '退订') || str_contains($keyword, '订单')) {
+            // 转发收到的消息给客服
+            $online_staff = $this->staff->onlines();
+            if (empty($online_staff['kf_online_list'])) {
+                $content = $this->request_keyword($openid, $keyword);
+            } else {
+                return new \EasyWeChat\Message\Transfer();
+            }
+            //$transfer = new \EasyWeChat\Message\Transfer();
+            //$transfer->account('kf2001@u_hengdian');// 或者 $transfer->to($account);
+
+           // return $transfer;
+        } else {
+            $this->request_keyword($openid, $keyword);
+        }*/
+        if ($flag) {
+            $this->app->staff->message($content)->by('1001@u_hengdian')->to($openid)->send();
+        }
 //        return $content;
     }
 
@@ -173,7 +214,7 @@ class Response
      * @return bool
      */
 
-    private function response_focus_message($openid, $eventkey,$focus)
+    private function response_focus_message($openid, $eventkey, $focus)
     {
         $flag = false;
         if ($this->check_focus_message($eventkey, "news")) {
@@ -209,43 +250,42 @@ class Response
         $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
 
-        if (!$this->response_focus_message($openid, $eventkey, "1"))
-        {
+        if (!$this->response_focus_message($openid, $eventkey, "1")) {
             $this->response_focus_message($openid, "all", "1");
         }
 
-   /*     if ($this->check_eventkey_message($eventkey, "news", "1")) {
-            $flag = true;
-            $this->request_news($openid, $eventkey, '1', '', '');
-        }
-        if ($this->check_eventkey_message($eventkey, "voice", "1")) {
-            $flag = true;
-            $this->request_voice($openid, '1', $eventkey, '');
-        }
-        if ($this->check_eventkey_message($eventkey, "txt", "1")) {
-            $flag = true;
-            $this->request_txt($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
-        }
-        if ($this->check_eventkey_message($eventkey, "image", "1")) {
-            $flag = true;
-            $this->request_image($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
-        }
+        /*     if ($this->check_eventkey_message($eventkey, "news", "1")) {
+                 $flag = true;
+                 $this->request_news($openid, $eventkey, '1', '', '');
+             }
+             if ($this->check_eventkey_message($eventkey, "voice", "1")) {
+                 $flag = true;
+                 $this->request_voice($openid, '1', $eventkey, '');
+             }
+             if ($this->check_eventkey_message($eventkey, "txt", "1")) {
+                 $flag = true;
+                 $this->request_txt($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
+             }
+             if ($this->check_eventkey_message($eventkey, "image", "1")) {
+                 $flag = true;
+                 $this->request_image($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
+             }
 
-        if (!$flag) //如果该二维码没有对应的关注推送信息
-        {
-            if ($this->check_eventkey_message('all', "news", "1")) {
-                $this->request_news($openid, 'all', '1', '', '');
-            }
-            if ($this->check_eventkey_message('all', "voice", "1")) {
-                $this->request_voice($openid, '1', 'all', '');
-            }
-            if ($this->check_eventkey_message('all', "txt", "1")) {
-                $this->request_txt($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
-            }
-            if ($this->check_eventkey_message('all', "image", "1")) {
-                $this->request_image($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
-            }
-        }*/
+             if (!$flag) //如果该二维码没有对应的关注推送信息
+             {
+                 if ($this->check_eventkey_message('all', "news", "1")) {
+                     $this->request_news($openid, 'all', '1', '', '');
+                 }
+                 if ($this->check_eventkey_message('all', "voice", "1")) {
+                     $this->request_voice($openid, '1', 'all', '');
+                 }
+                 if ($this->check_eventkey_message('all', "txt", "1")) {
+                     $this->request_txt($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
+                 }
+                 if ($this->check_eventkey_message('all', "image", "1")) {
+                     $this->request_image($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
+                 }
+             }*/
 //        return $content;
     }
 
@@ -375,18 +415,18 @@ class Response
         switch ($focus) {
             case 1:
                 $row = WechatArticle::focusPublished($eventkey)
-                    ->skip(0)->take(8)->get();
+                    ->skip(0)->take(1)->get();
                 break;
             case 2:
                 $row = WechatArticle::where('classid', $menuid)
                     ->usagePublished($eventkey)
-                    ->skip(0)->take(8)->get();
+                    ->skip(0)->take(1)->get();
                 break;
             case 3:
                 $keyword = $this->check_keywowrd($keyword);
                 $row = WechatArticle::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
-                    ->skip(0)->take(8)->get();
+                    ->skip(0)->take(1)->get();
                 break;
         }
         if ($row) {
@@ -447,7 +487,7 @@ class Response
     /**
      * 推送文本消息，分关注推送和关键字推送
      * @param $openid
-     * @param $focus    1:关注时推送    0：非关注
+     * @param $focus 1:关注时推送    0：非关注
      * @param $eventkey 客人关注的二维码
      * @param $keyword  关键字
      */
@@ -480,7 +520,7 @@ class Response
      * 推送声音消息，分关注推送和关键字推送
      * @param $openid
      * @param $eventkey 客人关注的二维码
-     * @param $focus    1:关注时推送    0：非关注
+     * @param $focus 1:关注时推送    0：非关注
      * @param $keyword  关键字
      */
     public function request_voice($openid, $eventkey, $focus, $keyword)
@@ -511,7 +551,7 @@ class Response
      * 推送图片消息，分关注推送和关键字推送
      * @param $openid
      * @param $eventkey 客人关注的二维码
-     * @param $focus    1:关注时推送    0：非关注
+     * @param $focus 1:关注时推送    0：非关注
      * @param $keyword  关键字
      */
     public function request_image($openid, $eventkey, $focus, $keyword)
