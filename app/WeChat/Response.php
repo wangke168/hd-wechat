@@ -5,6 +5,7 @@
  * Date: 2016/8/17
  * Time: 10:25
  */
+
 namespace App\WeChat;
 
 use App\Models\WechatImage;
@@ -18,10 +19,7 @@ use EasyWeChat\Message\News;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\Image;
 use App\Models\WechatArticle;
-
-
 use App\Http\Requests;
-use Crypt;
 
 class Response
 {
@@ -41,9 +39,13 @@ class Response
     }
 
 
+    /** 特殊关键字回复
+     * @param $message
+     * @param $keyword
+     * @return array|Text|\EasyWeChat\Message\Transfer
+     */
     public function news($message, $keyword)
     {
-
         $userService = $this->app->user;
         $openid = $userService->get($message->FromUserName)->openid;
 
@@ -95,14 +97,12 @@ class Response
     public function click_request($openid, $menuid)
     {
         $eventkey = $this->usage->get_openid_info($openid)->eventkey;
-        if ($menuid==1)
-        {
+        if ($menuid == 1) {
 //            $message  = new Image(['media_id' => 'QQE-CzQ2CBuTXOaRorptMGUNWZkqZMo52cEpDcjOKNs']);
             $image = new Image();
             $image->media_id = 'QQE-CzQ2CBuTXOaRorptMGUNWZkqZMo52cEpDcjOKNs';
-            $this->app->staff->message($image )->by('1001@u_hengdian')->to($openid)->send();
-        }
-        else{
+            $this->app->staff->message($image)->by('1001@u_hengdian')->to($openid)->send();
+        } else {
             $this->request_news($openid, $eventkey, '2', '', $menuid);
         }
         $this->add_menu_click_hit($openid, $menuid); //增加点击数统计
@@ -166,6 +166,36 @@ class Response
     }
 
     /**
+     * 检查客人扫码二维码是否有关注推送，如果没有，就用全局的关注推送
+     * @param $openid  关注者openid
+     * @param $eventkey 扫描的二维码
+     * @param $focus
+     * @return bool
+     */
+
+    private function response_focus_message($openid, $eventkey,$focus)
+    {
+        $flag = false;
+        if ($this->check_focus_message($eventkey, "news")) {
+            $flag = true;
+            $this->request_news($openid, $eventkey, $focus, '', '');
+        }
+        if ($this->check_focus_message($eventkey, "voice")) {
+            $flag = true;
+            $this->request_voice($openid, $eventkey, $focus, '');
+        }
+        if ($this->check_focus_message($eventkey, "txt")) {
+            $flag = true;
+            $this->request_txt($openid, $eventkey, $focus, ''); //直接在查询文本回复时使用客服接口
+        }
+        if ($this->check_focus_message($eventkey, "image")) {
+            $flag = true;
+            $this->request_image($openid, $eventkey, $focus, ''); //直接在查询文本回复时使用客服接口
+        }
+        return $flag;
+    }
+
+    /**
      * 关注回复
      * @param $fromUsername
      * @param $eventkey
@@ -178,10 +208,15 @@ class Response
         }
         $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
         //检查该二维码下关注回复中是否有图文消息
-        if ($this->check_eventkey_message($eventkey, "news", "1")) {
+
+        if (!$this->response_focus_message($openid, $eventkey, "1"))
+        {
+            $this->response_focus_message($openid, "all", "1");
+        }
+
+   /*     if ($this->check_eventkey_message($eventkey, "news", "1")) {
             $flag = true;
             $this->request_news($openid, $eventkey, '1', '', '');
-//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
         }
         if ($this->check_eventkey_message($eventkey, "voice", "1")) {
             $flag = true;
@@ -198,30 +233,19 @@ class Response
 
         if (!$flag) //如果该二维码没有对应的关注推送信息
         {
-//            $this->request_news($openid, 'all', '1', '', '');
-
             if ($this->check_eventkey_message('all', "news", "1")) {
-//                $flag = true;
                 $this->request_news($openid, 'all', '1', '', '');
-//            $this->app->staff->message($content_news)->by('1001@u_hengdian')->to($openid)->send();
             }
             if ($this->check_eventkey_message('all', "voice", "1")) {
-//                $flag = true;
                 $this->request_voice($openid, '1', 'all', '');
             }
             if ($this->check_eventkey_message('all', "txt", "1")) {
-//                $flag = true;
                 $this->request_txt($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
             }
             if ($this->check_eventkey_message('all', "image", "1")) {
-//                $flag = true;
                 $this->request_image($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
             }
-
-
-
-//            $this->app->staff->message($content_news)->to($openid)->send();
-        }
+        }*/
 //        return $content;
     }
 
@@ -229,10 +253,9 @@ class Response
      * 检查关注是否有对应二维码的消息回复（图文、语音、文字、图片）
      * @param $eventkey
      * @param $type ：   news:图文    txt:文字      voice:语音     image:图片
-     * @param $focus :   1:关注    0：不关注
      * @return boolkey
      */
-    private function check_eventkey_message($eventkey, $type, $focus)
+    private function check_focus_message($eventkey, $type)
     {
 
 //        $db = new DB();
@@ -334,13 +357,13 @@ class Response
      * 推送图文
      * @param $openid
      * @param $eventkey
-     * @param $type 1：关注    2：菜单    3：关键字
+     * @param $focus 1：关注    2：菜单    3：关键字
      * @param $keyword      关键字
      * @param $menuid       菜单ID
      */
 
 //$this->request_news($openid, 'all', '1', '', '');
-    public function request_news($openid, $eventkey, $type, $keyword, $menuid)
+    public function request_news($openid, $eventkey, $focus, $keyword, $menuid)
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
@@ -349,7 +372,7 @@ class Response
         if (!$eventkey) {
             $eventkey = 'all';
         }
-        switch ($type) {
+        switch ($focus) {
             case 1:
                 $row = WechatArticle::focusPublished($eventkey)
                     ->skip(0)->take(8)->get();
@@ -375,7 +398,7 @@ class Response
                 if ($url != '') {
                     /*链接跳转的数据统计*/
 //                    $url = "http://wechat.hengdianworld.com/jump/{$id}/{$openid}";
-                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/jump?id=".$id."&uid=".$uid;
+                    $url = "https://" . $_SERVER['HTTP_HOST'] . "/jump?id=" . $id . "&uid=" . $uid;
 
                     /*          if (!strstr($url, 'project_id')) {
                                   if (strstr($url, '?') != '') {
@@ -405,7 +428,7 @@ class Response
                          $pic_url="http://weix2.hengdianworld.com" . $result->picurl;
                      }*/
 
-                $pic_url = env('PIC_URL',''). $result->picurl;
+                $pic_url = env('PIC_URL', '') . $result->picurl;
 
                 /*索引图检查结束*/
                 $new = new News();
@@ -422,16 +445,17 @@ class Response
     }
 
     /**
+     * 推送文本消息，分关注推送和关键字推送
      * @param $openid
-     * @param $type 1:关注    2：关键字
-     * @param $eventkey
-     * @param $keyword
+     * @param $focus    1:关注时推送    0：非关注
+     * @param $eventkey 客人关注的二维码
+     * @param $keyword  关键字
      */
 
-    private function request_txt($openid, $type, $eventkey, $keyword)
+    private function request_txt($openid, $eventkey, $focus, $keyword)
     {
 //        $app = app('wechat');
-        switch ($type) {
+        switch ($focus) {
             case 1:
                 $row = WechatTxt::focusPublished($eventkey)
                     ->orderBy('id', 'desc')
@@ -452,13 +476,16 @@ class Response
         }
     }
 
-    /*
-    * 回复Voice
-    *$focus:1（关注）；2（关键字）
-    */
-    public function request_voice($openid, $type, $eventkey, $keyword)
+    /**
+     * 推送声音消息，分关注推送和关键字推送
+     * @param $openid
+     * @param $eventkey 客人关注的二维码
+     * @param $focus    1:关注时推送    0：非关注
+     * @param $keyword  关键字
+     */
+    public function request_voice($openid, $eventkey, $focus, $keyword)
     {
-        switch ($type) {
+        switch ($focus) {
             case '1':
                 $row = WechatVoice::focusPublished($eventkey)
                     ->orderBy('id', 'desc')
@@ -480,13 +507,16 @@ class Response
         }
     }
 
-    /*
-   * 回复Image
-   *$focus:1（关注）；2（关键字）
-   */
-    public function request_image($openid, $type, $eventkey, $keyword)
+    /**
+     * 推送图片消息，分关注推送和关键字推送
+     * @param $openid
+     * @param $eventkey 客人关注的二维码
+     * @param $focus    1:关注时推送    0：非关注
+     * @param $keyword  关键字
+     */
+    public function request_image($openid, $eventkey, $focus, $keyword)
     {
-        switch ($type) {
+        switch ($focus) {
             case '1':
                 $row = WechatImage::focusPublished($eventkey)
                     ->orderBy('id', 'desc')
@@ -495,7 +525,6 @@ class Response
                 break;
             case "2":
                 $keyword = $this->check_keywowrd($keyword);
-
                 $row = WechatImage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
                     ->usagePublished($eventkey)
                     ->orderBy('id', 'desc')
@@ -554,7 +583,12 @@ class Response
             ->where('enddate', '>=', date('Y-m-d'));
     }
 
-
+    /**
+     * 增加关注者信息，如果是新关注者，在wx_user_info表单中插入数据，如果是重复关注者，则更新信息
+     * @param $openid
+     * @param $eventkey
+     * @param $type
+     */
     public function insert_subscribe($openid, $eventkey, $type)
     {
         $tag_id = $this->usage->query_tag_id($eventkey);
@@ -580,7 +614,7 @@ class Response
 
 
     /**
-     * 客人取消关注时，删除user_info中的信息，在user_esc中增加
+     * 客人取消关注时，更新user_info中esc字段，在user_esc表中增加
      * @param $fromUsername
      */
     public function insert_unsubscribe($openid)
@@ -629,16 +663,21 @@ class Response
         $tag = $this->app->user_tag;
         $userTags = $tag->userTags($openid);
 
-        if ($userTags->tagid_list) {
-            foreach ($userTags as $userTag) {
-                foreach ($userTag as $value) {
-                    $tag->batchUntagUsers([$openid], $value); //删除原有标签
+        //先确定该eventkey有没有tag，如果有，删除原来tag，打新的，如果没有，沿用原来的tag
+
+        if ($this->usage->query_tag_id($eventkey)) { //获取eventkey对应的tag
+
+            if ($userTags->tagid_list) {            //遍历该openid的tag
+                foreach ($userTags as $userTag) {
+                    foreach ($userTag as $value) {
+                        $tag->batchUntagUsers([$openid], $value); //删除原有标签
+                    }
                 }
             }
+
+            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey)); //打新的标签
         }
-        if ($this->usage->query_tag_id($eventkey)) { //获取eventkey对应的tag
-            $tag->batchTagUsers([$openid], $this->usage->query_tag_id($eventkey)); //增加标签
-        }
+
 
     }
 
