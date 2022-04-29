@@ -29,7 +29,8 @@ class LinkJumpController extends Controller
         $count->insert_hits($id, $wxnumber);
 //        $this->addclick($id,$openid);
         $usage = new Usage();
-        $uid = $usage->get_uid($wxnumber);
+//        $uid = $usage->get_uid($wxnumber);
+        $uid="";
         $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
 
         $url = $this->get_url($id)->url;
