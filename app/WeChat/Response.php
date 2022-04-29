@@ -422,8 +422,8 @@ class Response
     {
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
-        $uid = $this->usage->get_uid($openid);
-
+//        $uid = $this->usage->get_uid($openid);
+        $uid="";
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -448,8 +448,8 @@ class Response
             $content = array();
             foreach ($row as $result) {
                 $url = $result->url;
-//                $id = $result->id;
-                $uid="";
+                $id = $result->id;
+
                 /*如果只直接跳转链接页面时，判断是否已经带参数*/
                 if ($url != '') {
                     /*链接跳转的数据统计*/
