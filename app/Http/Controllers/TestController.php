@@ -49,6 +49,11 @@ class TestController extends Controller
     public function temp3(){
 
 //        date('r', Unix timestamp)
+        $openid="o2e-YuPBZKIblGOOVoBY0SyINMQM";
+        $usage = new Usage();
+        $eventkey=$usage->get_openid_info($openid)->eventkey;
+        return $eventkey;
+
     }
 
 

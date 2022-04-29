@@ -14,14 +14,19 @@ class LinkJumpController extends Controller
 {
     public function index(Request $request)
     {
-        $id=$request->input("id");
-        $jump_url=env('JUMP_URL','');
-        $get_openid_url=$jump_url."?id=".$id;
+        $id = $request->input("id");
+
+
+
+
+        $jump_url = env('JUMP_URL', '');
+        $get_openid_url = $jump_url . "?id=" . $id;
 
         /**通过H5获取用户OpenID**/
-        $openid=new OpenID();
-        $wxnumber=$openid->GetOpenid($get_openid_url);
+        $openid = new OpenID();
+        $wxnumber = $openid->GetOpenid($get_openid_url);
         /**------------------**/
+
 
         /**计数**/
         $count = new Count();
@@ -29,32 +34,24 @@ class LinkJumpController extends Controller
         $count->insert_hits($id, $wxnumber);
 //        $this->addclick($id,$openid);
         $usage = new Usage();
-//        $uid = $usage->get_uid($wxnumber);
-        $uid="";
-        $wxnumber= $usage->authcode($wxnumber,'ENCODE',0);
-
-        $url = $this->get_url($id)->url;
-        if (!strstr($url, 'project_id')) {
-            if (strstr($url, '?') != '') {
-                    $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
-            } else {
-                $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
+        if ($eventkey == 1008) {
+            if ($id == "1520") {
+                $id = "1538";
             }
-            return redirect($url);
-        } else {
-            return redirect($url . "&wxnumber={$openid}");
+            if ($id == "1521") {
+                $id = "1538";
+            }
+            if ($id == "1522") {
+                $id = "1538";
+            }
         }
-    }
 
-   /* public function index($id, $openid)
-    {
-        $count = new Count();
-        $count->add_article_hits($id);
-        $count->insert_hits($id, $openid);
-//        $this->addclick($id,$openid);
-        $usage = new Usage();
-        $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
-        $uid = $usage->get_uid($openid);
+
+//        $uid = $usage->get_uid($wxnumber);
+        $uid = "";
+        $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
+
         $url = $this->get_url($id)->url;
         if (!strstr($url, 'project_id')) {
             if (strstr($url, '?') != '') {
@@ -66,19 +63,39 @@ class LinkJumpController extends Controller
         } else {
             return redirect($url . "&wxnumber={$openid}");
         }
-    }*/
+    }
+
+    /* public function index($id, $openid)
+     {
+         $count = new Count();
+         $count->add_article_hits($id);
+         $count->insert_hits($id, $openid);
+ //        $this->addclick($id,$openid);
+         $usage = new Usage();
+         $wxnumber = $usage->authcode($openid, 'ENCODE', 0);
+         $uid = $usage->get_uid($openid);
+         $url = $this->get_url($id)->url;
+         if (!strstr($url, 'project_id')) {
+             if (strstr($url, '?') != '') {
+                 $url = $url . "&comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+             } else {
+                 $url = $url . "?comefrom=1&wxnumber={$wxnumber}&uid={$uid}&wpay=1";
+             }
+             return redirect($url);
+         } else {
+             return redirect($url . "&wxnumber={$openid}");
+         }
+     }*/
 
     private function CheckCardBan($eventkey)
     {
-        $row=DB::table('wx_card_ban')
-            ->where('id',1)
+        $row = DB::table('wx_card_ban')
+            ->where('id', 1)
             ->first();
 
-        if ($eventkey=='')
-        {
+        if ($eventkey == '') {
             return false;
-        }
-        else {
+        } else {
             $tmparray = explode($eventkey, $row->eventkey);
             if (count($tmparray) > 1) {
                 return true;
@@ -135,8 +152,6 @@ class LinkJumpController extends Controller
         return redirect("http://m.hdyuanmingxinyuan.com?wxnumber=" . $wxnumber . "&uid=" . $uid);
 
     }
-
-
 
 
 }

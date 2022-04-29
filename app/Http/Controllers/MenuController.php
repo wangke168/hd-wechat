@@ -184,32 +184,147 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "游玩攻略",
-                        "url" => "https://mp.weixin.qq.com/s/uYGh32ht_Tz0XkIRbwJoug"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
                     ],
                     [
                         "type" => "view",
                         "name" => "剧组动态",
-                        "url" => "https://mp.weixin.qq.com/s/blcC9BMEDviELXFoonYxdg"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "节目时间",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
                     ],
                     [
                         "type" => "view",
                         "name" => "交通攻略",
-                        "url" => "https://mp.weixin.qq.com/s/vyKJt8EtOa0lAbvHDFgjug"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1514"
                     ],
                     [
                         "type" => "view",
                         "name" => "常见问题",
-                        "url" => "https://mp.weixin.qq.com/s/GljFzb8Ygib_Dq0DdEI7Tw"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "成功案例",
-                        "url" => "https://mp.weixin.qq.com/s/d48y9Gso3MuaZqcUZsC6Rw"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1515"
                     ],
                 ],
             ],
             [
-                "name" => "购票攻略",
+                "name" => "购票中心",
+                "type" => "view",
+                "url"=>"http://sanke.hengdianworld.com/sanke_yd_index.aspx"
+               /* "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "门票预定",
+                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "套餐预定",
+                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "酒店预定",
+                        "url" => "https://mp.weixin.qq.com/s/AQKGow97mWlyZC2h41y4Og"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "订单查询",
+                        "url" => "https://mp.weixin.qq.com/s/PNxklfedA_iSHwIqFrkzyA"
+                    ],
+
+                ],*/
+            ],
+            [
+                "name" => "最新活动",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "全城送福●免费抽奖",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1517"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "升级年卡",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1518"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "门票加购80元起",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1519"
+                    ],
+                    /*      [
+                              "type" => "click",
+                              "name" => "行程推荐",
+                              "key"  => "22"
+                          ],
+                          [
+                              "type" => "view",
+                              "name" => "常见问题",
+                              "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
+                          ],*/
+                ],
+            ],
+
+            /*     [
+                     "type" => "view",
+                     "name" => "门票预订",
+                     "url"  => "https://job.hdymxy.com/meeting/myq"
+                 ],*/
+
+
+        ];
+
+        $matchRule = [
+            "tag_id" => $tagid,
+            "sex" => "",
+            "country" => "",
+            "province" => "",
+            "city" => "",
+            "client_platform_type" => ""
+        ];
+
+        $this->menu->add($buttons, $matchRule);
+//        $this->menu->add($buttons);
+
+    }
+
+    private function add_other_hotel($tagid)
+    {
+        $buttons = [
+            [
+                "name" => "畅游横店",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "游玩攻略",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "剧组动态",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "节目时间",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "交通攻略",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1514"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "常见问题",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1515"
+                    ],
+                ],
+            ],
+            [
+                "name" => "购票中心",
                 "sub_button" => [
                     [
                         "type" => "view",

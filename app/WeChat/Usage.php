@@ -47,10 +47,11 @@ class Usage
      */
     public function get_eventkey_info($eventkey)
     {
+//        $eventkey="";
         $row = DB::table('wx_qrscene_info')
             ->where('qrscene_id', $eventkey)
             ->first();
-        return $row;
+        return ($row);
     }
 
 
