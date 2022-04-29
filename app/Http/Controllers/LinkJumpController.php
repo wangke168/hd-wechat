@@ -34,7 +34,7 @@ class LinkJumpController extends Controller
         $count->insert_hits($id, $wxnumber);
 //        $this->addclick($id,$openid);
         $usage = new Usage();
-        $eventkey = $usage->get_openid_info($openid)->eventkey;
+        $eventkey = $usage->get_openid_info($wxnumber)->eventkey;
         if ($eventkey == 1008) {
             if ($id == "1520") {
                 $id = "1538";
