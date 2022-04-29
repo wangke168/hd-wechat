@@ -448,7 +448,8 @@ class Response
             $content = array();
             foreach ($row as $result) {
                 $url = $result->url;
-                $id = $result->id;
+//                $id = $result->id;
+                $uid="";
                 /*如果只直接跳转链接页面时，判断是否已经带参数*/
                 if ($url != '') {
                     /*链接跳转的数据统计*/
