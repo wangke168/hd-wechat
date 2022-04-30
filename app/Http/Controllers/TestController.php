@@ -60,7 +60,8 @@ class TestController extends Controller
         $openid = "o2e-YuNJXi3oNOkH_dh23FZtGFnk";
         $eventkey="1007";
 //        $arr1=array()
-
+        $response=new Response();
+        $response->request_focus($openid, $eventkey);
        /* $arr2 = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
             'miniprogrampage' => array(
                 'title' => '开始预约',
@@ -72,7 +73,8 @@ class TestController extends Controller
         $message=new Raw($content);
         $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();*/
 
-
+        /*$row_minipage = WechatMiniPage:: focusPublished($eventkey)->first();
+        return $row_minipage;
 
         $row = WechatMiniPage::focusPublished($eventkey)
             ->orderBy('id', 'desc')
@@ -87,7 +89,7 @@ class TestController extends Controller
             $content=json_encode($minipage,JSON_UNESCAPED_UNICODE);
             $message=new Raw($content);
             $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();
-        }
+        }*/
     }
 
 

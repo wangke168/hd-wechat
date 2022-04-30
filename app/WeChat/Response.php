@@ -21,6 +21,7 @@ use EasyWeChat\Message\Text;
 use EasyWeChat\Message\Image;
 use App\Models\WechatArticle;
 use App\Http\Requests;
+use EasyWeChat\Message\Raw;
 
 class Response
 {
