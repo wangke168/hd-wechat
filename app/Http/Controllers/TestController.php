@@ -25,6 +25,7 @@ use Carbon\Carbon;
 use App\WeChat\Usage;
 use App\WeChat\OpenID;
 use EasyWeChat\User\User;
+use EasyWeChat\Message\Raw;
 
 class TestController extends Controller
 {
@@ -46,14 +47,30 @@ class TestController extends Controller
     }
 
 
-    public function temp3(){
+    public function temp3()
+    {
 
 //        date('r', Unix timestamp)
-        $openid="o2e-YuPBZKIblGOOVoBY0SyINMQM";
-        $usage = new Usage();
-        $eventkey=$usage->get_openid_info($openid)->eventkey;
-        return $eventkey;
+         $openid="o2e-YuNJXi3oNOkH_dh23FZtGFnk";
+         $usage = new Usage();
+         $eventkey=$usage->get_openid_info($openid)->eventkey;
+         return $eventkey;
+/*
+        $openid = "o2e-YuNJXi3oNOkH_dh23FZtGFnk";
 
+
+        $message = new Raw('{
+                    "touser":"o2e-YuNJXi3oNOkH_dh23FZtGFnk",
+                    "msgtype":"miniprogrampage",
+                    "miniprogrampage":
+                    {
+                         "title":"开始预约",
+                            "appid":"wxb07d9741a63f038f",
+                            "pagepath":"/packageA/pages/gym-detail/gym-detail?id=13990",
+                            "thumb_media_id":"y1_Ypabgd3rcrb6YdsaJjlGFUD20hq_ye7S9pgdpiJBtdWR5RsTJhCIR-ponseyY"
+                    }
+                }');
+        $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();*/
     }
 
 
@@ -107,28 +124,27 @@ class TestController extends Controller
             ->orderBy('id', 'desc')
             ->get();
         foreach ($row as $OpenidInfo) {
-  /*      $app = app('wechat');
-        $token = $app->access_token->getToken();
+            /*      $app = app('wechat');
+                  $token = $app->access_token->getToken();
 
 
-            $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $OpenidInfo->wx_openid;
-            $json = $this->http_request_json($url);//这个地方不能用file_get_contents
-            $data = json_decode($json, true);
+                      $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $OpenidInfo->wx_openid;
+                      $json = $this->http_request_json($url);//这个地方不能用file_get_contents
+                      $data = json_decode($json, true);
 
-            $subscribe_time = $data['subscribe_time'];
-            $unionid = $data['unionid'];
-            $subscribe_scene = $data["subscribe_scene"];
-            $qr_scene = $data["qr_scene"];
-            $qr_scene_str = $data["qr_scene_str"];
+                      $subscribe_time = $data['subscribe_time'];
+                      $unionid = $data['unionid'];
+                      $subscribe_scene = $data["subscribe_scene"];
+                      $qr_scene = $data["qr_scene"];
+                      $qr_scene_str = $data["qr_scene_str"];
 
-            DB::table('wx_user_info_copy')
-                ->where('id', $OpenidInfo->id)
-                ->update(['subscribe_time' => $subscribe_time,'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene,'qr_scene_str' => $qr_scene_str]);
-*/
+                      DB::table('wx_user_info_copy')
+                          ->where('id', $OpenidInfo->id)
+                          ->update(['subscribe_time' => $subscribe_time,'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene,'qr_scene_str' => $qr_scene_str]);
+          */
 
 
-
-            dispatch(new UpdateOpenidQueue($OpenidInfo));
+//            dispatch(new UpdateOpenidQueue($OpenidInfo));
 //            $this->dispatch(new UpdateQueue($OpenidInfo));
         }
     }
@@ -145,6 +161,7 @@ class TestController extends Controller
         curl_close($ch);
         return $result;
     }
+
     public function request_news1($openid, $eventkey, $type, $keyword, $menuid)
     {
         $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数

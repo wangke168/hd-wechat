@@ -175,7 +175,79 @@ class MenuController extends Controller
     }
 
 
-    private function add_other($tagid)
+    /**
+     * 个性化菜单（景区）
+     * @param $tagid
+     */
+    private function add_other_jq($tagid)
+    {
+        $buttons = [
+            [
+                "name" => "畅游横店",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "官方网站",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1541"
+                    ],
+
+                    [
+                        "type" => "view",
+                        "name" => "节目时间",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                    ],
+
+                    [
+                        "type" => "view",
+                        "name" => "剧组动态",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "游玩攻略",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "在线客服",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1540"
+                    ],
+                ],
+            ],
+            [
+                "name" => "入园预约",
+                "type" => "miniprogram",
+                "url" => "http://m.hengdianworld.com/",
+                "appid" => "wxb07d9741a63f038f",
+                "pagepath" => "/packageA/pages/gym-detail/gym-detail?id=13990"
+            ],
+            [
+                "name" => "购票中心",
+                "type" => "miniprogram",
+                "url" => "http://m.hengdianworld.com/",
+                "appid" => "wxb07d9741a63f038f",
+                "pagepath" => "/packageA/pages/activity-receive/activity-receive?activitySkinId=100"
+            ],
+        ];
+        $matchRule = [
+            "tag_id" => $tagid,
+            "sex" => "",
+            "country" => "",
+            "province" => "",
+            "city" => "",
+            "client_platform_type" => ""
+        ];
+
+        $this->menu->add($buttons, $matchRule);
+//        $this->menu->add($buttons);
+
+    }
+
+    /**
+     * 个性化菜单（窗口）
+     * @param $tagid
+     */
+    private function add_other_chuan($tagid)
     {
         $buttons = [
             [
@@ -211,30 +283,7 @@ class MenuController extends Controller
             [
                 "name" => "购票中心",
                 "type" => "view",
-                "url"=>"http://sanke.hengdianworld.com/sanke_yd_index.aspx"
-               /* "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "门票预定",
-                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "套餐预定",
-                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "酒店预定",
-                        "url" => "https://mp.weixin.qq.com/s/AQKGow97mWlyZC2h41y4Og"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "订单查询",
-                        "url" => "https://mp.weixin.qq.com/s/PNxklfedA_iSHwIqFrkzyA"
-                    ],
-
-                ],*/
+                "url" => "http://sanke.hengdianworld.com/sanke_yd_index.aspx"
             ],
             [
                 "name" => "最新活动",
@@ -254,26 +303,8 @@ class MenuController extends Controller
                         "name" => "门票加购80元起",
                         "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1519"
                     ],
-                    /*      [
-                              "type" => "click",
-                              "name" => "行程推荐",
-                              "key"  => "22"
-                          ],
-                          [
-                              "type" => "view",
-                              "name" => "常见问题",
-                              "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
-                          ],*/
                 ],
             ],
-
-            /*     [
-                     "type" => "view",
-                     "name" => "门票预订",
-                     "url"  => "https://job.hdymxy.com/meeting/myq"
-                 ],*/
-
-
         ];
 
         $matchRule = [
@@ -290,6 +321,10 @@ class MenuController extends Controller
 
     }
 
+    /**
+     * 个性化菜单（酒店中心）
+     * @param $tagid
+     */
     private function add_other_hotel($tagid)
     {
         $buttons = [
@@ -298,9 +333,16 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "游玩攻略",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
+                        "name" => "官方网站",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1541"
                     ],
+
+                    [
+                        "type" => "view",
+                        "name" => "节目时间",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                    ],
+
                     [
                         "type" => "view",
                         "name" => "剧组动态",
@@ -308,18 +350,13 @@ class MenuController extends Controller
                     ],
                     [
                         "type" => "view",
-                        "name" => "节目时间",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                        "name" => "游玩攻略",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
                     ],
                     [
                         "type" => "view",
-                        "name" => "交通攻略",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1514"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "常见问题",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1515"
+                        "name" => "在线客服",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1540"
                     ],
                 ],
             ],
@@ -328,23 +365,29 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
+                        "name" => "最新活动",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1542"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "官方福利",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1543"
+                    ],
+                    [
+                        "type" => "view",
                         "name" => "门票预定",
-                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1520"
                     ],
                     [
                         "type" => "view",
-                        "name" => "套餐预定",
-                        "url" => "https://mp.weixin.qq.com/s/8GWBO7eNtkk9AMl4TpM4sQ"
+                        "name" => "酒景套餐",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1521"
                     ],
-                    [
-                        "type" => "view",
-                        "name" => "酒店预定",
-                        "url" => "https://mp.weixin.qq.com/s/AQKGow97mWlyZC2h41y4Og"
-                    ],
+
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "https://mp.weixin.qq.com/s/PNxklfedA_iSHwIqFrkzyA"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1516"
                     ],
 
                 ],
@@ -353,38 +396,40 @@ class MenuController extends Controller
                 "name" => "酒店中心",
                 "sub_button" => [
                     [
-                        "type" => "view",
-                        "name" => "酒店介绍",
-                        "url" => "http://m.hengdianworld.com/info_jq.aspx"
-                    ],
-                    [
-                        "type" => "miniprogram",
-                        "name" => "餐饮特惠",
-                        "url" => "http://m.hengdianworld.com/info_yyx.aspx",
-                        "appid"=>"wxec43a205882c487f",
-                        "pagepath"=>"/pages/mall/typeIndex?typeId=534a321e12754c9385d0c912a319982"
-                    ],
-                    [
-                        "type" => "miniprogram",
-                        "name" => "客房预定",
-                        "url" => "http://wx3e632d57ac5dcc68.wx.gcihotel.net/wechat/?/=#/bookSearch",
-                        "appid"=>"wx4ab38795d8f78b40",
-                        "pagepath"=>"/pages/order/bookSearch"
-                    ],
-                    [
                         "type" => "miniprogram",
                         "name" => "特惠商城",
                         "url" => "https://wx3e632d57ac5dcc68.wx.gcihotel.net/mall2/?/=#/",
-                        "appid"=>"wxec43a205882c487f",
-                        "pagepath"=>"/pages/mall/index"
+                        "appid" => "wxec43a205882c487f",
+                        "pagepath" => "/pages/mall/index"
                     ],
                     [
                         "type" => "miniprogram",
-                        "name" => "会员中心",
-                        "url" => "http://wx3e632d57ac5dcc68.wx.gcihotel.net/wechat/?/#/memberCenter",
-                        "appid"=>"wx4ab38795d8f78b40",
-                        "pagepath"=>"/pages/member/memberCenter"
-                ],
+                        "name" => "特色美食",
+                        "url" => "http://m.hengdianworld.com/info_jq.aspx",
+                        "appid" => "wxec43a205882c487f",
+                        "pagepath" => "/pages/mall/typeIndex?typeId=640148dbcee14636a4e9f0bdde302a5e"
+                    ],
+                    [
+                        "type" => "miniprogram",
+                        "name" => "特惠客房",
+                        "url" => "http://wx3e632d57ac5dcc68.wx.gcihotel.net/wechat/?/=#/bookSearch",
+                        "appid" => "wxec43a205882c487f",
+                        "pagepath" => "/pages/mall/typeIndex?typeId=d5d542f9fd2647be815341c89fe38f5d"
+                    ],
+                    [
+                        "type" => "miniprogram",
+                        "name" => "限时抢购",
+                        "url" => "http://m.hengdianworld.com/info_yyx.aspx",
+                        "appid" => "wxec43a205882c487f",
+                        "pagepath" => "/pages/mall/typeIndex?typeId=7c873700ab66483abb4b79993039ea5a"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "员工登录",
+                        "url" => "https://wx3e632d57ac5dcc68.wx.gcihotel.net/mobile/distribution#!/"
+                        /* "appid"=>"wxec43a205882c487f",
+                         "pagepath"=>"/pages/mall/typeIndex?typeId=d5d542f9fd2647be815341c89fe38f5d"*/
+                    ],
                     /*      [
                               "type" => "click",
                               "name" => "行程推荐",
