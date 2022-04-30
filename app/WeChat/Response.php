@@ -9,6 +9,7 @@
 namespace App\WeChat;
 
 use App\Models\WechatImage;
+use App\Models\WechatMiniPage;
 use App\Models\WechatTxt;
 use App\Models\WechatVoice;
 use Carbon\Carbon;
@@ -175,17 +176,16 @@ class Response
         } elseif ($keyword == 'wxh') {
             $content->content = $openid;
             $flag = true;
-        }
-        elseif ($keyword == 'tag') {
+        } elseif ($keyword == 'tag') {
             $tag = $this->app->user_tag;
             $userTags = $tag->userTags($openid);
             if ($userTags->tagid_list) {            //遍历该openid的tag
                 foreach ($userTags as $userTag) {
                     foreach ($userTag as $value) {
-                        $usertag=$value.",";
+                        $usertag = $value . ",";
                     }
                 }
-                $content->content =$usertag;
+                $content->content = $usertag;
                 $flag = true;
             }
         }
@@ -248,6 +248,11 @@ class Response
             $flag = true;
             $this->request_image($openid, $eventkey, $focus, ''); //直接在查询文本回复时使用客服接口
         }
+        if ($this->check_focus_message($eventkey, "minipage")) {
+            $flag = true;
+            $this->request_minipage($openid, $eventkey, $focus, ''); //直接在查询文本回复时使用客服接口
+        }
+
         return $flag;
     }
 
@@ -345,6 +350,12 @@ class Response
                     $flag = true;
                 }
                 break;
+            case "minipage":
+                $row_minipage - WechatMiniPage:: focusPublished($eventkey)->first();
+                if ($row_minipage) {
+                    $flag = true;
+                }
+                break;
             default:
                 break;
 
@@ -423,7 +434,7 @@ class Response
 //        $wxnumber = Crypt::encrypt($openid);      //由于龙帝惊临预约要解密，采用另外的函数
         $wxnumber = $this->usage->authcode($openid, 'ENCODE', 0);
 //        $uid = $this->usage->get_uid($openid);
-        $uid="";
+        $uid = "";
         if (!$eventkey) {
             $eventkey = 'all';
         }
@@ -591,6 +602,44 @@ class Response
             $image = new Image();
             $image->media_id = $result->media_id;
             $this->app->staff->message($image)->by('1001@u_hengdian')->to($openid)->send();
+        }
+    }
+
+    /**
+     * 推送图片消息，分关注推送和关键字推送
+     * @param $openid
+     * @param $eventkey 客人关注的二维码
+     * @param $focus 1:关注时推送    0：非关注
+     * @param $keyword  关键字
+     */
+    public function request_minipage($openid, $eventkey, $focus, $keyword)
+    {
+        switch ($focus) {
+            case '1':
+                $row = WechatMiniPage::focusPublished($eventkey)
+                    ->orderBy('id', 'desc')
+                    ->get();
+
+                break;
+            case "2":
+                $keyword = $this->check_keywowrd($keyword);
+                $row = WechatMiniPage::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+                    ->usagePublished($eventkey)
+                    ->orderBy('id', 'desc')
+                    ->get();
+                break;
+        }
+
+        foreach ($row as $result) {
+            $minipage = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
+                'miniprogrampage' => array(
+                    'title' => $result->title,
+                    'appid' => $result->appid,
+                    'pagepath' => $result->pagepath,
+                    'thumb_media_id' => $result->media_id,));
+            $content=json_encode($minipage,JSON_UNESCAPED_UNICODE);
+            $message=new Raw($content);
+            $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
 

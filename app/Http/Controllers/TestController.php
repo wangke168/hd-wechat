@@ -51,16 +51,26 @@ class TestController extends Controller
     {
 
 //        date('r', Unix timestamp)
-         $openid="o2e-YuNJXi3oNOkH_dh23FZtGFnk";
+         /*$openid="o2e-YuNJXi3oNOkH_dh23FZtGFnk";
          $usage = new Usage();
          $eventkey=$usage->get_openid_info($openid)->eventkey;
-         return $eventkey;
-/*
+         return $eventkey;*/
+
         $openid = "o2e-YuNJXi3oNOkH_dh23FZtGFnk";
 
+//        $arr1=array()
+
+        $arr2 = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
+            'miniprogrampage' => array(
+                'title' => '开始预约',
+                'appid' => 'wxb07d9741a63f038f',
+                'pagepath' => '/packageA/pages/gym-detail/gym-detail?id=13990',
+                'thumb_media_id' => 'y1_Ypabgd3rcrb6YdsaJjlGFUD20hq_ye7S9pgdpiJBtdWR5RsTJhCIR-ponseyY',));
+
+        $content=json_encode($arr2,JSON_UNESCAPED_UNICODE);
 
         $message = new Raw('{
-                    "touser":"o2e-YuNJXi3oNOkH_dh23FZtGFnk",
+                    "touser":\""+$openid+"\",
                     "msgtype":"miniprogrampage",
                     "miniprogrampage":
                     {
@@ -70,7 +80,9 @@ class TestController extends Controller
                             "thumb_media_id":"y1_Ypabgd3rcrb6YdsaJjlGFUD20hq_ye7S9pgdpiJBtdWR5RsTJhCIR-ponseyY"
                     }
                 }');
-        $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();*/
+
+        $message=new Raw($content);
+        $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();
     }
 
 
