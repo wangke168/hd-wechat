@@ -48,7 +48,9 @@ class WechatController extends Controller
                             #关注事件
                             $eventkey = $message->EventKey;
 //                            $content = ($response->news($message, $message->Content));
-
+                            if (strlen($eventkey)>=15){
+                                $eventkey="1007";
+                            }
                             if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
