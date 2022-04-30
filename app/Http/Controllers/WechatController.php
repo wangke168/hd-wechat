@@ -67,7 +67,7 @@ class WechatController extends Controller
                             #重复关注事件
                             $eventkey = $message->EventKey;
                             if (strlen($eventkey)>=15){
-                                $eventkey="1008";
+                                $eventkey="1007";
                             }
                             if ($eventkey == "1336") {
                                 $tour = new Tour();
