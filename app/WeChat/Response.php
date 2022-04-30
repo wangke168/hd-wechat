@@ -351,7 +351,7 @@ class Response
                 }
                 break;
             case "minipage":
-                $row_minipage - WechatMiniPage:: focusPublished($eventkey)->first();
+                $row_minipage = WechatMiniPage:: focusPublished($eventkey)->first();
                 if ($row_minipage) {
                     $flag = true;
                 }

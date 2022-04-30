@@ -12,6 +12,7 @@ use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use DB;
 use EasyWeChat\Message\News;
+use App\Models\WechatMiniPage;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\Image;
 use App\Models\WechatImage;
@@ -57,10 +58,10 @@ class TestController extends Controller
          return $eventkey;*/
 
         $openid = "o2e-YuNJXi3oNOkH_dh23FZtGFnk";
-
+        $eventkey="1007";
 //        $arr1=array()
 
-        $arr2 = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
+       /* $arr2 = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
             'miniprogrampage' => array(
                 'title' => '开始预约',
                 'appid' => 'wxb07d9741a63f038f',
@@ -68,21 +69,25 @@ class TestController extends Controller
                 'thumb_media_id' => 'y1_Ypabgd3rcrb6YdsaJjlGFUD20hq_ye7S9pgdpiJBtdWR5RsTJhCIR-ponseyY',));
 
         $content=json_encode($arr2,JSON_UNESCAPED_UNICODE);
-
-        $message = new Raw('{
-                    "touser":\""+$openid+"\",
-                    "msgtype":"miniprogrampage",
-                    "miniprogrampage":
-                    {
-                         "title":"开始预约",
-                            "appid":"wxb07d9741a63f038f",
-                            "pagepath":"/packageA/pages/gym-detail/gym-detail?id=13990",
-                            "thumb_media_id":"y1_Ypabgd3rcrb6YdsaJjlGFUD20hq_ye7S9pgdpiJBtdWR5RsTJhCIR-ponseyY"
-                    }
-                }');
-
         $message=new Raw($content);
-        $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();
+        $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();*/
+
+
+
+        $row = WechatMiniPage::focusPublished($eventkey)
+            ->orderBy('id', 'desc')
+            ->get();
+        foreach ($row as $result) {
+            $minipage = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
+                'miniprogrampage' => array(
+                    'title' => $result->title,
+                    'appid' => $result->appid,
+                    'pagepath' => $result->pagepath,
+                    'thumb_media_id' => $result->media_id,));
+            $content=json_encode($minipage,JSON_UNESCAPED_UNICODE);
+            $message=new Raw($content);
+            $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();
+        }
     }
 
 
