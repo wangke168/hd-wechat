@@ -48,8 +48,8 @@ class WechatController extends Controller
                             #关注事件
                             $eventkey = $message->EventKey;
 //                            $content = ($response->news($message, $message->Content));
-                            if (strlen($eventkey)>=15){
-                                $eventkey="1007";
+                            if (strlen($eventkey) >= 15) {
+                                $eventkey = "qrscene_1007";
                             }
                             if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
@@ -68,8 +68,8 @@ class WechatController extends Controller
                         case 'SCAN':
                             #重复关注事件
                             $eventkey = $message->EventKey;
-                            if (strlen($eventkey)>=15){
-                                $eventkey="1007";
+                            if (strlen($eventkey) >= 15) {
+                                $eventkey = "1007";
                             }
                             if ($eventkey == "1336") {
                                 $tour = new Tour();
@@ -106,7 +106,7 @@ class WechatController extends Controller
                         ->insert(['wx_openid' => $openid, 'content' => $message->Content]);
 //                    $content = ($response->news($message, $message->Content));
 
-                    $response->request_keyword($openid,$eventkey,$message->Content);
+                    $response->request_keyword($openid, $eventkey, $message->Content);
 //                    return $content;
 
                     break;
