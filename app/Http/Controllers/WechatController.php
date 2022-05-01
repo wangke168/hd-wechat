@@ -104,11 +104,7 @@ class WechatController extends Controller
                     //把内容加入wx_recevice_txt
                     DB::table('wx_recevice_txt')
                         ->insert(['wx_openid' => $openid, 'content' => $message->Content]);
-//                    $content = ($response->news($message, $message->Content));
-
                     $response->request_keyword($openid, $eventkey, $message->Content);
-//                    return $content;
-
                     break;
                 case 'image':
 
