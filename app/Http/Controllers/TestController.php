@@ -41,7 +41,7 @@ class TestController extends Controller
     public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->openid_1 = 'o2e-YuBgnbLLgJGMQykhSg_V3VRI';
+        $this->openid_1 = 'o2e-YuNJXi3oNOkH_dh23FZtGFnk';
         $this->openid_1_1 = '04faIYgdOH15020shuCxbbuWLPmrjTdsVj92Hw5edgc1Uboe0tAg6OZWxi9uul5IKYq7Ccybm7[c]b';
         $this->openid_2 = 'opUv9v977Njll_YHpZYMymxI_aPE';
         $this->openid_2_2 = '7e04yjiCLT2vHOnPmpZRGzfemN[c]iXOPS8uNYq2[a]KEoO5NinNsC8YNFjfYxZUVm8yOY7Y1SnV2tgQ';
@@ -52,16 +52,32 @@ class TestController extends Controller
     {
 
 //        date('r', Unix timestamp)
-         /*$openid="o2e-YuNJXi3oNOkH_dh23FZtGFnk";
-         $usage = new Usage();
+         $openid="o2e-YuNJXi3oNOkH_dh23FZtGFnk";
+         /*$usage = new Usage();
          $eventkey=$usage->get_openid_info($openid)->eventkey;
          return $eventkey;*/
 
         $openid = "o2e-YuNJXi3oNOkH_dh23FZtGFnk";
-        $eventkey="1007";
-//        $arr1=array()
-        $response=new Response();
-        $response->request_focus($openid, $eventkey);
+        $row1 = DB::table('wx_user_info')
+            ->where('eventkey', '2098')
+            ->where('scandate', date('Y-m-d'))
+            ->where('esc','0')
+//                        ->whereRaw('UNIX_TIMESTAMP(endtime)>=' . strtotime($prevtime))
+            ->get();
+        foreach ($row1 as $send_openid) {
+
+//            foreach ($row as $result) {
+            $minipage = array('touser' => $send_openid->wx_openid, 'msgtype' => 'miniprogrampage',
+                'miniprogrampage' => array(
+                    'title' => "测试",
+                    'appid' => "wxd2e8a996a486b48b",
+                    'pagepath' => "/pages/productDetail/productDetail?productId=23688586&dt=52882390",
+                    'thumb_media_id' => "y1_Ypabgd3rcrb6YdsaJjrAaAaXBXQpcK5DHIJ8mQHja0-bHY3yj1r3BazT3XN3_",));
+            $content=json_encode($minipage,JSON_UNESCAPED_UNICODE);
+            $message=new Raw($content);
+            $this->app->staff->message($message)->by('1001@u_hengdian')->to($send_openid->wx_openid)->send();
+
+        }
        /* $arr2 = array('touser' => $openid, 'msgtype' => 'miniprogrampage',
             'miniprogrampage' => array(
                 'title' => '开始预约',

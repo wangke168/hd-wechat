@@ -607,7 +607,7 @@ class Response
     }
 
     /**
-     * 推送图片消息，分关注推送和关键字推送
+     * 推送小程序消息，分关注推送和关键字推送
      * @param $openid
      * @param $eventkey 客人关注的二维码
      * @param $focus 1:关注时推送    0：非关注
