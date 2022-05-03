@@ -49,7 +49,7 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
         $qr_scene = $data["qr_scene"];
         $qr_scene_str = $data["qr_scene_str"];
 
-        DB::table('wx_user_info_copy')
+        DB::table('wx_user_info')
             ->where('id', $this->OpenidInfo->id)
             ->update(['subscribe_time' => $subscribe_time,'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene,'qr_scene_str' => $qr_scene_str]);
         /*        DB::table('wx_user_unionid')
