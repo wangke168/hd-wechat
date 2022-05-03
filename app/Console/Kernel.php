@@ -32,10 +32,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        /*$schedule->command('inspire')
+       /* $schedule->command('inspire')
             ->everyMinute();*/
-        $schedule->command('temp')
-            ->cron('10,20,30,40,50 8-18 * * *');
+      /*  $schedule->command('temp')
+            ->cron('10,20,30,40,50 8-18 * * *');*/
         /*更新wx_user_info里的信息*/
         //    $schedule->command('update_openid_info')
         //        ->dailyAt('0:30');
@@ -53,8 +53,8 @@ class Kernel extends ConsoleKernel
         //       ->cron('*/20 9-16 * * *');
 
         /*更新wx_user_info里的信息*/
-        //    $schedule->command('UpdateOpenidInfo')
-        //        ->dailyAt('9:50');
+            $schedule->command('UpdateOpenidInfo')
+                ->everyMinute();
      /*    $schedule->command('UpdateOpenidInfo')
              ->everyMinute();*/
 
