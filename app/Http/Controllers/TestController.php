@@ -113,77 +113,22 @@ class TestController extends Controller
 
     public function temp(Request $request)
     {
-        /*$userService = $this->app->user;
-        $next_OpenId = null;
-        for ($i = 1; $i <= 2; $i++) {
-            $users = $userService->lists($nextOpenId = $next_OpenId);
-            $userall = $users["data"]["openid"];
-            foreach ($userall as $user) {
-                echo $user . "</br>";
-                $next_OpenId = $user;
-            }
-            if ($nextOpenId == $next_OpenId) {
-                break;
-            }
-        }*/
 
-        $raw = DB::table("wx_user_info_copy2")
-            ->orderBy('id', 'desc')
-            ->first();
-        if (!$raw) {
-            $next_OpenId = null;
-        } else {
-            $next_OpenId = $raw->wx_openid;
-        }
-        $userService = $this->app->user;
-        for ($i = 1; $i <= 10; $i++) {
-            $users = $userService->lists($nextOpenId = $next_OpenId);
-            $userall = $users["data"]["openid"];
-            foreach ($userall as $user) {
-                // echo $user . "</br>";
-                $next_OpenId = $user;
-
-                DB::table("wx_user_info_copy2")
-                    ->insert(['wx_openid' => $user]);
-            }
-        }
-        echo "已完成";
+        $eventkey = '2098';
+        $keyword='测试';
+        $openid=$this->openid_1;
+        $focus='2';
+        $response=new Response();
+        $this->request_txt($openid, $eventkey,'2',$keyword);
 
     }
 
+
+
     public function temp2()
     {
-        $row = DB::table('wx_user_info_copy')
-//            ->where('esc', '0')
-//            ->whereDate('endtime', '>=', date("Y-m-d", strtotime("-1 day")))
-            //         ->whereDate('endtime','>=','2017-02-24')
-            ->limit(100)
-            ->orderBy('id', 'desc')
-            ->get();
-        foreach ($row as $OpenidInfo) {
-            /*      $app = app('wechat');
-                  $token = $app->access_token->getToken();
 
-
-                      $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $token . "&openid=" . $OpenidInfo->wx_openid;
-                      $json = $this->http_request_json($url);//这个地方不能用file_get_contents
-                      $data = json_decode($json, true);
-
-                      $subscribe_time = $data['subscribe_time'];
-                      $unionid = $data['unionid'];
-                      $subscribe_scene = $data["subscribe_scene"];
-                      $qr_scene = $data["qr_scene"];
-                      $qr_scene_str = $data["qr_scene_str"];
-
-                      DB::table('wx_user_info_copy')
-                          ->where('id', $OpenidInfo->id)
-                          ->update(['subscribe_time' => $subscribe_time,'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene,'qr_scene_str' => $qr_scene_str]);
-          */
-
-
-//            dispatch(new UpdateOpenidQueue($OpenidInfo));
-//            $this->dispatch(new UpdateQueue($OpenidInfo));
-        }
+        
     }
 
 //因为url是https 所有请求不能用file_get_contents,用curl请求json 数据

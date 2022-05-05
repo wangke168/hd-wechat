@@ -132,15 +132,15 @@ class Response
             }
             if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
                 $flag = true;
-                $this->request_voice($openid, '2', $eventkey, $keyword);
+                $this->request_voice($openid, $eventkey,'2',  $keyword);
             }
             if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
                 $flag = true;
-                $this->request_txt($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
+                $this->request_txt($openid, $eventkey,'2',  $keyword); //直接在查询文本回复时使用客服接口
             }
             if ($this->check_keyword_message($eventkey, "image", $keyword)) {
                 $flag = true;
-                $this->request_image($openid, '2', $eventkey, $keyword); //直接在查询文本回复时使用客服接口
+                $this->request_image($openid, $eventkey,'2',  $keyword); //直接在查询文本回复时使用客服接口
             }
             if (!$flag) //如果该二维码没有对应的关注推送信息
             {
