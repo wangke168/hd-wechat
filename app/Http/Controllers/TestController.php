@@ -57,7 +57,7 @@ class TestController extends Controller
          $eventkey=$usage->get_openid_info($openid)->eventkey;
          return $eventkey;*/
 
-        $openid = "o2e-YuPbRP8n_srrhBD0KCYH-fwg";
+        $openid = "o2e-YuL2TMT4jlRiCarEE4-hnKw0";
         $userService = $this->app->user;
         return  $userService->get($openid);
         $row1 = DB::table('wx_user_info')
