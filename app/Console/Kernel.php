@@ -54,7 +54,7 @@ class Kernel extends ConsoleKernel
 
         /*更新wx_user_info里的信息*/
             $schedule->command('UpdateOpenidInfo')
-                ->dailyAt('10:50');
+                ->everyMinute();
      /*    $schedule->command('UpdateOpenidInfo')
              ->everyMinute();*/
 
