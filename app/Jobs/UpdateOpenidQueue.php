@@ -43,15 +43,18 @@ class UpdateOpenidQueue extends Job implements ShouldQueue
         /*$city = $data['city'];
         $province = $data['province'];
         $country = $data['country'];*/
-        $subscribe_time = $data['subscribe_time'];
-        $unionid = $data['unionid'];
-        $subscribe_scene = $data["subscribe_scene"];
-        $qr_scene = $data["qr_scene"];
-        $qr_scene_str = $data["qr_scene_str"];
+        $subscribe=$data['subscribe'];
+        if ($subscribe==1) {
+            $subscribe_time = $data['subscribe_time'];
+            $unionid = $data['unionid'];
+            $subscribe_scene = $data["subscribe_scene"];
+            $qr_scene = $data["qr_scene"];
+            $qr_scene_str = $data["qr_scene_str"];
 
-        DB::table('wx_user_info')
-            ->where('id', $this->OpenidInfo->id)
-            ->update(['subscribe_time' => $subscribe_time,'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene,'qr_scene_str' => $qr_scene_str]);
+            DB::table('wx_user_info')
+                ->where('id', $this->OpenidInfo->id)
+                ->update(['subscribe_time' => $subscribe_time, 'unionid' => $unionid, 'subscribe_scene' => $subscribe_scene, 'qr_scene' => $qr_scene, 'qr_scene_str' => $qr_scene_str]);
+        }
         /*        DB::table('wx_user_unionid')
                     ->insert(['wx_openid' => $this->OpenidInfo->wx_openid, 'wx_unionid' => '']);*/
 //            Log::info('it is openid='.$this->OpenidInfo);

@@ -52,12 +52,14 @@ class TestController extends Controller
     {
 
 //        date('r', Unix timestamp)
-         $openid="o2e-YuNJXi3oNOkH_dh23FZtGFnk";
+         $openid="o2e-YuETJD7rL1j_SWRw145hilFI";
          /*$usage = new Usage();
          $eventkey=$usage->get_openid_info($openid)->eventkey;
          return $eventkey;*/
 
-        $openid = "o2e-YuNJXi3oNOkH_dh23FZtGFnk";
+        $openid = "o2e-YuPbRP8n_srrhBD0KCYH-fwg";
+        $userService = $this->app->user;
+        return  $userService->get($openid);
         $row1 = DB::table('wx_user_info')
             ->where('eventkey', '2098')
             ->where('scandate', date('Y-m-d'))
