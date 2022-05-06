@@ -23,20 +23,20 @@ class LinkJumpController extends Controller
         $get_openid_url = $jump_url . "?id=" . $id;
 
         /**通过H5获取用户OpenID**/
-       /* $openid = new OpenID();
-        $wxnumber = $openid->GetOpenid($get_openid_url);*/
+        $openid = new OpenID();
+        $wxnumber = $openid->GetOpenid($get_openid_url);
         /**------------------**/
 
 
         /**计数**/
         $count = new Count();
         $count->add_article_hits($id);
-////        $count->insert_hits($id, $wxnumber);
+        $count->insert_hits($id, $wxnumber);
 //        $this->addclick($id,$openid);
         $usage = new Usage();
-////        $eventkey = $usage->get_openid_info($wxnumber)->eventkey;
+        $eventkey = $usage->get_openid_info($wxnumber)->eventkey;
 
-/*        if (check_chuangkou($eventkey)) {
+        if (check_chuangkou($eventkey)) {
             if ($id == "1520") {
                 $id = "1538";
             }
@@ -46,11 +46,11 @@ class LinkJumpController extends Controller
             if ($id == "1522") {
                 $id = "1538";
             }
-        }*/
+        }
 
-        $wxnumber='o2e-YuJif2ut_Loap_Pf3ldRl6RU';
-//        $uid = $usage->get_uid($wxnumber);
-        $uid = "";
+
+        $uid = $usage->get_uid($wxnumber);
+//        $uid = "";
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
 
         $url = $this->get_url($id)->url;
