@@ -5,6 +5,7 @@
  * Date: 2016/8/23
  * Time: 16:28
  */
+
 namespace App\WeChat;
 
 use Carbon\Carbon;
@@ -23,13 +24,12 @@ class Usage
      * @param $openid
      * @return mixed|static
      */
-    public function get_openid_info($openid=null)
+    public function get_openid_info($openid = null)
     {
         $row = DB::table('wx_user_info')
             ->where('wx_openid', $openid)
             ->first();
-        if (!$row)
-        {
+        if (!$row) {
             DB::table('wx_user_info')
                 ->insert(['wx_openid' => $openid, 'eventkey' => '', 'tag_id' => '', 'subscribe' => '1', 'adddate' => Carbon::now(), 'scandate' => Carbon::now()]);
 
@@ -51,7 +51,11 @@ class Usage
         $row = DB::table('wx_qrscene_info')
             ->where('qrscene_id', $eventkey)
             ->first();
-        return ($row);
+        if (!$row) {
+            return false;
+        } else {
+            return ($row);
+        };
     }
 
 
@@ -62,7 +66,11 @@ class Usage
      */
     public function get_uid($openid)
     {
-        $uid = $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
+        if (!$this->get_eventkey_info($this->get_openid_info($openid)->eventkey)) {
+            $uid = '';
+        } else {
+            $uid = $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
+        }
         return $uid;
     }
 
@@ -90,17 +98,16 @@ class Usage
      */
     public function get_eventkey_son_info($parentid)
     {
-        $eventkey=array();
-        $row=DB::table('wx_qrscene_info')
-            ->where('parent_id',$parentid)
+        $eventkey = array();
+        $row = DB::table('wx_qrscene_info')
+            ->where('parent_id', $parentid)
             ->get();
         if ($row) {
             foreach ($row as $result) {
                 $eventkey[] = $result->qrscene_id;
             }
             return $eventkey;
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -116,12 +123,9 @@ class Usage
         $row = DB::table('wx_shop_info')
             ->where('shop_id', $shop_id)
             ->first();
-        if($row)
-        {
+        if ($row) {
             return $row;
-        }
-        else
-        {
+        } else {
             return '';
         }
 
@@ -235,7 +239,7 @@ class Usage
      * @return mixed
      */
 
-    public  function CheckEventkey($eventkey)
+    public function CheckEventkey($eventkey)
     {
         $rowParentId = DB::table('wx_qrscene_info')
             ->where('qrscene_id', $eventkey)

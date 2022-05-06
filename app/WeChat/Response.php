@@ -274,40 +274,6 @@ class Response
         if (!$this->response_focus_message($openid, $eventkey, "1")) {
             $this->response_focus_message($openid, "all", "1");
         }
-
-        /*     if ($this->check_eventkey_message($eventkey, "news", "1")) {
-                 $flag = true;
-                 $this->request_news($openid, $eventkey, '1', '', '');
-             }
-             if ($this->check_eventkey_message($eventkey, "voice", "1")) {
-                 $flag = true;
-                 $this->request_voice($openid, '1', $eventkey, '');
-             }
-             if ($this->check_eventkey_message($eventkey, "txt", "1")) {
-                 $flag = true;
-                 $this->request_txt($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
-             }
-             if ($this->check_eventkey_message($eventkey, "image", "1")) {
-                 $flag = true;
-                 $this->request_image($openid, '1', $eventkey, ''); //直接在查询文本回复时使用客服接口
-             }
-
-             if (!$flag) //如果该二维码没有对应的关注推送信息
-             {
-                 if ($this->check_eventkey_message('all', "news", "1")) {
-                     $this->request_news($openid, 'all', '1', '', '');
-                 }
-                 if ($this->check_eventkey_message('all', "voice", "1")) {
-                     $this->request_voice($openid, '1', 'all', '');
-                 }
-                 if ($this->check_eventkey_message('all', "txt", "1")) {
-                     $this->request_txt($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
-                 }
-                 if ($this->check_eventkey_message('all', "image", "1")) {
-                     $this->request_image($openid, '1', 'all', ''); //直接在查询文本回复时使用客服接口
-                 }
-             }*/
-//        return $content;
     }
 
     /**

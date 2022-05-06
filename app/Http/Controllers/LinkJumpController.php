@@ -35,7 +35,8 @@ class LinkJumpController extends Controller
 //        $this->addclick($id,$openid);
         $usage = new Usage();
         $eventkey = $usage->get_openid_info($wxnumber)->eventkey;
-        if ($eventkey == 1008) {
+
+        if (check_chuangkou($eventkey)) {
             if ($id == "1520") {
                 $id = "1538";
             }
@@ -48,7 +49,7 @@ class LinkJumpController extends Controller
         }
 
 
-//        $uid = $usage->get_uid($wxnumber);
+        $uid = $usage->get_uid($wxnumber);
         $uid = "";
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
 
@@ -63,6 +64,24 @@ class LinkJumpController extends Controller
         } else {
             return redirect($url . "&wxnumber={$openid}");
         }
+    }
+
+    /**
+     * 检测是不是窗口扫码的eventkey
+     * @param $eventkey
+     * @return bool
+     */
+    private function check_chuangkou($eventkey){
+
+        $row=DB::table('wx_qrscene_info')
+            ->where('qrscene_id',$eventkey)
+            ->where('classid','9')
+            ->first();
+        if ($row)
+        {
+            $flag= true;
+        }
+        return $flag;
     }
 
     /* public function index($id, $openid)

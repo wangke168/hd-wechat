@@ -113,13 +113,18 @@ class TestController extends Controller
 
     public function temp(Request $request)
     {
+        $openid='o2e-YuCGGo5wGXFagurlRh-nMk3g';
+        $usage=new Usage();
+//        return $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
+//        $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
+        $uid = $usage->get_uid($openid);
+        return $uid;
+   /*     $eventkey='1';
+        $row = DB::table('wx_qrscene_info')
+            ->where('qrscene_id', $eventkey)
+            ->first();*/
 
-        $eventkey = '2098';
-        $keyword='测试';
-        $openid=$this->openid_1;
-        $focus='2';
-        $response=new Response();
-        $this->request_txt($openid, $eventkey,'2',$keyword);
+//        return $row;
 
     }
 
@@ -128,7 +133,7 @@ class TestController extends Controller
     public function temp2()
     {
 
-        
+
     }
 
 //因为url是https 所有请求不能用file_get_contents,用curl请求json 数据
