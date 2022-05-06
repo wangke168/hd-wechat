@@ -50,7 +50,7 @@ class LinkJumpController extends Controller
 
 
         $uid = $usage->get_uid($wxnumber);
-        $uid = "";
+//        $uid = "";
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
 
         $url = $this->get_url($id)->url;
