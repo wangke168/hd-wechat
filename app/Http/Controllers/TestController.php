@@ -113,7 +113,7 @@ class TestController extends Controller
 
     public function temp(Request $request)
     {
-        $openid='owKxH66HrTEWOkIWmbORCnClalAg';
+        $openid='o2e-YuNJXi3oNOkH_dh23FZtGFnk';
         $usage=new Usage();
 //        return $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
 //        $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
