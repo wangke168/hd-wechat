@@ -47,7 +47,7 @@ class WechatController extends Controller
                         case 'subscribe':
                             #关注事件
                             $eventkey = $message->EventKey;
-                            //检查是不是酒店会员中心的分销二维码，如果是，转成
+                            //检查是不是酒店会员中心的分销二维码，如果是，转成1007
                             if (strlen($eventkey) >= 15) {
                                 $eventkey = "qrscene_1007";
                             }
@@ -68,6 +68,7 @@ class WechatController extends Controller
                         case 'SCAN':
                             #重复关注事件
                             $eventkey = $message->EventKey;
+                            //检查是不是酒店会员中心的分销二维码，如果是，转成1007
                             if (strlen($eventkey) >= 15) {
                                 $eventkey = "1007";
                             }

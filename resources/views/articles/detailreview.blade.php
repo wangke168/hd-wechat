@@ -7,8 +7,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="MobileOptimized" content="320"/>
     <meta name="copyright" content="Copyright &copy; 2013 hengdianworld.com Inc. All Rights Reserved."/>
-    <meta name="description" content="掌上横店！掌上横店是横店圆明新园的移动门户"/>
-    <meta name="keywords" content="掌上横店,掌上横店圆明新园,横店圆明新园手机版网站"/>
+    <meta name="description" content="掌上横店！掌上横店是影视城的移动门户"/>
+    <meta name="keywords" content="掌上横店,掌上横店影视城,横店影视城手机版网站"/>
     <title>{{$article->title}}</title>
     <link href="{{asset('css/mbcss.css')}}" rel="stylesheet" type="text/css"/>
     <style type="text/css">
@@ -46,7 +46,7 @@
     <div id="title">
         {{$article->title}}</div>
     <div id="titleinfo">
-        横店圆明新园 {{$article->adddate}}</div>
+        横店影视城 {{$article->adddate}}</div>
     <div id="contents">
 
         {!!str_replace("\"/control/editor/attached/image/","\"http://weix2.hengdianworld.com/control/editor/attached/image/",$article->content)!!}
@@ -62,9 +62,9 @@
   <!--  <div id="tempheight" style="clear:both;"></div>-->
     <div id="bottom">
         <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
-            热线电话：<a href="tel:057989600055"> 0579-89600055</a>
+            热线电话：<a href="tel:4009057977">400-9057-977</a>
         </div>
-        <div>©2013-2017 横店圆明新园 版权所有</div>
+        <div>©2013-2017 横店影视城 版权所有</div>
     </div>
 
 </div>
