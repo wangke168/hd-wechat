@@ -51,12 +51,12 @@ class Usage
         $row = DB::table('wx_qrscene_info')
             ->where('qrscene_id', $eventkey)
             ->first();
-        return ($row);
-  /*      if (!$row) {
+       if (!$row) {
             return false;
         } else {
             return ($row);
-        };*/
+        };
+        return ($row);
     }
 
 
@@ -67,12 +67,12 @@ class Usage
      */
     public function get_uid($openid)
     {
-       /* if (!$this->get_eventkey_info($this->get_openid_info($openid)->eventkey)) {
+        if (!$this->get_eventkey_info($this->get_openid_info($openid)->eventkey)) {
             $uid = '';
         } else {
             $uid = $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
-        }*/
-        $uid = $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
+        }
+//        $uid = $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
         return $uid;
     }
 
