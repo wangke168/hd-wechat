@@ -36,7 +36,7 @@ class LinkJumpController extends Controller
         $usage = new Usage();
         $eventkey = $usage->get_openid_info($wxnumber)->eventkey;
 
-        if (check_chuangkou($eventkey)) {
+        if ($this->check_chuangkou($eventkey)) {
             if ($id == "1520") {
                 $id = "1538";
             }
