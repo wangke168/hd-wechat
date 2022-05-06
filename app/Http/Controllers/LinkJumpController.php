@@ -81,6 +81,9 @@ class LinkJumpController extends Controller
         {
             $flag= true;
         }
+        else{
+            $flag=false;
+        }
         return $flag;
     }
 
