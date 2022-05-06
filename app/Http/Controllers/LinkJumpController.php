@@ -23,11 +23,11 @@ class LinkJumpController extends Controller
         $get_openid_url = $jump_url . "?id=" . $id;
 
         /**通过H5获取用户OpenID**/
-        $openid = new OpenID();
-        $wxnumber = $openid->GetOpenid($get_openid_url);
+     /*   $openid = new OpenID();
+        $wxnumber = $openid->GetOpenid($get_openid_url);*/
         /**------------------**/
 
-
+        $wxnumber='o2e-YuBvWwFSt4eoBARCRe8o2104';
         /**计数**/
         $count = new Count();
         $count->add_article_hits($id);
