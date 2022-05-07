@@ -325,7 +325,7 @@ class MenuController extends Controller
      * 个性化菜单（酒店中心）
      * @param $tagid
      */
-    private function add_other_hotel($tagid)
+    private function add_other($tagid)
     {
         $buttons = [
             [
@@ -417,16 +417,21 @@ class MenuController extends Controller
                         "pagepath" => "/pages/mall/typeIndex?typeId=d5d542f9fd2647be815341c89fe38f5d"
                     ],
                     [
+                        "type" => "view",
+                        "name" => "我要大奖",
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1546"
+                    ],
+                    /*[
                         "type" => "miniprogram",
                         "name" => "限时抢购",
                         "url" => "http://m.hengdianworld.com/info_yyx.aspx",
                         "appid" => "wxec43a205882c487f",
                         "pagepath" => "/pages/mall/typeIndex?typeId=7c873700ab66483abb4b79993039ea5a"
-                    ],
+                    ],*/
                     [
                         "type" => "view",
                         "name" => "员工登录",
-                        "url" => "https://wx3e632d57ac5dcc68.wx.gcihotel.net/mobile/distribution#!/"
+                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1547"
                         /* "appid"=>"wxec43a205882c487f",
                          "pagepath"=>"/pages/mall/typeIndex?typeId=d5d542f9fd2647be815341c89fe38f5d"*/
                     ],

@@ -60,7 +60,7 @@
         <div style="color:#fff;"><img src="{{asset('images/tel.png')}}" width="15" height="15" border=0/>
             热线电话：<a href="tel:400-9057-977">400-9057-977</a>
         </div>
-        <div>©2013-2017 横店影视城 版权所有</div>
+        <div>©2013-2022 横店影视城 版权所有</div>
     </div>
 
 </div>
