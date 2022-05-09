@@ -119,9 +119,12 @@ class Response
      */
     public function request_keyword($openid, $eventkey, $keyword)
     {
+        $usage=new Usage();
+        $eventkey=$usage->get_openid_info($openid);
         if (!$eventkey) {
             $eventkey = 'all';
         }
+        
         if (!$this->request_special_keyword($openid, $keyword)) { //明确是否有特殊关键字回复
             $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
             //检查该关键字回复中是否有图文消息

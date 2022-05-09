@@ -115,10 +115,14 @@ class TestController extends Controller
     {
         $keyword='测试';
         $eventkey='1007';
-        $row_txt = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+        $openid='o2e-YuNJXi3oNOkH_dh23FZtGFnk';
+     /*   $row = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
             ->usagePublished($eventkey)
-            ->first();
-        return $row_txt;
+            ->orderBy('id', 'desc')
+            ->get();
+        return $row;*/
+        $responsee=new Response();
+        $responsee->request_keyword($openid, $eventkey, $keyword);
     }
 
 
