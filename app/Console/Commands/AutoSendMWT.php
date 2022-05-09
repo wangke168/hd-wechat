@@ -18,7 +18,7 @@ class AutoSendMWT extends Command
      *
      * @var string
      */
-    protected $description = '梦外滩二销内容自动推送';
+    protected $description = '二销内容自动推送';
 
     /**
      * Create a new command instance.

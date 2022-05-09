@@ -102,6 +102,7 @@ class WechatController extends Controller
                     }
                     break;
                 case 'text':
+                    $eventkey = $message->EventKey;
                     //把内容加入wx_recevice_txt
                     DB::table('wx_recevice_txt')
                         ->insert(['wx_openid' => $openid, 'content' => $message->Content]);

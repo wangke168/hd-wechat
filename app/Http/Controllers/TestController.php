@@ -113,19 +113,12 @@ class TestController extends Controller
 
     public function temp(Request $request)
     {
-        $openid='o2e-YuNJXi3oNOkH_dh23FZtGFnk';
-        $usage=new Usage();
-//        return $usage->get_eventkey_info($usage->get_openid_info($openid)->eventkey)->uid;
-//        $this->get_eventkey_info($this->get_openid_info($openid)->eventkey)->uid;
-        $uid = $usage->get_uid($openid);
-        return $uid;
-   /*     $eventkey='1';
-        $row = DB::table('wx_qrscene_info')
-            ->where('qrscene_id', $eventkey)
-            ->first();*/
-
-//        return $row;
-
+        $keyword='测试';
+        $eventkey='1007';
+        $row_txt = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
+            ->usagePublished($eventkey)
+            ->first();
+        return $row_txt;
     }
 
 

@@ -431,7 +431,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "员工登录",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1547"
+                        "url" => "https://wx3e632d57ac5dcc68.wx.gcihotel.net/wechat/?/#/distributorApply"
                         /* "appid"=>"wxec43a205882c487f",
                          "pagepath"=>"/pages/mall/typeIndex?typeId=d5d542f9fd2647be815341c89fe38f5d"*/
                     ],
