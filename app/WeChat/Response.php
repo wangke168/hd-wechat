@@ -171,12 +171,12 @@ class Response
         $content = new Text();
         $flag = false;
         if ($keyword == 'a') {
-            /*if ($this->usage->get_openid_info($openid)->eventkey) {
+            if ($this->usage->get_openid_info($openid)->eventkey) {
                 $content->content = $this->usage->get_openid_info($openid)->eventkey;
             } else {
                 $content->content = '无eventkey';
-            }*/
-            $content->content = $eventkey;
+            }
+//            $content->content = $eventkey;
             $flag = true;
         } elseif ($keyword == 'wxh') {
             $content->content = $openid;
