@@ -119,13 +119,13 @@ class Response
      */
     public function request_keyword($openid, $eventkey, $keyword)
     {
-       /* $usage=new Usage();
-        $eventkey=$usage->get_openid_info($openid);*/
+        /* $usage=new Usage();
+         $eventkey=$usage->get_openid_info($openid);*/
         if (!$eventkey) {
             $eventkey = 'all';
         }
 
-        if (!$this->request_special_keyword($openid, $keyword)) { //明确是否有特殊关键字回复
+        if (!$this->request_special_keyword($openid, $eventkey, $keyword)) { //明确是否有特殊关键字回复
             $flag = false; //先设置flag，如果news，txt，voice都没有的话，检查flag值，还是false时，输出默认关注显示
             //检查该关键字回复中是否有图文消息
 
@@ -135,15 +135,15 @@ class Response
             }
             if ($this->check_keyword_message($eventkey, "voice", $keyword)) {
                 $flag = true;
-                $this->request_voice($openid, $eventkey,'2',  $keyword);
+                $this->request_voice($openid, $eventkey, '2', $keyword);
             }
             if ($this->check_keyword_message($eventkey, "txt", $keyword)) {
                 $flag = true;
-                $this->request_txt($openid, $eventkey,'2',  $keyword); //直接在查询文本回复时使用客服接口
+                $this->request_txt($openid, $eventkey, '2', $keyword); //直接在查询文本回复时使用客服接口
             }
             if ($this->check_keyword_message($eventkey, "image", $keyword)) {
                 $flag = true;
-                $this->request_image($openid, $eventkey,'2',  $keyword); //直接在查询文本回复时使用客服接口
+                $this->request_image($openid, $eventkey, '2', $keyword); //直接在查询文本回复时使用客服接口
             }
             if (!$flag) //如果该二维码没有对应的关注推送信息
             {
@@ -166,16 +166,17 @@ class Response
 
     }
 
-    private function request_special_keyword($openid, $keyword)
+    private function request_special_keyword($openid, $eventkey, $keyword)
     {
         $content = new Text();
         $flag = false;
         if ($keyword == 'a') {
-            if ($this->usage->get_openid_info($openid)->eventkey) {
+            /*if ($this->usage->get_openid_info($openid)->eventkey) {
                 $content->content = $this->usage->get_openid_info($openid)->eventkey;
             } else {
                 $content->content = '无eventkey';
-            }
+            }*/
+            $content->content = $eventkey;
             $flag = true;
         } elseif ($keyword == 'wxh') {
             $content->content = $openid;
@@ -607,8 +608,8 @@ class Response
                     'appid' => $result->appid,
                     'pagepath' => $result->pagepath,
                     'thumb_media_id' => $result->media_id,));
-            $content=json_encode($minipage,JSON_UNESCAPED_UNICODE);
-            $message=new Raw($content);
+            $content = json_encode($minipage, JSON_UNESCAPED_UNICODE);
+            $message = new Raw($content);
             $this->app->staff->message($message)->by('1001@u_hengdian')->to($openid)->send();
         }
     }
