@@ -119,8 +119,8 @@ class Response
      */
     public function request_keyword($openid, $eventkey, $keyword)
     {
-        /* $usage=new Usage();
-         $eventkey=$usage->get_openid_info($openid);*/
+        $usage = new Usage();
+        $eventkey = $usage->get_openid_info($openid)->eventkey;
         if (!$eventkey) {
             $eventkey = 'all';
         }
