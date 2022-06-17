@@ -63,27 +63,27 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "游玩攻略",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1511"
                     ],
                     [
                         "type" => "view",
                         "name" => "剧组动态",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1512"
                     ],
                     [
                         "type" => "view",
                         "name" => "节目时间",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1513"
                     ],
                     [
                         "type" => "view",
                         "name" => "交通攻略",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1514"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1514"
                     ],
                     [
                         "type" => "view",
                         "name" => "常见问题",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1515"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1515"
                     ],
                 ],
             ],
@@ -93,22 +93,22 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "门票预定",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1520"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1520"
                     ],
                     [
                         "type" => "view",
                         "name" => "门票+住宿预定",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1521"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1521"
                     ],
                     [
                         "type" => "view",
                         "name" => "酒店预定",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1522"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1522"
                     ],
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1516"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1516"
                     ],
                     [
                         "type" => "click",
@@ -121,30 +121,35 @@ class MenuController extends Controller
             [
                 "name" => "最新活动",
                 "sub_button" => [
-                    [
+                    /*[
                         "type" => "view",
                         "name" => "全城送福●免费抽奖",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1517"
+                        "url" => "http://mh.zjqsa.com/zp/index.aspx"
+                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "618钜惠",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1548"
                     ],
                     [
                         "type" => "view",
                         "name" => "升级年卡",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1518"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1523"
                     ],
-                    [
+           /*         [
                         "type" => "view",
                         "name" => "购年卡立减50",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1525"
-                    ],
+                        "url" => "https://e.hengdianworld.com/yd_mp_activity.aspx?id=816"
+                    ],*/
                     [
                         "type" => "view",
                         "name" => "超值年卡/季卡",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1537"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1537"
                     ],
                     [
                         "type" => "view",
                         "name" => "门票加购80元起",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1519"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1519"
                     ],
                     /*      [
                               "type" => "click",
@@ -188,29 +193,29 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "官方网站",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1541"
+                        "url" => "http://wx2.hengdianworld.com/jump?id=1541"
                     ],
 
                     [
                         "type" => "view",
                         "name" => "节目时间",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                        "url" => "http://wx2.hengdianworld.com/jump?id=1513"
                     ],
 
                     [
                         "type" => "view",
                         "name" => "剧组动态",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                        "url" => "http://wx2.hengdianworld.com/jump?id=1512"
                     ],
                     [
                         "type" => "view",
                         "name" => "游玩攻略",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
+                        "url" => "http://wx2.hengdianworld.com/jump?id=1511"
                     ],
                     [
                         "type" => "view",
                         "name" => "在线客服",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1540"
+                        "url" => "http://wx2.hengdianworld.com/jump?id=1540"
                     ],
                 ],
             ],
@@ -334,29 +339,29 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "官方网站",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1541"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1541"
                     ],
 
                     [
                         "type" => "view",
                         "name" => "节目时间",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1513"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1513"
                     ],
 
                     [
                         "type" => "view",
                         "name" => "剧组动态",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1512"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1512"
                     ],
                     [
                         "type" => "view",
                         "name" => "游玩攻略",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1511"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1511"
                     ],
                     [
                         "type" => "view",
                         "name" => "在线客服",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1540"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1540"
                     ],
                 ],
             ],
@@ -366,28 +371,28 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "最新活动",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1542"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1542"
                     ],
                     [
                         "type" => "view",
                         "name" => "官方福利",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1543"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1543"
                     ],
                     [
                         "type" => "view",
                         "name" => "门票预定",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1520"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1520"
                     ],
                     [
                         "type" => "view",
                         "name" => "酒景套餐",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1521"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1521"
                     ],
 
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1516"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1516"
                     ],
 
                 ],
@@ -419,7 +424,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "我要大奖",
-                        "url" => "https://wechat.hdyuanmingxinyuan.com/jump?id=1546"
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1546"
                     ],
                     /*[
                         "type" => "miniprogram",
