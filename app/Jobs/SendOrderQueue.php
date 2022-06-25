@@ -99,7 +99,7 @@ class SendOrderQueue extends Job implements ShouldQueue
                     $ticketorder = $data['ticketorder'][$j]['code'];
                 }
 
-                $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电4009999141。";
+                $remark = "\n在检票口出示预定身份证可直接检票景区。\n如有疑问，请致电4009999141。";
                 
                 $templateId=env('TEMPLATEID_TICKET');
 
@@ -109,10 +109,9 @@ class SendOrderQueue extends Job implements ShouldQueue
                     "keyword2" => array($date, "#173177"),
                     "keyword3" => array($ticket, "#173177"),
                     "keyword4" => array($numbers, "#173177"),
-                    "keyword5" => array($ticketorder, "#173177"),
+//                    "keyword5" => array($ticketorder, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
-
             }
         }
         if ($inclusivecount <> 0) {

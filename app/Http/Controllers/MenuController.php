@@ -126,10 +126,15 @@ class MenuController extends Controller
                         "name" => "全城送福●免费抽奖",
                         "url" => "http://mh.zjqsa.com/zp/index.aspx"
                     ],*/
-                    [
+                    /*[
                         "type" => "view",
                         "name" => "618钜惠",
                         "url" => "https://hdwechat.hengdianworld.com/jump?id=1548"
+                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "梦幻谷老客专享",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1549"
                     ],
                     [
                         "type" => "view",

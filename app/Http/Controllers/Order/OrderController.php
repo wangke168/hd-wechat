@@ -32,11 +32,12 @@ class OrderController extends Controller
 
     public function send($sellid, $openid)
     {
+
         if ($this->check_order($sellid)) {
 //            $this->dispatch(new SendOrderQueue($sellid,$openid));
-
+//            return $sellid;
             $this->insert_order($openid, $sellid);
-            $this->PostOrderInfo($openid, $sellid);
+//            $this->PostOrderInfo($openid, $sellid);
 
 //            $this->check_qy($sellid, $openid);
 
@@ -163,14 +164,48 @@ class OrderController extends Controller
         $usage = new Usage();
         $eventkey = '';
         $focusdate = '0000-00-00 00:00:00';
+        $Arrivate_Date='';
+        $ygjd='';
+        $ydbg='';
         if ($usage->get_openid_info($openid)) {
             $eventkey = $usage->get_openid_info($openid)->eventkey;
             $focusdate = $usage->get_openid_info($openid)->adddate;
         }
+        $order_detail=$this->Order_Detail($sellid);
+        $ticketcount = count($order_detail['ticketorder']);
+        $inclusivecount = count($order_detail['inclusiveorder']);
+        $hotelcount = count($order_detail['hotelorder']);
+        if ($ticketcount <> 0){
+            $Arrivate_Date=$order_detail['ticketorder'][0]['date2'];
+            $ygjd=$order_detail['ticketorder'][0]['ticket'];
+        }
+        elseif ($inclusivecount <> 0) {
+            $Arrivate_Date=$order_detail['inclusiveorder'][0]['date2'];
+            $ygjd=$order_detail['inclusiveorder'][0]['ticket'];
+            $ydbg = $order_detail['inclusiveorder'][0]['hotel'];
+        }
+        elseif ($hotelcount <> 0) {
+            $Arrivate_Date=$order_detail['hotelorder'][0]['date2'];
+            $ydbg = $order_detail['hotelorder'][0]['hotel'];
+        }
+
+
         DB::table('wx_order_send')
-            ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate]);
+            ->insert(['wx_openid' => $openid, 'sellid' => $sellid, 'eventkey' => $eventkey, 'focusdate' => $focusdate,'Arrivate_Date'=>$Arrivate_Date,'ygjd'=>$ygjd,'ydbg'=>$ydbg]);
 
     }
+
+
+    private function Order_Detail($sellid)
+    {
+        $url = env('ORDER_URL', '');
+//        $json = file_get_contents("http://ydpt.hdymxy.com/searchorder_json.aspx?sellid=" . $sellid);
+        $json = file_get_contents($url . "searchorder_json.aspx?sellid=" . $sellid);
+//        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
+        $data = json_decode($json, true);
+        return $data;
+    }
+
 
     private function PostOrderInfo($openid, $sellid)
     {
@@ -193,7 +228,7 @@ class OrderController extends Controller
         $json = file_get_contents($url . "searchorder_json.aspx?sellid=" . $sellid);
 //        $json = file_get_contents("http://e.hengdianworld.com/searchorder_json.aspx?sellid=" . $sellid);
         $data = json_decode($json, true);
-
+//        $data-$this->Order_Detail($sellid);
         $ticketcount = count($data['ticketorder']);
         $inclusivecount = count($data['inclusiveorder']);
         $hotelcount = count($data['hotelorder']);
@@ -213,7 +248,7 @@ class OrderController extends Controller
 
             if ($flag != "未支付" || $flag != "已取消") {
 
-                if ($data['ticketorder'][0]['ticket'] == '2018年8点年卡票' || $data['ticketorder'][0]['ticket'] == '2018年两馆年卡票' || $data['ticketorder'][0]['ticket'] == '2018年秋冬苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年春苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年夏苑年卡票') {
+               /* if ($data['ticketorder'][0]['ticket'] == '2018年8点年卡票' || $data['ticketorder'][0]['ticket'] == '2018年两馆年卡票' || $data['ticketorder'][0]['ticket'] == '2018年秋冬苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年春苑年卡票' || $data['ticketorder'][0]['ticket'] == '2018年夏苑年卡票') {
                     $ticketorder = "注意：年卡预订成功三天后开始生效";
                     $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电0579-89600055。";
 //                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
@@ -221,8 +256,9 @@ class OrderController extends Controller
                     $ticketorder = $data['ticketorder'][0]['code'];
                     $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
 //                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
-                }
-
+                }*/
+                $ticketorder = "注意：年卡预订成功三天后开始生效";
+                $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电4009057977。";
 
                 $templateId = env('TEMPLATEID_TICKET');
 
