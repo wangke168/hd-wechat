@@ -27,7 +27,7 @@ use App\WeChat\Usage;
 use App\WeChat\OpenID;
 use EasyWeChat\User\User;
 use EasyWeChat\Message\Raw;
-
+use App\Jobs\SendSecondQueue;
 class TestController extends Controller
 {
     public $app;
@@ -113,20 +113,23 @@ class TestController extends Controller
 
     public function temp(Request $request)
     {
+        $openid='o2e-YuNJXi3oNOkH_dh23FZtGFnk';
+        $results = DB::table('wx_order_send')
+            ->where('Arrivate_Date', date('Y-m-d'))
+            ->where('ygjd','not like','%套餐%')
+            ->where('ygjd','not like','%季卡%')
+            ->where('ygjd','not like','%年卡%')
+            ->get();
+
+        foreach ($results as  $result)
+        {
+            $this->dispatch(new SendSecondQueue($result->wx_openid));
+//            $this->app->staff->message($content)->by('1001@u_hengdian')->to($result->wx_openid)->send();
+        }
+        return $results;
         $keyword='测试';
         $eventkey='1007';
-
-     /*   $row = WechatTxt::whereRaw('FIND_IN_SET("' . $keyword . '", keyword)')
-            ->usagePublished($eventkey)
-            ->orderBy('id', 'desc')
-            ->get();
-        return $row;*/
-        $responsee=new Response();
-        $openid='o2e-YuNJXi3oNOkH_dh23FZtGFnk';
-//        $responsee->request_keyword($openid, $eventkey, $keyword);
-        $usage=new Usage();
-        $eventkey=$usage->get_openid_info($openid)->eventkey;
-        return $eventkey;
+        
     }
 
 

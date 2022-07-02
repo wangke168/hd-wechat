@@ -133,7 +133,7 @@ class MenuController extends Controller
                     ],*/
                     [
                         "type" => "view",
-                        "name" => "梦幻谷老客专享",
+                        "name" => "139元购梦幻谷",
                         "url" => "https://hdwechat.hengdianworld.com/jump?id=1549"
                     ],
                     [

@@ -37,7 +37,7 @@ class OrderController extends Controller
 //            $this->dispatch(new SendOrderQueue($sellid,$openid));
 //            return $sellid;
             $this->insert_order($openid, $sellid);
-//            $this->PostOrderInfo($openid, $sellid);
+            $this->PostOrderInfo($openid, $sellid);
 
 //            $this->check_qy($sellid, $openid);
 
@@ -238,7 +238,7 @@ class OrderController extends Controller
             $ticket_id = 1;
 
             $name = $data['ticketorder'][0]['name'];
-            $first = $data['ticketorder'][0]['name'] . "，您好，您已经成功预订门票。\n";
+            $first = $data['ticketorder'][0]['name'] . "，您好，您已经成功预订门票。";
             $sellid = $data['ticketorder'][0]['sellid'];
             $date = $data['ticketorder'][0]['date2'];
             $ticket = $data['ticketorder'][0]['ticket'];
@@ -257,8 +257,8 @@ class OrderController extends Controller
                     $remark = "\n在检票口出示此识别码可直接进入景区。\n如有疑问，请致电0579-89600055。";
 //                    $remark = "\n在检票口出示本人身份证可直接进入景区。";
                 }*/
-                $ticketorder = "注意：年卡预订成功三天后开始生效";
-                $remark = "\n在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电4009057977。";
+//                $ticketorder = "注意：年卡预订成功三天后开始生效";
+                $remark = "在检票口出示本人身份证可直接进入景区。\n如有疑问，请致电4009057977。";
 
                 $templateId = env('TEMPLATEID_TICKET');
 
@@ -268,7 +268,7 @@ class OrderController extends Controller
                     "keyword2" => array($date, "#173177"),
                     "keyword3" => array($ticket, "#173177"),
                     "keyword4" => array($numbers, "#173177"),
-                    "keyword5" => array($ticketorder, "#173177"),
+//                    "keyword5" => array($ticketorder, "#173177"),
                     "remark" => array($remark, "#000000"),
                 );
 
@@ -286,10 +286,11 @@ class OrderController extends Controller
             $ticket = $data['inclusiveorder'][0]['ticket'];
             $hotel = $data['inclusiveorder'][0]['hotel'];
             $flag = $data['inclusiveorder'][0]['flag'];
+            $numbers=$data['inclusiveorder'][0]['numbers'];
 
             if ($flag != "未支付" || $flag != "已取消") {
 
-                $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电0579-89600055。";
+                $remark = "人数：" . $data['inclusiveorder'][0]['numbers'] . "\n\n预达日凭身份证到酒店前台取票。如有疑问，请致电4009057977。";
 
                 $templateId = env('TEMPLATEID_PACKAGES');
 

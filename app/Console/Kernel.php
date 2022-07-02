@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
         Commands\UpdateOpenidInfo::class,
         Commands\UpdateEscInfo::class,
         Commands\temp::class,
+        Commands\AutoSendSecond::class,
     ];
 
     /**
@@ -32,17 +33,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       /* $schedule->command('inspire')
-            ->everyMinute();*/
-      /*  $schedule->command('temp')
-            ->cron('10,20,30,40,50 8-18 * * *');*/
+        /* $schedule->command('inspire')
+             ->everyMinute();*/
+        /*  $schedule->command('temp')
+              ->cron('10,20,30,40,50 8-18 * * *');*/
         /*更新wx_user_info里的信息*/
         //    $schedule->command('update_openid_info')
         //        ->dailyAt('0:30');
 
         /*演艺秀自动推送*/
-       /* $schedule->command('AutoSendShowInfo')
-            ->cron('10,40 8-18 * * *');*/
+        /* $schedule->command('AutoSendShowInfo')
+             ->cron('10,40 8-18 * * *');*/
 
         /*取消tag*/
         /*$schedule->command('CancelTag')
@@ -53,10 +54,10 @@ class Kernel extends ConsoleKernel
         //       ->cron('*/20 9-16 * * *');
 
         /*更新wx_user_info里的信息*/
-            $schedule->command('UpdateOpenidInfo')
-                ->dailyAt('2:30');
-     /*    $schedule->command('UpdateOpenidInfo')
-             ->everyMinute();*/
+        /*$schedule->command('UpdateOpenidInfo')
+            ->dailyAt('2:30');*/
+        /*    $schedule->command('UpdateOpenidInfo')
+                ->everyMinute();*/
 
         /*更新wx_click_hits中的eventkey*/
         //   $schedule->command('UpdateClickInfo')
@@ -65,7 +66,8 @@ class Kernel extends ConsoleKernel
         /*更新wx_user_esc*/
         //    $schedule->command('UpdateEscInfo')
         //       ->dailyAt('2:00');
-
-
+        /**下午5点发送年卡二销**/
+        $schedule->command('AutoSendSecond')
+            ->dailyAt('17:00');
     }
 }
