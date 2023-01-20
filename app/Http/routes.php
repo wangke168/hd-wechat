@@ -23,6 +23,9 @@ Route::get('/api/getjs','TokenController@getjs');
 Route::get('/jump','LinkJumpController@index');
 Route::get('/jump/ehengdian','LinkJumpController@jump_dyh');
 Route::get('/jump/jt','LinkJumpController@jump_jt');
+//加点统计
+Route::get('/jump/jd','LinkJumpController@jd');
+
 //菜单跳转手机官网
 Route::get('/jump/mobile','LinkJumpController@jump_mobile');
 

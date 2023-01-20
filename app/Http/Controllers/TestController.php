@@ -113,23 +113,17 @@ class TestController extends Controller
 
     public function temp(Request $request)
     {
-        $openid='o2e-YuNJXi3oNOkH_dh23FZtGFnk';
-        $results = DB::table('wx_order_send')
-            ->where('Arrivate_Date', date('Y-m-d'))
-            ->where('ygjd','not like','%套餐%')
-            ->where('ygjd','not like','%季卡%')
-            ->where('ygjd','not like','%年卡%')
-            ->get();
 
-        foreach ($results as  $result)
-        {
-            $this->dispatch(new SendSecondQueue($result->wx_openid));
-//            $this->app->staff->message($content)->by('1001@u_hengdian')->to($result->wx_openid)->send();
-        }
-        return $results;
-        $keyword='测试';
-        $eventkey='1007';
-        
+
+        $minipage = array('touser' => $this->openid_1, 'msgtype' => 'miniprogrampage',
+            'miniprogrampage' => array(
+                'title' => "春秋唐园-撞星率99%",
+                'appid' => env('TAIMU_APPID',''),
+                'pagepath' => "/pages/productDetail/productDetail?productId=22182557&dt=52882390",
+                'thumb_media_id' => "2gQXxd6I44QlghvIdM57BB5_7IwYqhNEoDzXjkUXsn1FOrcM8e1NqJ3pwtg_vjPx",));
+        $content=json_encode($minipage,JSON_UNESCAPED_UNICODE);
+        $message=new Raw($content);
+        $this->app->staff->message($message)->by('1001@u_hengdian')->to($this->openid_1)->send();
     }
 
 

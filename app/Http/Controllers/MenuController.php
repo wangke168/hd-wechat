@@ -88,6 +88,154 @@ class MenuController extends Controller
                 ],
             ],
             [
+                "name" => "立即预订",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "春节特惠",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1563"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "门票预定",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1520"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "门票+住宿预定",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1521"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "横店年卡",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1537"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "剧组拍摄地",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1557"
+                    ],
+
+                ],
+            ],
+            [
+                "name" => "个人服务",
+                "sub_button" => [
+                    /*[
+                        "type" => "view",
+                        "name" => "全城送福●免费抽奖",
+                        "url" => "http://mh.zjqsa.com/zp/index.aspx"
+                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "订单查询",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1516"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "客服咨询",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1531"
+                    ],
+                    /*[
+                        "type" => "view",
+                        "name" => "29元荧光跑",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1554"
+                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "酒店服务",
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1522"
+                        "url" => "https://order.hengdianworld.com/yd_hotel.aspx?comefrom=1&uid=&wpay=1"
+                    ],
+                    /*         [
+                                 "type" => "view",
+                                 "name" => "购年卡立减50",
+                                 "url" => "https://e.hengdianworld.com/yd_mp_activity.aspx?id=816"
+                             ],*/
+                   /* [
+                        "type" => "view",
+                        "name" => "酒景加点",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1559"
+                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "门票加购",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1519"
+                    ],
+                    [
+                        "name" => "官方分销",
+                        "type" => "miniprogram",
+                        "url" => "http://m.hengdianworld.com/",
+                        "appid" => "wx6848f3c913fc16b5",
+                        "pagepath" => "pages/mall/index"
+                    ],
+                    /*[
+                        "type" => "view",
+                        "name" => "官方分销",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1564"
+                    ],*/
+                    /*      [
+                              "type" => "click",
+                              "name" => "行程推荐",
+                              "key"  => "22"
+                          ],
+                          [
+                              "type" => "view",
+                              "name" => "常见问题",
+                              "url"  => "http://ydpt.hdymxy.com/yd_search.aspx"
+                          ],*/
+                ],
+            ],
+        ];
+
+        /*        $matchRule = [
+                    "tag_id"             => "100",
+                    "sex"                  => "",
+                    "country"              => "",
+                    "province"             => "",
+                    "city"                 => "",
+                    "client_platform_type" => ""
+                ];*/
+
+//        $this->menu->add($buttons, $matchRule);
+        $this->menu->add($buttons);
+
+    }
+
+    private function add_back()
+    {
+        $buttons = [
+            [
+                "name" => "畅游横店",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "游玩攻略",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1511"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "剧组动态",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1512"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "节目时间",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1513"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "交通攻略",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1514"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "常见问题",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1515"
+                    ],
+                ],
+            ],
+            [
                 "name" => "购票预定",
                 "sub_button" => [
                     [
@@ -119,23 +267,28 @@ class MenuController extends Controller
                 ],
             ],
             [
-                "name" => "最新活动",
+                "name" => "双11特惠",
                 "sub_button" => [
                     /*[
                         "type" => "view",
                         "name" => "全城送福●免费抽奖",
                         "url" => "http://mh.zjqsa.com/zp/index.aspx"
                     ],*/
-                    /*[
-                        "type" => "view",
-                        "name" => "618钜惠",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1548"
-                    ],*/
                     [
                         "type" => "view",
-                        "name" => "139元购梦幻谷",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1549"
+                        "name" => "影视拍摄地",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1557"
                     ],
+                    [
+                        "type" => "view",
+                        "name" => "双11特惠",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1553"
+                    ],
+                    /*[
+                        "type" => "view",
+                        "name" => "29元荧光跑",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1554"
+                    ],*/
                     [
                         "type" => "view",
                         "name" => "升级年卡",
@@ -426,11 +579,11 @@ class MenuController extends Controller
                         "appid" => "wxec43a205882c487f",
                         "pagepath" => "/pages/mall/typeIndex?typeId=d5d542f9fd2647be815341c89fe38f5d"
                     ],
-                    [
+                    /*[
                         "type" => "view",
                         "name" => "我要大奖",
                         "url" => "https://hdwechat.hengdianworld.com/jump?id=1546"
-                    ],
+                    ],*/
                     /*[
                         "type" => "miniprogram",
                         "name" => "限时抢购",

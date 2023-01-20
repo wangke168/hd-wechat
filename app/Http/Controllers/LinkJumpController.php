@@ -165,6 +165,22 @@ class LinkJumpController extends Controller
         return redirect($url);
     }
 
+    /**
+     * 直接跳转
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function jd(Request $request)
+    {
+        $id = $request->input("id");
+        $count = new Count();
+        $count->add_article_hits($id);
+        $count->insert_hits($id, "temp");
+        $url = $this->get_url($id)->url;
+        return redirect($url);
+    }
+
+
     public function jump_mobile(Request $request)
     {
         $wxnumber = $request->input('wxnumber');
@@ -172,8 +188,6 @@ class LinkJumpController extends Controller
         $uid = $usage->get_uid($wxnumber);
         $wxnumber = $usage->authcode($wxnumber, 'ENCODE', 0);
         return redirect("http://m.hdyuanmingxinyuan.com?wxnumber=" . $wxnumber . "&uid=" . $uid);
-
     }
-
 
 }
