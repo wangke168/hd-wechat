@@ -48,9 +48,9 @@ class WechatController extends Controller
                             #关注事件
                             $eventkey = $message->EventKey;
                             //检查是不是酒店会员中心的分销二维码，如果是，转成1007
-                            if (strlen($eventkey) >= 15) {
+                          /*  if (strlen($eventkey) >= 15) {
                                 $eventkey = "qrscene_1007";
-                            }
+                            }*/
                             if (substr($eventkey, 0, 7) == 'qrscene') {
                                 $eventkey = substr($eventkey, 8);
                             } else {
@@ -69,10 +69,13 @@ class WechatController extends Controller
                             #重复关注事件
                             $eventkey = $message->EventKey;
                             //检查是不是酒店会员中心的分销二维码，如果是，转成1007
-                            if (strlen($eventkey) >= 15) {
+                           /* if (strlen($eventkey) >= 15) {
                                 $eventkey = "1007";
-                            }
-                            if ($eventkey == "1336") {
+                            }*/
+                            $response->insert_subscribe($openid, $eventkey, 'scan'); //更新openid信息
+                            $response->make_user_tag($openid, $eventkey); //标签管理
+                            $response->request_focus($openid, $eventkey); //推送关注信息
+                           /* if ($eventkey == "1336") {
                                 $tour = new Tour();
                                 $content = new Text();
                                 $content->content = $tour->verification_subscribe($openid, '1');
@@ -87,7 +90,7 @@ class WechatController extends Controller
                                 //      $response->request_focus_temp($openid, $eventkey); //黄金周景区预定推送
 
 
-                            }
+                            }*/
                             break;
                         case 'unsubscribe':
                             #取消关注事件

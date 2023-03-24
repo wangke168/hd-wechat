@@ -92,8 +92,8 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "春节特惠",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1563"
+                        "name" => "横店马拉松",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1585"
                     ],
                     [
                         "type" => "view",
