@@ -62,58 +62,77 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "游玩攻略",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1511"
+                        "name" => "景区介绍",
+                        "url" => "https://www.hengdianworld.com/mobile/theme.html"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1591"
+
                     ],
                     [
                         "type" => "view",
                         "name" => "剧组动态",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1512"
+                        "url" => "https://www.hengdianworld.com/mobile/detail.html?id=2804"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1512"
                     ],
                     [
                         "type" => "view",
                         "name" => "节目时间",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1513"
+                        "url" => "https://www.hengdianworld.com/mobile/time.html"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1513"
                     ],
                     [
                         "type" => "view",
                         "name" => "交通攻略",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1514"
+                        "url" => "https://www.hengdianworld.com/mobile/traffic.html"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1514"
                     ],
-                    [
+                   /* [
                         "type" => "view",
                         "name" => "常见问题",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1515"
-                    ],
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1513"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1515"
+                    ],*/
                 ],
             ],
             [
                 "name" => "立即预订",
                 "sub_button" => [
-                    [
+            /*        [
                         "type" => "view",
-                        "name" => "横店马拉松",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1585"
-                    ],
+                        "name" => "五一特惠预售",
+                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1587"
+                    ],*/
                     [
                         "type" => "view",
                         "name" => "门票预定",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1520"
+                        "url" => "http://e.hengdianworld.com/mobile/epay.aspx"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1520"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "酒店服务",
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1593"
+                        "type" => "miniprogram",
+                        "url" => "http://m.hengdianworld.com/",
+                        "appid" => "wxd2e8a996a486b48b",
+                        "pagepath" => "/pages/customPage/customPage?pageId=46365&dt=52882390"
                     ],
                     [
                         "type" => "view",
                         "name" => "门票+住宿预定",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1521"
+                        "url" => "http://e.hengdianworld.com/yd_tc.aspx"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1521"
                     ],
                     [
                         "type" => "view",
                         "name" => "横店年卡",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1537"
+                        "url" => "https://e.hengdianworld.com/yd_mp_activity.aspx?id=141"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1537"
                     ],
                     [
                         "type" => "view",
                         "name" => "剧组拍摄地",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1557"
+                        "url" => "https://e.hengdianworld.com/yd_mp_activity.aspx?id=186"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1557"
                     ],
 
                 ],
@@ -129,12 +148,14 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "订单查询",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1516"
+                        "url" => "http://e.hengdianworld.com/yd_search.aspx"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1516"
                     ],
                     [
                         "type" => "view",
                         "name" => "客服咨询",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1531"
+                        "url" => "https://hdyscwl.qiyukf.com/client?k=762336eee6f3d299d818075a902ebc61&wp=1&robotShuntSwitch=1&robotId=90662"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1531"
                     ],
                     /*[
                         "type" => "view",
@@ -143,9 +164,9 @@ class MenuController extends Controller
                     ],*/
                     [
                         "type" => "view",
-                        "name" => "酒店服务",
-//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1522"
-                        "url" => "https://order.hengdianworld.com/yd_hotel.aspx?comefrom=1&uid=&wpay=1"
+                        "name" => "我的优惠券",
+                        "url" => "https://e.hengdianworld.com/unionCard/unionCard_search.aspx"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1589"
                     ],
                     /*         [
                                  "type" => "view",
@@ -160,10 +181,11 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "门票加购",
-                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1519"
+                        "url" => "https://www.jihex.com/html/v2/customerPage/index/74235?dt=52882390"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1519"
                     ],
                     [
-                        "name" => "官方分销",
+                        "name" => "文旅卡会员中心",
                         "type" => "miniprogram",
                         "url" => "http://m.hengdianworld.com/",
                         "appid" => "wx6848f3c913fc16b5",
