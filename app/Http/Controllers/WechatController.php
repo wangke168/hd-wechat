@@ -23,17 +23,11 @@ class WechatController extends Controller
         $wechat = app('wechat');
         $userService = $wechat->user;
         \Log::info('1');
-        \Log::info($wechat->server->setMessageHandler());
+        \Log::info($userService);
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
             \Log::info('2');
             $openid = $userService->get($message->FromUserName)->openid;
             if ($openid=="o2e-YuNJXi3oNOkH_dh23FZtGFnk")
-            {
-                \Log::info('3');
-                $content = new Text();
-                $content->content = "官方客服电话" . "\n" . "4009057977";
-                return $content;
-            }
             $eventkey = $message->EventKey;
             $response = new Response();
             switch ($message->MsgType) {
