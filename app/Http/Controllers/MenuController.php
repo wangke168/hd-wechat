@@ -62,6 +62,13 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
+                        "name" => "景区地图",
+                        "url" => "https://www.jihex.com/html/v2/customerPage/index/99324?dt=52882390"
+//                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1591"
+
+                    ],
+                    [
+                        "type" => "view",
                         "name" => "景区介绍",
                         "url" => "https://www.hengdianworld.com/mobile/theme.html"
 //                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1591"

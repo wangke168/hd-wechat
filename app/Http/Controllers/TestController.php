@@ -48,6 +48,7 @@ class TestController extends Controller
     }
 
 
+
     public function temp3()
     {
 
@@ -130,7 +131,12 @@ class TestController extends Controller
 
     public function temp2()
     {
-
+        $response = new Response();
+        $eventkey = "";
+        //把内容加入wx_recevice_txt
+        DB::table('wx_recevice_txt')
+            ->insert(['wx_openid' => $this->openid_1, 'content' => 'wxh']);
+        $response->request_keyword($this->openid_1, $eventkey, 'wxh');
 
     }
 
