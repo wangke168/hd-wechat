@@ -23,6 +23,12 @@ class WechatController extends Controller
 
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
             $openid = $userService->get($message->FromUserName)->openid;
+            if ($openid=="o2e-YuNJXi3oNOkH_dh23FZtGFnk")
+            {
+                $content = new Text();
+                $content->content = "官方客服电话" . "\n" . "4009057977";
+                return $content;
+            }
             $eventkey = $message->EventKey;
             $response = new Response();
             switch ($message->MsgType) {
@@ -105,7 +111,7 @@ class WechatController extends Controller
                     }
                     break;
                 case 'text':
-                    $eventkey = $message->EventKey;
+//                    $eventkey = $message->EventKey;
                     //把内容加入wx_recevice_txt
                     DB::table('wx_recevice_txt')
                         ->insert(['wx_openid' => $openid, 'content' => $message->Content]);
