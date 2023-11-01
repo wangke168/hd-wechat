@@ -22,7 +22,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $userService = $wechat->user;
-
+        \Log::info('1');
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
             \Log::info('2');
             $openid = $userService->get($message->FromUserName)->openid;
