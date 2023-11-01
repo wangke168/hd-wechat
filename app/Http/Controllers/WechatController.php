@@ -11,22 +11,24 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 
+
 class WechatController extends Controller
 {
 
     public function serve()
     {
-        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
+
+        \Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
 
         $wechat = app('wechat');
         $userService = $wechat->user;
 
         $wechat->server->setMessageHandler(function ($message) use ($userService) {
-            Log::info('2');
+            \Log::info('2');
             $openid = $userService->get($message->FromUserName)->openid;
             if ($openid=="o2e-YuNJXi3oNOkH_dh23FZtGFnk")
             {
-                Log::info('3');
+                \Log::info('3');
                 $content = new Text();
                 $content->content = "官方客服电话" . "\n" . "4009057977";
                 return $content;
