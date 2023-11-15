@@ -108,11 +108,19 @@ class MenuController extends Controller
                         "name" => "五一特惠预售",
                         "url" => "https://hdwechat.hengdianworld.com/jump?id=1587"
                     ],*/
-                    [
+/*                    [
                         "type" => "view",
                         "name" => "门票预定",
                         "url" => "http://e.hengdianworld.com/mobile/epay.aspx"
 //                        "url" => "https://hdwechat.hengdianworld.com/jump?id=1520"
+                    ],*/
+                    [
+                        "type" => "view",
+                        "name" => "门票预定",
+                        "type" => "miniprogram",
+                        "url" => "http://m.hengdianworld.com/",
+                        "appid" => "wxd2e8a996a486b48b",
+                        "pagepath" => "/pages/customPage/customPage?pageId=73011&dt=52882390"
                     ],
                     [
                         "type" => "view",
