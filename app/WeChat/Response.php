@@ -413,7 +413,7 @@ class Response
         switch ($focus) {
             case 1:
                 $row = WechatArticle::focusPublished($eventkey)
-                    ->skip(0)->take(1)->get();
+                    ->skip(0)->take(8)->get();
                 break;
             case 2:
                 $row = WechatArticle::where('classid', $menuid)
