@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="796b77ce-3fad-4567-bfeb-bc2946b7b605" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/WeChat/Response.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WeChat/Response.php" afterDir="false" />
     </list>
     <ignored path="laravel5.iws" />
@@ -95,8 +94,11 @@
       <file leaf-file-name="Response.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="481" column="59" selection-start-line="481" selection-start-column="59" selection-end-line="481" selection-end-column="59" />
+            <state relative-caret-position="680">
+              <caret line="482" column="9" lean-forward="true" selection-start-line="482" selection-start-column="9" selection-end-line="482" selection-end-column="9" />
+              <folding>
+                <element signature="e#14324#15511#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -694,12 +696,12 @@
       <workItem from="1699665141558" duration="1163000" />
       <workItem from="1700028680325" duration="822000" />
       <workItem from="1700033054219" duration="625000" />
-      <workItem from="1703317779340" duration="669000" />
+      <workItem from="1703317779340" duration="1200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="718397000" />
+    <option name="totallyTimeSpent" value="718928000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
@@ -1128,8 +1130,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/WeChat/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="481" column="59" selection-start-line="481" selection-start-column="59" selection-end-line="481" selection-end-column="59" />
+        <state relative-caret-position="680">
+          <caret line="482" column="9" lean-forward="true" selection-start-line="482" selection-start-column="9" selection-end-line="482" selection-end-column="9" />
+          <folding>
+            <element signature="e#14324#15511#0#PHP" />
+          </folding>
         </state>
       </provider>
     </entry>
